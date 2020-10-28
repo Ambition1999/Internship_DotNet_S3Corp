@@ -818,3 +818,27 @@ h4 {
 .link {
     cursor: pointer;
 }
+
+/* List collection */
+.main-right-home .now-list-restaurant .collection-title{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.main-right-home .now-list-restaurant.collection .info-restaurant{
+    border: 0;
+    height: unset;
+}
+
+.now-list-restaurant .info-basic-res{
+    padding: 5px 8px;
+}
+
+.now-list-restaurant .info-restaurant{
+    border-radius: 0 0 6px 6px;
+}
+
+.now-list-restaurant .list-place{
+    color: #0288d1!important;
+    font-size: .75rem!important;
+}
