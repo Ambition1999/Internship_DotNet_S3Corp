@@ -56,13 +56,15 @@
                             <a href="#" class="nav-item">Thuốc</a>
                         </div>
 
-                        <!-- Tiếp theo là phần more "..." -->
+                        <div class="login-area">
+                            <button class="btn btn-none-bg btn-login" type="button">Đăng nhập</button>
+                        </div>
                     </div>
                 </div>
             </div>
             
         </div>
-        <div class="now-banner ver_vi" style="position: fixed; top: 70px;">
+        <div class="now-banner ver_vi" id="now-banner" style="position: fixed; top: 70px;">
             <div class="container">
                 <div class="now-search">
                     <div>
@@ -114,6 +116,7 @@
                 
             </div>           
         </div>
+        <!-- Main home, search, tags, list restaurant and etc.... -->
         <div class="contain-main-home clear-fix">
             <div class="container">
                 <div class="main-right-home">
@@ -572,7 +575,7 @@
                             </div>
                         </div>
                         <div class="txt-center mt-2">
-                            <button class="btn-none btn-load-more link">
+                            <button class="btn-none btn-load-more link" id="last-view-more">
                                 <span class="pr-1">Xem thêm</span>
                                 <i class="fas fe-redo font12"></i>
                             </button>
@@ -580,11 +583,128 @@
                         </div>
                     </div>
                 </div>
+        </div>
+        <div class="container" id="corp-info">
+            <div class="corp-container-content">
+                <h4><span class="display-title corp">Đơn hàng của bạn sẽ được bảo quản như thế nào</span></h4>
+                <span><p class="display-content corp">Now sẽ đảm bảo đơn hàng của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên đường một cách tốt nhất</p></span>
+                <img src="https://www.now.vn/app/assets/img/Box-food-preservation-footer.jpg?42147a4a586d72f2b7a21ea97478898e" alt="corpImage" class="corpo-img">
             </div>
         </div>
-        <div class="footer">
-            <!-- Đây là footer -->
+
+        <div class="container" id="app-info">
+            <div class="app-container-content">
+                <div class="text-app-area">
+                    <h4><span class="corp-title app">NowMerchant App</span></h4>
+                <span><p class="display-content app">- <span class="font-weight-bold">NowMerchant</span> is an order management application for partner restaurants of on-site ordering service</p></span>
+                <span><p class="display-content app">- <span class="font-weight-bold">Now.vn</span> is always ready to cooperate with restaurants, cafes, cafes ... to expand business as well as increase customers. Connect to the ordering and delivery system to reduce management, operation, marketing, technology ...
+                    Register to join: <a href="#"><span class="text-primary font-weight-bold">here</span></a></p></span>
+                <span><p class="display-content app">- Foody also provides <span class="font-weight-bold">Now POS</span> which built-in <span class="font-weight-bold">Now.vn</span>, store owners can track orders / visitors, update information / images / menus for Microsite with many features. other advantages. Sign up for a free trial <a href="#"><span class="text-primary">here</span>!</p></span>
+                </div>
+                <div class="img-app-area">
+                    <img src="https://www.now.vn/app/assets/img/banner-phone-reg-merchant.png?f9e17674dd5098225fb5eb0a55b95c45" alt="appImg" class="app-img">
+                </div>         
+            </div>
         </div>
+
+        <div class="container" id="recruiment-info">
+            <div class="app-container-content recruiment">
+                <div class="text-recruiment-area">
+                    <h4><a href="#"><span class="display-title recruiment"><span class="text-danger">NOW.VN </span><span class="text-primary">Hợp tác nhân viên giao nhận - Now Partners</span></span></a></h4>
+                <span><p class="display-content recruiment">Giúp bạn tăng thu nhập trong thời gian rảnh rỗi</p></span>
+                <span><p class="display-content recruiment">Now tìm kiếm hợp tác với các cá nhân để thực hiện việc giao hàng, chúng tôi sẽ cung cấp ứng dụng (app), 1 số dụng cụ cần thiết để bạn có thể tiếp nhận & giao hàng, kiếm thêm thu nhập
+                    Đăng ký tham gia tại đây hoặc gửi Email qua jobs@gofast.vn - hoặc gọi qua số điện thoại 0286 656 9769.</p></span>
+                </div>
+                <div class="img-recruiment-area">
+                    <img src="https://www.now.vn/app/assets/img/bg-deliverynow-dat-mon-truc-tuyen-giao-hang-tan-noi.png?b05356770176f467df57c4dc54c94c01" alt="recruiImg" class="recrui-img">
+                </div>         
+            </div>
+        </div>
+
+        <div class="footer">
+            <!-- Footer -->
+            <div class="container">
+                <div class="container-footer">
+                    <div class="block-footer">
+                        <p class="title-block font-weight-bold">Công ty</p>
+                        <ul class="menu-corp">
+                            <li class="menu-item"><a href="#" class="item-link">Giới thiệu</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Trung tâm trợ giúp</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Quy chế</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Điều khoản sử dụng</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Bảo mật thông tin</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Giải quyết khiếu nại</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Liên hệ</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Hợp tác nhân viên giao nhận</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Đăng ký quán</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Ứng dụng NowMerchant</a></li>
+                        </ul>
+                    </div>
+                    <div class="block-footer-2nd">
+                        <p class="title-block font-weight-bold">Now App</p>
+                        <a href="#" class="app-download-ios">
+                            <span class="app app-ios">
+                                <i class="fas fa-apple"></i> iOS
+                            </span>
+                        </a>
+                        <a href="#" class="app-download-apk">
+                            <span class="app app-apk">
+                                <i class="fas fa-android"></i> Android
+                            </span>
+                        </a>
+                    </div>
+                    <div class="block-footer-middle">
+                        <div class="logo-now-footer">
+                            <img src="https://www.now.vn/app/assets/img/Logo-Nowvn-Elip.png?e398e9326ddac9d81cae2dfce3c1d96c" alt="logoNowFooter">
+                        </div>
+                        <span class="footer-detail">© 2020 Now - A Foody Corporation</span>
+                    </div>
+                    <div class="block-footer-last">
+                        <p class="title-block font-weight-bold">Địa chỉ công ty</p>
+                        <p>Công ty cổ phần Foody</p>
+                        <p>Tầng 10 toàn nhà Sonatus,</p>
+                        <p>Công ty cổ phần Foody</p>
+                        <p>số 15 Lê Thánh Tôn, phường Bến Nghé, Quận 1, TPHCM</p>
+                        <p>Giấy CN ĐKDN số: 0311828036</p>
+                        <p>do Sở Kế hoạch và Đầu tư TP.HCM cấp ngày 11/6/2012,</p>
+                        <p>sửa đổi lần thứ 21, ngày 04/10/2019</p>
+                        <p>Số điện thoại: 1900 2042</p>
+                        <p>Email: info@now.vn</p>
+                        <div class="register">
+                            <img src="https://www.now.vn/app/assets/img/gov_seals.jpg?c3d95a3d6c29919ae2c73a4a646841de" alt="onlineGOVLogo">
+                        </div> 
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        <script>
+            // $(window).scroll(function(){
+            //     var heightTop = $('#last-view-more').offset().top,
+            //         outerHeight = $('#last-view-more').outerHeight(),
+            //         windowsHeight = $(window).height,
+            //         windowsScroll = $(window).scrollTop();
+            //     console.log((heightTop - windowsHeight), windowsScroll)
+            //     if(windowsScroll > (heightTop + outerHeight - windowsHeight))
+            //         $('#now-banner').attr("style", "position: absolute; top: 1746px;");
+            //         // ('.contain-main-home').append("")
+                
+            // })
+
+            
+            $(document).ready(function(){  
+                oldOffset = $('#corp-info').offset().top;
+                $('#now-banner').scroll(function(){
+                    if($('#now-banner').scrollTop() > oldOffset){
+                    $('#corp-info').css({
+                        'position': 'absolute', 
+                        'top': '1746px'
+                        });
+                    console.log('Changed');
+                    }
+                });               
+            });
+        </script>
         
     </body>
 </html>

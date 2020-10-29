@@ -183,7 +183,21 @@ a {
     color: #0288d1;
 }
 
-/* Phần banner ở mid */
+.main-nav .login-area{
+    width: 120px;
+    height: 37px;
+    float: right;
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.container-header .btn-login{
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Banner area in middle */
 
 .now-banner{
     height: 100vh;
@@ -779,9 +793,9 @@ h4 {
     padding-right: 5px;
 }
 
-.fa-tag:before {
+/* .fa-tag:before {
     content: "\f02b";
-}
+} */
 
 .opentime-status {
     position: absolute;
@@ -841,4 +855,117 @@ h4 {
 .now-list-restaurant .list-place{
     color: #0288d1!important;
     font-size: .75rem!important;
+}
+
+/* Corporation Display */
+.corp-container-content{
+    background-color: #fff;
+    margin-top: 1800px;
+    padding: 20px 150px 50px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px 0px #888888;
+}
+
+.app-container-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin-top: 80px;
+    padding: 20px 50px 50px 150px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px 0px #888888;
+}
+
+.app-container-content .text-app-area,
+.app-container-content .text-recruiment-area{
+    flex-grow: 4;
+    margin-right: 10px;
+}
+
+.app-container-content .img-app-area,
+.app-container-content .img-recruiment-area{
+    flex-grow: 1;
+    margin-right: 50px 350px 50px 150px;
+}
+
+/* Footer area */
+
+.container-footer{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 40px;
+}
+
+.block-footer{
+    width: 240px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.block-footer ul{
+    list-style: none;
+    line-height: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.block-footer-2nd{
+    width: 240px;
+    height: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.block-footer-2nd a{
+    color: black;
+    margin-bottom: 10px;
+}
+
+.block-footer-middle{
+    width: 240px;
+    height: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.block-footer-middle .footer-detail{
+    font-size: 13px;
+}
+
+.block-footer-last{
+    width: 360px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.block-footer-last .title-block{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.block-footer-last p{
+    font-size: 11px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.block-footer-last .register{
+    width: 170px;
+    height: 60px;
+    display: inline-block;
+    float: right;
+}
+
+.block-footer-last .register img{
+    width: 100%;
+    vertical-align: middle;
+    border: none;
+    padding-right: 20px;
 }
