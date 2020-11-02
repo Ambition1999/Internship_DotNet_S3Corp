@@ -935,6 +935,11 @@ h4 {
     text-align: center;
 }
 
+.block-footer-middle .logo-now-footer img{
+    max-width: 77px;
+    max-height: 77px;
+}
+
 .block-footer-middle .footer-detail{
     font-size: 13px;
 }
