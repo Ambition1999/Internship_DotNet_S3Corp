@@ -416,4 +416,209 @@ img{
     display: inline-block;
     color: #fff;
     border-radius: 4px;
+    border: none;
+}
+
+/* Now bill restaurant */
+.bill-restaurant{
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    position: absolute;
+    top: 490px;
+    right: 10px;
+    width: 310px;
+}
+
+.bill-restaurant .bill-restaurant-header{
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+    padding: 7px 10px;
+}
+
+.bill-restaurant .cart-stats{
+    border: 0;
+}
+
+.bill-restaurant .cart-stats{
+    font-size: 12px;
+    color: #187caa;
+    background: #fff;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 2px;
+    float: left;
+    display: block;
+}
+
+.txt-bold{
+    font-weight: 700!important;
+}
+
+.bill-restaurant .btn-reset{
+    float: right;
+}
+
+.btn-reset{
+    font-size: 11px;
+    line-height: 20px;
+    border-radius: 2px;
+    border: 1px solid #cf2127;
+    color: #cf2127;
+    padding: 0px 7px;
+    display: inline-block;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.bill-restaurant .btn-order-group{
+    float: right;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn-order-group{
+    font-size: 11px;
+    line-height: 20px;
+    border-radius: 2px;
+    border: 1px solid #0288d1;
+    color: #fff;
+    padding: 0px 7px;
+    display: inline-block;
+    background-color: #0288d1;
+    cursor: pointer;
+}
+
+.bill-restaurant .create-order{
+    font-size: 11px;
+    padding-top: 6px;
+    font-style: italic;
+    clear: both;
+}
+
+.txt-blue{
+    color: #0288d1!important;
+}
+
+.bill-restaurant .order-card-group{
+    color: #464646;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.order-card-group .order-card-user{
+    color: #464646;
+    background: #fff;
+    padding: 4px 15px;
+}
+
+.align-items-center{
+    align-items: center!important;
+}
+
+.order-card-group .order-card-user .col-auto{
+    padding: 0;
+}
+
+.order-card-group .order-card-user .avatar img{
+    width: 30px;
+    border-radius: 50%;
+}
+
+.order-card-group .order-card-user .user-name{
+    color: #464646;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.btn-up, .btn-down{
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 10px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid #fff;
+}
+
+.btn-up{
+    background-color: green;
+}
+
+.btn-down{
+    background-color: black;
+}
+
+.bill-restaurant .number-order{
+    font-size: 12px;
+    text-align: center;
+    color: #cf2127;
+    font-weight: 700;
+    display: inline-block;
+    min-width: 18px;
+}
+
+.bill-restaurant .name-order{
+    font-size: 13px;
+    color: #464646;
+    font-weight: 700;
+}
+
+.order-card-group .note-order{
+    margin-top: 5px;
+    padding: 0 15px;
+}
+
+.order-card-group .clearfix{
+    margin-top: 5px;
+    padding: 0 15px;
+}
+
+
+.order-card-group .order-card-item
+.note-order input{
+    font-size: 12px;
+    padding: 0;
+    border: 0;
+    width: 210px;
+}
+
+.order-card-group .order-card-item .price-order{
+    font-size: 13px;
+    float: right;
+}
+
+.bill-restaurant .row-bill-restaurant{
+    font-size: 13px;
+    padding: 8px 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.bill-restaurant .input-promocode{
+    background-color: #fbf9d8;
+}
+
+.font16{
+    font-size: 1rem!important;
+}
+
+.bill-restaurant .btn-red{
+    font-size: 15px;
+    margin: 12px 10px 15px;
+    display: block;
+    width: calc(100% - 20px);
+}
+
+.btn-red{
+    background-color: #cf2127!important;
+    color: #fff;
+    border-color: #cf2127;
 }
