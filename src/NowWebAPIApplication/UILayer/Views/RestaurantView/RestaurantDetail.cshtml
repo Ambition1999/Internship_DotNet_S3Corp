@@ -1,0 +1,317 @@
+﻿
+@{
+    ViewBag.Title = "RestaurantDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/CSSFile/Now_ProductDetailCSS.css">
+
+<div class="detail-restaurant clearfix">
+    <div class="container">
+        <div class="detail-restaurant-img">
+            <img src="https://images.foody.vn/res/g1/742/prof/s640x400/foody-upload-api-foody-mobile-9-jpg-180508140028.jpg" alt="imgRestaurantDetail">
+        </div>
+        <div class="detail-restaurant-info">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link" rel="nofollow">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link" rel="nofollow">TP.HCM</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link" rel="nofollow">Morico - Contemporary Japanese Lifestyle - Vincom Center</a></li>
+                </ol>
+            </nav>
+            <div class="kind-restaurant">
+                <span>
+                    Nhà hàng, Café/Dessert
+                </span>
+            </div>
+            <h1 class="name-restaurant">Morico - Contemporary Japanese Lifestyle - Vincom Center</h1>
+            <div class="address-restaurant">Tầng B3 Vincom Center, 70 -72 Lê Thánh Tôn, P.Bến Nghé, Quận 1, TP.HCM</div>
+            <div class="status-restaurant">
+                <div class="opentime-status">
+                    <span class="stt online" title="Mở cửa"></span>
+                </div>
+            </div>
+            <div class="cost-restaurant">
+                <span>$ 70.000 - 220.000</span>
+            </div>
+            <div class="blankspace"></div>
+            <div class="utility-restaurant clearfix">
+                <div class="utility-item">
+                    <div class="utility-title">Phí dịch vụ</div>
+                    <div class="utility-content">
+                        <span class="font-weight-bold text-danger">0.0% Phí phục vụ</span>
+                    </div>
+                </div>
+                <div class="utility-item">
+                    <div class="utility-title">Dịch vụ bởi</div>
+                    <div class="utility-content">
+                        <span class="font-weight-bold text-danger">Now</span>
+                    </div>
+                </div>
+                <div class="utility-item">
+                    <div class="utility-title">Chuẩn bị</div>
+                    <div class="utility-content">25 Phút</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Continue Menu Item of Restaurant -->
+<div class="container relative clearfix">
+    <div class="menu-restaurant">
+        <div class="menu-restaurant-tab">
+            <div class="item active">Thực đơn</div>
+        </div>
+        <div class="menu-restaurant-content-tab">
+            <div class="menu-restaurant-container">
+                <div class="menu-restaurant-category">
+                    <div class="list-category" id="croll-py">
+                        <div class="crollbar-container ps ps--active-y">
+                            <div class="item">
+                                <span id="" title="" class="item-link active">1 - BEST SELLER DESERT/DRINK</span>
+                            </div>
+                            <div class="item">
+                                <span id="" title="" class="item-link">2 - BEST SELLER FOOD</span>
+                            </div>
+                            <div class="item">
+                                <span id="" title="" class="item-link">3 - MATCHA</span>
+                            </div>
+                            <div class="item">
+                                <span id="" title="" class="item-link">4 - HOUJICHA</span>
+                            </div>
+                            <div class="item">
+                                <span id="" title="" class="item-link">5 - GENMAICHA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-restaurant-detail">
+                    <div class="promotion-order">
+                        <div class="promotion-item" id="promotion-item">
+                            <div>
+                                <img src="https://images.foody.vn/icon/discount/s/freeship.png" alt="iconPromotion" class="icon-promotion">
+                                <div class="content">Nhập "FREESHIP": Freeship đến 3km</div>
+                            </div>
+                            <button class="copy-code" id="promotion-item-copy">
+                                <span class="promotion-freeship">Copy code</span>
+                                <span class="fa fa-copy"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-restaurant-list">
+                        <div class="search-item">
+                            <p class="input-group">
+                                <input type="search" name="searchKey" placeholder="Tìm món">
+                            </p>
+                        </div>
+                        <div class="restaurant-item">
+                            <div aria-readonly="true" area-label="grid" role="grid" tabindex="0" class="ReactVirtualized_Grid ReactVirtualized_List"
+                                 style="box-sizing: border-box; direction: ltr; height: auto; position: relative; width: 558px; overflow: auto; outline: none;">
+                                <div class="ReactVirtualized_Grid_innerScrollContainer list-menu-flex" role="rowgroup"
+                                     style="width: auto; height: 800px; max-width: 558px; max-height: 9800px; overflow: hidden; position: relative;">
+                                    <div class="menu-group" id=""
+                                         style="height: 58px; left: 0; position: absolute; top: 0; width: 100%;">
+                                        <div class="title-menu">1 - BEST SELLER DESSERT/DRINK</div>
+                                        <div class="item-restaurant-row"
+                                             style="height: auto; width: 100%; left: 0;">
+                                            <div class="row">
+                                                <div class="col-auto item-restaurant-img">
+                                                    <button class="inline">
+                                                        <img src="https://images.foody.vn/res/g1/595/s120x120/734e9f47-8f95-4b1c-a565-0290082a7923.jpg" alt="imgProduct" width="60" height="60">
+                                                    </button>
+                                                </div>
+                                                <div class="col item-restaurant-info">
+                                                    <h2 class="item-restaurant-name">Hokkaido Milk Crepes </h2>
+                                                    <div class="item-restaurant-desc">Bánh ngàn lớp kem vani. Giá đã bao gồm 10% thuế VAT</div>
+                                                </div>
+                                                <div class="col-auto itme-restaurant-more">
+                                                    <div class="row">
+                                                        <div class="col-auto product-price">
+                                                            <div class="current-price">88.000đ</div>
+                                                        </div>
+                                                        <div class="col-auto adding-food-cart txt-right">
+                                                            <button class="btn-adding">+</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-restaurant-row"
+                                             style="height: auto; width: 100%; left: 0;">
+                                            <div class="row">
+                                                <div class="col-auto item-restaurant-img">
+                                                    <button class="inline">
+                                                        <img src="https://images.foody.vn/res/g1/595/s120x120/734e9f47-8f95-4b1c-a565-0290082a7923.jpg" alt="imgProduct" width="60" height="60">
+                                                    </button>
+                                                </div>
+                                                <div class="col item-restaurant-info">
+                                                    <h2 class="item-restaurant-name">Hokkaido Milk Crepes </h2>
+                                                    <div class="item-restaurant-desc">Bánh ngàn lớp kem vani. Giá đã bao gồm 10% thuế VAT</div>
+                                                </div>
+                                                <div class="col-auto itme-restaurant-more">
+                                                    <div class="row">
+                                                        <div class="col-auto product-price">
+                                                            <div class="current-price">88.000đ</div>
+                                                        </div>
+                                                        <div class="col-auto adding-food-cart txt-right">
+                                                            <button class="btn-adding">+</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-restaurant-row"
+                                             style="height: auto; width: 100%; left: 0;">
+                                            <div class="row">
+                                                <div class="col-auto item-restaurant-img">
+                                                    <button class="inline">
+                                                        <img src="https://images.foody.vn/res/g1/595/s120x120/734e9f47-8f95-4b1c-a565-0290082a7923.jpg" alt="imgProduct" width="60" height="60">
+                                                    </button>
+                                                </div>
+                                                <div class="col item-restaurant-info">
+                                                    <h2 class="item-restaurant-name">Hokkaido Milk Crepes </h2>
+                                                    <div class="item-restaurant-desc">Bánh ngàn lớp kem vani. Giá đã bao gồm 10% thuế VAT</div>
+                                                </div>
+                                                <div class="col-auto itme-restaurant-more">
+                                                    <div class="row">
+                                                        <div class="col-auto product-price">
+                                                            <div class="current-price">88.000đ</div>
+                                                        </div>
+                                                        <div class="col-auto adding-food-cart txt-right">
+                                                            <button class="btn-adding">+</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-restaurant-row"
+                                             style="height: auto; width: 100%; left: 0;">
+                                            <div class="row">
+                                                <div class="col-auto item-restaurant-img">
+                                                    <button class="inline">
+                                                        <img src="https://images.foody.vn/res/g1/595/s120x120/734e9f47-8f95-4b1c-a565-0290082a7923.jpg" alt="imgProduct" width="60" height="60">
+                                                    </button>
+                                                </div>
+                                                <div class="col item-restaurant-info">
+                                                    <h2 class="item-restaurant-name">Hokkaido Milk Crepes </h2>
+                                                    <div class="item-restaurant-desc">Bánh ngàn lớp kem vani. Giá đã bao gồm 10% thuế VAT</div>
+                                                </div>
+                                                <div class="col-auto itme-restaurant-more">
+                                                    <div class="row">
+                                                        <div class="col-auto product-price">
+                                                            <div class="current-price">88.000đ</div>
+                                                        </div>
+                                                        <div class="col-auto adding-food-cart txt-right">
+                                                            <button class="btn-adding">+</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-restaurant-row"
+                                             style="height: auto; width: 100%; left: 0;">
+                                            <div class="row">
+                                                <div class="col-auto item-restaurant-img">
+                                                    <button class="inline">
+                                                        <img src="https://images.foody.vn/res/g1/595/s120x120/734e9f47-8f95-4b1c-a565-0290082a7923.jpg" alt="imgProduct" width="60" height="60">
+                                                    </button>
+                                                </div>
+                                                <div class="col item-restaurant-info">
+                                                    <h2 class="item-restaurant-name">Hokkaido Milk Crepes </h2>
+                                                    <div class="item-restaurant-desc">Bánh ngàn lớp kem vani. Giá đã bao gồm 10% thuế VAT</div>
+                                                </div>
+                                                <div class="col-auto itme-restaurant-more">
+                                                    <div class="row">
+                                                        <div class="col-auto product-price">
+                                                            <div class="current-price">88.000đ</div>
+                                                        </div>
+                                                        <div class="col-auto adding-food-cart txt-right">
+                                                            <button class="btn-adding">+</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="bill-restaurant">
+            <div class="bill-restaurant-header">
+                <button class="cart-stats">
+                    <span class="txt-bold">1</span>
+                    &nbsp; phần &nbsp; - &nbsp;
+                    <span class="txt-bold">1</span>
+                    &nbsp; người
+                </button>
+                <button class="btn-reset">Xóa</button>
+                <button class="btn-order-group">Đặt theo nhóm</button>
+                <div class="create-order">
+                    Đơn hàng tạo bởi
+                    <span class="txt-blue">user001</span>
+                </div>
+            </div>
+            <div class="order-card-group">
+                <div class="order-card-person">
+                    <div class="order-card-user">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <div class="avatar">
+                                    <img src="https://images.foody.vn/default/s60/user-default-female.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="user-name">user001</div>
+                            </div>
+                            <div class="col-auto">
+                                1 món
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-card-groups">
+                        <!-- Cart item -->
+                        <div class="order-card-item">
+                            <div class="clearfix">
+                                <button class="btn-up">+</button>
+                                <span class="number-order">1</span>
+                                <button class="btn-down">-</button>
+                                <span class="name-order">Sake Roll</span>
+                            </div>
+                            <div class="note-order">
+                                <input type="text" id="txtNote" placeholder="Thêm ghi chú...">
+                                <span class="price-order">158,000đ</span>
+                            </div>
+                        </div>
+                        <div class="row-bill-restaurant">
+                            <div class="row">
+                                <div class="col">Cộng</div>
+                                <div class="col-auto">
+                                    <span class="txt-bold">158,000đ</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-bill-restaurant txt-center input-promocode">
+                            <span class="text-danger">(*)</span>Nhập mã khuyến mãi ở bước hoàn tất
+                        </div>
+                        <div class="row-bill-restaurant relative">
+                            <div class="row">
+                                <div class="col">Tổng cộng</div>
+                                <div class="col-auto">
+                                    <span class="txt-bold txt-blue font16">158,000đ</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-red">Đặt trước</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

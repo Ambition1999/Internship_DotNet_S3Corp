@@ -1,0 +1,174 @@
+*, ::after, ::before{
+    box-sizing: border-box;
+}
+
+*, :after, :before{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #464646;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+div{
+    display: block;
+}
+
+/* Detail Restaurant */
+.detail-restaurant{
+    background-color: #fff;
+    padding-top: 30px;
+}
+
+/* Detail Restaurant -> Img Res */
+
+.detail-restaurant .detail-restaurant-img{
+    width: 480px;
+    height: 300px;
+    position: relative;
+    float: left;
+}
+
+.detail-restaurant .detail-restaurant-img img{
+    width: 100%;
+    height: 100%;
+}
+
+img{
+    vertical-align: middle;
+    border-style: none;
+}
+
+
+/* Detail Restaurant -> Info Restaurant -> BreadCrumb */
+.detail-restaurant .detail-restaurant-info{
+    color: #252525;
+    float: right;
+    width: 645px;
+    padding-bottom: 15px;
+}
+
+.detail-restaurant .breadcrumb{
+    padding-left: 0;
+    margin-bottom: 18px;
+    list-style: none;
+    overflow: hidden;
+    margin-top: -2px;
+    background: none;
+}
+
+.detail-restaurant .breadcrumb .breadcrumb-item{
+    float: left;
+    position: relative;
+    padding-right: 4px;
+}
+
+.detail-restaurant .breadcrumb .breadcrumb-link{
+    font-size: 13px;
+    color: #187caa;
+}
+
+/* Detail Restaurant -> Info Restaurant -> Kind Restaurant */
+.detail-restaurant .kind-restaurant{
+    font-size: 11px;
+    color: #959595;
+    text-transform: uppercase;
+    display: flex;
+}
+
+.detail-restaurant .kind-restaurant span{
+    margin: auto 0;
+}
+
+/* Detail Restaurant -> Info Restaurant -> Name, Address, Status  */
+.detail-restaurant .name-restaurant{
+    font-size: 22px;
+    color: #464646;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 4px;
+    line-height: 33px;
+}
+
+.detail-restaurant .address-restaurant{
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.detail-restaurant .status-restaurant{
+    margin-bottom: 6px;
+}
+
+.detail-restaurant .opentime-status{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    z-index: 1;
+}
+
+.detail-restaurant .opentime-status .stt::before{
+    content: "";
+    border-radius: 50%;
+    cursor: pointer;
+    width: 4px;
+    height: 4px;
+    display: inline;
+    position: relative;
+    top: -1px;
+    z-index: 2;
+}
+
+.detail-restaurant .opentime-status .stt::after{
+    content: attr(title);
+    font-size: 15px;
+    display: inline-block;
+    white-space: nowrap;
+    color: inherit;
+    padding-left: 25px;
+}
+
+.detail-restaurant .cost-restaurant{
+    color: #959595;
+    font-size: 15px;
+}
+
+.detail-restaurant .blankspace{
+    width: 100%;
+    height: 50px;
+}
+
+.detail-restaurant .utility-restaurant{
+    border-top: 1px solid #ebebeb;
+}
+
+.detail-restaurant .utility-restaurant .utility-item{
+    float: left;
+    width: 140px;
+    position: relative;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.detail-restaurant .utility-restaurant .utility-title{
+    color: #959595;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.detail-restaurant .utility-restaurant .utility-content{
+    font-size: 14px;
+}
+
+
+/* List menu item of Restaurant */
+

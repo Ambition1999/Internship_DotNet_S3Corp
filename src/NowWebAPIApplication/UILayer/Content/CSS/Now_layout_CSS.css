@@ -1,0 +1,971 @@
+*, ::after, ::before{
+    box-sizing: border-box;
+}
+
+*, :after, :before{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #464646;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+div{
+    display: block;
+}
+
+#nowTextLogo{
+    font-size: 55px;
+}
+
+.wrapper{
+    padding-top: 70px;
+}
+
+.header{
+    background-color: #f5f5f5;
+}
+
+.container-header{
+    position: fixed;
+    top:  0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background-color: #fff;
+    height: 70px;
+    padding-top: 0px;
+}
+
+.container{
+    max-width: 1300px!important;
+    width: 1200px!important;
+    padding-right: 10px!important;
+    padding-left: 10px!important;
+    margin-right: auto!important;
+    margin-left: auto!important;
+}
+
+.container-header .header-content{
+    position: relative;
+    margin: 0;
+    min-height: 42px;
+}
+
+.align-items-center{
+    align-items: center!important;
+}
+
+.justify-content-between {
+    justify-content: space-between!important;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-header .select-local{
+    cursor: pointer;
+    background-color: #f5f5f5;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    position: relative;
+    padding: 0;
+}
+
+.container-header .select-local .dropdown-toggle{
+    color: #252525;
+    border: 0;
+    padding: 10px 27px 10px 19px;
+    background-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.col-auto{
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+}
+
+.container-header .dropdown-menu{
+    min-width: 200px;
+    left: -2px;
+    padding: 0;
+}
+
+.container-header .dropdown-item{
+    border-bottom: 1px solid #ebebeb;
+    padding: 5px 5px 5px 8px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu .dropdown-item{
+    position: relative;
+}
+
+.container-header .dropdown-item{
+    cursor: pointer;
+} 
+
+.img{
+    vertical-align: middle;
+    border-style: none;
+}
+
+.col{
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.count{
+    float: right;
+    color: #9fa9aa;
+    font-size: 12px;
+}
+
+/* Thanh đặt bàn, đồ ăn... */
+
+.main-nav{
+    padding-left: 20px;
+    padding-right: 0;
+    white-space: nowrap;
+}
+
+.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-auto, .col-lg, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-auto, .col-md, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md-auto, .col-sm, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+    min-width: 0;
+}
+
+.main-nav .nav-item.active{
+    color: #0288d1;
+    font-weight: 700;
+    border-bottom-color: #0288d1;
+}
+
+
+.main-nav .nav-item{
+    color: #252525;
+    cursor: pointer;
+    padding: 10px 15px 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-bottom: 4px solid transparent;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+    /* text-decoration-skip: object; */
+}
+
+.nav-item:hover{
+    text-decoration: none!important;
+    color: #0288d1;
+}
+
+.main-nav .login-area{
+    width: 120px;
+    height: 37px;
+    float: right;
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.container-header .btn-login{
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Banner area in middle */
+
+.now-banner{
+    height: 100vh;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    background-image: url(https://www.now.vn/app/assets/img/main-banner.jpg?45bff8c9ec408a5ba51f9fdef662324e);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.now-banner .container{
+    height: 100%;
+    position: relative;
+}
+
+.now-search{
+    color: #fff;
+    width: 470px;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    margin-top: -30px;
+}
+
+.now-search .title{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.h1, h1{
+    font-size: 2.1875rem;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+.now-search .local{
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+.now-search .form-search{
+    padding: 20px 0;
+}
+
+.now-search .form-search{
+    position: relative;
+}
+
+.input-group{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+
+.now-search .form-search .input-group input{
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 75px;
+    height: 50px;
+    border: 0;
+    border-radius: 6px 10px 10px 6px;
+}
+
+.wrapper input[type=color], .wrapper input[type=date], .wrapper input[type=datetime-local], .wrapper input[type=datetime], .wrapper input[type=email], .wrapper input[type=month], .wrapper input[type=number], .wrapper input[type=password], .wrapper input[type=search], .wrapper input[type=tel], .wrapper input[type=text], .wrapper input[type=time], .wrapper input[type=url], .wrapper input[type=week], .wrapper select:focus, .wrapper textarea {
+    font-size: 16px;
+}
+
+button, input{
+    overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.now-search .form-search .btn-search{
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 6px 6px 0;
+    padding-top: 11px;
+}
+
+
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: button;
+}
+
+.btn-search{
+    display: inline-block;
+    background-color: #0288d1;
+}
+
+.btn {
+    color: #fff;
+    background-color: #0288d1!important;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #0288d1;
+    border-radius: 6px;
+    padding: .23rem .6rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 3px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+button, select{
+    text-transform: none;
+}
+
+button, input{
+    overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button{
+    border-radius: 0;
+}
+
+.icon-search{
+    width: 25px;
+    height: 25px;
+    background-position: -14px -15px;
+}
+
+.icon-address, .icon-airpay-payment, .icon-app-phone, .icon-app-store-big, .icon-app-store-lg, .icon-app-store-md, .icon-app-store-sm, .icon-benefit-air-conditioner, .icon-benefit-booking, .icon-benefit-bring-on, .icon-benefit-card, .icon-benefit-delivery, .icon-benefit-disabilities, .icon-benefit-football, .icon-benefit-heater, .icon-benefit-karaoke, .icon-benefit-member, .icon-benefit-music, .icon-benefit-parking, .icon-benefit-parking-free, .icon-benefit-playground, .icon-benefit-pool, .icon-benefit-room, .icon-benefit-seminor, .icon-benefit-smoking, .icon-benefit-sun, .icon-benefit-tennis, .icon-benefit-tip, .icon-benefit-vat, .icon-benefit-wifi, .icon-box, .icon-cash-payment, .icon-cc-payment, .icon-check-green, .icon-clock, .icon-close-gray, .icon-corporate, .icon-discount-airpay, .icon-discount-code, .icon-discount-first-order, .icon-discount-free-ship, .icon-discount-new, .icon-discount-order-group, .icon-discount-order-larger, .icon-gg-play-big, .icon-gg-play-lg, .icon-gg-play-md, .icon-gg-play-sm, .icon-ib-payment, .icon-jcb, .icon-lag-en, .icon-lag-th, .icon-lag-vn, .icon-local-map, .icon-location, .icon-master, .icon-merchant, .icon-merchant-airpay, .icon-merchant-lg, .icon-merchant-marketing, .icon-merchant-shipper, .icon-merchant-system, .icon-money, .icon-money-sm, .icon-now-payment, .icon-paging-next, .icon-paging-pre, .icon-parnership, .icon-phone, .icon-phone-verified, .icon-phone-white, .icon-pickup, .icon-power-off, .icon-preorder, .icon-price-tag, .icon-promo, .icon-promotion-now, .icon-restaurant, .icon-search, .icon-search-dark, .icon-search-gray, .icon-search-orangen, .icon-sprite, .icon-tablenow, .icon-tablenow-footer, .icon-tb-blog, .icon-tb-dessert, .icon-tb-entertainment, .icon-tb-restaurant, .icon-thumbtack, .icon-time-gray, .icon-time-white, .icon-upload, .icon-user-history, .icon-user-logout, .icon-user-update, .icon-vatnot, .icon-verify-merchant, .icon-via-key, .icon-via-sms, .icon-visa, .modal .close {
+    background-image: url(https://www.now.vn/app/assets/img/bg-icon.png?2404d5c158d1d09104c34443b2fd5f44);
+}
+
+.icon{
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+/* Category filter */
+
+.category-list-filter>a{
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.category-list-filter .category-item{
+    font-size: 16px;
+    color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 7px 21px;
+    border-radius: 6px;
+    border: 1px solid;
+    display: inline-block;
+    transition: all .3s ease;
+}
+
+.mt-3, .my-3{
+    margin-top:1rem!important;
+
+}
+
+.mb-2, .my-2{
+    margin-bottom: .5rem!important;
+    
+}
+
+.font18{
+    font-size: 1.125rem!important;
+}
+
+/* App store google play */
+
+.now-search .icon-app-store-big, 
+.now-search .icon-gg-play-big{
+    transform: scale(.75);
+    transform-origin: left;
+    margin-right: -40px;
+}
+
+.icon-app-store-big{
+    background-position: -422px -387px;
+    width: 219px;
+    height: 68px;
+}
+
+.icon-gg-play-big{
+    background-position: -367px -466px;
+    width: 219px;
+    height: 68px;
+}
+
+
+/* Contain main home */
+
+.contain-main-home .main-right-home{
+    float: right;
+    width: 670px;
+    margin-top: 48px;
+    position: relative;
+    z-index: auto;
+    margin-bottom: 75px;
+    min-height: calc(100vh - 123px);
+}
+
+.main-right-home .user-get-local{
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 14px 17px 14px 40px;
+    border-radius: 4px;
+}
+
+.main-right-home .user-get-local .pointer{
+    cursor: pointer;
+}
+
+.align-items-center{
+    align-items: center!important;
+}
+
+.no-gutters{
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.no-gutters>col,
+.no-gutters>[class*=col-]{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.txt-blue{
+    color: #0288d1!important;
+}
+
+.txt-bold{
+    font-weight: 700!important;
+}
+
+.ml-2 .mx-2{
+    margin-left: .5rem!important;
+}
+
+.font12{
+    font-size: .75!important;
+}
+
+.txt-gray-7{
+    color: #6d6f71!important;
+}
+
+.pl-2, .px-2{
+    padding-left: .5rem!important;
+}
+
+.pr-2, .px-2{
+    padding-right: .5rem!important;
+}
+
+.txt-elipsis{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Now incoming */
+.slick-slider {
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list, .slick-slider, .slick-track {
+    position: relative;
+    display: block;
+}
+
+.slick-list {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.slick-slider .slick-list, .slick-slider .slick-track {
+    transform: translateZ(0);
+}
+
+.slick-track{
+    top: 0;
+    left: 0;
+}
+
+.slick-track::after,
+.slick-track::before{
+    display: table;
+    content: "";
+}
+
+.main-right-home .now-list-restaurant{
+    padding: 13px 40px 10px;
+    border: 1px solid #d7d7d7;
+    background-color: #fff;
+}
+
+.now-list-restaurant {
+    border-radius: 6px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.main-right-home .now-list-restaurant .title-wrapper{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.main-right-home .now-list-restaurant .title{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.main-right-home .view-all-deal{
+    font-size: 14px;
+    font-weight: 400;
+    color: #0288d1;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    float: right;
+}
+
+.main-right-home .view-all-deal .icon-list-deal {
+    top: -1px;
+    margin-right: 4px;
+}
+
+.icon-list-deal{
+    position: relative;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+}
+
+.icon-list-deal .square:first-child {
+    top: 0;
+    left: 0;
+}
+
+.icon-list-deal .square {
+    width: 3px;
+    height: 3px;
+    background-color: #0288d1;
+    position: absolute;
+}
+
+.main-right-home .now-list-restaurant .list-restaurant {
+    margin: 0 -8px;
+}
+
+.now-list-restaurant .list-restaurant {
+    margin: 0 -10px;
+    position: relative;
+}
+
+.now-loading-restaurant {
+    background-color: #fff;
+}
+
+.now-loading-restaurant {
+    z-index: 2;
+    display: none;
+    overflow: hidden;
+}
+
+.main-right-home .now-loading-restaurant .box-loading {
+    width: 33.33333%;
+    height: 209px;
+    margin-bottom: 6px;
+}
+
+.now-loading-restaurant .box-loading {
+    width: 20%;
+    padding: 8px;
+    float: left;
+    height: 235px;
+    background-color: #fff;
+    margin-bottom: 6px;
+}
+
+.main-right-home .now-loading-restaurant .box-thumbnail {
+    height: 116px;
+}
+
+.now-loading-restaurant .box-thumbnail {
+    height: 137px;
+    width: 100%;
+    float: left;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.now-loading-restaurant .box-thumbnail, .now-loading-restaurant [class*=box-line] {
+    animation: b;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background: linear-gradient(90deg,#eee 8%,#ddd 18%,#eee 33%);
+    background-size: 800px auto;
+}
+
+.main-right-home .now-loading-restaurant [class*=box-line] {
+    height: 8px;
+    margin-bottom: 10px;
+}
+
+.now-loading-restaurant .box-line-df {
+    width: 60%;
+}
+
+.now-loading-restaurant .box-line-lgx {
+    width: 80%;
+}
+
+.now-loading-restaurant .box-line-lg {
+    width: 50%;
+}
+
+/* Item restaurant */
+.main-right-home .now-list-restaurant .item-restaurant {
+    padding: 8px;
+    width: 33.33333%;
+}
+
+.now-list-restaurant .item-restaurant {
+    width: 20%;
+    padding: 10px;
+    float: left;
+}
+
+.now-list-restaurant .item-content {
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #fff;
+    position: relative;
+    display: block;
+}
+
+.main-right-home .now-list-restaurant .img-restaurant {
+    height: 116px;
+}
+
+.now-list-restaurant .img-restaurant {
+    position: relative;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    height: 137px;
+    background: #eaeaea;
+}
+
+.now-list-restaurant .img-restaurant img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.now-list-restaurant .info-restaurant {
+    border: 1px solid #d7d7d7;
+    border-radius: 0 0 6px 6px;
+    height: 84px;
+}
+
+.now-list-restaurant .info-basic-res {
+    padding: 5px 8px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.now-list-restaurant .info-restaurant .name-res {
+    font-size: 14px;
+    font-weight: 700;
+    color: #252525;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 1px;
+    padding-top: 5px;
+}
+
+.now-list-restaurant .info-restaurant .address-res {
+    font-size: 12px;
+    color: #959595;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.now-list-restaurant .content-promotion {
+    font-size: 13px;
+    color: #187caa;
+    font-weight: 700;
+    padding: 8px 8px 5px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.fa, .fas {
+    font-weight: 900;
+}
+
+.fa, .fab, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+.now-list-restaurant .content-promotion .fas {
+    color: #cf2127;
+}
+
+.fa-tag, .now-list-restaurant .content-promotion .fas {
+    padding-right: 5px;
+}
+
+/* .fa-tag:before {
+    content: "\f02b";
+} */
+
+.opentime-status {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: 1;
+}
+
+.opentime-status .online {
+    background-color: #6cc942;
+    color: #329900;
+}
+
+.opentime-status .stt {
+    border-radius: 50%;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-none {
+    color: #0288d1;
+    background-color: transparent;
+    border: 0;
+}
+
+.txt-center {
+    text-align: center!important;
+}
+
+.link {
+    cursor: pointer;
+}
+
+/* List collection */
+.main-right-home .now-list-restaurant .collection-title{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.main-right-home .now-list-restaurant.collection .info-restaurant{
+    border: 0;
+    height: unset;
+}
+
+.now-list-restaurant .info-basic-res{
+    padding: 5px 8px;
+}
+
+.now-list-restaurant .info-restaurant{
+    border-radius: 0 0 6px 6px;
+}
+
+.now-list-restaurant .list-place{
+    color: #0288d1!important;
+    font-size: .75rem!important;
+}
+
+/* Corporation Display */
+.corp-container-content{
+    background-color: #fff;
+    margin-top: 1800px;
+    padding: 20px 150px 50px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px 0px #888888;
+}
+
+.app-container-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin-top: 80px;
+    padding: 20px 50px 50px 150px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px 0px #888888;
+}
+
+.app-container-content .text-app-area,
+.app-container-content .text-recruiment-area{
+    flex-grow: 4;
+    margin-right: 10px;
+}
+
+.app-container-content .img-app-area,
+.app-container-content .img-recruiment-area{
+    flex-grow: 1;
+    margin-right: 50px 350px 50px 150px;
+}
+
+/* Footer area */
+
+.container-footer{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 40px;
+}
+
+.block-footer{
+    width: 240px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.block-footer ul{
+    list-style: none;
+    line-height: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.block-footer-2nd{
+    width: 240px;
+    height: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.block-footer-2nd a{
+    color: black;
+    margin-bottom: 10px;
+}
+
+.block-footer-middle{
+    width: 240px;
+    height: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.block-footer-middle .footer-detail{
+    font-size: 13px;
+}
+
+.block-footer-last{
+    width: 360px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.block-footer-last .title-block{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.block-footer-last p{
+    font-size: 11px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.block-footer-last .register{
+    width: 170px;
+    height: 60px;
+    display: inline-block;
+    float: right;
+}
+
+.block-footer-last .register img{
+    width: 100%;
+    vertical-align: middle;
+    border: none;
+    padding-right: 20px;
+}

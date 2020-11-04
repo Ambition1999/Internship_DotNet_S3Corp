@@ -1,0 +1,1662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NowFoodDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="smalldatetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookingItem">
+          <Key>
+            <PropertyRef Name="BookingId" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="BookingId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CommonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FormalName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryType" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountrySubType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sovereignty" Type="nvarchar" MaxLength="100" />
+          <Property Name="Capital" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="TelephoneCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryCode3" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="InternetCountryCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="Flags" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="LatiLongTude" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemDiscount">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="DiscountValue" Type="float" Nullable="false" />
+          <Property Name="DiscountUnitId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="ValidFrom" Type="smalldatetime" Nullable="false" />
+          <Property Name="ValidUntil" Type="smalldatetime" />
+          <Property Name="CouponCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MinimumOrderValue" Type="float" Nullable="false" />
+          <Property Name="MaximumDiscountAmount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="BasePrice" Type="float" Nullable="false" />
+          <Property Name="CreateDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="ExpiryDate" Type="smalldatetime" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ItemUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SubTotal" Type="float" Nullable="false" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="Shipping" Type="float" Nullable="false" />
+          <Property Name="GrandTotal" Type="float" Nullable="false" />
+          <Property Name="AddressDelivery" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="OrderDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="smalldatetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="Unit" Type="smallint" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="CreateAt" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PaymentType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentDate" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermissionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PerId" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="TelephoneCode" Type="int" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="WardId" Type="int" Nullable="false" />
+          <Property Name="OpenTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="smalldatetime" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="RestaurantType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KindRestaurant" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="RegisterAt" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FailedPasswordCount" Type="int" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="smalldatetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PerId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="LatiLongTude" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistrictID" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK_District_Province">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Province_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Province" Type="Self.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_RestaurantType">
+          <End Role="RestaurantType" Type="Self.RestaurantType" Multiplicity="1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBooking_tblUsers">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBookingItems_tblBooking">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+          <End Role="BookingItem" Type="Self.BookingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingItem">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBookingItems_tblMenuItems">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="BookingItem" Type="Self.BookingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployees_tblEmployees">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemDiscounts_tblMenuItems">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="ItemDiscount" Type="Self.ItemDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemDiscount">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemPrices_tblMenuItems">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="ItemPrice" Type="Self.ItemPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemPrice">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItems_tblItemTypes">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItems_tblItemUnits">
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="1" />
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemUnit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItems_tblRestaurants">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="1" />
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderItems_tblMenuItems">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderItems_tblOrders">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrders_tblPayments">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrders_tblUsers">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPermissionDetail_tblPermission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="PermissionDetail" Type="Self.PermissionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PermissionDetail">
+              <PropertyRef Name="PerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRestaurants_tblWard">
+          <End Role="Ward" Type="Self.Ward" Multiplicity="1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ward">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="WardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_tblUserAccounts_tblUsers' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_tblUserAccounts_tblUsers" />-->
+        <Association Name="FK_tblUserPermission_tblPermission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="PerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserPermission_tblUserPermission">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ward_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Ward" Type="Self.Ward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ward">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NowFoodDBModelStoreContainer">
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingItem" EntityType="Self.BookingItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemDiscount" EntityType="Self.ItemDiscount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemPrice" EntityType="Self.ItemPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemUnit" EntityType="Self.ItemUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionDetail" EntityType="Self.PermissionDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantType" EntityType="Self.RestaurantType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPermission" EntityType="Self.UserPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ward" EntityType="Self.Ward" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_District_Province" Association="Self.FK_District_Province">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="District" EntitySet="District" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Province_Country" Association="Self.FK_Province_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Province" EntitySet="Province" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_RestaurantType" Association="Self.FK_Restaurant_RestaurantType">
+            <End Role="RestaurantType" EntitySet="RestaurantType" />
+            <End Role="Restaurant" EntitySet="Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBooking_tblUsers" Association="Self.FK_tblBooking_tblUsers">
+            <End Role="User" EntitySet="User" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBookingItems_tblBooking" Association="Self.FK_tblBookingItems_tblBooking">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="BookingItem" EntitySet="BookingItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBookingItems_tblMenuItems" Association="Self.FK_tblBookingItems_tblMenuItems">
+            <End Role="MenuItem" EntitySet="MenuItem" />
+            <End Role="BookingItem" EntitySet="BookingItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployees_tblEmployees" Association="Self.FK_tblEmployees_tblEmployees">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemDiscounts_tblMenuItems" Association="Self.FK_tblItemDiscounts_tblMenuItems">
+            <End Role="MenuItem" EntitySet="MenuItem" />
+            <End Role="ItemDiscount" EntitySet="ItemDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemPrices_tblMenuItems" Association="Self.FK_tblItemPrices_tblMenuItems">
+            <End Role="MenuItem" EntitySet="MenuItem" />
+            <End Role="ItemPrice" EntitySet="ItemPrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItems_tblItemTypes" Association="Self.FK_tblMenuItems_tblItemTypes">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="MenuItem" EntitySet="MenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItems_tblItemUnits" Association="Self.FK_tblMenuItems_tblItemUnits">
+            <End Role="ItemUnit" EntitySet="ItemUnit" />
+            <End Role="MenuItem" EntitySet="MenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItems_tblRestaurants" Association="Self.FK_tblMenuItems_tblRestaurants">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="MenuItem" EntitySet="MenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderItems_tblMenuItems" Association="Self.FK_tblOrderItems_tblMenuItems">
+            <End Role="MenuItem" EntitySet="MenuItem" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderItems_tblOrders" Association="Self.FK_tblOrderItems_tblOrders">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrders_tblPayments" Association="Self.FK_tblOrders_tblPayments">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrders_tblUsers" Association="Self.FK_tblOrders_tblUsers">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPermissionDetail_tblPermission" Association="Self.FK_tblPermissionDetail_tblPermission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="PermissionDetail" EntitySet="PermissionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRestaurants_tblWard" Association="Self.FK_tblRestaurants_tblWard">
+            <End Role="Ward" EntitySet="Ward" />
+            <End Role="Restaurant" EntitySet="Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserPermission_tblPermission" Association="Self.FK_tblUserPermission_tblPermission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="UserPermission" EntitySet="UserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserPermission_tblUserPermission" Association="Self.FK_tblUserPermission_tblUserPermission">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserPermission" EntitySet="UserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ward_District" Association="Self.FK_Ward_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Ward" EntitySet="Ward" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NowFoodDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="0" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_tblBooking_tblUsers" FromRole="Booking" ToRole="User" />
+          <NavigationProperty Name="BookingItems" Relationship="Self.FK_tblBookingItems_tblBooking" FromRole="Booking" ToRole="BookingItem" />
+        </EntityType>
+        <EntityType Name="BookingItem">
+          <Key>
+            <PropertyRef Name="BookingId" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="BookingId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_tblBookingItems_tblBooking" FromRole="BookingItem" ToRole="Booking" />
+          <NavigationProperty Name="MenuItem" Relationship="Self.FK_tblBookingItems_tblMenuItems" FromRole="BookingItem" ToRole="MenuItem" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FormalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountrySubType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sovereignty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Capital" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InternetCountryCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="Flags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Provinces" Relationship="Self.FK_Province_Country" FromRole="Country" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Province" Relationship="Self.FK_District_Province" FromRole="District" ToRole="Province" />
+          <NavigationProperty Name="Wards" Relationship="Self.FK_Ward_District" FromRole="District" ToRole="Ward" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_tblEmployees_tblEmployees" FromRole="Employee" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="ItemDiscount">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="DiscountValue" Type="Double" Nullable="false" />
+          <Property Name="DiscountUnitId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ValidFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ValidUntil" Type="DateTime" Precision="0" />
+          <Property Name="CouponCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MinimumOrderValue" Type="Double" Nullable="false" />
+          <Property Name="MaximumDiscountAmount" Type="Double" Nullable="false" />
+          <NavigationProperty Name="MenuItem" Relationship="Self.FK_tblItemDiscounts_tblMenuItems" FromRole="ItemDiscount" ToRole="MenuItem" />
+        </EntityType>
+        <EntityType Name="ItemPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="BasePrice" Type="Double" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="MenuItem" Relationship="Self.FK_tblItemPrices_tblMenuItems" FromRole="ItemPrice" ToRole="MenuItem" />
+        </EntityType>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuItems" Relationship="Self.FK_tblMenuItems_tblItemTypes" FromRole="ItemType" ToRole="MenuItem" />
+        </EntityType>
+        <EntityType Name="ItemUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuItems" Relationship="Self.FK_tblMenuItems_tblItemUnits" FromRole="ItemUnit" ToRole="MenuItem" />
+        </EntityType>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="BookingItems" Relationship="Self.FK_tblBookingItems_tblMenuItems" FromRole="MenuItem" ToRole="BookingItem" />
+          <NavigationProperty Name="ItemDiscounts" Relationship="Self.FK_tblItemDiscounts_tblMenuItems" FromRole="MenuItem" ToRole="ItemDiscount" />
+          <NavigationProperty Name="ItemPrices" Relationship="Self.FK_tblItemPrices_tblMenuItems" FromRole="MenuItem" ToRole="ItemPrice" />
+          <NavigationProperty Name="ItemType" Relationship="Self.FK_tblMenuItems_tblItemTypes" FromRole="MenuItem" ToRole="ItemType" />
+          <NavigationProperty Name="ItemUnit" Relationship="Self.FK_tblMenuItems_tblItemUnits" FromRole="MenuItem" ToRole="ItemUnit" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_tblMenuItems_tblRestaurants" FromRole="MenuItem" ToRole="Restaurant" />
+          <NavigationProperty Name="OrderItems" Relationship="Self.FK_tblOrderItems_tblMenuItems" FromRole="MenuItem" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SubTotal" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="Shipping" Type="Double" Nullable="false" />
+          <Property Name="GrandTotal" Type="Double" Nullable="false" />
+          <Property Name="AddressDelivery" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="0" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderItems" Relationship="Self.FK_tblOrderItems_tblOrders" FromRole="Order" ToRole="OrderItem" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_tblOrders_tblPayments" FromRole="Order" ToRole="Payment" />
+          <NavigationProperty Name="User" Relationship="Self.FK_tblOrders_tblUsers" FromRole="Order" ToRole="User" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="Unit" Type="Int16" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="CreateAt" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="MenuItem" Relationship="Self.FK_tblOrderItems_tblMenuItems" FromRole="OrderItem" ToRole="MenuItem" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_tblOrderItems_tblOrders" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_tblOrders_tblPayments" FromRole="Payment" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PermissionDetails" Relationship="Self.FK_tblPermissionDetail_tblPermission" FromRole="Permission" ToRole="PermissionDetail" />
+          <NavigationProperty Name="UserPermissions" Relationship="Self.FK_tblUserPermission_tblPermission" FromRole="Permission" ToRole="UserPermission" />
+        </EntityType>
+        <EntityType Name="PermissionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PerId" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Permission" Relationship="Self.FK_tblPermissionDetail_tblPermission" FromRole="PermissionDetail" ToRole="Permission" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneCode" Type="Int32" />
+          <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Province_Country" FromRole="Province" ToRole="Country" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_District_Province" FromRole="Province" ToRole="District" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WardId" Type="Int32" Nullable="false" />
+          <Property Name="OpenTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MenuItems" Relationship="Self.FK_tblMenuItems_tblRestaurants" FromRole="Restaurant" ToRole="MenuItem" />
+          <NavigationProperty Name="Ward" Relationship="Self.FK_tblRestaurants_tblWard" FromRole="Restaurant" ToRole="Ward" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RestaurantType" Relationship="NowFoodDBModel.FK_Restaurant_RestaurantType" FromRole="Restaurant" ToRole="RestaurantType" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegisterAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK_tblBooking_tblUsers" FromRole="User" ToRole="Booking" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_tblOrders_tblUsers" FromRole="User" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FailedPasswordCount" Type="Int32" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="0" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_tblEmployees_tblEmployees" FromRole="UserAccount" ToRole="Employee" />
+          <NavigationProperty Name="UserPermissions" Relationship="Self.FK_tblUserPermission_tblUserPermission" FromRole="UserAccount" ToRole="UserPermission" />
+        </EntityType>
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PerId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Permission" Relationship="Self.FK_tblUserPermission_tblPermission" FromRole="UserPermission" ToRole="Permission" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_tblUserPermission_tblUserPermission" FromRole="UserPermission" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictID" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Ward_District" FromRole="Ward" ToRole="District" />
+          <NavigationProperty Name="Restaurants" Relationship="Self.FK_tblRestaurants_tblWard" FromRole="Ward" ToRole="Restaurant" />
+        </EntityType>
+        <Association Name="FK_tblBooking_tblUsers">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBookingItems_tblBooking">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+          <End Role="BookingItem" Type="Self.BookingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingItem">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBookingItems_tblMenuItems">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="BookingItem" Type="Self.BookingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Province_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Province" Type="Self.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_Province">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ward_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Ward" Type="Self.Ward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ward">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployees_tblEmployees">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemDiscounts_tblMenuItems">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="ItemDiscount" Type="Self.ItemDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemDiscount">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemPrices_tblMenuItems">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="ItemPrice" Type="Self.ItemPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemPrice">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItems_tblItemTypes">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItems_tblItemUnits">
+          <End Role="ItemUnit" Type="Self.ItemUnit" Multiplicity="1" />
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemUnit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItems_tblRestaurants">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="1" />
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderItems_tblMenuItems">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderItems_tblOrders">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrders_tblPayments">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrders_tblUsers">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPermissionDetail_tblPermission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="PermissionDetail" Type="Self.PermissionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PermissionDetail">
+              <PropertyRef Name="PerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserPermission_tblPermission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="PerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRestaurants_tblWard">
+          <End Role="Ward" Type="Self.Ward" Multiplicity="1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ward">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="WardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserPermission_tblUserPermission">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NowFoodDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="BookingItems" EntityType="Self.BookingItem" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="ItemDiscounts" EntityType="Self.ItemDiscount" />
+          <EntitySet Name="ItemPrices" EntityType="Self.ItemPrice" />
+          <EntitySet Name="ItemTypes" EntityType="Self.ItemType" />
+          <EntitySet Name="ItemUnits" EntityType="Self.ItemUnit" />
+          <EntitySet Name="MenuItems" EntityType="Self.MenuItem" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderItems" EntityType="Self.OrderItem" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Permissions" EntityType="Self.Permission" />
+          <EntitySet Name="PermissionDetails" EntityType="Self.PermissionDetail" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
+          <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+          <EntitySet Name="UserPermissions" EntityType="Self.UserPermission" />
+          <EntitySet Name="Wards" EntityType="Self.Ward" />
+          <AssociationSet Name="FK_tblBooking_tblUsers" Association="Self.FK_tblBooking_tblUsers">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBookingItems_tblBooking" Association="Self.FK_tblBookingItems_tblBooking">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="BookingItem" EntitySet="BookingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBookingItems_tblMenuItems" Association="Self.FK_tblBookingItems_tblMenuItems">
+            <End Role="MenuItem" EntitySet="MenuItems" />
+            <End Role="BookingItem" EntitySet="BookingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Province_Country" Association="Self.FK_Province_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Province" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Province" Association="Self.FK_District_Province">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ward_District" Association="Self.FK_Ward_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Ward" EntitySet="Wards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployees_tblEmployees" Association="Self.FK_tblEmployees_tblEmployees">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemDiscounts_tblMenuItems" Association="Self.FK_tblItemDiscounts_tblMenuItems">
+            <End Role="MenuItem" EntitySet="MenuItems" />
+            <End Role="ItemDiscount" EntitySet="ItemDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemPrices_tblMenuItems" Association="Self.FK_tblItemPrices_tblMenuItems">
+            <End Role="MenuItem" EntitySet="MenuItems" />
+            <End Role="ItemPrice" EntitySet="ItemPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItems_tblItemTypes" Association="Self.FK_tblMenuItems_tblItemTypes">
+            <End Role="ItemType" EntitySet="ItemTypes" />
+            <End Role="MenuItem" EntitySet="MenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItems_tblItemUnits" Association="Self.FK_tblMenuItems_tblItemUnits">
+            <End Role="ItemUnit" EntitySet="ItemUnits" />
+            <End Role="MenuItem" EntitySet="MenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItems_tblRestaurants" Association="Self.FK_tblMenuItems_tblRestaurants">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="MenuItem" EntitySet="MenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderItems_tblMenuItems" Association="Self.FK_tblOrderItems_tblMenuItems">
+            <End Role="MenuItem" EntitySet="MenuItems" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderItems_tblOrders" Association="Self.FK_tblOrderItems_tblOrders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrders_tblPayments" Association="Self.FK_tblOrders_tblPayments">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrders_tblUsers" Association="Self.FK_tblOrders_tblUsers">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPermissionDetail_tblPermission" Association="Self.FK_tblPermissionDetail_tblPermission">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="PermissionDetail" EntitySet="PermissionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserPermission_tblPermission" Association="Self.FK_tblUserPermission_tblPermission">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="UserPermission" EntitySet="UserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRestaurants_tblWard" Association="Self.FK_tblRestaurants_tblWard">
+            <End Role="Ward" EntitySet="Wards" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserPermission_tblUserPermission" Association="Self.FK_tblUserPermission_tblUserPermission">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="UserPermission" EntitySet="UserPermissions" />
+          </AssociationSet>
+          <EntitySet Name="RestaurantTypes" EntityType="NowFoodDBModel.RestaurantType" />
+          <AssociationSet Name="FK_Restaurant_RestaurantType" Association="NowFoodDBModel.FK_Restaurant_RestaurantType">
+            <End Role="RestaurantType" EntitySet="RestaurantTypes" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RestaurantType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KindRestaurant" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Restaurants" Relationship="NowFoodDBModel.FK_Restaurant_RestaurantType" FromRole="RestaurantType" ToRole="Restaurant" />
+        </EntityType>
+        <Association Name="FK_Restaurant_RestaurantType">
+          <End Type="NowFoodDBModel.RestaurantType" Role="RestaurantType" Multiplicity="1" />
+          <End Type="NowFoodDBModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NowFoodDBModelStoreContainer" CdmEntityContainer="NowFoodDBEntities">
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingItems">
+            <EntityTypeMapping TypeName="NowFoodDBModel.BookingItem">
+              <MappingFragment StoreEntitySet="BookingItem">
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+                <ScalarProperty Name="FormalName" ColumnName="FormalName" />
+                <ScalarProperty Name="CountryType" ColumnName="CountryType" />
+                <ScalarProperty Name="CountrySubType" ColumnName="CountrySubType" />
+                <ScalarProperty Name="Sovereignty" ColumnName="Sovereignty" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="CountryCode3" ColumnName="CountryCode3" />
+                <ScalarProperty Name="CountryNumber" ColumnName="CountryNumber" />
+                <ScalarProperty Name="InternetCountryCode" ColumnName="InternetCountryCode" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="NowFoodDBModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemDiscounts">
+            <EntityTypeMapping TypeName="NowFoodDBModel.ItemDiscount">
+              <MappingFragment StoreEntitySet="ItemDiscount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+                <ScalarProperty Name="DiscountUnitId" ColumnName="DiscountUnitId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="MinimumOrderValue" ColumnName="MinimumOrderValue" />
+                <ScalarProperty Name="MaximumDiscountAmount" ColumnName="MaximumDiscountAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemPrices">
+            <EntityTypeMapping TypeName="NowFoodDBModel.ItemPrice">
+              <MappingFragment StoreEntitySet="ItemPrice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypes">
+            <EntityTypeMapping TypeName="NowFoodDBModel.ItemType">
+              <MappingFragment StoreEntitySet="ItemType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemUnits">
+            <EntityTypeMapping TypeName="NowFoodDBModel.ItemUnit">
+              <MappingFragment StoreEntitySet="ItemUnit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuItems">
+            <EntityTypeMapping TypeName="NowFoodDBModel.MenuItem">
+              <MappingFragment StoreEntitySet="MenuItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Shipping" ColumnName="Shipping" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="AddressDelivery" ColumnName="AddressDelivery" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="NowFoodDBModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PerName" ColumnName="PerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermissionDetails">
+            <EntityTypeMapping TypeName="NowFoodDBModel.PermissionDetail">
+              <MappingFragment StoreEntitySet="PermissionDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PerId" ColumnName="PerId" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurants">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Restaurant">
+              <MappingFragment StoreEntitySet="Restaurant">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="WardId" ColumnName="WardId" />
+                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="NowFoodDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NowFoodDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RegisterAt" ColumnName="RegisterAt" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="NowFoodDBModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FailedPasswordCount" ColumnName="FailedPasswordCount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPermissions">
+            <EntityTypeMapping TypeName="NowFoodDBModel.UserPermission">
+              <MappingFragment StoreEntitySet="UserPermission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PerId" ColumnName="PerId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wards">
+            <EntityTypeMapping TypeName="NowFoodDBModel.Ward">
+              <MappingFragment StoreEntitySet="Ward">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantTypes">
+            <EntityTypeMapping TypeName="NowFoodDBModel.RestaurantType">
+              <MappingFragment StoreEntitySet="RestaurantType">
+                <ScalarProperty Name="KindRestaurant" ColumnName="KindRestaurant" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
