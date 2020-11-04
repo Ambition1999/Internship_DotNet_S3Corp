@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Model.Restaurant_Mapper>
+﻿@model IEnumerable<Model.Model_Mapper.DtoRestaurantInfo>
 @{
     ViewBag.Title = "Restaurant";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -50,7 +50,7 @@
             @foreach (var item in Model)
             {
                 <div class="item-restaurant">
-                    <a href="@Url.Action("GetRestaurantDetailByID", "Restaurant")" class="item-content">
+                    <a href="@Url.Action("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new {restaurantId = item.Id})" class="item-content">
                         <div class="img-restaurant">
                             <img src="~/Content/Image/ImgRestaurant/@Html.DisplayFor(model => item.Image)" alt="imgRes">
                         </div>
@@ -59,9 +59,9 @@
                                 <h4 class="name-res" title="San Fu Lou - Ẩm Thực Quảng Đông - Lê Lai">
                                     <span class="icon icon-quality-merchant" title=""></span>@Html.DisplayFor(model => item.RestaurantName)
                                 </h4>
-                                <div class="address-res" title="Tầng Trệt, AB Tower, 76A Lê Lai, Quân 1, TP.HCM">@Html.DisplayFor(model => item.Address)</div>
+                                <div class="address-res" title="Tầng Trệt, AB Tower, 76A Lê Lai, Quân 1, TP.HCM">@Html.DisplayFor(model => item.Address), @Html.DisplayFor(model => item.WardName), @Html.DisplayFor(model => item.DisctrictName), @Html.DisplayFor(model => item.ProvinceName)</div>
                             </div>
-                            <p class="kind-restaurant">@Html.DisplayFor(modelItem => item.TypeId)</p>
+                            <p class="kind-restaurant">@Html.DisplayFor(modelItem => item.RestaurantTypeName)</p>
                         </div>
                         <div class="opentime">
                             <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>

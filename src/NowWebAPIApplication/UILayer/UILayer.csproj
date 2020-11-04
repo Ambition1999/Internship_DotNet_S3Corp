@@ -131,6 +131,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemType.cs" />
+    <Compile Include="Models\RestaurantDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ServiceRepository.cs" />
   </ItemGroup>
@@ -143,6 +145,70 @@
     <Content Include="Content\CSSFile\Now_LoginPageCSS.css" />
     <Content Include="Content\CSSFile\Now_ProductCSS.css" />
     <Content Include="Content\CSSFile\Now_ProductDetailCSS.css" />
+    <Content Include="Content\Image\ImgProduct\6\43.jpeg" />
+    <Content Include="Content\Image\ImgProduct\6\44.jpeg" />
+    <Content Include="Content\Image\ImgProduct\6\47.jpeg" />
+    <Content Include="Content\Image\ImgProduct\6\48.jpg" />
+    <Content Include="Content\Image\ImgProduct\6\49.jpg" />
+    <Content Include="Content\Image\ImgProduct\6\50.jpg" />
+    <Content Include="Content\Image\ImgProduct\6\51.jpg" />
+    <Content Include="Content\Image\ImgProduct\6\52.jpg" />
+    <Content Include="Content\Image\ImgProduct\6\53.jpg" />
+    <Content Include="Content\Image\ImgProduct\6\54.jpg" />
+    <Content Include="Content\Image\ImgProduct\6\57.jpg" />
+    <Content Include="Content\Image\ImgProduct\8\1.jpg" />
+    <Content Include="Content\Image\ImgProduct\8\13.jpeg" />
+    <Content Include="Content\Image\ImgProduct\8\14.jpeg" />
+    <Content Include="Content\Image\ImgProduct\8\15.jpeg" />
+    <Content Include="Content\Image\ImgProduct\8\2.jpg" />
+    <Content Include="Content\Image\ImgProduct\8\20.jpeg" />
+    <Content Include="Content\Image\ImgProduct\8\3.jpg" />
+    <Content Include="Content\Image\ImgProduct\8\4.jpeg" />
+    <Content Include="Content\Image\ImgProduct\2\58.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\59.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\60.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\61.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\62.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\63.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\64.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\65.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\66.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\67.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\68.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\69.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\70.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\71.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\72.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\73.jpg" />
+    <Content Include="Content\Image\ImgProduct\2\74.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\23.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\26.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\28.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\29.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\30.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\31.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\32.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\33.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\38.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\39.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\40.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\41.jpg" />
+    <Content Include="Content\Image\ImgProduct\9\42.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\75.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\76.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\77.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\78.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\79.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\80.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\81.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\82.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\83.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\84.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\85.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\86.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\87.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\88.jpg" />
+    <Content Include="Content\Image\ImgProduct\1\89.jpg" />
     <Content Include="Content\Image\ImgRestaurant\1.jpg" />
     <Content Include="Content\Image\ImgRestaurant\2.jpg" />
     <Content Include="Content\Image\ImgRestaurant\6.jpeg" />
@@ -190,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

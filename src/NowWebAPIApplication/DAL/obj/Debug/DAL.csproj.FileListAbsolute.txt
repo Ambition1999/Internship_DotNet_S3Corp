@@ -17,8 +17,8 @@ C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplicat
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\bin\Debug\EntityFramework.xml
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\obj\Debug\DAL.dll
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\obj\Debug\DAL.pdb
+C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

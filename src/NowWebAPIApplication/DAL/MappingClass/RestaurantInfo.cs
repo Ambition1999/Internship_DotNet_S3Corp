@@ -8,7 +8,6 @@ namespace DAL.CombineModel
 {
     public class RestaurantInfo
     {
-        public RestaurantInfo() { }
         public int Id { get; set; }
         public string RestaurantName { get; set; }
         public string Address { get; set; }
@@ -20,6 +19,9 @@ namespace DAL.CombineModel
         public int TypeId { get; set; }
         public string Image { get; set; }
         public string AddressDB { get; set; }
+        public string WardName { get; set; }
+        public string DisctrictName { get; set; }
+        public string ProvinceName { get; set; }
         public string RestaurantTypeName { get; set; }
     }
 }

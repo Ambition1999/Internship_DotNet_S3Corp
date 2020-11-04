@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
+using DAL.CombineModel;
 using DAL.EF;
 using DAL.Model;
 using Model;
@@ -29,13 +31,26 @@ namespace BLL.BusinessLogic
             return restaurants;
         }
 
-        //public List<RestaurantInfo> GetRestaurantInfo()
-        //{
-        //    EntityMapper<DAL.CombineModel.RestaurantInfo, Model.Model_Mapper.RestaurantInfo> mapObj;
-        //    mapObj = new EntityMapper<DAL.CombineModel.RestaurantInfo, RestaurantInfo>();
-        //    List<DAL.CombineModel.RestaurantInfo> resInfoList = res_dal.GetAllRestaurantInfo();
-        //    List<Co>
-        //}
+        public DtoRestaurantInfo GetRestaurantInfoById(int restaurantId)
+        {
+            EntityMapper <RestaurantInfo, DtoRestaurantInfo > mapObj;
+            mapObj = new EntityMapper<RestaurantInfo, DtoRestaurantInfo>();
+            RestaurantInfo resInfo = res_dal.GetRestaurantInfoById(restaurantId);
+            DtoRestaurantInfo restaurantInfo = mapObj.Translate(resInfo);
+            return restaurantInfo;
+        }
 
+        public List<DtoRestaurantInfo> GetAllRestaurantInfo()
+        {
+            EntityMapper<RestaurantInfo, DtoRestaurantInfo> mapObj;
+            mapObj = new EntityMapper<RestaurantInfo, DtoRestaurantInfo>();
+            List<RestaurantInfo> resInfoList = res_dal.GetAllRestaurantInfo();
+            List<DtoRestaurantInfo> restaurantInfos = new List<DtoRestaurantInfo>();
+            foreach (var item in resInfoList)
+            {
+                restaurantInfos.Add(mapObj.Translate(item));
+            }
+            return restaurantInfos;
+        }
     }
 }

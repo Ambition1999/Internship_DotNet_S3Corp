@@ -53,7 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CombineModel\RestaurantInfo.cs" />
+    <Compile Include="MappingClass\MenuItemInfo.cs" />
+    <Compile Include="MappingClass\RestaurantInfo.cs" />
     <Compile Include="EF\Booking.cs">
       <DependentUpon>DBNow.tt</DependentUpon>
     </Compile>
@@ -138,6 +139,7 @@
     <Compile Include="EF\Ward.cs">
       <DependentUpon>DBNow.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\MenuItem_DAL.cs" />
     <Compile Include="Model\Restaurant_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

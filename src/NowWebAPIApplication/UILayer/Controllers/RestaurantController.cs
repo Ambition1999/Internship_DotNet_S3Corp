@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using UILayer.Service;
 using Model;
+using Model.Model_Mapper;
+using UILayer.Models;
 
 namespace UILayer.Controllers
 {
@@ -19,10 +21,10 @@ namespace UILayer.Controllers
 
         public ActionResult GetAllRestaurant()
         {
-            ServiceRepository serviceOject = new ServiceRepository();
-            HttpResponseMessage response = serviceOject.GetResponse("api/restaurant/getallrestaurant/");
+            ServiceRepository serviceObject = new ServiceRepository();
+            HttpResponseMessage response = serviceObject.GetResponse("api/restaurant/getallrestaurant/");
             response.EnsureSuccessStatusCode();
-            List<Restaurant_Mapper> restaurants = response.Content.ReadAsAsync<List<Restaurant_Mapper>>().Result;
+            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
             ViewBag.Title = "All Restaurant";
             return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
 
@@ -31,6 +33,34 @@ namespace UILayer.Controllers
         public ActionResult GetRestaurantDetailByID()
         {
             return View("~/Views/RestaurantView/RestaurantDetail.cshtml");
+        }
+
+        public ActionResult GetRestaurantInfo_MenuItemInfoByID(int restaurantId)
+        {
+            
+            ServiceRepository serviceObject = new ServiceRepository();
+            //Get Restaurant Infomation
+            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoById/"+ restaurantId);
+            response.EnsureSuccessStatusCode();
+            DtoRestaurantInfo restaurantInfo = response.Content.ReadAsAsync<DtoRestaurantInfo>().Result;
+
+            //Get Menu Item of Restaurant
+            HttpResponseMessage responseMenuItem = serviceObject.GetResponse("api/menuitem/GetMenuRestaurantInfoByID/" + restaurantId);
+            response.EnsureSuccessStatusCode(); 
+            List<DtoMenuItemInfo> menuItemInfos = responseMenuItem.Content.ReadAsAsync<List<DtoMenuItemInfo>>().Result;
+            var temp = menuItemInfos.GroupBy(t => t.TypeId, t => t.Id, (key, g) => new { TypeId = key, ItemIds = g.ToList(), 
+                                            TypeName = menuItemInfos.Where(t=>t.TypeId == key).Select(t=>t.TypeName).FirstOrDefault()});
+            List<ItemType> itemTypes = new List<ItemType>();
+            foreach (var item in temp)
+            {
+                ItemType itemType = new ItemType();
+                itemType.Id = item.TypeId;
+                itemType.TypeName = item.TypeName;
+                itemType.MenuItemInfos = menuItemInfos.Where(t=>t.TypeId == item.TypeId).ToList();
+                itemTypes.Add(itemType);
+            }
+            var model = new RestaurantDetail { RestaurantInfo = restaurantInfo, ItemTypes = itemTypes };
+            return View("~/Views/RestaurantView/RestaurantDetail.cshtml", model);
         }
 
 

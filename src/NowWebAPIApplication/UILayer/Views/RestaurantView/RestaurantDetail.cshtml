@@ -1,4 +1,5 @@
-﻿
+﻿@model UILayer.Models.RestaurantDetail
+
 @{
     ViewBag.Title = "RestaurantDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,8 +24,13 @@
                     Nhà hàng, Café/Dessert
                 </span>
             </div>
-            <h1 class="name-restaurant">Morico - Contemporary Japanese Lifestyle - Vincom Center</h1>
-            <div class="address-restaurant">Tầng B3 Vincom Center, 70 -72 Lê Thánh Tôn, P.Bến Nghé, Quận 1, TP.HCM</div>
+            <h1 class="name-restaurant">@Html.DisplayFor(model => model.RestaurantInfo.RestaurantName)</h1>
+            <div class="address-restaurant">
+                @Html.DisplayFor(model => model.RestaurantInfo.Address),
+                @Html.DisplayFor(model => model.RestaurantInfo.WardName),
+                @Html.DisplayFor(model => model.RestaurantInfo.DisctrictName),
+                @Html.DisplayFor(model => model.RestaurantInfo.ProvinceName)
+            </div>
             <div class="status-restaurant">
                 <div class="opentime-status">
                     <span class="stt online" title="Mở cửa"></span>
@@ -66,7 +72,15 @@
                 <div class="menu-restaurant-category">
                     <div class="list-category" id="croll-py">
                         <div class="crollbar-container ps ps--active-y">
-                            <div class="item">
+                            @{
+                                foreach (var item in Model.ItemTypes)
+                                {
+                                    <div class="item">
+                                        <span id="" title="" class="item-link">@Html.DisplayFor(model => item.TypeName)</span>
+                                    </div>
+                                }
+                            }
+                            @*<div class="item">
                                 <span id="" title="" class="item-link active">1 - BEST SELLER DESERT/DRINK</span>
                             </div>
                             <div class="item">
@@ -80,7 +94,7 @@
                             </div>
                             <div class="item">
                                 <span id="" title="" class="item-link">5 - GENMAICHA</span>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -107,10 +121,46 @@
                             <div aria-readonly="true" area-label="grid" role="grid" tabindex="0" class="ReactVirtualized_Grid ReactVirtualized_List"
                                  style="box-sizing: border-box; direction: ltr; height: auto; position: relative; width: 558px; overflow: auto; outline: none;">
                                 <div class="ReactVirtualized_Grid_innerScrollContainer list-menu-flex" role="rowgroup"
-                                     style="width: auto; height: 800px; max-width: 558px; max-height: 9800px; overflow: hidden; position: relative;">
+                                     style="width: auto; height: 2000px; max-width: 558px; max-height: 9800px; overflow: hidden; position: relative;">
                                     <div class="menu-group" id=""
                                          style="height: 58px; left: 0; position: absolute; top: 0; width: 100%;">
-                                        <div class="title-menu">1 - BEST SELLER DESSERT/DRINK</div>
+
+                                        @{
+                                            foreach (var itemType in Model.ItemTypes)
+                                            {
+                                                <div class="title-menu">@Html.DisplayFor(model => itemType.TypeName)</div>
+
+                                                foreach (var item in itemType.MenuItemInfos)
+                                                {
+                                                    <div class="item-restaurant-row"
+                                                         style="height: auto; width: 100%; left: 0;">
+                                                        <div class="row">
+                                                            <div class="col-auto item-restaurant-img">
+                                                                <button class="inline">
+                                                                    <img src="~/Content/Image/ImgProduct/@Html.DisplayFor(model => item.RestaurantId)/@Html.DisplayFor(model => item.Image)" alt="imgProduct" width="60" height="60">
+                                                                </button>
+                                                            </div>
+                                                            <div class="col item-restaurant-info">
+                                                                <h2 class="item-restaurant-name">@Html.DisplayFor(model => item.ItemName)</h2>
+                                                                <div class="item-restaurant-desc">@Html.DisplayFor(model => item.Description)</div>
+                                                            </div>
+                                                            <div class="col-auto itme-restaurant-more">
+                                                                <div class="row">
+                                                                    <div class="col-auto product-price">
+                                                                        <div class="current-price">@Html.DisplayFor(model => item.BasePrice)đ</div>
+                                                                    </div>
+                                                                    <div class="col-auto adding-food-cart txt-right">
+                                                                        <button class="btn-adding">+</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        }
+
+                                        @*<div class="title-menu">1 - BEST SELLER DESSERT/DRINK</div>
                                         <div class="item-restaurant-row"
                                              style="height: auto; width: 100%; left: 0;">
                                             <div class="row">
@@ -230,7 +280,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>*@
                                     </div>
                                 </div>
                             </div>

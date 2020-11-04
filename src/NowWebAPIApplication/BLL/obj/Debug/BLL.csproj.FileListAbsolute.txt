@@ -29,8 +29,8 @@ C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplicat
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\bin\Debug\EntityFramework.xml
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\bin\Debug\Model.pdb
-C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\obj\Debug\BLL.dll
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\obj\Debug\BLL.pdb
+C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\BLL\obj\Debug\BLL.csprojAssemblyReference.cache

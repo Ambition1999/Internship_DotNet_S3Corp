@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model.Model_Mapper
 {
-    public class RestaurantInfo
+    public class DtoRestaurantInfo
     {
-        public RestaurantInfo() { }
+        public DtoRestaurantInfo() { }
 
         public int Id { get; set; }
         public string RestaurantName { get; set; }
@@ -21,8 +21,11 @@ namespace Model.Model_Mapper
         public int TypeId { get; set; }
         public string Image { get; set; }
         public string AddressDB { get; set; }
+        public string WardName { get; set; }
+        public string DisctrictName { get; set; }
+        public string ProvinceName { get; set; }
         public string RestaurantTypeName { get; set; }
-            
-        
+
+
     }
 }
