@@ -57,8 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Account_BLL.cs" />
     <Compile Include="BusinessLogic\MenuItem_BLL.cs" />
     <Compile Include="BusinessLogic\Restaurant_BLL.cs" />
+    <Compile Include="BusinessLogic\User_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

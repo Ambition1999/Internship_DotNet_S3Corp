@@ -148,6 +148,8 @@
     <NavigationProperty Name="ItemUnit" Relationship="Self.FK_tblMenuItems_tblItemUnits" FromRole="MenuItem" ToRole="ItemUnit" />
     <NavigationProperty Name="Restaurant" Relationship="Self.FK_tblMenuItems_tblRestaurants" FromRole="MenuItem" ToRole="Restaurant" />
     <NavigationProperty Name="OrderItems" Relationship="Self.FK_tblOrderItems_tblMenuItems" FromRole="MenuItem" ToRole="OrderItem" />
+    <Property Name="KindId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="KindItem" Relationship="NowFoodDBModel.FK_MenuItem_KindItem" FromRole="MenuItem" ToRole="KindItem" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -661,6 +663,11 @@
       <End Role="RestaurantType" EntitySet="RestaurantTypes" />
       <End Role="Restaurant" EntitySet="Restaurants" />
     </AssociationSet>
+    <EntitySet Name="KindItems" EntityType="NowFoodDBModel.KindItem" />
+    <AssociationSet Name="FK_MenuItem_KindItem" Association="NowFoodDBModel.FK_MenuItem_KindItem">
+      <End Role="KindItem" EntitySet="KindItems" />
+      <End Role="MenuItem" EntitySet="MenuItems" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="RestaurantType">
     <Key>
@@ -679,6 +686,26 @@
       </Principal>
       <Dependent Role="Restaurant">
         <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="KindItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KindName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MenuItems" Relationship="NowFoodDBModel.FK_MenuItem_KindItem" FromRole="KindItem" ToRole="MenuItem" />
+  </EntityType>
+  <Association Name="FK_MenuItem_KindItem">
+    <End Type="NowFoodDBModel.KindItem" Role="KindItem" Multiplicity="1" />
+    <End Type="NowFoodDBModel.MenuItem" Role="MenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KindItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuItem">
+        <PropertyRef Name="KindId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

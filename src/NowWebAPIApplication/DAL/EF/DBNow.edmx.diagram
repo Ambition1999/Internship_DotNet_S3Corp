@@ -49,6 +49,8 @@
         <AssociationConnector Association="NowFoodDBModel.FK_tblUserPermission_tblUserPermission" ManuallyRouted="false" />
         <EntityTypeShape EntityType="NowFoodDBModel.RestaurantType" Width="1.5" PointX="3.375" PointY="0.875" />
         <AssociationConnector Association="NowFoodDBModel.FK_Restaurant_RestaurantType" />
+        <EntityTypeShape EntityType="NowFoodDBModel.KindItem" Width="1.5" PointX="3.375" PointY="3.75" />
+        <AssociationConnector Association="NowFoodDBModel.FK_MenuItem_KindItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

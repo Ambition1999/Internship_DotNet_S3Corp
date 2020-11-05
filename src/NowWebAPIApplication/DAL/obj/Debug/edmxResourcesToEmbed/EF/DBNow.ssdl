@@ -114,6 +114,13 @@
     <Property Name="UnitName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="1000" />
   </EntityType>
+  <EntityType Name="KindItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KindName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="MenuItem">
     <Key>
       <PropertyRef Name="Id" />
@@ -122,6 +129,7 @@
     <Property Name="ItemName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="1000" />
     <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="KindId" Type="int" Nullable="false" />
     <Property Name="UnitId" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="float" Nullable="false" />
     <Property Name="Image" Type="varchar" MaxLength="200" />
@@ -286,6 +294,18 @@
       </Principal>
       <Dependent Role="District">
         <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuItem_KindItem">
+    <End Role="KindItem" Type="Self.KindItem" Multiplicity="1" />
+    <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KindItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuItem">
+        <PropertyRef Name="KindId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -544,6 +564,7 @@ warning 6035: The relationship 'FK_tblUserAccounts_tblUsers' has columns that ar
     <EntitySet Name="ItemPrice" EntityType="Self.ItemPrice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemUnit" EntityType="Self.ItemUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KindItem" EntityType="Self.KindItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
@@ -561,6 +582,10 @@ warning 6035: The relationship 'FK_tblUserAccounts_tblUsers' has columns that ar
     <AssociationSet Name="FK_District_Province" Association="Self.FK_District_Province">
       <End Role="Province" EntitySet="Province" />
       <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuItem_KindItem" Association="Self.FK_MenuItem_KindItem">
+      <End Role="KindItem" EntitySet="KindItem" />
+      <End Role="MenuItem" EntitySet="MenuItem" />
     </AssociationSet>
     <AssociationSet Name="FK_Province_Country" Association="Self.FK_Province_Country">
       <End Role="Country" EntitySet="Country" />

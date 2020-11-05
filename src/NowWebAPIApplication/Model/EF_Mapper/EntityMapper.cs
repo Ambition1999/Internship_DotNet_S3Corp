@@ -8,6 +8,7 @@ using DAL.CombineModel;
 using DAL.DtoClass;
 using DAL.EF;
 using DAL.Model;
+using Model.DTO;
 using Model.Model_Mapper;
 
 namespace Model.EF_Mapper
@@ -19,12 +20,15 @@ namespace Model.EF_Mapper
         {
             Mapper.CreateMap<Restaurant_Mapper, Restaurant>();
             Mapper.CreateMap<Restaurant, Restaurant_Mapper>();
-            //Mapper.CreateMap<Model.Model_Mapper.Restaurant_ResType_Ward_District_Province, DAL.CombineModel.Restaurant_ResType_Ward_District_Province>();
-            //Mapper.CreateMap<DAL.CombineModel.Restaurant_ResType_Ward_District_Province, Model.Model_Mapper.Restaurant_ResType_Ward_District_Province>();
+            
             Mapper.CreateMap<DtoRestaurantInfo, DAL.CombineModel.RestaurantInfo>();
             Mapper.CreateMap<DAL.CombineModel.RestaurantInfo, DtoRestaurantInfo>();
+            
             Mapper.CreateMap<DtoMenuItemInfo, MenuItemInfo>();
             Mapper.CreateMap<MenuItemInfo, DtoMenuItemInfo>();
+
+            Mapper.CreateMap<DtoUserInfo, UserInfo>();
+            Mapper.CreateMap<UserInfo, DtoUserInfo>();
         }
 
 

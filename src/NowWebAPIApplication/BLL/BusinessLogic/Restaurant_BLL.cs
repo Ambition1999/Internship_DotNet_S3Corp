@@ -40,6 +40,19 @@ namespace BLL.BusinessLogic
             return restaurantInfo;
         }
 
+        public List<DtoRestaurantInfo> GetRestaurantInfoByKindId(int kindId)
+        {
+            EntityMapper<RestaurantInfo, DtoRestaurantInfo> mapObj;
+            mapObj = new EntityMapper<RestaurantInfo, DtoRestaurantInfo>();
+            List<RestaurantInfo> resInfoList = res_dal.GetRestaurantInfoByKindId(kindId);
+            List<DtoRestaurantInfo> restaurantInfos = new List<DtoRestaurantInfo>();
+            foreach (var item in resInfoList)
+            {
+                restaurantInfos.Add(mapObj.Translate(item));
+            }
+            return restaurantInfos;
+        }
+
         public List<DtoRestaurantInfo> GetAllRestaurantInfo()
         {
             EntityMapper<RestaurantInfo, DtoRestaurantInfo> mapObj;

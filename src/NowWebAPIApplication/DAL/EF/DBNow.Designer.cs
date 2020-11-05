@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\toan.le\source\repos\APILayer\DAL\EF\DBNow.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\DAL\EF\DBNow.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

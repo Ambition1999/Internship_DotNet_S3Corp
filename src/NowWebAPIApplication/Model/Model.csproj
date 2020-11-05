@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\BoolResult.cs" />
+    <Compile Include="DTO\DtoAccountInfo.cs" />
+    <Compile Include="DTO\DtoUserInfo.cs" />
     <Compile Include="EF_Mapper\EntityMapper.cs" />
     <Compile Include="DTO\DtoMenuItemInfo.cs" />
     <Compile Include="DTO\DtoRestaurantInfo.cs" />

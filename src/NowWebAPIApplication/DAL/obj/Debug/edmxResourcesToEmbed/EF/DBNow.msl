@@ -124,6 +124,7 @@
     <EntitySetMapping Name="MenuItems">
       <EntityTypeMapping TypeName="NowFoodDBModel.MenuItem">
         <MappingFragment StoreEntitySet="MenuItem">
+          <ScalarProperty Name="KindId" ColumnName="KindId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ItemName" ColumnName="ItemName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -293,6 +294,14 @@
       <EntityTypeMapping TypeName="NowFoodDBModel.RestaurantType">
         <MappingFragment StoreEntitySet="RestaurantType">
           <ScalarProperty Name="KindRestaurant" ColumnName="KindRestaurant" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KindItems">
+      <EntityTypeMapping TypeName="NowFoodDBModel.KindItem">
+        <MappingFragment StoreEntitySet="KindItem">
+          <ScalarProperty Name="KindName" ColumnName="KindName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

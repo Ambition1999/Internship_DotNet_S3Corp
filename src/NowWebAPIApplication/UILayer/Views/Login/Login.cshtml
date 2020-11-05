@@ -1,8 +1,11 @@
-﻿@{
-    Layout = "~/View/Shared/_Layout.cshtml";
-    ViewBag.Title = "restaurants";
+﻿@model UILayer.Models.UserAccount
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="~/Content/CSSFile/Now_LoginPageCSS.css">
 
 <div class="container">
     <div class="title">
@@ -24,27 +27,30 @@
     </div>
     </br>
     <p class="message">Hãy đăng nhập bằng tài khoản của bạn</p>
-    <div class="login-form">
-        <div class="field-group">
-            <div class="input-group">
-                <i class="fa fa-file"></i>
-                <input type="text" placeholder="Username email">
+    @using (Html.BeginForm("LoginAccount", "User"))
+    {
+        <div class="login-form">
+            <div class="field-group">
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.UserName, new { placeHolder = "Username, Email",  @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+            </div>
+            <div class="field-group">
+                <div class="input-group">
+                    @Html.PasswordFor(model => model.Password, new { placeHolder = "Password", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+            </div>
+            <div class="login-option">
+                <input type="checkbox" id="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+            <button class="btn btn-primary" type="submit">Đăng nhập</button>
+            <div class="login-message">
+                Chúng tôi không sử dụng thông tin của bạn với bất kỳ mục đích nào. Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với
+                <a href="#">Chính sách quy định của Foody</a>
             </div>
         </div>
-        <div class="field-group">
-            <div class="input-group">
-                <i class="fa fa-cloud"></i>
-                <input type="password" placeholder="Password">
-            </div>
-        </div>
-        <div class="login-option">
-            <input type="checkbox" id="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>
-            <a href="#">Quên mật khẩu?</a>
-        </div>
-        <button class="btn btn-primary" type="submit">Đăng nhập</button>
-        <div class="login-message">
-            Chúng tôi không sử dụng thông tin của bạn với bất kỳ mục đích nào. Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với
-            <a href="#">Chính sách quy định của Foody</a>
-        </div>
-    </div>
+    }
 </div>

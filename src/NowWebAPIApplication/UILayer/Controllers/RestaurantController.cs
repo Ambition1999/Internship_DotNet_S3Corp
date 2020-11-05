@@ -30,6 +30,17 @@ namespace UILayer.Controllers
 
         }
 
+        public ActionResult GetRestaurantByTagName(int kindId)
+        {
+            ServiceRepository serviceObject = new ServiceRepository();
+            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByKindId/" + kindId);
+            response.EnsureSuccessStatusCode();
+            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
+            ViewBag.Title = "All Restaurant";
+            return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
+
+        }
+
         public ActionResult GetRestaurantDetailByID()
         {
             return View("~/Views/RestaurantView/RestaurantDetail.cshtml");
