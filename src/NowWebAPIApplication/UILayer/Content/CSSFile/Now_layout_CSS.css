@@ -138,6 +138,108 @@ div{
     font-size: 12px;
 }
 
+.container-header .user-acc .dropdown {
+    cursor: pointer;
+    top: 7px;
+}
+
+.container-header .user-acc .dropdown-toggle {
+    display: flex;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.container-header .user-acc .name {
+    color: #000;
+    font-weight: 700;
+    float: left;
+    padding-right: 10px;
+    max-width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.container-header .user-acc .img {
+    float: left;
+}
+
+    .container-header .user-acc .img img {
+        border: 1px solid #d7d7d7;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+    }
+
+.container-header .user-acc .dropdown-toggle::after {
+    border: solid #d7d7d7;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    bottom: 1px;
+    right: 8px;
+}
+
+.container-header .user-acc .dropdown-menu {
+    left: auto;
+    right: -1px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.container-header .user-acc .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid #ebebeb;
+}
+
+    .container-header .user-acc .dropdown-item .icon {
+        margin-right: 10px;
+    }
+
+.icon-user-history,
+.icon-user-update,
+.icon-user-logout {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+}
+
+.icon-user-history {
+    background-position: -100px -79px;
+    background-color: #6cc942;
+}
+
+.icon-user-update {
+    background-position: -100px -116px;
+    background-color: #e2963b;
+}
+
+.icon-user-logout {
+    background-position: -100px -156px;
+    background-color: #6d6f71;
+}
+
+span.text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.container-header .icon-now-promo-code {
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #0288d1;
+    font-size: 38px;
+}
+
+
 /* Thanh đặt bàn, đồ ăn... */
 
 .main-nav{

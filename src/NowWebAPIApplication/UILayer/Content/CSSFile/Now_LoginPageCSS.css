@@ -76,18 +76,23 @@ body{
     width: 400px;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin-bottom: 2px;
 }
 
 
-.login-form input{
+.login-form .input{
     border: 1px solid #464646;
     width: 400px;
     border-radius: 5px;
     padding: 10px 10px 9px 33px;
 }
 
-
+.login-form .form-message {
+    left: 0;
+    margin: 5px 2px;
+    width: 400px;
+}
 
 .login-option{
     width: 400px;

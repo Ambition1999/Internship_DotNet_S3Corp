@@ -96,5 +96,30 @@ namespace DAL
             var listRestaurantId = GetListRestaurantIdByKindId(kindId);
             return GetAllRestaurantInfoByListId(listRestaurantId);
         }
+
+        public List<RestaurantInfo> GetRestaurantInfosByName(string name)
+        {
+            var restaurantInfo = from res_type in db.RestaurantTypes
+                                 join res in db.Restaurants.Where(t => t.Status == (Int16)1 && t.RestaurantName.Contains(name)) on res_type.Id equals res.TypeId
+                                 join ward in db.Wards on res.WardId equals ward.Id
+                                 join district in db.Districts on ward.DistrictID equals district.Id
+                                 join province in db.Provinces on district.ProvinceId equals province.Id
+                                 select new RestaurantInfo
+                                 {
+                                     Id = res.Id,
+                                     RestaurantName = res.RestaurantName,
+                                     Address = res.Address,
+                                     WardId = ward.Id,
+                                     OpenTime = res.OpenTime,
+                                     Status = res.Status,
+                                     TypeId = res_type.Id,
+                                     Image = res.Image,
+                                     WardName = ward.Name,
+                                     DisctrictName = district.Name,
+                                     ProvinceName = province.Name,
+                                     RestaurantTypeName = res_type.KindRestaurant
+                                 };
+            return restaurantInfo.ToList();
+        }
     }
 }

@@ -18,8 +18,8 @@
     <div class="wrapper">
         <div class="container-header">
             <div class="container">
-                <div class="header-content navbar row justify-content-between align-items-center">
-                    <a href="#" class="navbar-brand"><img src="https://www.now.vn/app/assets/img/nowvn.png?aa6bbddbf923c9dfd35ca83a7d068e6d" alt="logoNow"></a>
+                <div class="header-content navbar row justify-content-between align-items-center" id="headerNav">
+                    <a href="@Url.Action("MainPage","Home")" class="navbar-brand"><img src="https://www.now.vn/app/assets/img/nowvn.png?aa6bbddbf923c9dfd35ca83a7d068e6d" alt="logoNow"></a>
                     <div class="select-local col-auto nav-toggle">
                         <div class="dropdown">
                             <div class="dropdown-toggle" role="button" id="local-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="main-nav col">
-                        <a href="#" class="nav-item active">Đồ ăn</a>
+                        <a href="@Url.Action("GetAllRestaurant","Restaurant")" class="nav-item active">Đồ ăn</a>
                         <a href="#" class="nav-item">Đặt bàn</a>
                         <a href="#" class="nav-item">Thực phẩm</a>
                         <a href="#" class="nav-item">Bia</a>
@@ -58,10 +58,54 @@
                         <a href="#" class="nav-item">Sản phẩm</a>
                         <a href="#" class="nav-item">Thuốc</a>
                     </div>
-
-                    <div class="login-area">
-                        <button class="btn btn-none-bg btn-login" type="button" onclick="location.href='@Url.Action("Login","User")'">Đăng nhập</button>
-                    </div>
+                    @{
+                        if (Session["UserLogin"] != null)
+                        {
+                            var item = (UILayer.Models.UserLogin)Session["UserLogin"];
+                            <div class="user-acc col-auto" id="user-acc">
+                                <div class="dropdown">
+                                    <div class="dropdown-toggle" role="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="name">@Html.DisplayFor(userLogin => item.UserName)</span>
+                                        <div class="img">
+                                            <img src="https://images.foody.vn/default/s160/user-default-female.png" alt="userAvt">
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-menu" aria-labelledby="user-dropdown">
+                                        <a href="#">
+                                            <div class="dropdown-item">
+                                                <span class="icon icon-user-history"></span>
+                                                <span class="text">Lịch sử đơn hàng</span>
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div class="dropdown-item">
+                                                <span class="icon icon-now-promo-code"></span>
+                                                <span class="text">Ví Voucher</span>
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div class="dropdown-item">
+                                                <span class="icon icon-user-update"></span>
+                                                <span class="text">Cập nhật tài khoản</span>
+                                            </div>
+                                        </a>
+                                        <a href="@Url.Action("Logout","User")">
+                                            <div class="dropdown-item">
+                                                <span class="icon icon-user-logout"></span>
+                                                <span class="text">Đăng xuất</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="login-area" id="login">
+                                <button class="btn btn-none-bg btn-login" type="button" onclick="location.href='@Url.Action("Login","User")'">Đăng nhập</button>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -139,7 +183,12 @@
         //         // ('.contain-main-home').append("")
 
         // })
-
+        function logOut() {
+            var userInfo = document.getElementById("user-acc");
+            var header = document.getElementById("headerNav");
+            userInfo.remove();
+            header.innerHTML = '<div class="login-area" id="login"><button class="btn btn-none-bg btn-login" type="button" onclick="location.href='@Url.Action("Login","User")'">Đăng nhập</button></div>'
+        }
 
         $(document).ready(function () {
             oldOffset = $('#corp-info').offset().top;

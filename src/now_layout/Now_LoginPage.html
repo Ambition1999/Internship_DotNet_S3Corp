@@ -32,17 +32,19 @@
             </div>
             </br>
             <p class="message">Hãy đăng nhập bằng tài khoản của bạn</p>
-            <div class="login-form">
+            <div class="login-form" id="form-1">
                 <div class="field-group">
                     <div class="input-group">
                         <i class="fa fa-file"></i>
-                        <input type="text" placeholder="Username email">
+                        <input type="text" placeholder="Username email" id="username">
+                        <span class="form-message"></span>
                     </div>
                 </div>
                 <div class="field-group">
                     <div class="input-group">
                         <i class="fa fa-cloud"></i>
-                        <input type="password" placeholder="Password">
+                        <input type="password" placeholder="Password" id="password">
+                        <span class="form-message"></span>
                     </div>
                 </div>
                 <div class="login-option">
@@ -56,5 +58,17 @@
                 </div>
             </div>
         </div>
+        <script src="./ValidateForm.js"></script>
+        <script>
+            Validator({
+                form: '#form-1',
+                errorSelector: '.form-message',
+                rules: [
+                    Validator.isRequired('#username'),
+                    Validator.isRequired('#password'),
+                    //Validator.isEmail('#password'),
+                ]
+            })
+        </script>
     </body>
 </html>

@@ -18,6 +18,12 @@ namespace UILayer.Controllers
             return View("~/Views/Login/Login.cshtml");
         }
 
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return Redirect(this.Request.UrlReferrer.ToString());
+        }
+
         [HttpPost]
         public ActionResult LoginAccount(UserAccount userAccount)
         {
@@ -27,7 +33,7 @@ namespace UILayer.Controllers
                 ServiceRepository service = new ServiceRepository();
                 HttpResponseMessage responseCheckAccount = service.GetResponse("/api/useraccount/CheckUserAccount/" + userAccount.UserName + "/" + userAccount.Password);
                 responseCheckAccount.EnsureSuccessStatusCode();
-                if (responseCheckAccount.Content.ReadAsAsync<BoolResult>().Result.Result == true)
+                if (responseCheckAccount.Content.ReadAsAsync<BoolResult>().Result.Result)
                 {
                     HttpResponseMessage response = service.GetResponse("/api/user/getuserinfobyusername/"+userAccount.UserName);
                     response.EnsureSuccessStatusCode();
@@ -36,15 +42,14 @@ namespace UILayer.Controllers
                     userLogin.UserName = dtoUserInfo.UserName;
                     userLogin.UserId = dtoUserInfo.UserId;
                     Session["UserLogin"] = userLogin;
-                    return View("~/Views/Login/Login.cshtml");
+                    return View("~/Views/MainPage/MainPage.cshtml");
                 }
-
-                return View();
-                
+                else 
+                    return Redirect("/");     
             }
             else
             {
-                return View();
+                return Redirect("/");
             }
         }
     }

@@ -46,5 +46,12 @@ namespace APILayer.Controllers
         {
             return Json<List<DtoRestaurantInfo>>(res_bll.GetRestaurantInfoByKindId(kindId));
         }
+
+        [HttpGet]
+        [Route("GetRestaurantInfoByName/{name}")]
+        public JsonResult<List<DtoRestaurantInfo>> GetRestaurantInfoByName(string name)
+        {
+            return Json<List<DtoRestaurantInfo>>(res_bll.GetAllRestaurantInfoByName(name));
+        }
     }
 }

@@ -55,10 +55,45 @@
                             <a href="#" class="nav-item">Sản phẩm</a>
                             <a href="#" class="nav-item">Thuốc</a>
                         </div>
-
-                        <div class="login-area">
-                            <button class="btn btn-none-bg btn-login" type="button">Đăng nhập</button>
+                        <div class="user-acc col-auto">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" role="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="name">user001</span>
+                                    <div class="img">
+                                        <img src="https://images.foody.vn/default/s160/user-default-female.png" alt="userAvt">
+                                    </div>
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="user-dropdown">
+                                    <a href="#">
+                                        <div class="dropdown-item">
+                                            <span class="icon icon-user-history"></span>
+                                            <span class="text">Lịch sử đơn hàng</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="dropdown-item">
+                                            <span class="icon icon-now-promo-code"></span>
+                                            <span class="text">Ví Voucher</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="dropdown-item">
+                                            <span class="icon icon-user-update"></span>
+                                            <span class="text">Cập nhật tài khoản</span>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-item">
+                                        <span class="icon icon-user-logout"></span>
+                                        <span class="text">Đăng xuất</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
+
+                        <!-- <div class="login-area">
+                            <button class="btn btn-none-bg btn-login" type="button">Đăng nhập</button>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -704,6 +739,17 @@
                     }
                 });               
             });
+        </script>
+
+        <script>
+            Validator({
+                form: '#form-1',
+                errorSelector: '.form-message',
+                rules: [
+                    Validator.isRequired('#fullname'),
+                    Validator.isEmail('#email'),
+                ]
+            })
         </script>
         
     </body>

@@ -74,6 +74,18 @@ namespace UILayer.Controllers
             return View("~/Views/RestaurantView/RestaurantDetail.cshtml", model);
         }
 
+        [HttpPost]
+        public ActionResult GetRestaurantByName()
+        {
+            string searchInput = Request["txtSearchHome"];
+            ServiceRepository serviceObject = new ServiceRepository();
+            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByName/" + searchInput);
+            response.EnsureSuccessStatusCode();
+            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
+            ViewBag.Title = "All Restaurant";
+            return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
+
+        }
 
     }
 }

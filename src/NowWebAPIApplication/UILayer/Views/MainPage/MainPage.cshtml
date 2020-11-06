@@ -12,16 +12,17 @@
                 </h1>
                 <div class="local">Có 46723 địa điểm ở TP.HCM từ 0:00 - 23:59</div>
             </div>
-            <div class="form-search">
-                <div class="input-group">
-                    <input type="text" id="txtSearchHome" placeholder="Tìm địa điểm, món ăn, địa chỉ..." value="">
-                    <a href="https://www.now.vn/ho-chi-minh/danh-sach-dia-diem-giao-tan-noi?q=">
-                        <button type="button" class="btn btn-search">
-                            <span class="icon icon-search"></span>
-                        </button>
-                    </a>
+            @using (Html.BeginForm("GetRestaurantByName","Restaurant", FormMethod.Post))
+            {
+                <div class="form-search">
+                    <div class="input-group">
+                        <input type="text" name="txtSearchHome" id="txtSearchHome" placeholder="Tìm địa điểm, món ăn, địa chỉ..." value="">
+                            <button type="submit" class="btn btn-search">
+                                <span class="icon icon-search"></span>
+                            </button>
+                    </div>
                 </div>
-            </div>
+            }
             <div class="category-list-filter">
                 <a href="@Url.Action("GetAllRestaurant","Restaurant")"><span class="category-item">All</span></a>
                 <a href="@Url.Action("GetRestaurantByTagName","Restaurant", new { kindId = 1 })"><span class="category-item">Đồ ăn</span></a>
