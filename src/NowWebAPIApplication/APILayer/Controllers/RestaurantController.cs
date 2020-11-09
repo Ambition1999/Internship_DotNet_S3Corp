@@ -11,6 +11,8 @@ using Model.EF_Mapper;
 using Model;
 using BLL.BusinessLogic;
 using Model.Model_Mapper;
+using System.Web.Http.ModelBinding;
+using APILayer.Models;
 
 namespace APILayer.Controllers
 {
@@ -28,6 +30,7 @@ namespace APILayer.Controllers
         //}
 
         [HttpGet]
+        [Route("getallrestaurant")]
         public JsonResult<List<DtoRestaurantInfo>> GetAllRestaurantInfo()
         {
             return Json<List<DtoRestaurantInfo>>(res_bll.GetAllRestaurantInfo());
@@ -38,6 +41,14 @@ namespace APILayer.Controllers
         public JsonResult<DtoRestaurantInfo> GetRestaurantInfoById(int restaurantId)
         {
             return Json<DtoRestaurantInfo>(res_bll.GetRestaurantInfoById(restaurantId));
+        }
+
+        
+        [HttpGet]
+        [Route("GetRestaurantInfoByListId/{listId}")]
+        public JsonResult<List<DtoRestaurantInfo>> GetRestaurantInfoByListId([ModelBinder(typeof(CsvIntModelBinder))] List<int> listId)
+        {
+            return Json<List<DtoRestaurantInfo>>(res_bll.GetRestaurantInfoByListId(listId));
         }
 
         [HttpGet]

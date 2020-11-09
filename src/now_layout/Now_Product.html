@@ -14,29 +14,102 @@
     <body>
         <div class="container">
             <div class="search-filter">
-                <div class="nav-filter clear-fix">
+                <div class="nav-filter clearfix">
                     <div class="list-filter">
-                        <div class="item-filter">
+                        <div class="item-filter" id="filter1">
                             <span class="dropdown-toggle" id="district">Khu vực</span>
-                            <!-- <div class="container-box-filter">
+                            <div class="container-box-filter" id="area-box-filter">
                                 <div class="content">
                                     <div class="custom-checkbox">
                                         <input type="checkbox" data-text="Quận 1" id="distric 1">
                                         <label for="district 1">Quận 1</label>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
-                        <div class="item-filter">
+                        <div class="item-filter" id="filter2">
                             <span class="dropdown-toggle" id="category">Phân loại</span>
-                            <!-- <div class="container-box-filter">
+                            <div class="container-box-filter" id="type-box-filter">
                                 <div class="content">
                                     <div class="custom-checkbox">
-                                        <input type="checkbox" data-text="Quận 1" id="distric 1">
-                                        <label for="di strict 1">Quận 1</label>
+                                        <input type="checkbox" data-text="Quận 1" id="category 10000">
+                                        <label for="category 10000">Đồ ăn</label>
                                     </div>
                                 </div>
-                            </div> -->
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10001">
+                                        <label for="category 10001">Đồ uống</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10002">
+                                        <label for="category 10002">Đồ chay</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10003">
+                                        <label for="category 10003">Bánh kem</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10004">
+                                        <label for="category 10004">Tráng miệng</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10005">
+                                        <label for="category 10005">Home made</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10006">
+                                        <label for="category 10006">Vỉa hè</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10007">
+                                        <label for="category 10007">Pizza/Burger</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10008">
+                                        <label for="category 10008">Món gà</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10009">
+                                        <label for="category 10009">Món lẩu</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10010">
+                                        <label for="category 10010">Sushi</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10011">
+                                        <label for="category 10011">Mì phở</label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox" data-text="Quận 1" id="category 10012">
+                                        <label for="category 10012">Cơm hộp</label>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="filter-result">
@@ -271,5 +344,42 @@
                 </li>
             </ul>
         </div>
+        <script>
+            function myFuction(){
+                var foodStyleId = document.getElementById("box-filter2");
+                if(foodStyleId.style.display = "block")
+                    foodStyleId.style.display = "none";
+                else{
+                    foodStyleId.style.display = "block";
+                }
+            }
+        </script>
+        <script>
+            $('span#category').click(function(){
+                var type = document.getElementById("type-box-filter");
+                var area = document.getElementById("area-box-filter");
+                if(type.style.display === "block"){
+                    type.style.display = "none";
+                    area.style.display = "none";
+                }
+                else{
+                    type.style.display = "block";
+                    area.style.display = "none"
+                }
+            });
+
+            $('span#district').click(function(){
+                var type = document.getElementById("type-box-filter");
+                var area = document.getElementById("area-box-filter");
+                if(area.style.display === "block"){
+                    area.style.display = "none";
+                    type.style.display = "none";
+                }
+                else{
+                    area.style.display = "block";
+                    type.style.display = "none"
+                }
+            });
+        </script>
     </body>
 </html>

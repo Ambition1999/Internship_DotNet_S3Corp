@@ -325,6 +325,7 @@ img{
     list-style-type: none;
     display: block!important;
     padding-left: inherit;
+    width:100%;
 }
 
 .pagination a{

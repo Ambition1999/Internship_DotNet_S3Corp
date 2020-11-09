@@ -104,7 +104,8 @@ div{
     overflow: auto;
     padding: 15px;
     box-shadow: 1px 15px 5px 0 rgba(50, 50, 50, .4);
-    margin-top: -6px;
+    margin-top: -46px;
+    display: block;
 }
 
 .search-filter .list-filter 
@@ -142,6 +143,23 @@ div{
     margin-top: 2px;
     transition: .2s;
 }
+
+.custom-checkbox [type=checkbox]:checked+label:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 8px;
+    height: 13px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #cf2127;
+    border-bottom: 2px solid #cf2127;
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    transform-origin: 100% 100%;
+}
+
 /* Search Filter -> Search Result */
 
 .search-filter .result{
@@ -325,6 +343,7 @@ img{
     list-style-type: none;
     display: block!important;
     padding-left: inherit;
+    width: 100%;
 }
 
 .pagination a{

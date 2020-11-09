@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 using UILayer.Service;
 using Model;
 using Model.Model_Mapper;
 using UILayer.Models;
+using UILayer.CacheDictionary;
+using UILayer.Formater;
+using Microsoft.Ajax.Utilities;
+using System.Runtime.CompilerServices;
+using System.Web.UI;
+using System.Web;
+
 
 namespace UILayer.Controllers
 {
@@ -27,8 +33,8 @@ namespace UILayer.Controllers
             List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
             ViewBag.Title = "All Restaurant";
             return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
-
         }
+
 
         public ActionResult GetRestaurantByTagName(int kindId)
         {
@@ -74,18 +80,62 @@ namespace UILayer.Controllers
             return View("~/Views/RestaurantView/RestaurantDetail.cshtml", model);
         }
 
+        //[HttpPost]
+        //public ActionResult GetRestaurantByName()
+        //{
+        //    string searchInput = Request["txtSearchHome"];
+        //    ServiceRepository serviceObject = new ServiceRepository();
+        //    HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByName/" + searchInput);
+        //    response.EnsureSuccessStatusCode();
+        //    List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
+        //    ViewBag.Title = "All Restaurant";
+        //    return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
+
+        //}
+
         [HttpPost]
         public ActionResult GetRestaurantByName()
         {
+            // Get Search String
             string searchInput = Request["txtSearchHome"];
+
+            // Get ListId Restaurant in Dictionanry
+            Cache<int, string> Cache = LoadDataToCache.Cache;
+
+            if(Cache == null)
+            {
+                // Load data to Cache
+                LoadDataToCache.LoadRestaurantToCache();
+                Cache = LoadDataToCache.Cache;
+            }
+
+            List<int> listId = Cache.GetKeysByValue(searchInput);
+
+            if(listId.Count == 0)
+            {
+                // Alter message not found
+                ViewBag.SearchMessage = "Không tìm thấy dữ liệu phù hợp";
+                return View("~/Views/RestaurantView/Restaurant.cshtml");
+            }
+
+            // Format ListId to string for passing data to Web API
+            string stringId = FormaterModel.convertListIdToString(listId);
+
+            // Call API
             ServiceRepository serviceObject = new ServiceRepository();
-            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByName/" + searchInput);
+            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByListId/" + stringId);
             response.EnsureSuccessStatusCode();
             List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
-            ViewBag.Title = "All Restaurant";
+            
             return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
-
         }
+
+        public static void ShowMessage(string message)
+        {
+            
+        }
+
+        
 
     }
 }

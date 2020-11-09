@@ -19,6 +19,7 @@
         <div class="contact-container facebook">
             <span class="fa fa-mobile"></span>
             Facebook
+            <button class="loginFB" onclick="checkLoginState()">Facebook</button>
         </div>
         <div class="contact-container google">
             <span class="fa fa-mobile"></span>
@@ -68,4 +69,12 @@
                 ]
             })
     </script>
+
+    @*<script>
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
+    </script>*@
 </div>
