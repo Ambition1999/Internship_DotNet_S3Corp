@@ -13,7 +13,7 @@ using Microsoft.Ajax.Utilities;
 using System.Runtime.CompilerServices;
 using System.Web.UI;
 using System.Web;
-
+using System.Web.DynamicData;
 
 namespace UILayer.Controllers
 {
@@ -23,6 +23,25 @@ namespace UILayer.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult LoadRestaurantCache()
+        {
+            Cache<int, DtoRestaurantInfo> Cache = LoadDataToCache.CacheRestaurant;
+
+            if (Cache == null)
+            {
+                // Load data to Cache
+                LoadDataToCache.LoadAllRestaurantToCache();
+                Cache = LoadDataToCache.CacheRestaurant;
+            }
+
+            ServiceRepository serviceObject = new ServiceRepository();
+            HttpResponseMessage response = serviceObject.GetResponse("api/restaurant/getallrestaurant/");
+            response.EnsureSuccessStatusCode();
+            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
+
+            return View("~/Views/MainPage/MainPage.cshtml", restaurants);
         }
 
         public ActionResult GetAllRestaurant()
@@ -76,22 +95,12 @@ namespace UILayer.Controllers
                 itemType.MenuItemInfos = menuItemInfos.Where(t=>t.TypeId == item.TypeId).ToList();
                 itemTypes.Add(itemType);
             }
-            var model = new RestaurantDetail { RestaurantInfo = restaurantInfo, ItemTypes = itemTypes };
+            RestaurantDetail model = new RestaurantDetail { RestaurantInfo = restaurantInfo, ItemTypes = itemTypes };
             return View("~/Views/RestaurantView/RestaurantDetail.cshtml", model);
         }
 
-        //[HttpPost]
-        //public ActionResult GetRestaurantByName()
-        //{
-        //    string searchInput = Request["txtSearchHome"];
-        //    ServiceRepository serviceObject = new ServiceRepository();
-        //    HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByName/" + searchInput);
-        //    response.EnsureSuccessStatusCode();
-        //    List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
-        //    ViewBag.Title = "All Restaurant";
-        //    return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
 
-        //}
+
 
         [HttpPost]
         public ActionResult GetRestaurantByName()
@@ -99,16 +108,27 @@ namespace UILayer.Controllers
             // Get Search String
             string searchInput = Request["txtSearchHome"];
 
-            // Get ListId Restaurant in Dictionanry
-            Cache<int, string> Cache = LoadDataToCache.Cache;
+            //// Get ListId Restaurant in Dictionanry
+            //Cache<int, string> Cache = LoadDataToCache.Cache;
 
-            if(Cache == null)
+            //if(Cache == null)
+            //{
+            //    // Load data to Cache
+            //    LoadDataToCache.LoadRestaurantToCache();
+            //    Cache = LoadDataToCache.Cache;
+            //}
+
+            // Get ListId Restaurant in Dictionanry
+            Cache<int, DtoRestaurantInfo> Cache = LoadDataToCache.CacheRestaurant;
+
+            if (Cache == null)
             {
                 // Load data to Cache
-                LoadDataToCache.LoadRestaurantToCache();
-                Cache = LoadDataToCache.Cache;
+                LoadDataToCache.LoadAllRestaurantToCache();
+                Cache = LoadDataToCache.CacheRestaurant;
             }
 
+            // Need test
             List<int> listId = Cache.GetKeysByValue(searchInput);
 
             if(listId.Count == 0)
@@ -130,12 +150,34 @@ namespace UILayer.Controllers
             return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
         }
 
-        public static void ShowMessage(string message)
+
+        public ActionResult CreateRestaurantCart(int resId)
         {
+            if (Session[resId.ToString()] != null)
+            {
+                RestaurantCart restCart = (RestaurantCart)Session[resId.ToString()];
+                return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
+            }
+            else
+            {
+                RestaurantCart restCart = new RestaurantCart();
+                restCart.ResId = resId;
+                restCart.TotalAmount = 0;
+                restCart.TotalPrice = 0;
+                restCart.ItemCarts = new List<ItemCart>();
+                return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
+            }
             
         }
 
-        
+        //public ActionResult AddItemToCart(int resId, int itemId)
+        //{
+        //    if (Session[resId.ToString()] != null)
+        //    {
+        //        RestaurantCart restCart = (RestaurantCart)Session[resId.ToString()];
+        //        return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
+        //    }
+        //}
 
     }
 }

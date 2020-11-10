@@ -502,7 +502,7 @@ img{
 
 .bill-restaurant .order-card-group{
     color: #464646;
-    max-height: 300px;
+    max-height: 600px;
     overflow-y: auto;
 }
 

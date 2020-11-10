@@ -22,4 +22,3 @@ C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplicat
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\Model\obj\Debug\Model.dll
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\Model\obj\Debug\Model.pdb
-C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\Model\obj\Debug\Model.csprojAssemblyReference.cache

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Model.Model_Mapper.DtoRestaurantInfo>
+
+@{
     ViewBag.Title = "MainPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -17,9 +19,32 @@
                 <div class="form-search">
                     <div class="input-group">
                         <input type="text" name="txtSearchHome" id="txtSearchHome" placeholder="Tìm địa điểm, món ăn, địa chỉ..." value="">
-                            <button type="submit" class="btn btn-search">
-                                <span class="icon icon-search"></span>
-                            </button>
+                        <button type="submit" class="btn btn-search">
+                            <span class="icon icon-search"></span>
+                        </button>
+                    </div>
+                    <div class="idea-searching">
+                        <div class="list-restaurant-row">
+                            @{
+                                if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <div class="item-restaurant">
+                                            <a href="@Url.Action("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new {restaurantId = item.Id})" class="item-content">
+                                                <div class="img-restaurant">
+                                                    <img src="~/Content/Image/ImgRestaurant/@Html.DisplayFor(model => item.Image)" alt="imgRes">
+                                                </div>
+                                                <div class="info-restaurant">
+                                                    <div class="name-res">@Html.DisplayFor(model => item.RestaurantName)</div>
+                                                    <div class="address-res">@Html.DisplayFor(model => item.Address), P.@Html.DisplayFor(model => item.WardName), Q.@Html.DisplayFor(model => item.DisctrictName), @Html.DisplayFor(model => item.ProvinceName)</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
                     </div>
                 </div>
             }
@@ -582,3 +607,33 @@
         </div>
     </div>
 </div>
+
+@*Jquery to hide or show search idea*@
+<script>
+            $('#txtSearchHome').on('keyup', function(){
+                var searchValue = $(this).val();
+                searchAndFilter(searchValue)
+            })
+            function searchAndFilter(searchString){
+                if(searchString == ''){
+                    $('.list-restaurant-row .item-restaurant').hide();
+                }
+                else{
+                    $('.list-restaurant-row .item-restaurant').each(function() {
+                        var currentText = $(this).text();
+                        currentText = currentText.toLowerCase();
+                        searchString = searchString.toLowerCase();
+                        if (currentText.indexOf(searchString) >= 0) {
+                            $(this).show();
+                        }
+                        else {
+                            $(this).hide();
+                        }
+                    });
+                }
+            }
+
+    $(document).ready(function () {
+        $('.list-restaurant-row .item-restaurant').hide();
+    });
+</script>

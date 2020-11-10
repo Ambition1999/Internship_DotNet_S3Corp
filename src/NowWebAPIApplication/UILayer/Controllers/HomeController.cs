@@ -39,7 +39,8 @@ namespace UILayer.Controllers
 
         public ActionResult MainPage()
         {
-            return View("~/Views/MainPage/MainPage.cshtml");
+            return RedirectToAction("LoadRestaurantCache", "Restaurant");
+            
         }
 
         

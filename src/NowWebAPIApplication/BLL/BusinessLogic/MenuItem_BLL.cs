@@ -26,5 +26,13 @@ namespace BLL.BusinessLogic
             }
             return menuItemInfos;
         }
+
+        public DtoMenuItemInfo GetDtoMenuItemInfoByItemId(int itemId)
+        {
+            EntityMapper<MenuItemInfo, DtoMenuItemInfo> mapObject = new EntityMapper<MenuItemInfo, DtoMenuItemInfo>();
+            MenuItemInfo menuItemInfo = menuItem_BLL.GetMenuRestaurantInfoByItemID(itemId);
+            DtoMenuItemInfo dtoMenuItemInfo = mapObject.Translate(menuItemInfo);
+            return dtoMenuItemInfo;
+        }
     }
 }

@@ -23,5 +23,12 @@ namespace APILayer.Controllers
         {
             return Json<List<DtoMenuItemInfo>>(menuItem_BLL.GetMenuRestaurantInfoByID(RestaurantId));
         }
+
+        [HttpGet]
+        [Route("GetMenuRestaurantInfoByItemId/{itemId:int}")]
+        public JsonResult<DtoMenuItemInfo> GetMenuRestaurantInfoByItemId(int itemId)
+        {
+            return Json<DtoMenuItemInfo>(menuItem_BLL.GetDtoMenuItemInfoByItemId(itemId));
+        }
     }
 }

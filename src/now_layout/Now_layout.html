@@ -117,6 +117,54 @@
                                 </button>
                             </a>
                         </div>
+                        <div class="idea-searching">
+                            <div class="list-restaurant-row">
+                                <div class="item-restaurant">
+                                    <a href="#" class="item-content">
+                                        <div class="img-restaurant">
+                                            <img src="https://images.foody.vn/res/g5/41175/prof/s280x175/foody-mobile-untitled-2-jpg-794-636286401225022980.jpg" alt="imgRestaurant">
+                                        </div>
+                                        <div class="info-restaurant">
+                                            <div class="name-res">Tên nhà hàng 1</div>
+                                            <div class="address-res">Địa chỉ nhà hàng</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item-restaurant">
+                                    <a href="#" class="item-content">
+                                        <div class="img-restaurant">
+                                            <img src="https://images.foody.vn/res/g5/41175/prof/s280x175/foody-mobile-untitled-2-jpg-794-636286401225022980.jpg" alt="imgRestaurant">
+                                        </div>
+                                        <div class="info-restaurant">
+                                            <div class="name-res">Tên nhà hàng 2</div>
+                                            <div class="address-res">Địa chỉ nhà hàng</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item-restaurant">
+                                    <a href="#" class="item-content">
+                                        <div class="img-restaurant">
+                                            <img src="https://images.foody.vn/res/g5/41175/prof/s280x175/foody-mobile-untitled-2-jpg-794-636286401225022980.jpg" alt="imgRestaurant">
+                                        </div>
+                                        <div class="info-restaurant">
+                                            <div class="name-res">Tên nhà hàng 3</div>
+                                            <div class="address-res">Địa chỉ nhà hàng</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item-restaurant">
+                                    <a href="#" class="item-content">
+                                        <div class="img-restaurant">
+                                            <img src="https://images.foody.vn/res/g5/41175/prof/s280x175/foody-mobile-untitled-2-jpg-794-636286401225022980.jpg" alt="imgRestaurant">
+                                        </div>
+                                        <div class="info-restaurant">
+                                            <div class="name-res">Tên nhà hàng 4</div>
+                                            <div class="address-res">Địa chỉ nhà hàng</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="category-list-filter">
                         <a href="#"><span class="category-item">All</span></a>
@@ -740,7 +788,7 @@
                 });               
             });
         </script>
-
+        <script src="./ValidateForm.js"></script>
         <script>
             Validator({
                 form: '#form-1',
@@ -749,6 +797,33 @@
                     Validator.isRequired('#fullname'),
                     Validator.isEmail('#email'),
                 ]
+            })
+        </script>
+
+        <script>
+            $('#txtSearchHome').on('keyup', function(){
+                var searchValue = $(this).val();
+                searchAndFilter(searchValue)
+            })
+            function searchAndFilter(searchString){
+                if(searchString == ''){
+                    $('.list-restaurant-row .item-restaurant').hide();
+                }
+                else{
+                    $('.list-restaurant-row .item-restaurant').each(function(){
+                        var currentText = $(this).text();
+                        currentText = currentText.toLowerCase();
+                        searchString = searchString.toLowerCase();
+                        if(currentText.indexOf(searchString) >= 0){
+                            $(this).show();
+                        }
+                    })
+
+                }
+            }
+
+            $(document).ready(function(){
+                $('.list-restaurant-row .item-restaurant').hide();
             })
         </script>
         

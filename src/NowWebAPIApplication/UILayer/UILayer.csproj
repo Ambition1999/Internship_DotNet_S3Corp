@@ -131,6 +131,7 @@
     <Compile Include="CacheDictionary\CacheItem.cs" />
     <Compile Include="CacheDictionary\LoadDataToCache.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Formater\FormaterModel.cs" />
@@ -138,6 +139,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemType.cs" />
+    <Compile Include="Models\RestaurantCache.cs" />
+    <Compile Include="Models\ItemCart.cs" />
+    <Compile Include="Models\RestaurantCart.cs" />
     <Compile Include="Models\RestaurantDetail.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -263,9 +267,11 @@
     <Content Include="Views\RestaurantView\Restaurant.cshtml" />
     <Content Include="Views\RestaurantView\RestaurantDetail.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\RestaurantView\RestaurantCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\MenuItem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

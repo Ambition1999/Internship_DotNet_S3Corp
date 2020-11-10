@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using UILayer.Models;
+using Model.Model_Mapper;
 
 namespace UILayer
 {
@@ -39,6 +41,12 @@ namespace UILayer
             var listId = _cache.Where(t => t.Value.Value.ToString().ToLower().Trim().Contains(value.ToLower())).Select(t => t.Key).ToList();
             return listId;
         }
+
+        public int Count()
+        {
+            return _cache.Count;
+        }
+
 
         //public List<TKey> GetKeysByValue(string strInput)
         //{
