@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="DTO\BoolResult.cs" />
     <Compile Include="DTO\DtoAccountInfo.cs" />
+    <Compile Include="DTO\DtoRegisterAccount.cs" />
     <Compile Include="DTO\DtoUserInfo.cs" />
     <Compile Include="DTO\DtoListItem.cs" />
     <Compile Include="EF_Mapper\EntityMapper.cs" />

@@ -24,6 +24,36 @@ namespace UILayer.Controllers
             return Redirect(this.Request.UrlReferrer.ToString());
         }
 
+        public ActionResult Register()
+        {
+            return View("~/Views/Login/Register.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult RegisterAccount(DtoRegisterAccount dtoRegisterAccount)
+        {
+            if (ModelState.IsValid)
+            {
+                if (dtoRegisterAccount != null)
+                {
+                    string birthDay = Request["birth-day"];
+                    DateTime birthDayTime = DateTime.Parse(birthDay);
+                    dtoRegisterAccount.CreateDay = DateTime.Now;
+                    dtoRegisterAccount.BirthDay = birthDayTime;
+                    dtoRegisterAccount.CreateBy = "User";
+
+                    ServiceRepository service = new ServiceRepository();
+                    HttpResponseMessage response = service.PostResponse("/api/useraccount/InsertRegisterAccount/",dtoRegisterAccount);
+                    response.EnsureSuccessStatusCode();
+                    int result = response.Content.ReadAsAsync<int>().Result;
+
+                    return View("~/Views/MainPage/MainPage.cshtml");
+                }
+                return View("~/Views/MainPage/MainPage.cshtml");
+            }
+            return View("~/Views/MainPage/MainPage.cshtml");
+        }
+
         [HttpPost]
         public ActionResult LoginAccount(UserAccount userAccount)
         {

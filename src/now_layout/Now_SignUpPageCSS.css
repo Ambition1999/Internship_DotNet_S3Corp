@@ -1,0 +1,77 @@
+*, ::after, ::before{
+    box-sizing: border-box;
+}
+
+*, :after, :before{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #464646;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+div{
+    display: block;
+}
+
+.form-container{
+    box-shadow: 0 0 3px 0 rgba(50, 50, 50, .3);
+    width: 414px;
+    align-items: center;
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 10px;
+}
+
+.field-group{
+    margin-bottom: 5px;
+}
+
+.login-form .field-group .input-group span{
+    float: left;
+    margin-bottom: 3px;
+}
+
+.login-form input{
+    width: auto;
+}
+
+.input-group .gender-radio{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.input-group .gender-radio .gender-box{
+    float: left;
+    margin-right: 30px;
+}
+
+.btn-submit{
+    background-color: #cf2127!important;
+    color: #fff;
+}
+
+.input-group.invalid input{
+    border: 1px solid #cf2127!important;
+}
+
+.form-message{
+    color: #cf2127;
+}
+
+.register-link {
+    float: left;
+    margin-top: 10px;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Now.vn</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1">
+        <link rel="stylesheet" href="Now_layout_CSS.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="Now_AccountInfoCSS.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="now-navigation-profile">
+                <div class="header-profile">
+                    <div class="row align-item-center">
+                        <div class="col-auto">
+                            <img class="avatar-circle" src="https://images.foody.vn/default/s160/user-default-female.png" alt="">
+                        </div>
+                        <div class="col txt-bold font15">user001</div>
+                    </div>
+                </div>
+                <div class="navigation-profile">
+                    <a href="#" class="item-navigation active" title="Cập nhật tài khoản">
+                        <div class="row">
+                            <div class="col-auto">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="col">Cập nhật tài khoản</div>
+                            <div class="col-auto"></div>
+                        </div>
+                    </a>
+                    <a href="#" class="item-navigation" title="Thông tin đơn hàng">
+                        <div class="row">
+                            <div class="col-auto">
+                                <i class="fa fa-shopping-cart"></i>
+                            </div>
+                            <div class="col">Thông tin đơn hàng</div>
+                            <div class="col-auto"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="item-navigation">
+                    <a href="#" title="Phương thức thanh toán">
+                        <div class="row">
+                            <div class="col-auto">
+                                <i class="fa fa-credit-card"></i>
+                            </div>
+                            <div class="col">Phương thức thanh toán</div>
+                            <div class="col-auto"></div>
+                        </div>
+                    </a>
+                    <div class="nav-payment"></div>
+                </div>
+            </div>
+            <div class="detail-profile">
+                <div class="header-user-profile">Thông tin người dùng</div>
+                <div class="content-user-profile">
+                    <div class="user-profile-update">
+                        <div class="title-user">Ảnh đại diện</div>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="user-avatar-image">
+                                    <img src="https://images.foody.vn/default/s160/user-default-female.png" alt="avatarUser">
+                                </div>
+                            </div>
+                            <!-- <div class="col-9">
+                                <div class="form-group">
+                                    <span>Tải ảnh lên từ</span>
+                                    <div class="custom-file-image"></div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="user-profile-update">
+                        <form action="">
+                            <div class="title-user">Thay đổi thông tin</div>
+                            <div class="row form-group align-items-center">
+                                <div class="col-3 txt-bold">Tên</div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <input class="form-control" name="name" placeholder="Tên" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group align-items-center">
+                                <div class="col-3 txt-bold">Giới tính</div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <select name="gender" id="" class="custom-select">
+                                            <option value="0">Không chọn</option>
+                                            <option value="1">Nam</option>
+                                            <option value="2">Nữ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group align-items-center">
+                                <div class="col-3 txt-bold">Email</div>
+                                <div class="col-8">
+                                    <div class="input-group">
+                                        <button type="button" id="btn-update-mail" class="btn btn-primary change-email">Cập nhật email</button>
+                                        <input class="form-control" name="email" placeholder="Email" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group align-items-center change-password">
+                                <div class="col-3 txt-bold">Mật khẩu</div>
+                                <div class="col-8">
+                                    <div class="input-group">
+                                        <span class="show-pass">***********</span>
+                                        <button type="button" class="btn btn-primary change-pass">Đổi mật khẩu</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group verify-pass">
+                                <div class="row form-group align-items-center mar-bottom5">
+                                    <div class="col-3 txt-bold">Mật khẩu cũ</div>
+                                    <div class="col-4">
+                                        <div class="input-group validate-pass">
+                                            <input name="old-password" class="form-control" placeholder= "Mật khẩu cũ" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group align-items-center mar-bottom5">
+                                    <div class="col-3 txt-bold">Mật khẩu mới</div>
+                                    <div class="col-4">
+                                        <div class="input-group validate-pass">
+                                            <input name="password" class="form-control" placeholder= "Mật khẩu mới" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group align-items-center mar-bottom5">
+                                    <div class="col-3 txt-bold">Nhập lại mật khẩu mới</div>
+                                    <div class="col-4">
+                                        <div class="input-group validate-pass">
+                                            <input name="re-password" class="form-control" placeholder= "Nhập lại mật khẩu mới" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-3">
+                                    <button class="btn btn-primary">Lưu thay đổi</button>
+                                </div>
+                            </div>  
+                        </form>
+                    </div>
+                    <div class="user-profile-update">
+                        <div class="title-user">Quản lý số điện thoại</div>
+                        <div class="list-phone">
+                            <div class="list-phone-row">
+                                <div class="row align-items-center">
+                                    <div class="col-3 txt-bold">0312345667</div>
+                                    <div>
+                                        <span class="phone-verified">Số diện thoại đã được xác thực</span>
+                                    </div>
+                                    <div class="col-7 btn-update-phone-number" >
+                                        <button class="btn btn-primary">Cập nhật số điện thoại</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            $(document).ready(function(){
+                $('input[name="email"]').hide();
+                $('.verify-pass').hide();
+            })
+            
+            $("#btn-update-mail").click(function(){
+                $('input[name="email"]').show();
+                $('#btn-update-mail').hide();
+            });
+
+            $(".change-pass").click(function(){
+                $('.verify-pass').show();
+                $('.change-password').hide();
+            });
+            
+        </script>
+    </body>
+</html>

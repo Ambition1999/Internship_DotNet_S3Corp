@@ -31,6 +31,16 @@ namespace DAL.Model
                            };
             return userInfo.FirstOrDefault();
         }
+
+        public bool InsertUser(User user)
+        {
+            db.Users.Add(user);
+            int result = db.SaveChanges();
+            if (result == 1)
+                return true;
+            return false;
+
+        }
         
     }
 }

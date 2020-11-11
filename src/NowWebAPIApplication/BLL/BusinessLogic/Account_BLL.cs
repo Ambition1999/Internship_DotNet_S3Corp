@@ -1,5 +1,7 @@
-﻿using DAL.Model;
+﻿using DAL.MappingClass;
+using DAL.Model;
 using Model.DTO;
+using Model.EF_Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,13 @@ namespace BLL.BusinessLogic
             BoolResult boolResult = new BoolResult();
             boolResult.Result = account_dal.AccountIsExist(userName, password);
             return boolResult;
+        }
+
+        public int InsertUserAccount(DtoRegisterAccount dtoRegisterAccount)
+        {
+            EntityMapper<DtoRegisterAccount, RegisterAccount> mapObjRegis = new EntityMapper<DtoRegisterAccount, RegisterAccount>();
+            RegisterAccount registerAccountTemp = mapObjRegis.Translate(dtoRegisterAccount); 
+            return account_dal.InsertUserAccount(registerAccountTemp);
         }
     }
 }

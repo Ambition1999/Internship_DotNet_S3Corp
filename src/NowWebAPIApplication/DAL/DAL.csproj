@@ -58,6 +58,7 @@
       <DependentUpon>DBNow.tt</DependentUpon>
     </Compile>
     <Compile Include="MappingClass\MenuItemInfo.cs" />
+    <Compile Include="MappingClass\RegisterAccount.cs" />
     <Compile Include="MappingClass\RestaurantCache.cs" />
     <Compile Include="MappingClass\RestaurantInfo.cs" />
     <Compile Include="EF\Booking.cs">

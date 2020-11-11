@@ -153,10 +153,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSSFile\Now_AccountInfoCSS.css" />
     <Content Include="Content\CSSFile\Now_layout_CSS.css" />
     <Content Include="Content\CSSFile\Now_LoginPageCSS.css" />
     <Content Include="Content\CSSFile\Now_ProductCSS.css" />
     <Content Include="Content\CSSFile\Now_ProductDetailCSS.css" />
+    <Content Include="Content\CSSFile\Now_SignUpPageCSS.css" />
     <Content Include="Content\Image\ImgProduct\6\43.jpeg" />
     <Content Include="Content\Image\ImgProduct\6\44.jpeg" />
     <Content Include="Content\Image\ImgProduct\6\47.jpeg" />
@@ -268,6 +270,7 @@
     <Content Include="Views\RestaurantView\RestaurantDetail.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\RestaurantView\RestaurantCart.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,6 +7,7 @@ using AutoMapper;
 using DAL.CombineModel;
 using DAL.DtoClass;
 using DAL.EF;
+using DAL.MappingClass;
 using DAL.Model;
 using Model.DTO;
 using Model.Model_Mapper;
@@ -29,6 +30,9 @@ namespace Model.EF_Mapper
 
             Mapper.CreateMap<DtoUserInfo, UserInfo>();
             Mapper.CreateMap<UserInfo, DtoUserInfo>();
+
+            Mapper.CreateMap<DtoRegisterAccount, RegisterAccount>();
+            Mapper.CreateMap<RegisterAccount, DtoRegisterAccount>();
         }
 
 

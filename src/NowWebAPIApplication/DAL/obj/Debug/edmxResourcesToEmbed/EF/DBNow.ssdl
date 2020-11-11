@@ -243,7 +243,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Phone" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />

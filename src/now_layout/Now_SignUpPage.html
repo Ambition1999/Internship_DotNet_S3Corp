@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Now.vn</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1">
+        <link rel="stylesheet" href="Now_layout_CSS.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="Now_LoginPageCSS.css">
+        <link rel="stylesheet" href="Now_SignUpPageCSS.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="title">
+            <h2><span>Create Acccount</span></h2>
+        </div>
+            <div class="login-form" id="form-1">
+                <div class="form-container">
+                    <div class="field-group">
+                        <div class="input-group">
+                            <span class="name">Name:</span>
+                            <input type="text" placeholder="Name" id="name">
+                            <span class="form-message"></span>
+                        </div>
+                    </div>
+                <div class="field-group">
+                    <div class="input-group">
+                        <span class="username">Username:</span>
+                        <input type="text" placeholder="Username" id="username">
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="input-group">
+                        <span class="password">Password:</span>
+                        <input type="password" placeholder="Password" id="password">
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="input-group">
+                        <span class="confirm-password">Confirm Password:</span>
+                        <input type="password" placeholder="Confirm Password" id="confirm-password">
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="input-group">
+                        <span class="gender">Gender:</span>
+                        <div class="gender-radio">
+                            <div class="gender-box">
+                                <input type="radio" checked="true" name="gender" id="male">
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="gender-box">
+                                <input type="radio" name="gender" id="female">
+                                <label for="female">Female</label>
+                            </div>
+                        </div>
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="input-group">
+                        <span class="Email">Email:</span>
+                        <input type="text" placeholder="Email address" id="email">
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="input-group">
+                        <span class="phone-number">Phone:</span>
+                        <input type="number" placeholder="Phone number" id="phone">
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="input-group">
+                        <span class="birth-day">Birth Day:</span>
+                        <input type="date">
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <button class="btn btn-submit" type="submit">Create</button>
+            </div>
+            </div>
+            <script src="./ValidateForm.js"></script>
+        <script>
+            Validator({
+                form: '#form-1',
+                errorSelector: '.form-message',
+                rules: [
+                    Validator.isRequired('#username'),
+                    Validator.isRequired('#password'),
+                    //Validator.isEmail('#password'),
+                    Validator.isRequired('#name'),
+                    Validator.isRequired('#email'),
+                    Validator.isRequired('#phone'),
+                    Validator.isRequired('#confirm-password'),
+                ]
+            })
+        </script>
+    </body>
+</html>
