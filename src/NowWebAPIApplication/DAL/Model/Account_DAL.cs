@@ -17,8 +17,8 @@ namespace DAL.Model
 
         public bool AccountIsExist(string userName, string password)
         {
-            EncryptDecrypt encrypt = new EncryptDecrypt();
-            var account = db.UserAccounts.Where(t => t.UserName == userName && t.Password == password).SingleOrDefault();
+            string encryptPassword = EncryptDecrypt.Encrypt(password);
+            var account = db.UserAccounts.Where(t => t.UserName == userName && t.Password == encryptPassword).SingleOrDefault();
             if (account != null)
                 return true;
             return false;
@@ -61,6 +61,7 @@ namespace DAL.Model
             if(registerAccount != null)
             {
                 User user = new User();
+                user.Id = 0;
                 user.Name = registerAccount.Name;
                 user.Phone = registerAccount.Phone;
                 user.Email = registerAccount.Email;
@@ -76,9 +77,10 @@ namespace DAL.Model
         {
             if(registerAccount != null)
             {
+                
                 UserAccount userAccount = new UserAccount();
                 userAccount.UserName = registerAccount.Username;
-                userAccount.Password = registerAccount.Password;
+                userAccount.Password = EncryptDecrypt.Encrypt(registerAccount.Password);
                 userAccount.FailedPasswordCount = 0;
                 userAccount.Status = 1;
                 userAccount.CreateTime = registerAccount.CreateDay;
@@ -90,8 +92,9 @@ namespace DAL.Model
 
         public bool InsertAccount(UserAccount userAccount)
         {
-            db.UserAccounts.Add(userAccount);
-            int result = db.SaveChanges();
+            NowFoodDBEntities dbNow = new NowFoodDBEntities();
+            dbNow.UserAccounts.Add(userAccount);
+            int result = dbNow.SaveChanges();
             if (result == 1) 
                 return true;
             return false;

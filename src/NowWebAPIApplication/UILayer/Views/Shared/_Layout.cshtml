@@ -90,7 +90,7 @@
                                                 <span class="text">Cập nhật tài khoản</span>
                                             </div>
                                         </a>
-                                        <a href="@Url.Action("Logout","User")">
+                                        <a id="logout-account" href="@Url.Action("Logout","User")">
                                             <div class="dropdown-item">
                                                 <span class="icon icon-user-logout"></span>
                                                 <span class="text">Đăng xuất</span>
@@ -98,6 +98,9 @@
                                         </a>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="login-area" id="login">
+                                <button class="btn btn-none-bg btn-login" type="button" onclick="location.href='@Url.Action("Login","User")'">Đăng nhập</button>
                             </div>
                         }
                         else
@@ -173,17 +176,6 @@
     </div>
 
     <script>
-        // $(window).scroll(function(){
-        //     var heightTop = $('#last-view-more').offset().top,
-        //         outerHeight = $('#last-view-more').outerHeight(),
-        //         windowsHeight = $(window).height,
-        //         windowsScroll = $(window).scrollTop();
-        //     console.log((heightTop - windowsHeight), windowsScroll)
-        //     if(windowsScroll > (heightTop + outerHeight - windowsHeight))
-        //         $('#now-banner').attr("style", "position: absolute; top: 1746px;");
-        //         // ('.contain-main-home').append("")
-
-        // })
         function logOut() {
             var userInfo = document.getElementById("user-acc");
             var header = document.getElementById("headerNav");
@@ -191,44 +183,63 @@
             header.innerHTML = '<div class="login-area" id="login"><button class="btn btn-none-bg btn-login" type="button" onclick="location.href='@Url.Action("Login","User")'">Đăng nhập</button></div>'
         }
 
-        $(document).ready(function () {
-            oldOffset = $('#corp-info').offset().top;
-            $('#now-banner').scroll(function () {
-                if ($('#now-banner').scrollTop() > oldOffset) {
-                    $('#corp-info').css({
-                        'position': 'absolute',
-                        'top': '1746px'
-                    });
-                    console.log('Changed');
-                }
-            });
-        });
+
+
+        //$('#logout-account').click(function () {
+        //    $('#user-acc').hide();
+        //    $('.login-area').show();
+        //})
+
+        //$(document).ready(function () {
+        //    var SessionValue = '<%= Session["UserLogin"]%>';
+        //    if (SessionValue != null) {
+        //        $('.login-area').hide();
+        //    }
+        //})
+
+        //$(document).ready(function () {
+        //    oldOffset = $('#corp-info').offset().top;
+        //    $('#now-banner').scroll(function () {
+        //        if ($('#now-banner').scrollTop() > oldOffset) {
+        //            $('#corp-info').css({
+        //                'position': 'absolute',
+        //                'top': '1746px'
+        //            });
+        //            console.log('Changed');
+        //        }
+        //    });
+        //});
     </script>
 
 
     @*<script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '375076560379788',
-                cookie: true,
-                xfbml: true,
-                version: '1b6c77d5466d6accddbb31a2fe0f996c'
-            });
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '375076560379788',
+                    cookie: true,
+                    xfbml: true,
+                    version: '1b6c77d5466d6accddbb31a2fe0f996c'
+                });
 
-            FB.AppEvents.logPageView();
+                FB.AppEvents.logPageView();
 
-        };
+            };
 
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
 
-        
-    </script>*@
 
+        </script>*@
+    @if (TempData.ContainsKey("RegisterMessage") && TempData["RegisterMessage"] != null)
+    {
+        <script type="text/javascript">
+        alert(@TempData["RegisterMessage"]);
+        </script>
+    }
 </body>
 </html>

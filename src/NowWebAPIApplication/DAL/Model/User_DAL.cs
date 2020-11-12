@@ -34,8 +34,9 @@ namespace DAL.Model
 
         public bool InsertUser(User user)
         {
-            db.Users.Add(user);
-            int result = db.SaveChanges();
+            NowFoodDBEntities dbNow = new NowFoodDBEntities();
+            dbNow.Users.Add(user);
+            int result = dbNow.SaveChanges();
             if (result == 1)
                 return true;
             return false;

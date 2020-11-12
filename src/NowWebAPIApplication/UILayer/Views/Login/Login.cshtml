@@ -28,54 +28,44 @@
     </div>
     </br>
     <p class="message">Hãy đăng nhập bằng tài khoản của bạn</p>
-    @using (Html.BeginForm("LoginAccount", "User"))
+    @using (Html.BeginForm("LoginAccount", "User", FormMethod.Post, new { id = "form-2" }))
     {
-<div class="login-form" id="form-1">
-    <div class="field-group">
-        <div class="input-group">
-            @Html.TextBoxFor(model => model.UserName, new { id = "username", placeHolder = "Username, Email", @class = "form-control input" })
-            @Html.ValidationMessageFor(model => model.UserName)
-            <span class="form-message"></span>
-        </div>
-    </div>
-    <div class="field-group">
-        <div class="input-group">
-            @Html.PasswordFor(model => model.Password, new { id = "password", placeHolder = "Password", @class = "form-control input" })
-            @Html.ValidationMessageFor(model => model.Password)
-            <span class="form-message"></span>
-        </div>
-    </div>
-    <div class="login-option">
-        <input type="checkbox" id="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>
-        <a href="#">Quên mật khẩu?</a>
-    </div>
-    <button class="btn btn-primary" type="submit">Đăng nhập</button>
-    <a class="register-link" href="@Url.Action("Register","User")">Chưa có tài khoản?</a>
-    <div class="login-message">
-        Chúng tôi không sử dụng thông tin của bạn với bất kỳ mục đích nào. Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với
-        <a href="#">Chính sách quy định của Foody</a>
-    </div>
-</div>
+        <div class="login-form">
 
+            <div class="field-group">
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.UserName, new { id = "username", name = "username", placeHolder = "Username, Email", @class = " input" })
+                    <span class="form-message"></span>
+                </div>
+            </div>
+            <div class="field-group">
+                <div class="input-group">
+                    @Html.PasswordFor(model => model.Password, new { id = "password", name = "password", placeHolder = "Password", @class = " input" })
+                    <span class="form-message"></span>
+                </div>
+            </div>
+            <div class="login-option">
+                <input type="checkbox" id="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+            <button class="btn btn-primary form-submit" type="submit">Đăng nhập</button>
+            <a class="register-link" href="@Url.Action("Register", "User")">Chưa có tài khoản?</a>
+            <div class="login-message">
+                Chúng tôi không sử dụng thông tin của bạn với bất kỳ mục đích nào. Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với
+                <a href="#">Chính sách quy định của Foody</a>
+            </div>
+        </div>
     }
-    <script src="~/Content/JsFile/ValidateForm.js"></script>
-    <script>
+        <script src="~/Content/JsFile/ValidateForm.js"></script>
+        <script>
             Validator({
-                form: '#form-1',
+                form: '#form-2',
                 errorSelector: '.form-message',
                 rules: [
                     Validator.isRequired('#username'),
                     Validator.isRequired('#password'),
-                    //Validator.isEmail('#password'),
                 ]
             })
-    </script>
+        </script>
 
-    @*<script>
-        function checkLoginState() {
-            FB.getLoginStatus(function (response) {
-                statusChangeCallback(response);
-            });
-        }
-    </script>*@
-</div>
+    </div>

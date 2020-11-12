@@ -11,9 +11,9 @@ namespace DAL.Descrypt_Encrypt
     {
         public EncryptDecrypt() { }
 
-        string key = "ThinkPro";
+        static string key = "ThinkPro";
 
-        public string Encrypt(string toEncrypt)
+        public static string Encrypt(string toEncrypt)
         {
             bool useHashing = true;
             byte[] keyArray;
@@ -38,7 +38,7 @@ namespace DAL.Descrypt_Encrypt
             return Convert.ToBase64String(resultArray, 0, resultArray.Length);
         }
 
-        public string Decrypt(string toDecrypt)
+        public static string Decrypt(string toDecrypt)
         {
             bool useHashing = true;
             byte[] keyArray;

@@ -19,32 +19,33 @@
             <h2><span>Create Acccount</span></h2>
         </div>
             <div class="login-form" id="form-1">
+                <form>
                 <div class="form-container">
                     <div class="field-group">
                         <div class="input-group">
                             <span class="name">Name:</span>
-                            <input type="text" placeholder="Name" id="name">
+                            <input type="text" placeholder="Name" name="name" id="name">
                             <span class="form-message"></span>
                         </div>
                     </div>
                 <div class="field-group">
                     <div class="input-group">
                         <span class="username">Username:</span>
-                        <input type="text" placeholder="Username" id="username">
+                        <input type="text" placeholder="Username" name="username" id="username">
                         <span class="form-message"></span>
                     </div>
                 </div>
                 <div class="field-group">
                     <div class="input-group">
                         <span class="password">Password:</span>
-                        <input type="password" placeholder="Password" id="password">
+                        <input type="password" placeholder="Password" name="password" id="password">
                         <span class="form-message"></span>
                     </div>
                 </div>
                 <div class="field-group">
                     <div class="input-group">
                         <span class="confirm-password">Confirm Password:</span>
-                        <input type="password" placeholder="Confirm Password" id="confirm-password">
+                        <input type="password" placeholder="Confirm Password" name="confirm-password" id="confirm-password">
                         <span class="form-message"></span>
                     </div>
                 </div>
@@ -67,14 +68,14 @@
                 <div class="field-group">
                     <div class="input-group">
                         <span class="Email">Email:</span>
-                        <input type="text" placeholder="Email address" id="email">
+                        <input type="text" placeholder="Email address" name="email" id="email">
                         <span class="form-message"></span>
                     </div>
                 </div>
                 <div class="field-group">
                     <div class="input-group">
                         <span class="phone-number">Phone:</span>
-                        <input type="number" placeholder="Phone number" id="phone">
+                        <input type="number" placeholder="Phone number" name="phone" id="phone">
                         <span class="form-message"></span>
                     </div>
                 </div>
@@ -85,23 +86,29 @@
                         <span class="form-message"></span>
                     </div>
                 </div>
-                <button class="btn btn-submit" type="submit">Create</button>
+                <button class="btn btn-submit form-submit" type="submit">Create</button>
             </div>
-            </div>
+        </form>
+        </div>
             <script src="./ValidateForm.js"></script>
         <script>
             Validator({
                 form: '#form-1',
                 errorSelector: '.form-message',
                 rules: [
+                    Validator.isRequired('#name'),
                     Validator.isRequired('#username'),
                     Validator.isRequired('#password'),
-                    //Validator.isEmail('#password'),
-                    Validator.isRequired('#name'),
-                    Validator.isRequired('#email'),
-                    Validator.isRequired('#phone'),
+                    Validator.minLength('#password',6,10, "Mật khẩu phải chứa từ 6 đến 10 kí tự"),
                     Validator.isRequired('#confirm-password'),
-                ]
+                    Validator.isConfirmed('#confirm-password', function(){
+                        return document.querySelector('#form-1 #password').value;
+                    }, "Mật khẩu nhập lại không chính xác"),
+                    Validator.isRequired('#name'),
+                    Validator.isEmail('#email'),
+                    Validator.isRequired('#phone'),
+                ],
+                
             })
         </script>
     </body>
