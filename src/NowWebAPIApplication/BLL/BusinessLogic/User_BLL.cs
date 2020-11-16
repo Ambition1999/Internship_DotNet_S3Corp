@@ -21,5 +21,20 @@ namespace BLL.BusinessLogic
             DtoUserInfo dtoUserInfo = mapObj.Translate(userInfo);
             return dtoUserInfo;
         }
+
+        public DtoUserInfo GetUserInfoById(int userId)
+        {
+            EntityMapper<UserInfo, DtoUserInfo> mapObj = new EntityMapper<UserInfo, DtoUserInfo>();
+            UserInfo userInfo = user_DAL.GetUserInfoById(userId);
+            DtoUserInfo dtoUserInfo = mapObj.Translate(userInfo);
+            return dtoUserInfo;
+        }
+
+        public bool UpdateUser(DtoUserInfo dtoUserInfo)
+        {
+            EntityMapper<DtoUserInfo, UserInfo> mapObj = new EntityMapper<DtoUserInfo, UserInfo>();
+            UserInfo userInfo = mapObj.Translate(dtoUserInfo);
+            return user_DAL.UpdateUser(userInfo);
+        }
     }
 }

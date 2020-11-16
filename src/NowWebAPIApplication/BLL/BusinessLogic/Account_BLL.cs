@@ -26,7 +26,14 @@ namespace BLL.BusinessLogic
         {
             EntityMapper<DtoRegisterAccount, RegisterAccount> mapObjRegis = new EntityMapper<DtoRegisterAccount, RegisterAccount>();
             RegisterAccount registerAccountTemp = mapObjRegis.Translate(dtoRegisterAccount); 
-            return account_dal.InsertUserAccount(registerAccountTemp);
+            return account_dal.InsertUserAccount2(registerAccountTemp);
+        }
+
+        public bool UpdateAccount(DtoUpdateAccount dtoUpdateAccount)
+        {
+            EntityMapper<DtoUpdateAccount, UpdateAccount> mapObjRegis = new EntityMapper<DtoUpdateAccount, UpdateAccount>();
+            UpdateAccount updateAccount = mapObjRegis.Translate(dtoUpdateAccount);
+            return account_dal.UpdatePassword(updateAccount);
         }
     }
 }

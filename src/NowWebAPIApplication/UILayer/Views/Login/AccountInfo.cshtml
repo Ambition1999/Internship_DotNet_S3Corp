@@ -1,0 +1,214 @@
+﻿@model UILayer.Models.UserAccountInfo
+
+@{
+    ViewBag.Title = "AccountInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/CSSFile/Now_AccountInfoCSS.css">
+
+<div class="account-container">
+    <div class="now-navigation-profile">
+        <div class="header-profile">
+            <div class="row align-item-center">
+                <div class="col-auto">
+                    <img class="avatar-circle" src="https://images.foody.vn/default/s160/user-default-female.png" alt="">
+                </div>
+                <div class="col txt-bold font15">@Html.DisplayFor(model => model.UserInfo.UserName)</div>
+            </div>
+        </div>
+        <div class="navigation-profile">
+            <a href="#" class="item-navigation active" title="Cập nhật tài khoản">
+                <div class="row">
+                    <div class="col-auto">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="col">Cập nhật tài khoản</div>
+                    <div class="col-auto"></div>
+                </div>
+            </a>
+            <a href="#" class="item-navigation" title="Thông tin đơn hàng">
+                <div class="row">
+                    <div class="col-auto">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="col">Thông tin đơn hàng</div>
+                    <div class="col-auto"></div>
+                </div>
+            </a>
+        </div>
+        <div class="item-navigation">
+            <a href="#" title="Phương thức thanh toán">
+                <div class="row">
+                    <div class="col-auto">
+                        <i class="fa fa-credit-card"></i>
+                    </div>
+                    <div class="col">Phương thức thanh toán</div>
+                    <div class="col-auto"></div>
+                </div>
+            </a>
+            <div class="nav-payment"></div>
+        </div>
+    </div>
+    <div class="detail-profile">
+        <div class="header-user-profile">Thông tin người dùng</div>
+        <div class="content-user-profile">
+            <div class="user-profile-update">
+                <div class="title-user">Ảnh đại diện</div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="user-avatar-image">
+                            <img src="https://images.foody.vn/default/s160/user-default-female.png" alt="avatarUser">
+                        </div>
+                    </div>
+                    <!-- <div class="col-9">
+                        <div class="form-group">
+                            <span>Tải ảnh lên từ</span>
+                            <div class="custom-file-image"></div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="user-profile-update">
+                @using (Html.BeginForm("UpdatUserInfo", "User", FormMethod.Post, new {id = "form-1"} ))
+                {
+
+                    <div class="title-user">Thay đổi thông tin</div>
+                    <div class="row form-group align-items-center">
+                        <div class="col-3 txt-bold">Tên</div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                <input class="form-control" name="name" placeholder="Tên" type="text" disabled value="@Html.DisplayFor(model => model.UserInfo.UserName)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group align-items-center">
+                        <div class="col-3 txt-bold">Giới tính</div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                <select name="gender" id="" class="custom-select">
+                                    <option value="0">Không chọn</option>
+                                    <option value="1">Nam</option>
+                                    <option value="2">Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group align-items-center">
+                        <div class="col-3 txt-bold">Email</div>
+                        <div class="col-8">
+                            <div class="input-group">
+                                <button type="button" id="btn-update-mail" class="btn btn-primary change-email">Cập nhật email</button>
+                                <input id="email" class="form-control" name="email" placeholder="Email" type="text">
+                                <span class="form-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group align-items-center change-password">
+                        <div class="col-3 txt-bold">Mật khẩu</div>
+                        <div class="col-8">
+                            <div class="input-group">
+                                <span class="show-pass">***********</span>
+                                <button type="button" class="btn btn-primary change-pass">Đổi mật khẩu</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group verify-pass">
+                        <div class="row form-group align-items-center mar-bottom5">
+                            <div class="col-3 txt-bold">Mật khẩu cũ</div>
+                            <div class="col-4">
+                                <div class="input-group validate-pass">
+                                    <input id="old-password" name="old-password" class="form-control" placeholder="Mật khẩu cũ" type="password">
+                                    <span class="form-message"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group align-items-center mar-bottom5">
+                            <div class="col-3 txt-bold">Mật khẩu mới</div>
+                            <div class="col-4">
+                                <div class="input-group validate-pass">
+                                    <input id="password" name="password" class="form-control" placeholder="Mật khẩu mới" type="password">
+                                    <span class="form-message"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group align-items-center mar-bottom5">
+                            <div class="col-3 txt-bold">Nhập lại mật khẩu mới</div>
+                            <div class="col-4">
+                                <div class="input-group validate-pass">
+                                    <input id="re-password" name="re-password" class="form-control" placeholder="Nhập lại mật khẩu mới" type="password">
+                                    <span class="form-message"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-3">
+                            <button class="btn btn-primary">Lưu thay đổi</button>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="user-profile-update">
+                <div class="title-user">Quản lý số điện thoại</div>
+                <div class="list-phone">
+                    <div class="list-phone-row">
+                        <div class="row align-items-center">
+                            <div class="col-3 txt-bold">@Html.DisplayFor(model => model.UserInfo.Phone)</div>
+                            <div>
+                                <span class="phone-verified">Số diện thoại đã được xác thực</span>
+                            </div>
+                            <div class="col-7 btn-update-phone-number">
+                                <button class="btn btn-primary">Cập nhật số điện thoại</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('input[name="email"]').hide();
+            $('.verify-pass').hide();
+        })
+
+        $("#btn-update-mail").click(function () {
+            $('input[name="email"]').show();
+            $('#btn-update-mail').hide();
+        });
+
+        $(".change-pass").click(function () {
+            $('.verify-pass').show();
+            $('.change-password').hide();
+        });
+
+    </script>
+
+    @*<script src="~/Content/JsFile/ValidateForm.js"></script>
+    <script>
+        Validator({
+            form: '#form-1',
+            errorSelector: '.form-message',
+            rules: [
+                $('input').each(function () {
+                    if ($(this).css("display") != "none")
+                        if ($(this).attr("id") === "email")
+                            Validator.isEmail('#email')
+                }),
+                Validator.isRequired('#old-password'),
+                Validator.isRequired('#password'),
+                Validator.isRequired('#re-password'),
+                Validator.isConfirmed('#re-password', function () {
+                    return document.querySelector('#form-1 #password').value;
+                }, "Mật khẩu nhập lại không chính xác"),
+            ],
+            //onSubmit: function (data) {
+            //    console.log(data);
+            //}
+            //onSubmit: function () {}
+        })
+    </script>*@
+
+</div>
+

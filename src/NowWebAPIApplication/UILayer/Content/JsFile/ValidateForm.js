@@ -112,6 +112,16 @@ Validator.isRequired = function (selector) {
     }
 }
 
+Validator.isRequiredSearch = function (selector) {
+    return {
+        selector: selector,
+        test: function (value) {
+            return value.trim() ? undefined : 'Vui lòng nhập từ khóa để tìm kiếm'
+
+        }
+    }
+}
+
 Validator.isEmail = function (selector) {
     return {
         selector: selector,

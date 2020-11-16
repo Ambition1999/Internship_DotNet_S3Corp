@@ -14,11 +14,12 @@
                 </h1>
                 <div class="local">Có 46723 địa điểm ở TP.HCM từ 0:00 - 23:59</div>
             </div>
-            @using (Html.BeginForm("GetRestaurantByName","Restaurant", FormMethod.Post))
+            @using (Html.BeginForm("GetRestaurantByName", "Restaurant", FormMethod.Post, new { id = "form-1" }))
             {
                 <div class="form-search">
                     <div class="input-group">
                         <input type="text" name="txtSearchHome" id="txtSearchHome" placeholder="Tìm địa điểm, món ăn, địa chỉ..." value="">
+                        <span class="form-message"></span>
                         <button type="submit" class="btn btn-search">
                             <span class="icon icon-search"></span>
                         </button>
@@ -610,30 +611,56 @@
 
 @*Jquery to hide or show search idea*@
 <script>
-            $('#txtSearchHome').on('keyup', function(){
-                var searchValue = $(this).val();
-                searchAndFilter(searchValue)
-            })
-            function searchAndFilter(searchString){
-                if(searchString == ''){
-                    $('.list-restaurant-row .item-restaurant').hide();
+    $('#txtSearchHome').on('keyup', function () {
+        var searchValue = $(this).val();
+        searchAndFilter(searchValue)
+    })
+    function searchAndFilter(searchString) {
+        if (searchString == '') {
+            $('.list-restaurant-row .item-restaurant').hide();
+        }
+        else {
+            $('.list-restaurant-row .item-restaurant').each(function () {
+                var currentText = $(this).text();
+                currentText = currentText.toLowerCase();
+                searchString = searchString.toLowerCase();
+                if (currentText.indexOf(searchString) >= 0) {
+                    $(this).show();
                 }
-                else{
-                    $('.list-restaurant-row .item-restaurant').each(function() {
-                        var currentText = $(this).text();
-                        currentText = currentText.toLowerCase();
-                        searchString = searchString.toLowerCase();
-                        if (currentText.indexOf(searchString) >= 0) {
-                            $(this).show();
-                        }
-                        else {
-                            $(this).hide();
-                        }
-                    });
+                else {
+                    $(this).hide();
                 }
-            }
+            });
+        }
+    }
 
     $(document).ready(function () {
         $('.list-restaurant-row .item-restaurant').hide();
     });
+</script>
+
+<script>
+    $(window).scroll(function () {
+        var hT = $('#last-view-more').offset().top,
+            hH = $('#last-view-more').outerHeight(),
+            wH = $(window).height(),
+            wS = $(this).scrollTop();
+        if (wS > (hT + hH - wH + 50) && (hT > wS) && (wS + wH > hT + hH)) {
+            $('#now-banner').css({ position: 'absolute', top: 700 });
+        } else if (wS < (hT + hH - wH + 50) && (hT > wS) && (wS + wH > hT + hH)) {
+            $('#now-banner').css({ position: 'fixed', top: 70 });
+        }
+    });
+</script>
+
+
+<script src="~/Content/JsFile/ValidateForm.js"></script>
+<script>
+    Validator({
+        form: '#form-1',
+        errorSelector: '.form-message',
+        rules: [
+            Validator.isRequiredSearch('#txtSearchHome'),
+        ],
+    })
 </script>

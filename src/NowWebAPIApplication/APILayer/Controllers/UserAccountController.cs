@@ -32,5 +32,12 @@ namespace APILayer.Controllers
             return account_BLL.InsertUserAccount(dtoRegisterAccount);
         }
 
+        [HttpPut]
+        [Route("UpdateAccount")]
+        public bool UpdateAccount(DtoUpdateAccount dtoUpdateAccount)
+        {
+            return account_BLL.UpdateAccount(dtoUpdateAccount);
+        }
+
     }
 }

@@ -27,19 +27,19 @@ namespace UILayer.Controllers
 
         public ActionResult LoadRestaurantCache()
         {
+            ServiceRepository serviceObject = new ServiceRepository();
+            HttpResponseMessage response = serviceObject.GetResponse("api/restaurant/getallrestaurant/");
+            response.EnsureSuccessStatusCode();
+            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
+
             Cache<int, DtoRestaurantInfo> Cache = LoadDataToCache.CacheRestaurant;
 
             if (Cache == null)
             {
                 // Load data to Cache
-                LoadDataToCache.LoadAllRestaurantToCache();
+                LoadDataToCache.LoadAllRestaurantToCache(restaurants);
                 Cache = LoadDataToCache.CacheRestaurant;
             }
-
-            ServiceRepository serviceObject = new ServiceRepository();
-            HttpResponseMessage response = serviceObject.GetResponse("api/restaurant/getallrestaurant/");
-            response.EnsureSuccessStatusCode();
-            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
 
             return View("~/Views/MainPage/MainPage.cshtml", restaurants);
         }
@@ -108,17 +108,6 @@ namespace UILayer.Controllers
             // Get Search String
             string searchInput = Request["txtSearchHome"];
 
-            //// Get ListId Restaurant in Dictionanry
-            //Cache<int, string> Cache = LoadDataToCache.Cache;
-
-            //if(Cache == null)
-            //{
-            //    // Load data to Cache
-            //    LoadDataToCache.LoadRestaurantToCache();
-            //    Cache = LoadDataToCache.Cache;
-            //}
-
-            // Get ListId Restaurant in Dictionanry
             Cache<int, DtoRestaurantInfo> Cache = LoadDataToCache.CacheRestaurant;
 
             if (Cache == null)

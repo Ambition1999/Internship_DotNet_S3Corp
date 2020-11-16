@@ -826,6 +826,21 @@
                 $('.list-restaurant-row .item-restaurant').hide();
             })
         </script>
+
+<!-- jQuery for event roll of mainPage -->
+        <script>
+            $(window).scroll(function() {
+            var hT = $('#last-view-more').offset().top,
+                hH = $('#last-view-more').outerHeight(),
+                wH = $(window).height(),
+                wS = $(this).scrollTop();
+                if (wS > (hT+hH-wH + 50) && (hT > wS) && (wS+wH > hT+hH)){
+                    $('#now-banner').css({position: 'absolute', top: 700});
+                }else if(wS <= (hT+hH-wH + 50) && (hT > wS) && (wS+wH > hT+hH)){
+                    $('#now-banner').css({position: 'fixed', top: 70});
+                }
+            });
+        </script>
         
     </body>
 </html>

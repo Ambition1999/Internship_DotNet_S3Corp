@@ -33,6 +33,9 @@ namespace Model.EF_Mapper
 
             Mapper.CreateMap<DtoRegisterAccount, RegisterAccount>();
             Mapper.CreateMap<RegisterAccount, DtoRegisterAccount>();
+
+            Mapper.CreateMap<DtoUpdateAccount, UpdateAccount>();
+            Mapper.CreateMap<UpdateAccount, DtoUpdateAccount>();
         }
 
 

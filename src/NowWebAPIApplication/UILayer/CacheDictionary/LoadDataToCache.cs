@@ -46,6 +46,11 @@ namespace UILayer.CacheDictionary
             CacheRestaurant = LoadRestaurantInfoToCache(restaurants);
         }
 
+        public static void LoadAllRestaurantToCache(List<DtoRestaurantInfo> restaurantInfos)
+        {
+            CacheRestaurant = LoadRestaurantInfoToCache(restaurantInfos);
+        }
+
         public static Cache<int, DtoRestaurantInfo> LoadRestaurantInfoToCache(List<DtoRestaurantInfo> restaurantInfos)
         {
             CacheRestaurant = new UILayer.Cache<int, DtoRestaurantInfo>();

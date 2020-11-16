@@ -26,7 +26,8 @@ namespace DAL.Model
 
         public bool UserNameIsExist(string userName)
         {
-            var account = db.UserAccounts.Where(t => t.UserName == userName).SingleOrDefault();
+            NowFoodDBEntities dbNow = new NowFoodDBEntities();
+            var account = dbNow.UserAccounts.Where(t => t.UserName == userName).SingleOrDefault();
             if (account != null)
                 return true;
             return false;
@@ -54,6 +55,46 @@ namespace DAL.Model
                 return -1;
             }       
             return 0;
+        }
+
+        public int InsertUserAccount2(RegisterAccount registerAccount)
+        {
+            NowFoodDBEntities context = new NowFoodDBEntities();
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                int result = -1;
+                if (!UserNameIsExist(registerAccount.Username))
+                {
+                    User user = ParseDataToUser(registerAccount);
+                    UserAccount userAccount = ParseDataToAccount(registerAccount);
+                    if (user != null && userAccount != null)
+                    {
+                        try
+                        {
+                            User_DAL user_DAL = new User_DAL();
+                            user_DAL.InsertUser2(user, context);
+                            InsertAccount2(userAccount, context);
+                            result = context.SaveChanges();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            result = -2;
+                        }   
+                    }
+                    else
+                    {
+                        result = -1;
+                    }
+                }
+                else
+                {
+                    result = -3;
+                }
+                return result;
+            }
+            
         }
 
         public User ParseDataToUser(RegisterAccount registerAccount)
@@ -90,6 +131,25 @@ namespace DAL.Model
             return null;
         }
 
+        public bool UpdatePassword(UpdateAccount updateAccount)
+        {
+            int result = -1;
+            NowFoodDBEntities dbNow = new NowFoodDBEntities();
+            string encryptPassword = EncryptDecrypt.Encrypt(updateAccount.Password);
+            var account = dbNow.UserAccounts.Where(t => t.UserName == updateAccount.UserName && t.Password == encryptPassword).FirstOrDefault();
+            if (account != null)
+            {
+                account.Password = EncryptDecrypt.Encrypt(updateAccount.NewPassword);
+                account.UpdateBy = "User";
+                account.UpdateTime = DateTime.Now;
+                
+                result = dbNow.SaveChanges();
+            }
+            if (result == 1)
+                return true;
+            return false;
+        }
+
         public bool InsertAccount(UserAccount userAccount)
         {
             NowFoodDBEntities dbNow = new NowFoodDBEntities();
@@ -98,6 +158,11 @@ namespace DAL.Model
             if (result == 1) 
                 return true;
             return false;
+        }
+
+        public void InsertAccount2(UserAccount userAccount, NowFoodDBEntities context)
+        {
+            context.UserAccounts.Add(userAccount);
         }
     }
 }

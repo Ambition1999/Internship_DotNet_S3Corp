@@ -129,3 +129,4 @@ C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplicat
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\UILayer\obj\Debug\UILayer.csproj.CopyComplete
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\UILayer\obj\Debug\UILayer.dll
 C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\UILayer\obj\Debug\UILayer.pdb
+C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\UILayer\obj\Debug\UILayer.csprojAssemblyReference.cache

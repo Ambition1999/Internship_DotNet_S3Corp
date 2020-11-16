@@ -22,5 +22,19 @@ namespace APILayer.Controllers
         {
                 return Json<DtoUserInfo>(user_BLL.GetUserInfoByUserName(username));
         }
+
+        [HttpGet]
+        [Route("GetUserInfoById/{userId:int}")]
+        public JsonResult<DtoUserInfo> GetUserInfoById(int userId)
+        {
+            return Json<DtoUserInfo>(user_BLL.GetUserInfoById(userId));
+        }
+
+        [HttpPut]
+        [Route("UpdateUser")]
+        public bool UpdatUser(DtoUserInfo dtoUserInfo)
+        {
+            return (user_BLL.UpdateUser(dtoUserInfo));
+        }
     }
 }

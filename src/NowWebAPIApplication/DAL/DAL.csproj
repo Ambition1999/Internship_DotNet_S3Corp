@@ -146,6 +146,7 @@
       <DependentUpon>DBNow.tt</DependentUpon>
     </Compile>
     <Compile Include="MappingClass\AccountInfo.cs" />
+    <Compile Include="MappingClass\UpdateAccount.cs" />
     <Compile Include="Model\Account_DAL.cs" />
     <Compile Include="MappingClass\ListItem.cs" />
     <Compile Include="Model\MenuItem_DAL.cs" />

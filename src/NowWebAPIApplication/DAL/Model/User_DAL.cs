@@ -32,6 +32,55 @@ namespace DAL.Model
             return userInfo.FirstOrDefault();
         }
 
+        public UserInfo GetUserInfoById(int userId)
+        {
+            var userInfo = from user in db.Users
+                           join user_acc in db.UserAccounts on user.UserName equals user_acc.UserName
+                           where user.Id == userId
+                           select new UserInfo
+                           {
+                               UserId = user.Id,
+                               UserName = user.UserName,
+                               Name = user.Name,
+                               Email = user.Email,
+                               Phone = user.Phone,
+                               Gender = user.Gender,
+                               Status = user_acc.Status,
+                               RoleName = "User"
+                           };
+            return userInfo.FirstOrDefault();
+        }
+
+        public bool UpdateUser(UserInfo userInfo)
+        {
+            NowFoodDBEntities dbNow = new NowFoodDBEntities();
+            using (var transaction = dbNow.Database.BeginTransaction())
+            {
+                int result = -1;
+                var user = dbNow.Users.Where(t => t.Id == userInfo.UserId).FirstOrDefault();
+                if (user != null)
+                {
+                    try
+                    {
+                        if (userInfo.Email != null)
+                            user.Email = userInfo.Email;
+                        if (userInfo.Gender != null)
+                            user.Gender = userInfo.Gender;
+                        result = dbNow.SaveChanges();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        result = -2;
+                    }   
+                }
+                if (result == 1)
+                    return true;
+                return false;
+            }  
+        }
+
         public bool InsertUser(User user)
         {
             NowFoodDBEntities dbNow = new NowFoodDBEntities();
@@ -42,6 +91,11 @@ namespace DAL.Model
             return false;
 
         }
-        
+
+        public void InsertUser2(User user, NowFoodDBEntities context)
+        {
+            context.Users.Add(user);
+        }
+
     }
 }
