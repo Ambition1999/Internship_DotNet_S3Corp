@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Now.vn</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="Now_AdminCSS.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
+        <div class="wrapper" style="height: auto; min-height: 100%;">
+            <header class="main-header">
+                <a href="#" class="logo">
+                    <span class="logo-mini">Now.vn</span>
+                    <span class="logo-lg">Now Admin</span>
+                </a>
+                <nav class="navbar navbar-static-top">
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle = "dropdown" aria-expanded="false">
+                                    <img src="https://support.grasshopper.com/assets/images/care/topnav/default-user-avatar.jpg"
+                                    alt="userImage" class="user-img">
+                                    <span class="hidden-xs">Admin name</span>    
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="user-header">
+                                        <img src="https://support.grasshopper.com/assets/images/care/topnav/default-user-avatar.jpg" alt="User Image" class="img-circle">
+                                        <p>Người quản trị</p>
+                                    </li>
+                                    <li class="user-body"></li>
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <aside class="main-sidebar">
+                <section class="sidebar" style="height: auto;">
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="https://support.grasshopper.com/assets/images/care/topnav/default-user-avatar.jpg" alt="userImage" class="img-circle">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Admin name</p>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu tree" data-widget="tree">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li class="active treeview menu-open">
+                            <span>Mục 1</span>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="#">Item 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Item 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=" treeview menu-open">
+                            <span>Mục 2</span>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="#">Item 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Item 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=" treeview menu-open">
+                            <span>Mục 3</span>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="#">Item 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Item 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=" treeview menu-open">
+                            <span>Mục 4</span>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="#">Item 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Item 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+            <div class="content-wrapper" style="min-height: 926px;">
+                <section class="content-header">
+                    <h1>Title</h1>
+                </section>
+                <section class="content">
+                    <div class="row">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Table name</h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="container">
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <table class="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th scope="col">Id</th>
+                                              <th scope="col">Name</th>
+                                              <th scope="col">Email</th>
+                                              <th scope="col">Phone</th>
+                                              <th scope="col">Role</th>
+                                              <th scope="col">Status</th>
+                                              <th scope="col">Actions</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <th scope="row">1</th>
+                                              <td>Lê Chí Toàn</td>
+                                              <td>abc@gmail.com</td>
+                                              <td>0123456789</td>
+                                              <td>User</td>
+                                              <td><span class="badge badge-success">Active</span></td>
+                                              <td>
+                                                <button type="button" class="btn btn-primary btn-detailt"><i class="fa fa-eye"></i></button>
+                                                <button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                              <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">2</th>
+                                              <td>Nguyễn Văn A</td>
+                                              <td>def@gmail.com</td>
+                                              <td>0987654321</td>
+                                              <td>User</td>
+                                              <td><span class="badge badge-success">Active</span></td>
+                                              <td>
+                                                <button type="button" class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                                                <button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                              <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">3</th>
+                                              <td>Nguyễn Thị B</td>
+                                              <td>acd@gmail.com</td>
+                                              <td>0567891234</td>
+                                              <td>Employee</td>
+                                              <td><span class="badge badge-danger">Unactive</span></td>
+                                              <td>
+                                                <button type="button" class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                                                <button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                              <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <dialog id="favDialog">
+            <form method="dialog">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-12">
+                            <div class="well well-sm">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <img src="http://placehold.it/380x500" alt="userImg" class="img-rounded img-responsive avatar-user">
+                                    </div>
+                                    <div class="col-sm-6 col-md-7">
+                                        <h4>Le Chi Toan</h4>
+                                        <p>
+                                            <i class="fa fa-male" aria-hidden="true"></i> Male
+                                            <br>
+                                            <i class="fa fa-envelope" aria-hidden="true"></i> abc@gmail.com 
+                                            <br>
+                                            <i class="fa fa-phone-square" aria-hidden="true"></i> 0123456789
+                                            <br>
+                                            <i class="fa fa-id-card" aria-hidden="true"></i> User 
+                                            <br>
+                                            <i class="fa fa-users" aria-hidden="true"></i> <span class="badge badge-success">Active</span>
+                                            <br>
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> 22/02/2020
+                                            <br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <menu>
+                    <button class="btn btn-primary">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+    </body>
+    <script>
+        $('.btn-detailt').click(function(){
+            var favDialog = document.getElementById('favDialog');
+            favDialog.showModal();
+        })
+    </script>
+</html>
