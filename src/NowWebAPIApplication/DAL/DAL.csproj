@@ -57,6 +57,7 @@
     <Compile Include="EF\KindItem.cs">
       <DependentUpon>DBNow.tt</DependentUpon>
     </Compile>
+    <Compile Include="MappingClass\EmployeeInfo.cs" />
     <Compile Include="MappingClass\MenuItemInfo.cs" />
     <Compile Include="MappingClass\RegisterAccount.cs" />
     <Compile Include="MappingClass\RestaurantCache.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="MappingClass\UpdateAccount.cs" />
     <Compile Include="Model\Account_DAL.cs" />
     <Compile Include="MappingClass\ListItem.cs" />
+    <Compile Include="Model\Employee_DAL.cs" />
     <Compile Include="Model\MenuItem_DAL.cs" />
     <Compile Include="Model\Restaurant_DAL.cs" />
     <Compile Include="MappingClass\UserInfo.cs" />

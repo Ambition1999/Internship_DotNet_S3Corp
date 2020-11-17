@@ -130,6 +130,7 @@
     <Compile Include="CacheDictionary\Cache.cs" />
     <Compile Include="CacheDictionary\CacheItem.cs" />
     <Compile Include="CacheDictionary\LoadDataToCache.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
@@ -154,6 +155,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSSFile\AdminCSS\Now_AdminCSS.css" />
+    <Content Include="Content\CSSFile\AdminCSS\Now_AdminLoginPageCSS.css" />
     <Content Include="Content\CSSFile\Now_AccountInfoCSS.css" />
     <Content Include="Content\CSSFile\Now_layout_CSS.css" />
     <Content Include="Content\CSSFile\Now_LoginPageCSS.css" />
@@ -273,6 +276,10 @@
     <Content Include="Views\RestaurantView\RestaurantCart.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Login\AccountInfo.cshtml" />
+    <Content Include="Views\Admin\View.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\UserManagement.cshtml" />
+    <Content Include="Views\Admin\LoginAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -22,6 +22,13 @@ namespace BLL.BusinessLogic
             return boolResult;
         }
 
+        public BoolResult AccountAdminIsExits(string userName, string password)
+        {
+            BoolResult boolResult = new BoolResult();
+            boolResult.Result = account_dal.AccountAdminIsExist(userName, password);
+            return boolResult;
+        }
+
         public int InsertUserAccount(DtoRegisterAccount dtoRegisterAccount)
         {
             EntityMapper<DtoRegisterAccount, RegisterAccount> mapObjRegis = new EntityMapper<DtoRegisterAccount, RegisterAccount>();

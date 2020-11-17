@@ -36,6 +36,9 @@ namespace Model.EF_Mapper
 
             Mapper.CreateMap<DtoUpdateAccount, UpdateAccount>();
             Mapper.CreateMap<UpdateAccount, DtoUpdateAccount>();
+
+            Mapper.CreateMap<DtoEmployeeInfo, EmployeeInfo>();
+            Mapper.CreateMap<EmployeeInfo, DtoEmployeeInfo>();
         }
 
 

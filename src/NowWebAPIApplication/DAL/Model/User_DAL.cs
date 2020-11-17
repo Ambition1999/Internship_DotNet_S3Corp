@@ -12,6 +12,24 @@ namespace DAL.Model
         NowFoodDBEntities db = new NowFoodDBEntities();
         public User_DAL() { }
 
+        public List<UserInfo> GetAllUser()
+        {
+            var userInfos = from user in db.Users
+                            join user_acc in db.UserAccounts on user.UserName equals user_acc.UserName
+                            select new UserInfo
+                            {
+                                UserId = user.Id,
+                                UserName = user.UserName,
+                                Name = user.Name,
+                                Email = user.Email,
+                                Phone = user.Phone,
+                                Gender = user.Gender,
+                                Status = user_acc.Status,
+                                RoleName = "User",
+                                RegisterAt = user.RegisterAt
+                           };
+            return userInfos.ToList();
+        }
 
         public UserInfo GetUserInfoByUserName(string userName)
         {

@@ -19,6 +19,7 @@ namespace DAL.EF
         {
             this.Employees = new HashSet<Employee>();
             this.UserPermissions = new HashSet<UserPermission>();
+            this.Users = new HashSet<User>();
         }
     
         public string UserName { get; set; }
@@ -34,5 +35,7 @@ namespace DAL.EF
         public virtual ICollection<Employee> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPermission> UserPermissions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -1,0 +1,64 @@
+﻿@model UILayer.Models.UserAccount
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Now.vn</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <link rel="stylesheet" href="~/Content/CSSFile/Now_layout_CSS.css">
+    <link rel="stylesheet" href="~/Content/CSSFile/AdminCSS/Now_AdminLoginPageCSS.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+       
+        <div class="login-layout">
+            @using (Html.BeginForm("LoginProcessing", "Admin", FormMethod.Post, new { id = "form-1" }))
+            {
+                <div class="title">
+                    <h2><span>Login for Admin</span></h2>
+                </div>
+                <br />
+                <div class="login-form" id="form-1">
+                    <div class="field-group">
+                        <div class="input-group">
+                            @Html.TextBoxFor(model => model.UserName, new { id = "username", name = "username", placeHolder = "Username, Email", @class = " input" })
+                            <span class="form-message"></span>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="input-group">
+                            @Html.PasswordFor(model => model.Password, new { id = "password", name = "password", placeHolder = "Password", @class = " input" })
+                            <span class="form-message"></span>
+                        </div>
+                    </div>
+                    <div class="login-option">
+                        <input type="checkbox" id="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>
+                        <a href="#">Quên mật khẩu?</a>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Đăng nhập</button>
+                </div>
+             }
+            </div>
+    </div>
+    <script src="~/Content/JsFile/ValidateForm.js"></script>
+    <script>
+        Validator({
+            form: '#form-1',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#username'),
+                Validator.isRequired('#password'),
+            ]
+        })
+    </script>
+</body>
+</html>

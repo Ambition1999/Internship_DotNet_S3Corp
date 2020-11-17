@@ -21,7 +21,6 @@ namespace DAL.EF
             this.Orders = new HashSet<Order>();
         }
     
-        
         public int Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
@@ -34,5 +33,6 @@ namespace DAL.EF
         public virtual ICollection<Booking> Bookings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual UserAccount UserAccount { get; set; }
     }
 }

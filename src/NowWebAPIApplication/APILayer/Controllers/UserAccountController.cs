@@ -25,6 +25,14 @@ namespace APILayer.Controllers
             return Json<BoolResult>(account_BLL.AccountIsExits(username, password));
         }
 
+        [HttpGet]
+        [Route("CheckAdminAccount/{username}/{password}")]
+        public JsonResult<BoolResult> CheckAdminAccount(string username, string password)
+        {
+
+            return Json<BoolResult>(account_BLL.AccountAdminIsExits(username, password));
+        }
+
         [HttpPost]
         [Route("InsertRegisterAccount")]
         public int InsertRegisterAccount(DtoRegisterAccount dtoRegisterAccount)

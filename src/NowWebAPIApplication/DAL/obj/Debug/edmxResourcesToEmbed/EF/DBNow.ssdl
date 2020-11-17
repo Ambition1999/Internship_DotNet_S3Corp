@@ -297,6 +297,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Employee_UserAccount">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_MenuItem_KindItem">
     <End Role="KindItem" Type="Self.KindItem" Multiplicity="1" />
     <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
@@ -368,18 +380,6 @@
       </Principal>
       <Dependent Role="BookingItem">
         <PropertyRef Name="ItemId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblEmployees_tblEmployees">
-    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserAccount">
-        <PropertyRef Name="UserName" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="UserName" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -515,9 +515,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_tblUserAccounts_tblUsers' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_tblUserAccounts_tblUsers" />-->
   <Association Name="FK_tblUserPermission_tblPermission">
     <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
     <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
@@ -538,6 +535,18 @@ warning 6035: The relationship 'FK_tblUserAccounts_tblUsers' has columns that ar
         <PropertyRef Name="UserName" />
       </Principal>
       <Dependent Role="UserPermission">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserAccount">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="User">
         <PropertyRef Name="UserName" />
       </Dependent>
     </ReferentialConstraint>
@@ -583,6 +592,10 @@ warning 6035: The relationship 'FK_tblUserAccounts_tblUsers' has columns that ar
       <End Role="Province" EntitySet="Province" />
       <End Role="District" EntitySet="District" />
     </AssociationSet>
+    <AssociationSet Name="FK_Employee_UserAccount" Association="Self.FK_Employee_UserAccount">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
     <AssociationSet Name="FK_MenuItem_KindItem" Association="Self.FK_MenuItem_KindItem">
       <End Role="KindItem" EntitySet="KindItem" />
       <End Role="MenuItem" EntitySet="MenuItem" />
@@ -606,10 +619,6 @@ warning 6035: The relationship 'FK_tblUserAccounts_tblUsers' has columns that ar
     <AssociationSet Name="FK_tblBookingItems_tblMenuItems" Association="Self.FK_tblBookingItems_tblMenuItems">
       <End Role="MenuItem" EntitySet="MenuItem" />
       <End Role="BookingItem" EntitySet="BookingItem" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblEmployees_tblEmployees" Association="Self.FK_tblEmployees_tblEmployees">
-      <End Role="UserAccount" EntitySet="UserAccount" />
-      <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
     <AssociationSet Name="FK_tblItemDiscounts_tblMenuItems" Association="Self.FK_tblItemDiscounts_tblMenuItems">
       <End Role="MenuItem" EntitySet="MenuItem" />
@@ -662,6 +671,10 @@ warning 6035: The relationship 'FK_tblUserAccounts_tblUsers' has columns that ar
     <AssociationSet Name="FK_tblUserPermission_tblUserPermission" Association="Self.FK_tblUserPermission_tblUserPermission">
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="UserPermission" EntitySet="UserPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserAccount" Association="Self.FK_User_UserAccount">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK_Ward_District" Association="Self.FK_Ward_District">
       <End Role="District" EntitySet="District" />

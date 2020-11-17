@@ -24,6 +24,18 @@ namespace DAL.Model
             return false;
         }
 
+        public bool AccountAdminIsExist(string userName, string password)
+        {
+            string encryptPassword = EncryptDecrypt.Encrypt(password);
+            var accountAdmin = from useraccount in db.UserAccounts
+                               join emp in db.Employees on useraccount.UserName equals emp.UserName
+                               where useraccount.UserName == userName && useraccount.Password == encryptPassword
+                               select (emp.Id);   
+            if (accountAdmin != null)
+                return true;
+            return false;
+        }
+
         public bool UserNameIsExist(string userName)
         {
             NowFoodDBEntities dbNow = new NowFoodDBEntities();

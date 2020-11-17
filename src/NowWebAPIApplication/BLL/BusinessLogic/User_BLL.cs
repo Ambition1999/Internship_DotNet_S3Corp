@@ -14,6 +14,18 @@ namespace BLL.BusinessLogic
         User_DAL user_DAL = new User_DAL();
         public User_BLL() { }
 
+        public List<DtoUserInfo> GetAllUserInfo()
+        {
+            EntityMapper<UserInfo, DtoUserInfo> mapObj = new EntityMapper<UserInfo, DtoUserInfo>();
+            List<UserInfo> userInfos = user_DAL.GetAllUser();
+            List<DtoUserInfo> dtoUserInfos = new List<DtoUserInfo>();
+            foreach (var item in userInfos)
+            {
+                dtoUserInfos.Add(mapObj.Translate(item));
+            }
+            return dtoUserInfos;
+        }
+
         public DtoUserInfo GetUserInfoByUserName(string username)
         {
             EntityMapper<UserInfo, DtoUserInfo> mapObj = new EntityMapper<UserInfo, DtoUserInfo>();

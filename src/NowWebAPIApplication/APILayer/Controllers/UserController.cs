@@ -17,6 +17,13 @@ namespace APILayer.Controllers
         public UserController() { }
 
         [HttpGet]
+        [Route("GetAllUserInfo/")]
+        public JsonResult<List<DtoUserInfo>> GetAllUserInfo()
+        {
+            return Json<List<DtoUserInfo>>(user_BLL.GetAllUserInfo());
+        }
+
+        [HttpGet]
         [Route("GetUserInfoByUserName/{username}")]
         public JsonResult<DtoUserInfo> GetUserInfoByUserName(string username)
         {
