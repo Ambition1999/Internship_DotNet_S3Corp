@@ -1,0 +1,73 @@
+﻿@using Model.Model_Mapper
+@model IEnumerable<DtoRestaurantInfo>
+
+@{
+    ViewBag.Title = "RestaurantManagement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/CSSFile/AdminCSS/Now_AdminCSS.css">
+
+<section class="content-header">
+    <h1>Restaurant Management</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Danh mục nhà hàng, quán ăn</h3>
+            </div>
+            <div class="box-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Area</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        var address = item.DisctrictType + " " + item.DisctrictName + ", " + item.ProvinceName;
+                                        <tr>
+                                            <th scope="row">@Html.DisplayFor(model => item.Id)</th>
+                                            <td>@Html.DisplayFor(model => item.RestaurantName)</td>
+                                            <td>@Html.DisplayFor(model => item.RestaurantTypeName)</td>
+                                            <td>@Html.DisplayFor(model => address)</td>
+                                            @if (item.Status == 1)
+                                            {
+                                                <td><span class="badge badge-success">Active</span></td>
+                                            }
+                                            else if (item.Status == -1)
+                                            {
+                                                <td><span class="badge badge-success">Locked</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge badge-success">Deactive</span></td>
+                                            }
+
+                                            <td>
+                                                <button type="button" class="btn btn-primary btn-detailt" 
+                                                        onclick="location.href= '@Url.Action("RestaurantDetail","Admin",new{ restaurantId = item.Id})'">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                    }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

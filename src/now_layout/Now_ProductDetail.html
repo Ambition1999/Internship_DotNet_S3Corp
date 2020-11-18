@@ -324,7 +324,7 @@
         </div>
         <div class="modal fade modal-order show" id="modal-order" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="padding-right:17px; display: block;">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content modal-order-detail">
+                <!-- <div class="modal-content modal-order-detail">
                     <span class="close" data-dismiss = "modal">x</span>
                     <div class="modal-header">Xác nhận đơn hàng
                         <span class="btn-online">Đặt hàng
@@ -336,18 +336,186 @@
                             <div class="map-order"></div>
                             <div class="direction-content">
                                 <div class="direction-info">
-                                    <div class="direction-from"></div>
-                                    <div class="direction-to"></div>
+                                    <div class="direction-from">
+                                        <div class="directuion-name">Patis - Trà & bánh ngọt</div>
+                                        <div class="directuion-name">Địa chỉ 1</div>
+                                    </div>
+                                    <div class="direction-to">
+                                        <div>
+                                            <div class="direction-name" id="shipping-address">
+                                                <span>user001</span>
+                                            </div>
+                                        </div>
+                                        <div id="popup-order-add-new-address">
+                                            <span>Thêm địa chỉ mới</span>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div>
+                                    <div class="direction-time">
+                                        <span class="fa">
+                                            <i class="fa fa-clock"></i>
+                                        </span>
+                                        <span class="txt-bold">
+                                            Dự kiến: 14:35 - 18/11 -
+                                        </span>
+                                        <span class="txt-red">0km</span>
+                                    </div>
+                                    <div class="change-info">
+                                        Thay đổi thông tin nhận hàng
+                                    </div>
+                                    <div class="direction-info"></div>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="order-right">
+                            <p class="title-popup-order">
+                                Chi tiết đơn hàng
+                            </p>
+                            <div class="order-list">
+                                <div class="order-item">
+                                    <span class="order-item-number">1</span>
+                                    <div class="order-item-info"></div>
+                                    <div class="order-item-price"></div>
+                                </div>
+                            </div>
+                            <div class="discount-code"></div>
+                            <div class="padding-10 txt-bold font16"></div>
+                            <div class="payment-methods"></div>
+                            <div class="not-val"></div>
 
                         </div>
+                    </div>
+                </div> -->
+                <div class="modal-content edit-info-order">
+                    <p class="title-popup-order">Sửa thông tin giao hàng</p>
+                    <div class="book-time-order">
+                        <input type="text" class="datepicker flatpickr-input active" readonly = "readonly">
+                        <select name="deliveryTime" id="delivery" class="delivery-time">
+                            <option value="0">value 1</option>
+                            <option value="1">value 2</option>
+                            <option value="2">value 3</option>
+                        </select>
+                    </div>
+                    <div class="list-address-order show-edit-address">
+                        <div class="title">
+                            <span>Chọn địa điểm giao hàng</span>
+                            <span class="add-address">Chọn thông tin sẵn có</span>
+                        </div>
+                        <div class="block-add-address">
+                            <div class="row">
+                                <div class="col col-6">
+                                    <div class="input-group">
+                                        <input class="validate requite" placeholder="Họ tên" id="fullname" type="text">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                </div>
+                                <div class="col col-6">
+                                    <div class="input-group">
+                                        <input class="validate requite" placeholder="Số điện thoại" id="phone" type="text" maxlength="11">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                </div>
+                                <div class="col col-12">
+                                    <div class="input-group">
+                                        <input class="validate requite" placeholder="Địa chỉ" id="address" type="text">
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                </div>
+                                <div class="col col-4">
+                                    <div class="input-group">
+                                        <label for="ward">Chọn tỉnh/thành phố: </label>
+                                        <select class="address-selector" name="wardSelect" id="provide">
+                                            <option value="1">Ward 1</option>
+                                            <option value="1">Ward 2</option>
+                                            <option value="1">Ward 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-4">
+                                    <div class="input-group">
+                                        <label for="ward">Chọn quận/huyện: </label>
+                                        <select class="address-selector" name="wardSelect" id="district">
+                                            <option value="1">Ward 1</option>
+                                            <option value="1">Ward 2</option>
+                                            <option value="1">Ward 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-4">
+                                    <div class="input-group">
+                                        <label for="ward">Chọn phường/xã: </label>
+                                        <select class="address-selector" name="wardSelect" id="ward">
+                                            <option value="1">Ward 1</option>
+                                            <option value="1">Ward 2</option>
+                                            <option value="1">Ward 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-gray">Quay lại</button>
+                        <button type="button" class="btn ">Hoàn tất</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
+    <script>  
+    
+    $(function () {  
+
+        AjaxCall('https://localhost:44325/api/Province/GetAllProvince/', null).done(function (response) {  
+            if (response.length > 0) {  
+                $('#provide').html('');  
+                var options = '';  
+                options += '<option value="Select">Select</option>';  
+                for (var i = 0; i < response.length; i++) {  
+                    options += '<option value="' + response[i] + '">' + response[i] + '</option>';  
+                }  
+                $('#provide').append(options);  
+
+            }  
+        }).fail(function (error) {  
+            alert(error.StatusText);  
+        });  
+
+        // $('#countryDropDownList').on("change", function () {  
+        //     var country = $('#countryDropDownList').val();  
+        //     var obj = { country: country };  
+        //     AjaxCall('/Dummy/GetStates', JSON.stringify(obj),'POST').done(function (response) {  
+        //         if (response.length > 0) {  
+        //             $('#stateDropDownList').html('');  
+        //             var options = '';  
+        //             options += '<option value="Select">Select</option>';  
+        //             for (var i = 0; i < response.length; i++) {  
+        //                 options += '<option value="' + response[i] + '">' + response[i] + '</option>';  
+        //             }  
+        //             $('#stateDropDownList').append(options);  
+
+        //         }  
+        //     }).fail(function (error) {  
+        //         alert(error.StatusText);  
+        //     });  
+        // });  
+
+    });  
+
+    function AjaxCall(url, data, type) {  
+        return $.ajax({  
+            url: url,  
+            type: type ? type : 'GET',  
+            data: data,  
+            contentType: 'application/json'  
+        });  
+    }  
+    </script>
 
     </body>
 </html>

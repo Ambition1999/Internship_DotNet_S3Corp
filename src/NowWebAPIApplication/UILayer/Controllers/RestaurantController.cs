@@ -156,7 +156,6 @@ namespace UILayer.Controllers
                 restCart.ItemCarts = new List<ItemCart>();
                 return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
             }
-            
         }
 
         //public ActionResult AddItemToCart(int resId, int itemId)

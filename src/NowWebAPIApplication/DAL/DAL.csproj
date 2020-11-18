@@ -150,11 +150,14 @@
     <Compile Include="MappingClass\UpdateAccount.cs" />
     <Compile Include="Model\Account_DAL.cs" />
     <Compile Include="MappingClass\ListItem.cs" />
+    <Compile Include="Model\District_DAL.cs" />
     <Compile Include="Model\Employee_DAL.cs" />
     <Compile Include="Model\MenuItem_DAL.cs" />
+    <Compile Include="Model\Province_DAL.cs" />
     <Compile Include="Model\Restaurant_DAL.cs" />
     <Compile Include="MappingClass\UserInfo.cs" />
     <Compile Include="Model\User_DAL.cs" />
+    <Compile Include="Model\Ward_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

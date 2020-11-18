@@ -38,7 +38,9 @@ namespace DAL
                                      TypeId = res_type.Id,
                                      Image = res.Image,
                                      WardName = ward.Name,
+                                     WardType = ward.Type,
                                      DisctrictName = district.Name,
+                                     DisctrictType = district.Type,
                                      ProvinceName = province.Name,
                                      RestaurantTypeName = res_type.KindRestaurant
                                  };
@@ -63,7 +65,9 @@ namespace DAL
                                      TypeId = res_type.Id,
                                      Image = res.Image,
                                      WardName = ward.Name,
+                                     WardType = ward.Type,
                                      DisctrictName = district.Name,
+                                     DisctrictType = district.Type,
                                      ProvinceName = province.Name,
                                      RestaurantTypeName = res_type.KindRestaurant
                                  };
@@ -115,7 +119,9 @@ namespace DAL
                                      TypeId = res_type.Id,
                                      Image = res.Image,
                                      WardName = ward.Name,
+                                     WardType = ward.Type,
                                      DisctrictName = district.Name,
+                                     DisctrictType = district.Type,
                                      ProvinceName = province.Name,
                                      RestaurantTypeName = res_type.KindRestaurant
                                  };

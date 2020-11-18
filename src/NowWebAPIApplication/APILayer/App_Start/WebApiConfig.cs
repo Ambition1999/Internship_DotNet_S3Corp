@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Net.Http.Headers;
+using System.Web.Http.Cors;
 
 namespace APILayer
 {
@@ -13,6 +14,10 @@ namespace APILayer
             // Web API configuration and services
             //config.EnableCors();
             // Web API routes
+
+            var cors = new EnableCorsAttribute("*", "*", "*");// origins, headers, methods 
+            config.EnableCors(cors);
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

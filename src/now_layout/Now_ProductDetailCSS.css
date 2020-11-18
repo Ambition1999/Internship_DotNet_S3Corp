@@ -749,3 +749,294 @@ img{
     position: relative;
     flex: 1 1 auto;
 }
+
+.modal-order .modal-order-detail .order-left {
+    width: 43%;
+    float: left;
+    position: relative;
+}
+
+.modal-order .modal-order-detail .map-order{
+    height: 330px;
+    border-bottom: 5px solid #d7d7d7;
+}
+
+.modal-order .direction-content {
+    padding-left: 10px;
+    border: 1px solid #d7d7d7;
+    border-top: 0;
+}
+
+.modal-order .direction-info {
+    padding: 5px 10px 5px 23px;
+    overflow: hidden;
+}
+
+.modal-order .direction-content .direction-from:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+    background-color: #d7d7d7;
+    left: -14px;
+    top: 16px;
+    height: 50px;
+}
+
+.modal-order .direction-content .direction-from:after, .modal-order .direction-content .direction-to:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #cf2127;
+    margin: auto;
+    position: absolute;
+    top: 9px;
+    left: -19px;
+}
+
+.modal-order .direction-content .direction-from, .modal-order .direction-content .direction-to {
+    padding: 5px 0;
+    position: relative;
+}
+
+.modal-order .direction-content .direction-name{
+    font-size: 13px;
+    font-weight: 700;
+    line-height: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 96%;
+}
+
+#popup-order-add-new-address{
+    color: #0288d1;
+    cursor: pointer;
+}
+
+.modal-order .direction-content .direction-time .fa {
+    vertical-align: middle;
+    margin-bottom: 2px;
+}
+
+.modal-order .direction-content .direction-time{
+    border: 1px solid #464646;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 2px 3px;
+    background-color: #f7f9d8;
+}
+
+.modal-order .change-info{
+    font-size: 14px;
+    color: #0288d1;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Order right */
+.modal-order .modal-order-detail .order-right{
+    font-size: 14px;
+    float: left;
+    width: 57%;
+    border-left: 10px solid #d7d7d7;
+    height: 100%;
+}
+
+.modal-order .title-popup-order{
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+    padding: 7px 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.modal-order .order-list .order-item{
+    color: #252525;
+    position: relative;
+    padding: 4px 0;
+}
+
+/* Address Delivery */
+.modal-order .modal-content.edit-info-order, .modal-order .modal-content.modal-get-local, .modal-order .modal-content.modal-order-detail {
+    width: 885px;
+}
+
+.modal-order .modal-content{
+    margin: auto;
+}
+
+.modal-order .edit-info-order .title-popup-order{
+    font-size: 15px;
+    color: #252525;
+    font-weight: 700;
+    background-color: #ebebeb;
+    border: 0;
+    padding: 14px 20px;
+    border-radius: 5px 5px 0 0;
+}
+
+.modal-order .edit-info-order .time-order{
+    padding: 10px 21px;
+    border-bottom: 8px solid #ebebeb;
+}
+
+.modal-order .edit-info-order .title{
+    font-weight: 700;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.modal-order .book-time-order{
+    position: relative;
+    padding-bottom: 20px;
+    margin-top: -3px;
+}
+
+.modal-order .book-time-order .datepicker{
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    width: 49%;
+    border: 1px solid #d7d7d7;
+    padding: 12px 5px;
+}
+
+.modal-order .book-time-order .delivery-time{
+    text-align-last: center;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    width: 49%;
+    float: right;
+    border: 1px solid #d7d7d7;
+    background-color: #fff;
+    padding: 12px 5px;
+}
+
+.modal-order .edit-info-order .list-address-order{
+    padding: 10px 21px;
+    min-height: 370px;
+}
+
+.modal-order .edit-info-order .list-address-order .title{
+    padding-bottom: 7px;
+}
+
+.modal-order .edit-info-order .title{
+    font-weight: 700;
+    position: relative;
+}
+
+.modal-order .edit-info-order .add-address{
+    font-weight: 400;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #0288d1;
+    cursor: pointer;
+}
+
+.modal-order .block-add-address{
+    padding: 0 10px;
+}
+
+.modal-order .block-add-address input.requite{
+    border-bottom:  1px solid #cf2127;
+}
+
+.modal-order .block-add-address .input-group input{
+    padding-left: 30px;
+    padding-right: 145px;
+    border-color: #d7d7d7;
+}
+
+.modal-order .block-add-address .input-group .fa {
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    background-color: #959595;
+    width: 22px;
+    text-align: center;
+    height: 22px;
+    border-radius: 50%;
+    line-height: 22px;
+}
+
+.wrapper input[type=color], .wrapper input[type=date], .wrapper input[type=datetime-local], .wrapper input[type=datetime], .wrapper input[type=email], .wrapper input[type=month], .wrapper input[type=number], .wrapper input[type=password], .wrapper input[type=search], .wrapper input[type=tel], .wrapper input[type=text], .wrapper input[type=time], .wrapper input[type=url], .wrapper input[type=week], .wrapper select:focus, .wrapper textarea {
+    font-size: 16px;
+}
+
+.modal-order .block-add-address input{
+    width: 100%;
+    padding: 0;
+    height: 45px;
+    border: 0;
+}
+
+.modal-order .block-add-address .address-selector{
+    text-align-last: center;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    float: right;
+    border: 1px solid #d7d7d7;
+    background-color: #fff;
+    padding: 12px 5px;
+}
+
+.modal-order .block-add-address .input-group label{
+    color: #575757;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.modal-order .block-add-address .col {
+    margin-bottom: 15px;
+}
+
+/* Address footer */
+.modal-order .edit-info-order .modal-footer{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modal-order .modal-footer{
+    text-align: center;
+    clear: both;
+    position: relative;
+    background-color: #ebebeb;
+    padding: 7px;
+    border-radius: 0 0 5px 5px;
+}
+
+.modal-footer{
+    display: flex;
+    align-items: center;
+}
+
+.modal-order .edit-info-order .modal-footer .btn{
+    width: 100%;
+}
+
+.modal-order .modal-footer .btn{
+    height: 44px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.btn-gray {
+    background-color: #959595!important;
+    border-color: #959595;
+    color: #fff;
+}

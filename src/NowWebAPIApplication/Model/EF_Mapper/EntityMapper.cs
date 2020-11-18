@@ -39,6 +39,15 @@ namespace Model.EF_Mapper
 
             Mapper.CreateMap<DtoEmployeeInfo, EmployeeInfo>();
             Mapper.CreateMap<EmployeeInfo, DtoEmployeeInfo>();
+
+            Mapper.CreateMap<DtoWard, Ward>();
+            Mapper.CreateMap<Ward, DtoWard>();
+
+            Mapper.CreateMap<DtoDistrict, District>();
+            Mapper.CreateMap<District, DtoDistrict>();
+
+            Mapper.CreateMap<DtoProvince, Province>();
+            Mapper.CreateMap<Province, DtoProvince>();
         }
 
 

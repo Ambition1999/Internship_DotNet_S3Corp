@@ -1,0 +1,193 @@
+﻿@model UILayer.Models.RestaurantDetail
+
+@{
+    ViewBag.Title = "AdminRestaurantDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/CSSFile/Now_ProductDetailCSS.css">
+
+<div class="detail-restaurant clearfix">
+    <div class="container">
+        <div class="detail-restaurant-img">
+            <img src="~/Content/Image/ImgRestaurant/@Html.DisplayFor(model => Model.RestaurantInfo.Image)" alt="imgRestaurantDetail">
+        </div>
+        <div class="detail-restaurant-info">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("MainPage","Home")" class="breadcrumb-link" rel="nofollow">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link" rel="nofollow">TP.HCM</a></li>
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new {restaurantId = Model.RestaurantInfo.Id})" class="breadcrumb-link" rel="nofollow">
+                            @Html.DisplayFor(model => Model.RestaurantInfo.RestaurantName)
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+            <div class="kind-restaurant">
+                <span>
+                    @Html.DisplayFor(model => Model.RestaurantInfo.RestaurantTypeName)
+                </span>
+            </div>
+            <h1 class="name-restaurant">@Html.DisplayFor(model => model.RestaurantInfo.RestaurantName)</h1>
+            <div class="address-restaurant">
+                @Html.DisplayFor(model => model.RestaurantInfo.Address),
+                @Html.DisplayFor(model => model.RestaurantInfo.WardType)
+                @Html.DisplayFor(model => model.RestaurantInfo.WardName),
+                @Html.DisplayFor(model => model.RestaurantInfo.DisctrictType) 
+                @Html.DisplayFor(model => model.RestaurantInfo.DisctrictName),
+                @Html.DisplayFor(model => model.RestaurantInfo.ProvinceName)
+            </div>
+            <div class="status-restaurant">
+                <div class="opentime-status">
+                    <span class="stt online" title="Mở cửa"></span>
+                </div>
+            </div>
+            <div class="cost-restaurant">
+                <span>$ 70.000 - 220.000</span>
+            </div>
+            <div class="blankspace"></div>
+            <div class="utility-restaurant clearfix">
+                <div class="utility-item">
+                    <div class="utility-title">Phí dịch vụ</div>
+                    <div class="utility-content">
+                        <span class="font-weight-bold text-danger">0.0% Phí phục vụ</span>
+                    </div>
+                </div>
+                <div class="utility-item">
+                    <div class="utility-title">Dịch vụ bởi</div>
+                    <div class="utility-content">
+                        <span class="font-weight-bold text-danger">Now</span>
+                    </div>
+                </div>
+                <div class="utility-item">
+                    <div class="utility-title">Chuẩn bị</div>
+                    <div class="utility-content">25 Phút</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Continue Menu Item of Restaurant -->
+<div class="container relative clearfix">
+    <div class="menu-restaurant">
+        <div class="menu-restaurant-tab">
+            <div class="item active">Thực đơn</div>
+        </div>
+        <div class="menu-restaurant-content-tab">
+            <div class="menu-restaurant-container">
+                <div class="menu-restaurant-category">
+                    <div class="list-category" id="croll-py">
+                        <div class="crollbar-container ps ps--active-y">
+                            @{
+                                if (Model != null)
+                                {
+                                    foreach (var item in Model.ItemTypes)
+                                    {
+                                        <div class="item">
+                                            <span id="" title="" class="item-link">@Html.DisplayFor(model => item.TypeName)</span>
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-restaurant-detail">
+                    <div class="promotion-order">
+                        <div class="promotion-item" id="promotion-item">
+                            <div>
+                                <img src="https://images.foody.vn/icon/discount/s/freeship.png" alt="iconPromotion" class="icon-promotion">
+                                <div class="content">Nhập "FREESHIP": Freeship đến 3km</div>
+                            </div>
+                            <button class="copy-code" id="promotion-item-copy">
+                                <span class="promotion-freeship">Copy code</span>
+                                <span class="fa fa-copy"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-restaurant-list">
+                        <div class="search-item">
+                            <p class="input-group">
+                                <input type="search" name="searchKey" placeholder="Tìm món">
+                            </p>
+                        </div>
+                        <div class="restaurant-item">
+                            <div aria-readonly="true" area-label="grid" role="grid" tabindex="0" class="ReactVirtualized_Grid ReactVirtualized_List"
+                                 style="box-sizing: border-box; direction: ltr; height: auto; position: relative; width: 558px; overflow: auto; outline: none;">
+                                <div class="ReactVirtualized_Grid_innerScrollContainer list-menu-flex" role="rowgroup"
+                                     style="width: auto; height: 2000px; max-width: 558px; max-height: 9800px; overflow: hidden; position: relative;">
+                                    <div class="menu-group" id=""
+                                         style="height: 58px; left: 0; position: absolute; top: 0; width: 100%;">
+
+                                        @{
+                                            if (Model.ItemTypes != null)
+                                            {
+                                                foreach (var itemType in Model.ItemTypes)
+                                                {
+                                                    <div class="title-menu">@Html.DisplayFor(model => itemType.TypeName)</div>
+
+                                                    foreach (var item in itemType.MenuItemInfos)
+                                                    {
+                                                        <div class="item-restaurant-row"
+                                                             style="height: auto; width: 100%; left: 0;">
+                                                            <div class="row">
+                                                                <div class="col-auto item-restaurant-img">
+                                                                    <button class="inline">
+                                                                        <img src="~/Content/Image/ImgProduct/@Html.DisplayFor(model => item.RestaurantId)/@Html.DisplayFor(model => item.Image)" alt="imgProduct" width="60" height="60">
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col item-restaurant-info">
+                                                                    <h2 class="item-restaurant-name">@Html.DisplayFor(model => item.ItemName)</h2>
+                                                                    <div class="item-restaurant-desc">@Html.DisplayFor(model => item.Description)</div>
+                                                                </div>
+                                                                <div class="col-auto itme-restaurant-more">
+                                                                    <div class="row">
+                                                                        <div class="col-auto product-price">
+                                                                            <div class="current-price">@Html.DisplayFor(model => item.BasePrice)đ</div>
+                                                                        </div>
+                                                                        <div class="col-auto adding-food-cart txt-right">
+                                                                            <button class="btn-adding" onclick="location.href='@Url.Action("AddItemToCart","MenuItem", new{ resId = Model.RestaurantInfo.Id, itemId = item.Id, itemName = item.ItemName, price = item.BasePrice})'">+</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="bill-restaurant">
+            <div class="bill-restaurant-header">
+                <button class="cart-stats">
+                    <span class="txt-bold">1</span>
+                    &nbsp; phần &nbsp; - &nbsp;
+                    <span class="txt-bold">1</span>
+                    &nbsp; người
+                </button>
+                <button class="btn-reset">Xóa</button>
+                <button class="btn-order-group">Đặt theo nhóm</button>
+                <div class="create-order">
+                    Đơn hàng tạo bởi
+                    <span class="txt-blue">user001</span>
+                </div>
+            </div>
+            <div>
+                @Html.Action("CreateRestaurantCart", "Restaurant", new { resId = Model.RestaurantInfo.Id });
+
+            </div>
+        </div>
+    </div>
+</div>
+

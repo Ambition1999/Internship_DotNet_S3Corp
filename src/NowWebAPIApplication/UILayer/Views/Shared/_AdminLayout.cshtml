@@ -80,7 +80,7 @@
                         <span>User Management</span>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="#">User</a>
+                                <a href="@Url.Action("UserManagement","Admin")">User</a>
                             </li>
                             <li>
                                 <a href="#">Emplyee</a>
@@ -88,10 +88,10 @@
                         </ul>
                     </li>
                     <li class=" treeview menu-open">
-                        <span>Mục 2</span>
+                        <span>Restaurant Management</span>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="#">Item 1</a>
+                                <a href="@Url.Action("RestaurantManagement","Admin")">Restaurant</a>
                             </li>
                             <li>
                                 <a href="#">Item 2</a>
@@ -124,12 +124,7 @@
             </section>
         </aside>
         <div class="content-wrapper" style="min-height: 926px;">
-            <section class="content-header">
-                <h1>Title</h1>
-            </section>
-            <section class="content">
-                @RenderBody()
-            </section>
+             @RenderBody()
         </div>
     </div>
    

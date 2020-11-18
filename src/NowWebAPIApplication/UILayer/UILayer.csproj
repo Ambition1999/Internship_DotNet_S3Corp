@@ -233,6 +233,7 @@
     <Content Include="Content\Image\ImgRestaurant\7.jpg" />
     <Content Include="Content\Image\ImgRestaurant\8.jpeg" />
     <Content Include="Content\Image\ImgRestaurant\9.jpg" />
+    <Content Include="Content\JsFile\MessageAlert.js" />
     <Content Include="Content\JsFile\ValidateForm.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -280,6 +281,8 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\UserManagement.cshtml" />
     <Content Include="Views\Admin\LoginAdmin.cshtml" />
+    <Content Include="Views\Admin\RestaurantManagement.cshtml" />
+    <Content Include="Views\Admin\AdminRestaurantDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

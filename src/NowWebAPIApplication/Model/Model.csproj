@@ -49,11 +49,14 @@
   <ItemGroup>
     <Compile Include="DTO\BoolResult.cs" />
     <Compile Include="DTO\DtoAccountInfo.cs" />
+    <Compile Include="DTO\DtoDistrict.cs" />
     <Compile Include="DTO\DtoEmployeeInfo.cs" />
+    <Compile Include="DTO\DtoProvince.cs" />
     <Compile Include="DTO\DtoRegisterAccount.cs" />
     <Compile Include="DTO\DtoUpdateAccount.cs" />
     <Compile Include="DTO\DtoUserInfo.cs" />
     <Compile Include="DTO\DtoListItem.cs" />
+    <Compile Include="DTO\DtoWard.cs" />
     <Compile Include="EF_Mapper\EntityMapper.cs" />
     <Compile Include="DTO\DtoMenuItemInfo.cs" />
     <Compile Include="DTO\DtoRestaurantInfo.cs" />

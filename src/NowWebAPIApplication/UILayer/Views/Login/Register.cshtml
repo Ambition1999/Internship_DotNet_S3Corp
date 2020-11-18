@@ -99,5 +99,26 @@
         //onSubmit: function () {}
     })
 </script>
+<script>
+        $.msg = function (text, style) {
+            style = style || 'notice';           //<== default style if it's not set
 
-@Html.Raw(TempData["RegisterMessageHTML"]);
+            //create message and show it
+            $('<div>')
+                .attr('class', style)
+                .css({ "text-align": "center", "font-size": "17px", "color": "#ffff", "padding": "17px" })
+                .html(text)
+                .fadeIn('fast')
+                .insertBefore($('.title'))
+                .animate({ opacity: 1.0 }, 4000)
+                .fadeOut('slow', function () {
+                    $(this).remove();
+                });
+        };
+
+        var message = '@TempData["RegisterMessage"]';
+        var messageColor = '@TempData["RegisterMessageColor"]';
+        if (message != null && message != "" && messageColor != null && messageColor != "") {
+            $.msg(message, 'bg-' + messageColor)
+        }
+</script>

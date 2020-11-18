@@ -22,7 +22,9 @@ namespace Model.Model_Mapper
         public string Image { get; set; }
         public string AddressDB { get; set; }
         public string WardName { get; set; }
+        public string WardType { get; set; }
         public string DisctrictName { get; set; }
+        public string DisctrictType { get; set; }
         public string ProvinceName { get; set; }
         public string RestaurantTypeName { get; set; }
 

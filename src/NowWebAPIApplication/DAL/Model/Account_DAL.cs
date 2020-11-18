@@ -27,10 +27,10 @@ namespace DAL.Model
         public bool AccountAdminIsExist(string userName, string password)
         {
             string encryptPassword = EncryptDecrypt.Encrypt(password);
-            var accountAdmin = from useraccount in db.UserAccounts
-                               join emp in db.Employees on useraccount.UserName equals emp.UserName
-                               where useraccount.UserName == userName && useraccount.Password == encryptPassword
-                               select (emp.Id);   
+            var accountAdmin = (from useraccount in db.UserAccounts
+                                join emp in db.Employees on useraccount.UserName equals emp.UserName
+                                where useraccount.UserName == userName && useraccount.Password == encryptPassword
+                                select emp).SingleOrDefault();   
             if (accountAdmin != null)
                 return true;
             return false;
@@ -83,9 +83,9 @@ namespace DAL.Model
                     {
                         try
                         {
+                            InsertAccount2(userAccount, context);
                             User_DAL user_DAL = new User_DAL();
                             user_DAL.InsertUser2(user, context);
-                            InsertAccount2(userAccount, context);
                             result = context.SaveChanges();
                             transaction.Commit();
                         }

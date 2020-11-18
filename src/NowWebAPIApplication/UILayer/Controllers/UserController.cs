@@ -126,26 +126,30 @@ namespace UILayer.Controllers
                     HttpResponseMessage response = service.PostResponse("/api/useraccount/InsertRegisterAccount/",dtoRegisterAccount);
                     response.EnsureSuccessStatusCode();
                     int result = response.Content.ReadAsAsync<int>().Result;
-                    if (result == 1)
+                    if (result >= 1)
                     {
+                        
                         TempData["RegisterMessage"] = "Đăng ký thành công";
+                        TempData["RegisterMessageColor"] = "success";
                         return View("~/Views/Login/Login.cshtml");
                     }
                        
                     else if(result == -3)
                     {
                         TempData["RegisterMessage"] = "Tài khoản đã tồn tại, vui lòng thử lại";
-                        TempData["RegisterMessageHTML"] = "<script>alert('Tài khoản đã tồn tại, vui lòng thử lại');</script>";
+                        TempData["RegisterMessageColor"] = "warning";
+                        
                     }
                     else if (result == -2)
                     {
                         TempData["RegisterMessage"] = "Lỗi Insert dữ liệu, đăng ký không thành công, dữ liệu đã đc rollback";
-                        TempData["RegisterMessageHTML"] = "<script>alert('Tài khoản đã tồn tại, vui lòng thử lại');</script>";
+                        TempData["RegisterMessageColor"] = "danger";
+                       
                     }
                     else
                     {
                         TempData["RegisterMessage"] = "Đăng ký thất bại";
-                        TempData["RegisterMessageHTML"] = "<script>alert('Đăng ký thất bại, vui lòng thử lại');</script>";
+                        TempData["RegisterMessageColor"] = "danger";
                     }       
 
                     return View("~/Views/Login/Register.cshtml");
@@ -175,12 +179,18 @@ namespace UILayer.Controllers
                     Session["UserLogin"] = userLogin;
                     return View("~/Views/MainPage/MainPage.cshtml");
                 }
-                else 
-                    return Redirect("/");     
+                else
+                {
+                    TempData["UserLoginMessage"] = "Tài khoản hoặc mật khẩu không chính xác, vui lòng thử lại";
+                    TempData["UserLoginMessageColor"] = "danger";
+                    return View("~/Views/Login/Login.cshtml");
+                }                       
             }
             else
             {
-                return Redirect("/");
+                TempData["UserLoginMessage"] = "Dữ liệu không hợp lệ, vui lòng thử lại";
+                TempData["UserLoginMessageColor"] = "danger";
+                return View("~/Views/Login/Login.cshtml");
             }
         }
     }

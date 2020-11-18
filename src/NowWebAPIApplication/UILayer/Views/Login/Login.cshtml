@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="~/Content/CSSFile/Now_LoginPageCSS.css">
 
-<div class="container">
+<div class="container" id="container-main">
     <div class="title">
         <h2><span>Sign up</span></h2>
     </div>
@@ -56,15 +56,38 @@
             </div>
         </div>
     }
-        <script src="~/Content/JsFile/ValidateForm.js"></script>
-        <script>
-            Validator({
-                form: '#form-2',
-                errorSelector: '.form-message',
-                rules: [
-                    Validator.isRequired('#username'),
-                    Validator.isRequired('#password'),
-                ]
-            })
-        </script>
+    <script src="~/Content/JsFile/ValidateForm.js"></script>
+    <script>
+        Validator({
+            form: '#form-2',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#username'),
+                Validator.isRequired('#password'),
+            ]
+        })
+    </script>
+    <script>
+        $.msg = function (text, style) {
+            style = style || 'notice';           //<== default style if it's not set
+
+            //create message and show it
+            $('<div>')
+                .attr('class', style)
+                .css({ "text-align": "center", "font-size": "17px", "color": "#ffff", "padding": "7px" })
+                .html(text)
+                .fadeIn('fast')
+                .insertBefore($('#container-main'))
+                .animate({ opacity: 1.0 }, 4000)
+                .fadeOut('slow', function () {
+                    $(this).remove();
+                });
+        };
+
+        var message = '@TempData["UserLoginMessage"]';
+        var messageColor = '@TempData["UserLoginMessageColor"]';
+        if (message != null && message != "" && messageColor != null && messageColor != "") {
+            $.msg(message, 'bg-' + messageColor)
+        }
+    </script>
 </div>
