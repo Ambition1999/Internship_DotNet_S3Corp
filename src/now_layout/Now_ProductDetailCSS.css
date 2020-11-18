@@ -861,6 +861,118 @@ img{
     padding: 4px 0;
 }
 
+.modal-order .order-list .order-item-number {
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    background-color: #0288d1;
+    line-height: 14px;
+    border-radius: 4px;
+    padding-top: 1px;
+}
+
+.modal-order .order-list .order-item-info {
+    padding-left: 30px;
+    padding-right: 65px;
+}
+
+.modal-order .order-list .order-item-name {
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.modal-order .order-list .order-item-price {
+    font-size: 14px;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+}
+
+.modal-order .order-list .order-item:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 1px;
+    background-color: #ebebeb;
+}
+
+.modal-order .info-order{
+    border-top: 7px solid #d7d7d7;
+    padding: 4px 10px;
+}
+
+.modal-order .discount-code {
+    background-color: #fbf9d8;
+    padding: 7px 25px 7px 10px;
+}
+
+.ic, span.text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.modal-order .discount-code .input-code {
+    font-size: 12px;
+    text-align: center;
+    color: #cf2127;
+    font-weight: 700;
+    width: 88px;
+    height: 22px;
+    background-color: #fff;
+    border: 1px solid #d7d7d7;
+    margin: 0 10px 0 40px;
+    text-transform: uppercase;
+}
+
+.modal-order .discount-code button {
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 3px;
+    border: 0;
+    background-color: #6cc942;
+    height: 22px;
+}
+
+.modal-order .total-price {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.modal-order .payment-methods {
+    cursor: pointer;
+    background-color: #fbf9d8;
+    padding: 7px 25px 7px 10px;
+    position: relative;
+}
+
+.modal-order .modal-order-detail .modal-footer .submit-order {
+    color: #fff;
+    background-color: #0288d1;
+}
+
+.modal-order .modal-footer .submit-order {
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all .2s ease;
+    width: 100%;
+    border-radius: 5px;
+}
+
 /* Address Delivery */
 .modal-order .modal-content.edit-info-order, .modal-order .modal-content.modal-get-local, .modal-order .modal-content.modal-order-detail {
     width: 885px;
@@ -1039,4 +1151,114 @@ img{
     background-color: #959595!important;
     border-color: #959595;
     color: #fff;
+}
+
+/* Order detail */
+.modal-order .modal-content.order-detail {
+    width: 500px;
+}
+
+.modal-order .modal-content.order-detail .title-popup-order {
+    font-size: 18px;
+}
+
+.modal-order .modal-content.order-detail .now-order-card-group {
+    max-height: 435px;
+    overflow-y: auto;
+}
+
+.modal-order .modal-content.order-detail .now-order-card-group .order-card-user {
+    font-size: 13px;
+    padding: 5px 15px;
+    background-color: #fbf9d8;
+}
+
+.now-order-card-group .order-card-user {
+    color: #464646;
+    background-color: #ebebeb;
+    padding: 4px 15px;
+}
+
+.modal-order .modal-content.order-detail .now-order-card-group .order-card-user .avatar img {
+    width: 36px;
+}
+
+.now-order-card-group .order-card-user .avatar img {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.modal-order .modal-content.order-detail .now-order-card-group .order-card-user .user-name {
+    font-size: 14px;
+}
+
+.now-order-card-group .order-card-user .user-name {
+    color: #6d6f71;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.now-order-card-group .order-card-user .col-auto {
+    padding: 0;
+}
+
+.modal-order .modal-content.order-detail .now-order-card-group .order-card-item {
+    padding: 5px 10px 5px 40px;
+    position: relative;
+}
+
+.now-order-card-group .order-card-item {
+    padding: 6px 10px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.modal-order .modal-content.order-detail .now-order-card-group .order-card-item .name-order {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.now-order-card-group .order-card-item .name-order {
+    font-size: 13px;
+    font-weight: 700;
+    color: #464646;
+}
+
+.now-order-card-group .order-card-price {
+    font-size: 15px;
+    color: #263e82;
+    display: block;
+    clear: both;
+    padding-top: 4px;
+}
+
+.modal-order .modal-content.order-detail .now-order-card-group .order-card-total {
+    font-size: 14px;
+    color: #cf2127;
+    position: absolute;
+    top: 6px;
+    left: 20px;
+}
+
+.modal-order .modal-footer {
+    text-align: center;
+    clear: both;
+    position: relative;
+    background-color: #ebebeb;
+    padding: 7px;
+    border-radius: 0 0 5px 5px;
+}
+
+.modal-footer.content-center {
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.modal-order .modal-content.order-detail .modal-footer .btn {
+    width: 230px;
 }
