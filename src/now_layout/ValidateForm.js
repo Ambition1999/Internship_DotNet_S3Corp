@@ -104,6 +104,16 @@ Validator.isRequired = function(selector){
     }
 }
 
+Validator.isRequiredSelected = function(selector){
+    return{
+        selector: selector,
+        test: function(){
+            return value.trim() ? undefined : 'Vui lòng chọn trường này'
+
+        }
+    }
+}
+
 Validator.isEmail = function(selector){
     return{
         selector: selector,

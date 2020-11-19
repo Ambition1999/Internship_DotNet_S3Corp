@@ -1,0 +1,324 @@
+﻿@using UILayer.Models
+@model UILayer.Models.OrderDetail
+
+<link rel="stylesheet" href="~/Content/CSSFile/Now_ProductDetailCSS.css">
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<div class="modal fade modal-order show" id="modal-order" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="padding-right:17px; display: block;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-order-detail">
+            <span class="close txt-red txt-bold">x</span>
+            <div class="modal-header">
+                Xác nhận đơn hàng
+                <span class="btn-online">
+                    Đặt hàng
+                    <i class="fa fa-arrow-right"></i>
+                </span>
+            </div>
+            <div class="modal-body">
+                <div class="order-left">
+                    <div class="map-order">
+                        <img src="https://www.foody.vn/style/images/foody-thumbnail-640x640.png" alt="foodyBanner" srcset="">
+                    </div>
+                    <div class="direction-content">
+                        <div class="direction-info">
+                            <div class="direction-from">
+                                <div class="directuion-name">@Html.DisplayFor(model => model.RestaurantName)</div>
+                                <div class="directuion-name">@Html.DisplayFor(model=> model.RestaurantAddress)</div>
+                            </div>
+                            <div class="direction-to">
+                                <div>
+                                    <div class="direction-name" id="shipping-address">
+                                        <span>@Html.DisplayFor(model => model.UserName)</span>
+                                    </div>
+                                </div>
+                                <div id="popup-order-add-new-address">
+                                    <span class="new-address">Thêm địa chỉ mới</span>
+                                    <span class="added-new-address"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="direction-time">
+                                <span class="fa">
+                                    <i class="fa fa-clock"></i>
+                                </span>
+                                <span class="txt-bold">
+                                    Dự kiến: 14:35 - 18/11 -
+                                </span>
+                                <span class="txt-red">0km</span>
+                            </div>
+                            <div class="change-info">
+                                <span id="change-address-delivery">Thay đổi thông tin nhận hàng</span>
+                            </div>
+                            <div class="direction-info"></div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="order-right">
+                    @if (Session[Model.RestaurantId.ToString()] != null)
+                    {
+                        var restSession = (RestaurantCart)Session[Model.RestaurantId.ToString()];
+                        <p class="title-popup-order" id="order-cart-detail">
+                            Chi tiết đơn hàng
+                            <i class="icon-arrow-thin right" aria-hidden="true"></i>
+                        </p>
+                        <div class="order-list">
+                            @foreach (var item in restSession.ItemCarts)
+                            {
+                                <div class="order-item">
+                                    <span class="order-item-number">@item.Quantity</span>
+                                    <div class="order-item-info">
+                                        <div class="order-item-name">
+                                            <div class="txt-bold">@item.ItemName</div>
+                                        </div>
+                                    </div>
+                                    <div class="order-item-price">@item.SubTotal</div>
+                                </div>
+                            }
+                        </div>
+                        <div class="info-order">
+                            <div class="row">
+                                <div class="col">
+                                    Tổng cộng <span class="txt-bold">@restSession.TotalAmount</span> phần
+                                </div>
+                                <div class="col-auto txt-bold">@restSession.TotalPrice đ</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">Phí vận chuyển: <span class="txt-red">0.1km</span></div>
+                                <div class="col-auto">15,000đ</div>
+                            </div>
+                        </div>
+                        <div class="discount-code">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="text">Mã khuyến mãi</span>
+                                    <input type="text" class="input-code" placeholder="Nhập mã">
+                                    <button type="button">Áp dụng</button>
+                                </div>
+                                <div class="col-auto">
+                                    <span class="txt-blue">View my code</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="total-price">
+                            <div class="row">
+                                <div class="col">
+                                    Tổng cộng
+                                </div>
+                                <div class="col-auto txt-bold">@restSession.TotalPrice đ</div>
+                            </div>
+                        </div>
+                        <div class="payment-methods">
+                            <div class="row">
+                                <div class="col">
+                                    Tiền mặt
+                                </div>
+                                <div class="col-auto">
+                                    <span class="txt0blue">View my code</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="not-val"></div>
+                        }
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <div class="submit-order">
+                    Đặt hàng
+                </div>
+            </div>
+        </div>
+        <div class="modal-content edit-info-order" role="dialog" aria-hidden="true" id="form-address">
+            <form>
+                <p class="title-popup-order">Sửa thông tin giao hàng</p>
+                <div class="book-time-order">
+                    <input type="text" class="datepicker flatpickr-input active" readonly="readonly">
+                    <select name="deliveryTime" id="delivery" class="delivery-time">
+                        <option value="0">value 1</option>
+                        <option value="1">value 2</option>
+                        <option value="2">value 3</option>
+                    </select>
+                </div>
+                <div class="list-address-order show-edit-address">
+                    <div class="title">
+                        <span>Chọn địa điểm giao hàng</span>
+                        <span class="add-address">Chọn thông tin sẵn có</span>
+                    </div>
+                    <div class="block-add-address">
+                        <div class="row">
+                            <div class="col col-6">
+                                <div class="input-group">
+                                    <input class="validate requite" placeholder="Họ tên" id="fullname" type="text">
+                                    <span class="form-message"></span>
+                                    <!-- <i class="fa fa-user"></i> -->
+                                </div>
+                            </div>
+                            <div class="col col-6">
+                                <div class="input-group">
+                                    <input class="validate requite" placeholder="Số điện thoại" id="phone" type="text" maxlength="11">
+                                    <span class="form-message"></span>
+                                    <!-- <i class="fa fa-phone"></i> -->
+                                </div>
+                            </div>
+                            <div class="col col-12">
+                                <div class="input-group">
+                                    <input class="validate requite" placeholder="Địa chỉ" id="address" type="text">
+                                    <span class="form-message"></span>
+                                    <!-- <i class="fa fa-map-marker"></i> -->
+                                </div>
+                            </div>
+                            <div class="col col-4">
+                                <div class="input-group">
+                                    <label for="ward">Chọn tỉnh/thành phố: </label>
+                                    <select class="address-selector" name="wardSelect" id="province">
+                                        <option value="0">Chọn tỉnh/thành phố</option>
+                                    </select>
+                                    <span class="form-message"></span>
+                                </div>
+                            </div>
+                            <div class="col col-4">
+                                <div class="input-group">
+                                    <label for="ward">Chọn quận/huyện: </label>
+                                    <select class="address-selector" name="wardSelect" id="district">
+                                        <!-- <option value="1">Quận/Huyện</option> -->
+                                    </select>
+                                    <span class="form-message"></span>
+                                </div>
+                            </div>
+                            <div class="col col-4">
+                                <div class="input-group">
+                                    <label for="ward">Chọn phường/xã: </label>
+                                    <select class="address-selector" name="wardSelect" id="ward">
+                                        <!-- <option value="1">Phường/Xã</option> -->
+                                    </select>
+                                    <span class="form-message"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal-content" aria-hidden="true" type="button" class="btn btn-gray" id="btn-back-address">Quay lại</button>
+                    <button type="submit" class="btn btn-submit form-submit">Hoàn tất</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal-content order-detail">
+            <p class="title-popup-order">Chi tiết đơn hàng</p>
+            <div class="now-order-card-group">
+                <div class="order-card-person">
+                    <div class="order-card-user">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <div class="avatar">
+                                    <img alt="foodee_zhmco7t0" src="https://images.foody.vn/default/s60/user-default-female.png">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="user-name">user001</div>
+                            </div>
+                            <div class="col-auto">
+                                1 món
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-card-groups">
+                        <div class="order-card-item">
+                            <div class="clearfix">
+                                <span class="name-order">Hủ tiếu tô vừa</span>
+                            </div>
+                            <div class="order-card-price">
+                                55,800đ
+                            </div>
+                            <div class="order-card-total">1</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer content-center">
+                <button type="button" class="btn btn-gray" id="back-order-detail">Quay lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/Content/JsFile/AddressSelectorForm.js"></script>
+<script src="~/Content/JsFile/ValidateForm.js"></script>
+<script>
+        Validator({
+            form: '#form-address',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#fullname'),
+                Validator.isRequired('#phone'),
+                Validator.isRequired('#address'),
+                Validator.isRequired('#province'),
+                Validator.isRequired('#district'),
+                Validator.isRequired('#ward'),
+            ],
+
+        })
+</script>
+<script>
+        $(document).ready(function(){
+            //$('.modal-order-detail').hide();
+            $('#modal-order').hide();
+            $('.edit-info-order').hide();
+            $('.order-detail').hide();
+                    })
+
+        // Mở modal order
+        $('#btn-order').click(function(){
+            $('#modal-order').show();
+                    });
+
+        // Đóng modal
+        $('.close').click(function(){
+            $('#modal-order').hide();
+                    });
+
+        // Đóng modal địa chỉ
+        $('#btn-back-address').click(function(){
+            $('.edit-info-order').hide();
+            $('.modal-order-detail').show();
+                    });
+
+        // Mở modal thay đổi thông tin giao nhận
+        $('#change-address-delivery').click(function(){
+            $('.modal-order-detail').hide();
+            $('.edit-info-order').show();
+                    });
+
+        // Mở modal thay đổi thông tin giao nhận
+        $('.new-address').click(function(){
+            $('.modal-order-detail').hide();
+            $('.edit-info-order').show();
+                    });
+
+        // Mở modal chi tiết đơn hàng
+        $('.order-cart-detail').click(function(){
+            $('.modal-order-detail').hide();
+            $('.order-detail').show();
+                    });
+
+        // Đóng modal chi tiết đơn hàng
+        $('#back-order-detail').click(function(){
+            $('.modal-order-detail').show();
+            $('.order-detail').hide();
+        });
+
+    $('#form-address').submit(function () {
+        var address = $('#ward').val() + $('#district').val() + $('#province').val()
+        $('added-new-address').val(address);
+        $('.edit-info-order').hide();
+        $('.modal-order-detail').show();
+        })
+</script>

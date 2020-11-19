@@ -21,6 +21,10 @@ div{
     display: block;
 }
 
+.txt-red, .txt-red-dark {
+    color: #cf2127!important;
+}
+
 /* Detail Restaurant */
 .detail-restaurant{
     background-color: #fff;
@@ -761,6 +765,11 @@ img{
     border-bottom: 5px solid #d7d7d7;
 }
 
+.modal-order .modal-order-detail .map-order img{
+    width: 100%;
+    height: 100%;
+}
+
 .modal-order .direction-content {
     padding-left: 10px;
     border: 1px solid #d7d7d7;
@@ -853,6 +862,29 @@ img{
     padding: 7px 10px;
     cursor: pointer;
     position: relative;
+}
+
+.icon-arrow-thin.right {
+    transform: rotate(-45deg);
+}
+
+.modal-order .icon-arrow-thin {
+    font-size: 22px;
+    border-color: #959595;
+    position: absolute;
+    top: 17px;
+    right: 10px;
+}
+
+.icon-arrow-thin {
+    border: solid #252525;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    float: right;
 }
 
 .modal-order .order-list .order-item{
@@ -1068,6 +1100,12 @@ img{
     border-color: #d7d7d7;
 }
 
+.modal-order .block-add-address .input-group input .invalid{
+    padding-left: 30px;
+    padding-right: 145px;
+    border-color: #d7d7d7;
+}
+
 .modal-order .block-add-address .input-group .fa {
     color: #fff;
     font-size: 12px;
@@ -1261,4 +1299,12 @@ img{
 
 .modal-order .modal-content.order-detail .modal-footer .btn {
     width: 230px;
+}
+
+.modal-order .block-add-address .invalid input{
+    border-bottom: 2px solid #cf2127!important;
+}
+
+.form-message{
+    color: #cf2127;
 }

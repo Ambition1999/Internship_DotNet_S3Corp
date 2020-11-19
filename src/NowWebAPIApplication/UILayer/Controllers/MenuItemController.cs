@@ -45,6 +45,7 @@ namespace UILayer.Controllers
                 Session[resId.ToString()] = restCart;
 
                 //return ("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
+                //return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml");
                 return RedirectToAction("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new { restaurantId = restCart.ResId } );
             }
             else
@@ -67,6 +68,7 @@ namespace UILayer.Controllers
                 restCart.TotalAmount = restCart.ItemCarts.Sum(t => t.Quantity);
 
                 //return ("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
+                //return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml");
                 return RedirectToAction("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new { restaurantId = restCart.ResId });
             }
         }
@@ -112,6 +114,43 @@ namespace UILayer.Controllers
             }
 
             return RedirectToAction("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new { restaurantId = restCart.ResId });
+        }
+
+        public ActionResult OrderDetail(int restaurantId)
+        {
+            OrderDetail orderDetail = new OrderDetail();
+            DtoRestaurantInfo dtoRestaurantInfo = GetRestaurantById(restaurantId);
+            orderDetail.RestaurantId = dtoRestaurantInfo.Id;
+            orderDetail.RestaurantName = dtoRestaurantInfo.RestaurantName;
+            string restaurantAddress = dtoRestaurantInfo.Address + ", " + dtoRestaurantInfo.WardType + " " + dtoRestaurantInfo.WardName + ", " + dtoRestaurantInfo.DisctrictType + " " + dtoRestaurantInfo.DisctrictName + ", " + dtoRestaurantInfo.ProvinceName;
+            orderDetail.RestaurantAddress = restaurantAddress;
+            UserLogin userLogin = (UserLogin)Session["UserLogin"];
+            orderDetail.UserId = userLogin.UserId;
+            orderDetail.UserName = userLogin.UserName;
+
+            return PartialView("~/Views/RestaurantView/OrderModal.cshtml", orderDetail);
+        }
+
+        public DtoRestaurantInfo GetRestaurantById(int restaurantId)
+        {
+            ServiceRepository serviceObject = new ServiceRepository();
+            //Get Restaurant Infomation
+            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoById/" + restaurantId);
+            response.EnsureSuccessStatusCode();
+            DtoRestaurantInfo restaurantInfo = response.Content.ReadAsAsync<DtoRestaurantInfo>().Result;
+            return restaurantInfo;
+        }
+
+        [HttpPost]
+        public ActionResult EditInfoOrder(OrderDetail orderDetail)
+        {
+            string fullName = Request["fullname"];
+            string phone = Request["phone"];
+            string address = Request["address"];
+            string province = Request["province"];
+            string district = Request["district"];
+            string ward = Request["ward"];
+            return View();
         }
     }
 }

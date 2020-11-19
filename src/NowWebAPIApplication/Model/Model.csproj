@@ -51,6 +51,8 @@
     <Compile Include="DTO\DtoAccountInfo.cs" />
     <Compile Include="DTO\DtoDistrict.cs" />
     <Compile Include="DTO\DtoEmployeeInfo.cs" />
+    <Compile Include="DTO\DtoOrder.cs" />
+    <Compile Include="DTO\DtoOrderItem.cs" />
     <Compile Include="DTO\DtoProvince.cs" />
     <Compile Include="DTO\DtoRegisterAccount.cs" />
     <Compile Include="DTO\DtoUpdateAccount.cs" />

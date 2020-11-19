@@ -140,6 +140,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemType.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\RestaurantCache.cs" />
     <Compile Include="Models\ItemCart.cs" />
     <Compile Include="Models\RestaurantCart.cs" />
@@ -233,6 +234,7 @@
     <Content Include="Content\Image\ImgRestaurant\7.jpg" />
     <Content Include="Content\Image\ImgRestaurant\8.jpeg" />
     <Content Include="Content\Image\ImgRestaurant\9.jpg" />
+    <Content Include="Content\JsFile\AddressSelectorForm.js" />
     <Content Include="Content\JsFile\MessageAlert.js" />
     <Content Include="Content\JsFile\ValidateForm.js" />
     <Content Include="favicon.ico" />
@@ -247,6 +249,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -283,6 +287,7 @@
     <Content Include="Views\Admin\LoginAdmin.cshtml" />
     <Content Include="Views\Admin\RestaurantManagement.cshtml" />
     <Content Include="Views\Admin\AdminRestaurantDetail.cshtml" />
+    <Content Include="Views\RestaurantView\OrderModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

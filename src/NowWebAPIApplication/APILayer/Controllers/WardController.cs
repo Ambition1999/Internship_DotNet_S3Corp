@@ -17,7 +17,7 @@ namespace APILayer.Controllers
         public WardController() { }
 
         [HttpGet]
-        [Route("GetWardByDistricId/{districtId:int}")]
+        [Route("GetWardByDistrictId/{districtId:int}")]
         public JsonResult<List<DtoWard>> GetWardByDistricId(int districtId)
         {
             return Json<List<DtoWard>>(ward_BLL.GetWardByDistrictId(districtId));

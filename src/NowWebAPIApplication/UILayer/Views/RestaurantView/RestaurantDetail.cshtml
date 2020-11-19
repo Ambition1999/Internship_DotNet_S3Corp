@@ -77,12 +77,12 @@
                                 {
                                     foreach (var item in Model.ItemTypes)
                                     {
-                                    <div class="item">
-                                        <span id="" title="" class="item-link">@Html.DisplayFor(model => item.TypeName)</span>
-                                    </div>
+                                        <div class="item">
+                                            <span id="" title="" class="item-link">@Html.DisplayFor(model => item.TypeName)</span>
+                                        </div>
                                     }
-                                } 
-                             }
+                                }
+                            }
                         </div>
                     </div>
                 </div>
@@ -120,8 +120,8 @@
                                                 {
                                                     <div class="title-menu">@Html.DisplayFor(model => itemType.TypeName)</div>
 
-                                                        foreach (var item in itemType.MenuItemInfos)
-                                                        {
+                                                    foreach (var item in itemType.MenuItemInfos)
+                                                    {
                                                         <div class="item-restaurant-row"
                                                              style="height: auto; width: 100%; left: 0;">
                                                             <div class="row">
@@ -146,10 +146,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        }
                                                     }
                                                 }
                                             }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -178,9 +178,58 @@
             </div>
             <div>
                 @Html.Action("CreateRestaurantCart", "Restaurant", new { resId = Model.RestaurantInfo.Id });
-               
+
             </div>
         </div>
     </div>
 </div>
+@Html.Action("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id })
 
+<script>
+    $(document).ready(function () {
+        //$('.modal-order-detail').hide();
+        $('#modal-order').hide();
+        $('.edit-info-order').hide();
+        $('.order-detail').hide();
+    })
+
+    // Mở modal order
+    $('#btn-order').click(function () {
+        $('#modal-order').show();
+    });
+
+    // Đóng modal
+    $('.close').click(function () {
+        $('#modal-order').hide();
+    });
+
+    // Đóng modal địa chỉ
+    $('#btn-back-address').click(function () {
+        $('.edit-info-order').hide();
+        $('.modal-order-detail').show();
+    });
+
+    // Mở modal thay đổi thông tin giao nhận
+    $('#change-address-delivery').click(function () {
+        $('.modal-order-detail').hide();
+        $('.edit-info-order').show();
+    });
+
+    // Mở modal thay đổi thông tin giao nhận
+    $('.new-address').click(function () {
+        $('.modal-order-detail').hide();
+        $('.edit-info-order').show();
+    });
+
+    // Mở modal chi tiết đơn hàng
+    $('.order-cart-detail').click(function () {
+        $('.modal-order-detail').hide();
+        $('.order-detail').show();
+    });
+
+    // Đóng modal chi tiết đơn hàng
+    $('#back-order-detail').click(function () {
+        $('.modal-order-detail').show();
+        $('.order-detail').hide();
+    });
+</script>
