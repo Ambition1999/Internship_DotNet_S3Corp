@@ -56,14 +56,14 @@ namespace UILayer.Controllers
                 {
                     TempData["LoginMessage"] = "Tài khoản hoặc mật khẩu không chính xác, vui lòng thử lại";
                     TempData["LoginMessageColor"] = "danger";
-                    return Redirect("/");
+                    return View("~/Views/Admin/LoginAdmin.cshtml");
                 }      
             }
             else
             {
                 TempData["LoginMessage"] = "Dữ liệu không hợp lệ";
                 TempData["LoginMessageColor"] = "danger";
-                return Redirect("/");
+                return View("~/Views/Admin/LoginAdmin.cshtml");
             }
         }
 

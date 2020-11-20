@@ -45,59 +45,26 @@ namespace DAL.Model
             return false;
         }
 
-        public int InsertUserAccount(RegisterAccount registerAccount)
-        {
-            if (!UserNameIsExist(registerAccount.Username))
-            {
-                User user = ParseDataToUser(registerAccount);
-                UserAccount userAccount = ParseDataToAccount(registerAccount);
-                if (user != null && userAccount != null)
-                {
-                    User_DAL user_DAL = new User_DAL();
-                    bool resultAddUser = user_DAL.InsertUser(user);
-                    if (resultAddUser)
-                    {
-                        bool resultAddAccount = InsertAccount(userAccount);
-                        if (resultAddAccount) 
-                            return 1;
-                        return -1;
-                    }
-                    return -1;
-                }
-                return -1;
-            }       
-            return 0;
-        }
 
-        public int InsertUserAccount2(RegisterAccount registerAccount)
+        public int InsertUserAccount(User user,UserAccount userAccount)
         {
             NowFoodDBEntities context = new NowFoodDBEntities();
             using (var transaction = context.Database.BeginTransaction())
             {
                 int result = -1;
-                if (!UserNameIsExist(registerAccount.Username))
+                if (!UserNameIsExist(user.UserName) && user != null && userAccount != null)
                 {
-                    User user = ParseDataToUser(registerAccount);
-                    UserAccount userAccount = ParseDataToAccount(registerAccount);
-                    if (user != null && userAccount != null)
+                    try
                     {
-                        try
-                        {
-                            InsertAccount2(userAccount, context);
-                            User_DAL user_DAL = new User_DAL();
-                            user_DAL.InsertUser2(user, context);
-                            result = context.SaveChanges();
-                            transaction.Commit();
-                        }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            result = -2;
-                        }   
+                        context.UserAccounts.Add(userAccount);
+                        context.Users.Add(user);
+                        result = context.SaveChanges();
+                        transaction.Commit();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        result = -1;
+                        transaction.Rollback();
+                        result = -2;
                     }
                 }
                 else
@@ -106,75 +73,37 @@ namespace DAL.Model
                 }
                 return result;
             }
-            
         }
 
-        public User ParseDataToUser(RegisterAccount registerAccount)
-        {
-            if(registerAccount != null)
-            {
-                User user = new User();
-                user.Id = 0;
-                user.Name = registerAccount.Name;
-                user.Phone = registerAccount.Phone;
-                user.Email = registerAccount.Email;
-                user.Gender = registerAccount.Gender;
-                user.RegisterAt = registerAccount.CreateDay;
-                user.UserName = registerAccount.Username;
-                return user;
-            }
-            return null;
-        }
-
-        public UserAccount ParseDataToAccount(RegisterAccount registerAccount)
-        {
-            if(registerAccount != null)
-            {
-                
-                UserAccount userAccount = new UserAccount();
-                userAccount.UserName = registerAccount.Username;
-                userAccount.Password = EncryptDecrypt.Encrypt(registerAccount.Password);
-                userAccount.FailedPasswordCount = 0;
-                userAccount.Status = 1;
-                userAccount.CreateTime = registerAccount.CreateDay;
-                userAccount.CreateBy = registerAccount.CreateBy;
-                return userAccount;
-            }
-            return null;
-        }
 
         public bool UpdatePassword(UpdateAccount updateAccount)
         {
             int result = -1;
             NowFoodDBEntities dbNow = new NowFoodDBEntities();
-            string encryptPassword = EncryptDecrypt.Encrypt(updateAccount.Password);
-            var account = dbNow.UserAccounts.Where(t => t.UserName == updateAccount.UserName && t.Password == encryptPassword).FirstOrDefault();
-            if (account != null)
+            using (var transaction = dbNow.Database.BeginTransaction())
             {
-                account.Password = EncryptDecrypt.Encrypt(updateAccount.NewPassword);
-                account.UpdateBy = "User";
-                account.UpdateTime = DateTime.Now;
-                
-                result = dbNow.SaveChanges();
+                string encryptPassword = EncryptDecrypt.Encrypt(updateAccount.Password);
+                var account = dbNow.UserAccounts.Where(t => t.UserName == updateAccount.UserName && t.Password == encryptPassword).FirstOrDefault();
+                if (account != null)
+                {
+                    try
+                    {
+                        account.Password = EncryptDecrypt.Encrypt(updateAccount.NewPassword);
+                        account.UpdateBy = "User";
+                        account.UpdateTime = DateTime.Now;
+
+                        result = dbNow.SaveChanges();
+                        transaction.Commit();
+                    }
+                    catch(Exception ex)
+                    {
+                        transaction.Rollback();
+                    }
+                }
             }
-            if (result == 1)
+            if (result >= 1)
                 return true;
             return false;
-        }
-
-        public bool InsertAccount(UserAccount userAccount)
-        {
-            NowFoodDBEntities dbNow = new NowFoodDBEntities();
-            dbNow.UserAccounts.Add(userAccount);
-            int result = dbNow.SaveChanges();
-            if (result == 1) 
-                return true;
-            return false;
-        }
-
-        public void InsertAccount2(UserAccount userAccount, NowFoodDBEntities context)
-        {
-            context.UserAccounts.Add(userAccount);
         }
     }
 }

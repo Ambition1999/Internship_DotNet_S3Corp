@@ -102,21 +102,21 @@ function Validator(options) {
     }
 }
 
-Validator.isRequired = function (selector) {
+Validator.isRequired = function (selector, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value.trim() ? undefined : 'Vui lòng nhập trường này'
+            return value.trim() ? undefined : message
 
         }
     }
 }
 
-Validator.isRequiredSearch = function (selector) {
+Validator.isRequiredSearch = function (selector, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value.trim() ? undefined : 'Vui lòng nhập từ khóa để tìm kiếm'
+            return value.trim() ? undefined : message
 
         }
     }
@@ -127,7 +127,7 @@ Validator.isEmail = function (selector) {
         selector: selector,
         test: function (value) {
             var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-            return regex.test(value) ? undefined : 'Vui lòng nhập email';
+            return regex.test(value) ? undefined : 'Email không phù hợp';
         }
     }
 }

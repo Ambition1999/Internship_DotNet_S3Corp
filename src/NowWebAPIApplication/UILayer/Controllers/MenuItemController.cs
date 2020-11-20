@@ -124,10 +124,12 @@ namespace UILayer.Controllers
             orderDetail.RestaurantName = dtoRestaurantInfo.RestaurantName;
             string restaurantAddress = dtoRestaurantInfo.Address + ", " + dtoRestaurantInfo.WardType + " " + dtoRestaurantInfo.WardName + ", " + dtoRestaurantInfo.DisctrictType + " " + dtoRestaurantInfo.DisctrictName + ", " + dtoRestaurantInfo.ProvinceName;
             orderDetail.RestaurantAddress = restaurantAddress;
-            UserLogin userLogin = (UserLogin)Session["UserLogin"];
-            orderDetail.UserId = userLogin.UserId;
-            orderDetail.UserName = userLogin.UserName;
-
+            if(Session["UserLogin"] != null)
+            {
+                UserLogin userLogin = (UserLogin)Session["UserLogin"];
+                orderDetail.UserId = userLogin.UserId;
+                orderDetail.UserName = userLogin.UserName;
+            }
             return PartialView("~/Views/RestaurantView/OrderModal.cshtml", orderDetail);
         }
 

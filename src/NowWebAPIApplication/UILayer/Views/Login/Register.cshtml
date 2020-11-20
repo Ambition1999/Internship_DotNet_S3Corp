@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="~/Content/CSSFile/Now_SignUpPageCSS.css">
 
 <div class="title">
-    <h2><span>Create Acccount</span></h2>
+    <h2><span>Tạo tài khoản mới</span></h2>
 </div>
 <div class="login-form" >
     @using (Html.BeginForm("RegisterAccount", "User", FormMethod.Post, new { id = "form-1"}))
@@ -17,35 +17,35 @@
         <div class="form-container">
             <div class="field-group">
                 <div class="input-group">
-                    <span class="name">Name:</span>
+                    <span class="name">Tên người dùng:</span>
                     @Html.TextBoxFor(model => model.Name, new { id = "name", name = "name", placeHolder = "Name", @class = " input" })
                     <span class="form-message"></span>
                 </div>
             </div>
             <div class="field-group">
                 <div class="input-group">
-                    <span class="username">Username:</span>
+                    <span class="username">Tên đăng nhập:</span>
                     @Html.TextBoxFor(model => model.Username, new { id = "username", name = "username", placeHolder = "Username", @class = " input" })
                     <span class="form-message"></span>
                 </div>
             </div>
             <div class="field-group">
                 <div class="input-group">
-                    <span class="password">Password:</span>
+                    <span class="password">Mật khẩu:</span>
                     @Html.PasswordFor(model => model.Password, new { id = "password", name = "password", placeHolder = "Password", @class = " input" })
                     <span class="form-message"></span>
                 </div>
             </div>
             <div class="field-group">
                     <div class="input-group">
-                        <span class="confirm-password">Confirm Password:</span>
+                        <span class="confirm-password">Mật khẩu nhập lại:</span>
                         @Html.PasswordFor(model => model.Password, new { id = "confirm-password", name = "confirm-password", placeHolder = "Confirm Password", @class = " input" })
                         <span class="form-message"></span>
                     </div>
                 </div>
             <div class="field-group">
                 <div class="input-group">
-                    <span class="gender">Gender:</span>
+                    <span class="gender">Giới tính:</span>
                     <div class="gender-radio">
                         <div class="gender-box">
                             @Html.RadioButtonFor(model => model.Gender, "Male", new { @class = "input" }) Nam
@@ -59,19 +59,19 @@
             </div>
             <div class="field-group">
                 <div class="input-group">
-                    <span class="Email">Email:</span>
+                    <span class="Email">Địa chỉ Email:</span>
                     @Html.TextBoxFor(model => model.Email, new { id = "email", name = "email", placeHolder = "Email Address", @class = " input" })
                     <span class="form-message"></span>
                 </div>
             </div>
             <div class="field-group">
                 <div class="input-group">
-                    <span class="phone-number">Phone:</span>
+                    <span class="phone-number">Số điện thoại:</span>
                     @Html.TextBoxFor(model => model.Phone, new { id = "phone", name = "phone",placeHolder = "Phone Number", @class = " input" })
                     <span class="form-message"></span>
                 </div>
             </div>
-            <button class="btn btn-submit form-submit" type="submit">Create</button>
+            <button class="btn btn-submit form-submit" type="submit">Tạo</button>
         </div>
     }
 </div>
@@ -81,29 +81,24 @@
         form: '#form-1',
         errorSelector: '.form-message',
         rules: [
-            Validator.isRequired('#name'),
-            Validator.isRequired('#username'),
-            Validator.isRequired('#password'),
-            //Validator.minLength('#password', 6, 10, "Mật khẩu phải chứa từ 6 đến 10 kí tự"),
-            Validator.isRequired('#confirm-password'),
+            Validator.isRequired('#name',"Vui lòng nhập tên người dùng"),
+            Validator.isRequired('#username',"Vui lòng nhập tên đăng nhập"),
+            Validator.isRequired('#password', "Vui lòng nhập mật khẩu"),
+            Validator.minLength('#password', 6, 10, "Mật khẩu phải chứa từ 6 đến 10 kí tự"),
+            Validator.isRequired('#confirm-password',"Vui lòng nhập mật khẩu nhập lại"),
             Validator.isConfirmed('#confirm-password', function () {
                 return document.querySelector('#form-1 #password').value;
             }, "Mật khẩu nhập lại không chính xác"),
-            Validator.isRequired('#name'),
+            Validator.isRequired('#email',"Vui lòng nhập Email"),
             Validator.isEmail('#email'),
-            Validator.isRequired('#phone'),
+            Validator.isRequired('#phone', "Vui lòng nhập số điện thoại"),
         ],
-        //onSubmit: function (data) {
-        //    console.log(data);
-        //}
-        //onSubmit: function () {}
     })
 </script>
 <script>
         $.msg = function (text, style) {
-            style = style || 'notice';           //<== default style if it's not set
+            style = style || 'notice';           
 
-            //create message and show it
             $('<div>')
                 .attr('class', style)
                 .css({ "text-align": "center", "font-size": "17px", "color": "#ffff", "padding": "17px" })

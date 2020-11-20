@@ -1,4 +1,5 @@
-﻿@model UILayer.Models.RestaurantDetail
+﻿@using UILayer.Models
+@model UILayer.Models.RestaurantDetail
 
 @{
     ViewBag.Title = "RestaurantDetail";
@@ -173,17 +174,23 @@
                 <button class="btn-order-group">Đặt theo nhóm</button>
                 <div class="create-order">
                     Đơn hàng tạo bởi
-                    <span class="txt-blue">user001</span>
+                    @if (Session["UserLogin"] != null)
+                    {
+                        var userSession = (UserLogin)Session["UserLogin"];
+                        <span class="txt-blue">@userSession.UserName</span>
+                    }
                 </div>
             </div>
             <div>
                 @Html.Action("CreateRestaurantCart", "Restaurant", new { resId = Model.RestaurantInfo.Id });
-
             </div>
         </div>
     </div>
 </div>
+@*@if(Session["UserLogin"] != null)
+{*@
 @Html.Action("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id })
+@*}*@
 
 <script>
     $(document).ready(function () {

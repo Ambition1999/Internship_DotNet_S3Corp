@@ -612,7 +612,7 @@
         });
 
         // Mở modal chi tiết đơn hàng
-        $('.order-cart-detail').click(function(){
+        $('#order-cart-detail').click(function(){
             $('.modal-order-detail').hide();
             $('.order-detail').show(); 
         });
@@ -624,8 +624,10 @@
         });
 
         $('#form-address').submit(function () {
-            var address = $('#ward').val() + $('#district').val() + $('#province').val()
-            $('.added-new-address').val(address);
+            var address = $('#address').val() + ", " + $("#ward option:selected").text() + ", " + $('#district option:selected').text() + ", " + $('#province option:selected').text()
+            console.log(address)
+            $('.added-new-address').text(address);
+            $('.new-address').hide();
             $('.edit-info-order').hide();
             $('.modal-order-detail').show();
         })

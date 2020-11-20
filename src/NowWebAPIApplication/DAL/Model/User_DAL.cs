@@ -99,21 +99,5 @@ namespace DAL.Model
             }  
         }
 
-        public bool InsertUser(User user)
-        {
-            NowFoodDBEntities dbNow = new NowFoodDBEntities();
-            dbNow.Users.Add(user);
-            int result = dbNow.SaveChanges();
-            if (result == 1)
-                return true;
-            return false;
-
-        }
-
-        public void InsertUser2(User user, NowFoodDBEntities context)
-        {
-            context.Users.Add(user);
-        }
-
     }
 }

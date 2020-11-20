@@ -57,6 +57,9 @@
     <Compile Include="EF\KindItem.cs">
       <DependentUpon>DBNow.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\OrderDiscount.cs">
+      <DependentUpon>DBNow.tt</DependentUpon>
+    </Compile>
     <Compile Include="MappingClass\EmployeeInfo.cs" />
     <Compile Include="MappingClass\MenuItemInfo.cs" />
     <Compile Include="MappingClass\RegisterAccount.cs" />

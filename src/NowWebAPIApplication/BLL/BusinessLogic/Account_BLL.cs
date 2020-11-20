@@ -1,4 +1,5 @@
-﻿using DAL.MappingClass;
+﻿using DAL.EF;
+using DAL.MappingClass;
 using DAL.Model;
 using Model.DTO;
 using Model.EF_Mapper;
@@ -32,8 +33,11 @@ namespace BLL.BusinessLogic
         public int InsertUserAccount(DtoRegisterAccount dtoRegisterAccount)
         {
             EntityMapper<DtoRegisterAccount, RegisterAccount> mapObjRegis = new EntityMapper<DtoRegisterAccount, RegisterAccount>();
-            RegisterAccount registerAccountTemp = mapObjRegis.Translate(dtoRegisterAccount); 
-            return account_dal.InsertUserAccount2(registerAccountTemp);
+            RegisterAccount registerAccount = mapObjRegis.Translate(dtoRegisterAccount);
+            //Parse Data from DtoClass to Entity Model
+            User user = ModuleParse.ParseDtoToEFModel.ParseDtoRegisterToUser(registerAccount);
+            UserAccount userAccount = ModuleParse.ParseDtoToEFModel.ParseDtoRegisterToAccount(registerAccount);
+            return account_dal.InsertUserAccount(user,userAccount);
         }
 
         public bool UpdateAccount(DtoUpdateAccount dtoUpdateAccount)
@@ -42,5 +46,7 @@ namespace BLL.BusinessLogic
             UpdateAccount updateAccount = mapObjRegis.Translate(dtoUpdateAccount);
             return account_dal.UpdatePassword(updateAccount);
         }
+
+
     }
 }

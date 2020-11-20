@@ -65,6 +65,7 @@
     <Compile Include="BusinessLogic\Restaurant_BLL.cs" />
     <Compile Include="BusinessLogic\User_BLL.cs" />
     <Compile Include="BusinessLogic\Ward_BLL.cs" />
+    <Compile Include="ModuleParse\ParseDtoToEFModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

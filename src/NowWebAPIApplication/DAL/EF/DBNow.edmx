@@ -158,6 +158,20 @@
           <Property Name="PaymentId" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="smalldatetime" />
           <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiscountId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderDiscount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscountName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDay" Type="smalldatetime" Nullable="false" />
+          <Property Name="ValidFrom" Type="smalldatetime" Nullable="false" />
+          <Property Name="ValidUtil" Type="smalldatetime" Nullable="false" />
+          <Property Name="CouponCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MinimumDiscountValue" Type="float" Nullable="false" />
+          <Property Name="MaximumDiscountValue" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -323,6 +337,18 @@
             </Principal>
             <Dependent Role="MenuItem">
               <PropertyRef Name="KindId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderDiscount">
+          <End Role="OrderDiscount" Type="Self.OrderDiscount" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDiscount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DiscountId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -581,6 +607,7 @@
           <EntitySet Name="KindItem" EntityType="Self.KindItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDiscount" EntityType="Self.OrderDiscount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
@@ -604,6 +631,10 @@
           <AssociationSet Name="FK_MenuItem_KindItem" Association="Self.FK_MenuItem_KindItem">
             <End Role="KindItem" EntitySet="KindItem" />
             <End Role="MenuItem" EntitySet="MenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderDiscount" Association="Self.FK_Order_OrderDiscount">
+            <End Role="OrderDiscount" EntitySet="OrderDiscount" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Province_Country" Association="Self.FK_Province_Country">
             <End Role="Country" EntitySet="Country" />
@@ -859,6 +890,8 @@
           <NavigationProperty Name="OrderItems" Relationship="Self.FK_tblOrderItems_tblOrders" FromRole="Order" ToRole="OrderItem" />
           <NavigationProperty Name="Payment" Relationship="Self.FK_tblOrders_tblPayments" FromRole="Order" ToRole="Payment" />
           <NavigationProperty Name="User" Relationship="Self.FK_tblOrders_tblUsers" FromRole="Order" ToRole="User" />
+          <Property Name="DiscountId" Type="Int32" />
+          <NavigationProperty Name="OrderDiscount" Relationship="NowFoodDBModel.FK_Order_OrderDiscount" FromRole="Order" ToRole="OrderDiscount" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -1364,6 +1397,11 @@
             <End Role="UserAccount" EntitySet="UserAccounts" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="OrderDiscounts" EntityType="NowFoodDBModel.OrderDiscount" />
+          <AssociationSet Name="FK_Order_OrderDiscount" Association="NowFoodDBModel.FK_Order_OrderDiscount">
+            <End Role="OrderDiscount" EntitySet="OrderDiscounts" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="RestaurantType">
           <Key>
@@ -1414,6 +1452,32 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderDiscount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ValidFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ValidUtil" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CouponCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MinimumDiscountValue" Type="Double" Nullable="false" />
+          <Property Name="MaximumDiscountValue" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="NowFoodDBModel.FK_Order_OrderDiscount" FromRole="OrderDiscount" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Order_OrderDiscount">
+          <End Type="NowFoodDBModel.OrderDiscount" Role="OrderDiscount" Multiplicity="0..1" />
+          <End Type="NowFoodDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDiscount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DiscountId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1564,6 +1628,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="NowFoodDBModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="DiscountId" ColumnName="DiscountId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
@@ -1724,6 +1789,20 @@
             <EntityTypeMapping TypeName="NowFoodDBModel.KindItem">
               <MappingFragment StoreEntitySet="KindItem">
                 <ScalarProperty Name="KindName" ColumnName="KindName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDiscounts">
+            <EntityTypeMapping TypeName="NowFoodDBModel.OrderDiscount">
+              <MappingFragment StoreEntitySet="OrderDiscount">
+                <ScalarProperty Name="MaximumDiscountValue" ColumnName="MaximumDiscountValue" />
+                <ScalarProperty Name="MinimumDiscountValue" ColumnName="MinimumDiscountValue" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="ValidUtil" ColumnName="ValidUtil" />
+                <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+                <ScalarProperty Name="CreateDay" ColumnName="CreateDay" />
+                <ScalarProperty Name="DiscountName" ColumnName="DiscountName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

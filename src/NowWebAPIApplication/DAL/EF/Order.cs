@@ -31,10 +31,12 @@ namespace DAL.EF
         public int PaymentId { get; set; }
         public Nullable<System.DateTime> CreateTime { get; set; }
         public string CreateBy { get; set; }
+        public Nullable<int> DiscountId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual Payment Payment { get; set; }
         public virtual User User { get; set; }
+        public virtual OrderDiscount OrderDiscount { get; set; }
     }
 }

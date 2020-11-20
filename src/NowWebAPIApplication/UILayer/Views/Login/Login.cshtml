@@ -19,7 +19,6 @@
         <div class="contact-container facebook">
             <span class="fa fa-mobile"></span>
             Facebook
-            <button class="loginFB" onclick="checkLoginState()">Facebook</button>
         </div>
         <div class="contact-container google">
             <span class="fa fa-mobile"></span>
@@ -62,8 +61,8 @@
             form: '#form-2',
             errorSelector: '.form-message',
             rules: [
-                Validator.isRequired('#username'),
-                Validator.isRequired('#password'),
+                Validator.isRequired('#username',"Vui lòng nhập tên đăng nhập"),
+                Validator.isRequired('#password',"Vui lòng nhập mật khẩu"),
             ]
         })
     </script>
