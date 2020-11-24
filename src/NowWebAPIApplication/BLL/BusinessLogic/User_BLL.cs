@@ -48,5 +48,7 @@ namespace BLL.BusinessLogic
             UserInfo userInfo = mapObj.Translate(dtoUserInfo);
             return user_DAL.UpdateUser(userInfo);
         }
+
+        
     }
 }

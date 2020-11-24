@@ -32,7 +32,7 @@
                     <div class="input-group">
                         <span class="username">Username:</span>
                         <input type="text" placeholder="Username" name="username" id="username">
-                        <span class="form-message"></span>
+                        <span class="form-message" id="form-mesage-username"></span>
                     </div>
                 </div>
                 <div class="field-group">
@@ -86,7 +86,7 @@
                         <span class="form-message"></span>
                     </div>
                 </div>
-                <button class="btn btn-submit form-submit" type="submit">Create</button>
+                <button class="btn btn-submit form-submit" disabled = "true" id="btn-submit" type="submit">Create</button>
             </div>
         </form>
         </div>
@@ -98,6 +98,7 @@
                 rules: [
                     Validator.isRequired('#name'),
                     Validator.isRequired('#username'),
+                    Validator.isExist('#username','https://localhost:44325/api/UserAccount/UserNameIsExist/'),
                     Validator.isRequired('#password'),
                     Validator.minLength('#password',6,10, "Mật khẩu phải chứa từ 6 đến 10 kí tự"),
                     Validator.isRequired('#confirm-password'),
@@ -111,5 +112,38 @@
                 
             })
         </script>
+        <!-- <script>
+            $(function () {  
+                $('#username').on("blur", function () {
+                      
+                    var username = $('#username').val();
+                    if(username.trim())
+                    {
+                        var obj = { username: username };  
+                        AjaxCall('https://localhost:44325/api/UserAccount/UserNameIsExist/'+username,null).done(function (response) {  
+                            if (response === true) {  
+                                $('#form-mesage-username').text("Tên đăng nhập đã được sử dụng, vui lòng chọn tên khác");
+                                $('#form-mesage-username').parent(".input-group").addClass('invalid');
+                            } 
+                            else{
+                                $('#form-mesage-username').text("");
+                                $('#form-mesage-username').parent(".input-group").removeClass("invalid")
+                            } 
+                        }).fail(function (error) {  
+                                alert(error.StatusText);  
+                        });  
+                    }
+                });  
+            });
+
+            function AjaxCall(url, data, type) {  
+                return $.ajax({  
+                    url: url,  
+                    type: type ? type : 'GET',  
+                    data: data,  
+                    contentType: 'application/json'  
+                });  
+            }
+        </script> -->
     </body>
 </html>

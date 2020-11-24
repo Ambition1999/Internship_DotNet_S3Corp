@@ -26,7 +26,7 @@
                 <div class="input-group">
                     <span class="username">Tên đăng nhập:</span>
                     @Html.TextBoxFor(model => model.Username, new { id = "username", name = "username", placeHolder = "Username", @class = " input" })
-                    <span class="form-message"></span>
+                    <span class="form-message" id="form-mesage-username"></span>
                 </div>
             </div>
             <div class="field-group">
@@ -48,7 +48,7 @@
                     <span class="gender">Giới tính:</span>
                     <div class="gender-radio">
                         <div class="gender-box">
-                            @Html.RadioButtonFor(model => model.Gender, "Male", new { @class = "input" }) Nam
+                            @Html.RadioButtonFor(model => model.Gender, "Male", new { @class = "input", Checked = "checked"}) Nam
                         </div>
                         <div class="gender-box">
                             @Html.RadioButtonFor(model => model.Gender, "Female", new { @class = "input" }) Nữ
@@ -71,7 +71,7 @@
                     <span class="form-message"></span>
                 </div>
             </div>
-            <button class="btn btn-submit form-submit" type="submit">Tạo</button>
+            <button class="btn btn-submit form-submit" disabled = "true" id="btn-submit" type="submit">Tạo</button>
         </div>
     }
 </div>
@@ -92,6 +92,7 @@
             Validator.isRequired('#email',"Vui lòng nhập Email"),
             Validator.isEmail('#email'),
             Validator.isRequired('#phone', "Vui lòng nhập số điện thoại"),
+            Validator.isPhoneNumber('#phone'),
         ],
     })
 </script>
@@ -116,4 +117,38 @@
         if (message != null && message != "" && messageColor != null && messageColor != "") {
             $.msg(message, 'bg-' + messageColor)
         }
+</script>
+
+<script>
+    $(function () {
+        $('#username').on("blur", function () {
+
+            var username = $('#username').val();
+            if (username.trim()) {
+                var obj = { username: username };
+                //Call API Check account is Exist
+                AjaxCall('https://localhost:44325/api/UserAccount/UserNameIsExist/' + username, null).done(function (response) {
+                    if (response === true) {
+                        $('#form-mesage-username').text("Tên đăng nhập đã được sử dụng, vui lòng chọn tên khác");
+                        $('#form-mesage-username').parent(".input-group").addClass('invalid');
+                    }
+                    else {
+                        $('#form-mesage-username').text("");
+                        $('#form-mesage-username').parent(".input-group").removeClass("invalid")
+                    }
+                }).fail(function (error) {
+                    alert(error.StatusText);
+                });
+            }
+        });
+    });
+
+    function AjaxCall(url, data, type) {
+        return $.ajax({
+            url: url,
+            type: type ? type : 'GET',
+            data: data,
+            contentType: 'application/json'
+        });
+    }
 </script>

@@ -32,7 +32,7 @@ namespace UILayer.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
-            return View("~/Views/MainPage/MainPage.cshtml");
+            return RedirectToAction("Login","User");
         }
 
         public ActionResult Register()

@@ -17,11 +17,11 @@
             Số điện thoại
         </div>
         <div class="contact-container facebook">
-            <span class="fa fa-mobile"></span>
+            <span class="fa fa-facebook-official"></span>
             Facebook
         </div>
         <div class="contact-container google">
-            <span class="fa fa-mobile"></span>
+            <span class="fa fa-google-plus"></span>
             Google
         </div>
     </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="login-option">
                 <input type="checkbox" id="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>
-                <a href="#">Quên mật khẩu?</a>
+                <a href="@Url.Action("SendEmail", "User")">Quên mật khẩu?</a>
             </div>
             <button class="btn btn-primary form-submit" type="submit">Đăng nhập</button>
             <a class="register-link" href="@Url.Action("Register", "User")">Chưa có tài khoản?</a>

@@ -30,6 +30,11 @@ namespace BLL.BusinessLogic
             return boolResult;
         }
 
+        public bool UserNameIsExitst(string username)
+        {
+            return account_dal.UserNameIsExist(username);
+        }
+
         public int InsertUserAccount(DtoRegisterAccount dtoRegisterAccount)
         {
             EntityMapper<DtoRegisterAccount, RegisterAccount> mapObjRegis = new EntityMapper<DtoRegisterAccount, RegisterAccount>();

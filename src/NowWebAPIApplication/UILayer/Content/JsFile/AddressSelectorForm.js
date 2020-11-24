@@ -1,3 +1,5 @@
+
+//Function to loaddata to Select Option
 $(function () {  
 
     AjaxCall('https://localhost:44325/api/Province/GetAllProvince/', null).done(function (response) {  

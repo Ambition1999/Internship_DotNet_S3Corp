@@ -26,6 +26,13 @@ namespace APILayer.Controllers
         }
 
         [HttpGet]
+        [Route("UserNameIsExist/{username}")]
+        public bool UserNameIsExist(string username)
+        {
+            return (account_BLL.UserNameIsExitst(username));
+        }
+
+        [HttpGet]
         [Route("CheckAdminAccount/{username}/{password}")]
         public JsonResult<BoolResult> CheckAdminAccount(string username, string password)
         {
