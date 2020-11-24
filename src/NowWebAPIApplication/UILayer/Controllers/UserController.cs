@@ -107,9 +107,6 @@ namespace UILayer.Controllers
             if (resultAccount || resultUser)
                 return RedirectToAction("UserInfomation", "User");
             return View("~/Views/Login/MainPage.cshtml");
-
-
-
         }
 
         [HttpPost]

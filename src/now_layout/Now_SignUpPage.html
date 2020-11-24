@@ -98,7 +98,7 @@
                 rules: [
                     Validator.isRequired('#name'),
                     Validator.isRequired('#username'),
-                    Validator.isExist('#username','https://localhost:44325/api/UserAccount/UserNameIsExist/'),
+                    //Validator.isExist('#username','https://localhost:44325/api/UserAccount/UserNameIsExist/'),
                     Validator.isRequired('#password'),
                     Validator.minLength('#password',6,10, "Mật khẩu phải chứa từ 6 đến 10 kí tự"),
                     Validator.isRequired('#confirm-password'),
@@ -112,7 +112,7 @@
                 
             })
         </script>
-        <!-- <script>
+        <script>
             $(function () {  
                 $('#username').on("blur", function () {
                       
@@ -144,6 +144,6 @@
                     contentType: 'application/json'  
                 });  
             }
-        </script> -->
+        </script>
     </body>
 </html>
