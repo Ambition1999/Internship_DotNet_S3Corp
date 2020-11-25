@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Net.Http.Headers;
 using System.Web.Http.Cors;
+using Microsoft.Owin.Security.OAuth;
 
 namespace APILayer
 {
@@ -11,6 +12,10 @@ namespace APILayer
     {
         public static void Register(HttpConfiguration config)
         {
+            // Web API configuration and services   
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
             // Web API configuration and services
             //config.EnableCors();
             // Web API routes

@@ -9,6 +9,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
 using System.Web.Http.Results;
 
+using System.Security.Claims;
+using System.Web;
+
 namespace APILayer.Controllers
 {
     [RoutePrefix("api/UserAccount")]
@@ -54,5 +57,48 @@ namespace APILayer.Controllers
             return account_BLL.UpdateAccount(dtoUpdateAccount);
         }
 
+
+        
+
+        //Test token
+        [HttpPost]
+        [Route("GetName1/{token}/")]
+        public String GetName1(string token)
+        {
+            Request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            if (User.Identity.IsAuthenticated)
+            {
+                var identity = User.Identity as ClaimsIdentity;
+                
+                if (identity != null)
+                {
+                    IEnumerable<Claim> claims = identity.Claims;
+                }
+                return "Valid";
+            }
+            else
+            {
+                return "Invalid";
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("GetName2")]
+        public Object GetName2()
+        {
+            var identity = User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                IEnumerable<Claim> claims = identity.Claims;
+                var name = claims.Where(p => p.Type == "name").FirstOrDefault()?.Value;
+                return new
+                {
+                    data = name
+                };
+
+            }
+            return null;
+        }
     }
 }

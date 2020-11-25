@@ -174,6 +174,8 @@ namespace UILayer.Controllers
                     userLogin.UserName = dtoUserInfo.UserName;
                     userLogin.UserId = dtoUserInfo.UserId;
                     Session["UserLogin"] = userLogin;
+                    HttpCookie cookie = new HttpCookie("token", GetToken());
+                    Response.Cookies.Add(cookie);
                     return View("~/Views/MainPage/MainPage.cshtml");
                 }
                 else
@@ -189,6 +191,15 @@ namespace UILayer.Controllers
                 TempData["UserLoginMessageColor"] = "danger";
                 return View("~/Views/Login/Login.cshtml");
             }
+        }
+
+        public string GetToken()
+        {
+            ServiceRepository service = new ServiceRepository();
+            HttpResponseMessage responseCheckAccount = service.GetResponse("/api/JWT/GetToken/");
+            responseCheckAccount.EnsureSuccessStatusCode();
+
+            return responseCheckAccount.Content.ReadAsAsync<string>().Result;
         }
     }
 }
