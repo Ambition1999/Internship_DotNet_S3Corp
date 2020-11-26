@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="user-profile-update">
-                @using (Html.BeginForm("UpdatUserInfo", "User", FormMethod.Post, new {id = "form-1"} ))
+                @using (Html.BeginForm("UpdatUserInfo", "User", FormMethod.Post, new { id = "form-1" }))
                 {
 
                     <div class="title-user">Thay đổi thông tin</div>
@@ -185,30 +185,53 @@
 
     </script>
 
-    @*<script src="~/Content/JsFile/ValidateForm.js"></script>
     <script>
-        Validator({
-            form: '#form-1',
-            errorSelector: '.form-message',
-            rules: [
-                $('input').each(function () {
-                    if ($(this).css("display") != "none")
-                        if ($(this).attr("id") === "email")
-                            Validator.isEmail('#email')
-                }),
-                Validator.isRequired('#old-password'),
-                Validator.isRequired('#password'),
-                Validator.isRequired('#re-password'),
-                Validator.isConfirmed('#re-password', function () {
-                    return document.querySelector('#form-1 #password').value;
-                }, "Mật khẩu nhập lại không chính xác"),
-            ],
-            //onSubmit: function (data) {
-            //    console.log(data);
-            //}
-            //onSubmit: function () {}
-        })
-    </script>*@
+        $.msg = function (text, style) {
+            style = style || 'notice';
+
+            $('<div>')
+                .attr('class', style)
+                .css({ "text-align": "center", "font-size": "17px", "color": "#ffff", "padding": "17px" })
+                .html(text)
+                .fadeIn('fast')
+                .insertBefore($('.account-container'))
+                .animate({ opacity: 1.0 }, 4000)
+                .fadeOut('slow', function () {
+                    $(this).remove();
+                });
+        };
+
+        var message = '@TempData["UpdateInfoMessage"]';
+        var messageColor = '@TempData["UpdateInfoMessageColor"]';
+        if (message != null && message != "" && messageColor != null && messageColor != "") {
+            $.msg(message, 'bg-' + messageColor)
+        }
+    </script>
+
+    @*<script src="~/Content/JsFile/ValidateForm.js"></script>
+        <script>
+            Validator({
+                form: '#form-1',
+                errorSelector: '.form-message',
+                rules: [
+                    $('input').each(function () {
+                        if ($(this).css("display") != "none")
+                            if ($(this).attr("id") === "email")
+                                Validator.isEmail('#email')
+                    }),
+                    Validator.isRequired('#old-password'),
+                    Validator.isRequired('#password'),
+                    Validator.isRequired('#re-password'),
+                    Validator.isConfirmed('#re-password', function () {
+                        return document.querySelector('#form-1 #password').value;
+                    }, "Mật khẩu nhập lại không chính xác"),
+                ],
+                //onSubmit: function (data) {
+                //    console.log(data);
+                //}
+                //onSubmit: function () {}
+            })
+        </script>*@
 
 </div>
 

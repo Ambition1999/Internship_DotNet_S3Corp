@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using BLL.BusinessLogic;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,34 +13,34 @@ using System.Web.Http;
 
 namespace APILayer.JWT
 {
+    [RoutePrefix("api/Jwt")]
     public class JWTController : ApiController
     {
+
+        Account_BLL account_BLL = new Account_BLL();
+        
         [HttpGet]
-        public string GetToken()
+        [Route("Validate")]
+        public string Validate(string token,string username)
         {
-            string key = "my_secret_key_12345"; //Secret key which will be used later during validation    
-            var issuer = "https://localhost:44325";  //normally this will be your site URL    
-
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            //Create a List of Claims, Keep claims name short    
-            var permClaims = new List<Claim>();
-            permClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            permClaims.Add(new Claim("valid", "1"));
-            permClaims.Add(new Claim("username", "toanle"));
-            permClaims.Add(new Claim("name", "Chi Toan"));
-
-            //Create Security Token object by giving required parameters    
-            var token = new JwtSecurityToken(issuer, //Issure    
-                            issuer,  //Audience    
-                            permClaims,
-                            expires: DateTime.Now.AddDays(1),
-                            signingCredentials: credentials);
-            var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
-            
-            
-            return jwt_token;
+            if (account_BLL.UserNameIsExitst(username)) return "Invalid User";
+            string tokenUsername = TokenManager.ValidateToken(token);
+            if (username.Equals(tokenUsername))
+            {
+                return "Valid token";
+            }
+            else
+                return "Invalid token";
         }
+
+        [HttpGet]
+        [Route("GetToken/{username}")]
+        public string GetToken(string username)
+        {
+            return TokenManager.GenerateToken(username);
+        }
+
+
+
     }
 }

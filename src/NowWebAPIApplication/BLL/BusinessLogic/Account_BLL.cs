@@ -30,6 +30,19 @@ namespace BLL.BusinessLogic
             return boolResult;
         }
 
+        public DtoAccountInfo GetAccountInfo(string username)
+        {
+            EntityMapper<AccountInfo, DtoAccountInfo> mapObj = new EntityMapper<AccountInfo, DtoAccountInfo>();
+            if(account_dal.GetAccountInfo(username) != null)
+            {
+                AccountInfo accountInfo = account_dal.GetAccountInfo(username);
+                DtoAccountInfo dtoAccountInfo = mapObj.Translate(accountInfo);
+                return dtoAccountInfo;
+            }
+            return null;
+               
+        }
+
         public bool UserNameIsExitst(string username)
         {
             return account_dal.UserNameIsExist(username);

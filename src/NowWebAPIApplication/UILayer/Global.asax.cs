@@ -16,6 +16,8 @@ namespace UILayer
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //Log4net config
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }

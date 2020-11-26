@@ -16,6 +16,7 @@ namespace DAL.Model
         {
             var userInfos = from user in db.Users
                             join user_acc in db.UserAccounts on user.UserName equals user_acc.UserName
+                            join acc_role in db.AccountRoles on user_acc.Role equals acc_role.Id
                             select new UserInfo
                             {
                                 UserId = user.Id,
@@ -25,7 +26,7 @@ namespace DAL.Model
                                 Phone = user.Phone,
                                 Gender = user.Gender,
                                 Status = user_acc.Status,
-                                RoleName = "User",
+                                RoleName = acc_role.RoleName,
                                 RegisterAt = user.RegisterAt
                            };
             return userInfos.ToList();
@@ -35,6 +36,7 @@ namespace DAL.Model
         {
             var userInfo = from user in db.Users
                            join user_acc in db.UserAccounts on user.UserName equals user_acc.UserName
+                           join acc_role in db.AccountRoles on user_acc.Role equals acc_role.Id
                            where user.UserName == userName
                            select new UserInfo
                            {
@@ -45,7 +47,7 @@ namespace DAL.Model
                                Phone = user.Phone,
                                Gender = user.Gender,
                                Status = user_acc.Status,
-                               RoleName = "User"
+                               RoleName = acc_role.RoleName
                            };
             return userInfo.FirstOrDefault();
         }
@@ -54,6 +56,7 @@ namespace DAL.Model
         {
             var userInfo = from user in db.Users
                            join user_acc in db.UserAccounts on user.UserName equals user_acc.UserName
+                           join acc_role in db.AccountRoles on user_acc.Role equals acc_role.Id
                            where user.Id == userId
                            select new UserInfo
                            {
@@ -64,7 +67,7 @@ namespace DAL.Model
                                Phone = user.Phone,
                                Gender = user.Gender,
                                Status = user_acc.Status,
-                               RoleName = "User"
+                               RoleName = acc_role.RoleName
                            };
             return userInfo.FirstOrDefault();
         }

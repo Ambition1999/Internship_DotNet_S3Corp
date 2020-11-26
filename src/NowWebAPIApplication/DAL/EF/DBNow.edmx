@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="NowFoodDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="Id" />
@@ -282,6 +290,7 @@
           <Property Name="UpdateTime" Type="smalldatetime" />
           <Property Name="CreateBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserPermission">
           <Key>
@@ -582,6 +591,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserAccount_AccountRole">
+          <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="1" />
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ward_District">
           <End Role="District" Type="Self.District" Multiplicity="1" />
           <End Role="Ward" Type="Self.Ward" Multiplicity="*" />
@@ -595,6 +616,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="NowFoodDBModelStoreContainer">
+          <EntitySet Name="AccountRole" EntityType="Self.AccountRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BookingItem" EntityType="Self.BookingItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
@@ -711,6 +733,10 @@
           <AssociationSet Name="FK_User_UserAccount" Association="Self.FK_User_UserAccount">
             <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_AccountRole" Association="Self.FK_UserAccount_AccountRole">
+            <End Role="AccountRole" EntitySet="AccountRole" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_Ward_District" Association="Self.FK_Ward_District">
             <End Role="District" EntitySet="District" />
@@ -1012,6 +1038,8 @@
           <NavigationProperty Name="Employees" Relationship="Self.FK_tblEmployees_tblEmployees" FromRole="UserAccount" ToRole="Employee" />
           <NavigationProperty Name="UserPermissions" Relationship="Self.FK_tblUserPermission_tblUserPermission" FromRole="UserAccount" ToRole="UserPermission" />
           <NavigationProperty Name="Users" Relationship="NowFoodDBModel.FK_User_UserAccount" FromRole="UserAccount" ToRole="User" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountRole" Relationship="NowFoodDBModel.FK_UserAccount_AccountRole" FromRole="UserAccount" ToRole="AccountRole" />
         </EntityType>
         <EntityType Name="UserPermission">
           <Key>
@@ -1402,6 +1430,11 @@
             <End Role="OrderDiscount" EntitySet="OrderDiscounts" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <EntitySet Name="AccountRoles" EntityType="NowFoodDBModel.AccountRole" />
+          <AssociationSet Name="FK_UserAccount_AccountRole" Association="NowFoodDBModel.FK_UserAccount_AccountRole">
+            <End Role="AccountRole" EntitySet="AccountRoles" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="RestaurantType">
           <Key>
@@ -1478,6 +1511,27 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="DiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AccountRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserAccounts" Relationship="NowFoodDBModel.FK_UserAccount_AccountRole" FromRole="AccountRole" ToRole="UserAccount" />
+        </EntityType>
+        <Association Name="FK_UserAccount_AccountRole">
+          <End Type="NowFoodDBModel.AccountRole" Role="AccountRole" Multiplicity="1" />
+          <End Type="NowFoodDBModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="Role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1743,6 +1797,7 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="NowFoodDBModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="FailedPasswordCount" ColumnName="FailedPasswordCount" />
@@ -1803,6 +1858,15 @@
                 <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
                 <ScalarProperty Name="CreateDay" ColumnName="CreateDay" />
                 <ScalarProperty Name="DiscountName" ColumnName="DiscountName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountRoles">
+            <EntityTypeMapping TypeName="NowFoodDBModel.AccountRole">
+              <MappingFragment StoreEntitySet="AccountRole">
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -11,6 +11,7 @@ using System.Web.Http.Results;
 
 using System.Security.Claims;
 using System.Web;
+using APILayer.JWT;
 
 namespace APILayer.Controllers
 {
@@ -57,48 +58,21 @@ namespace APILayer.Controllers
             return account_BLL.UpdateAccount(dtoUpdateAccount);
         }
 
-
-        
-
-        //Test token
-        [HttpPost]
-        [Route("GetName1/{token}/")]
-        public String GetName1(string token)
+        [HttpPut]
+        [Route("UpdateAccount2/{token}/{username}/")]
+        public int UpdateAccount2(string token,string username,DtoUpdateAccount dtoUpdateAccount)
         {
-            Request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-            if (User.Identity.IsAuthenticated)
+            if (!account_BLL.UserNameIsExitst(username)) return -2; //User name is not exist
+            string tokenUsername = TokenManager.ValidateToken(token);
+            if (username.Equals(tokenUsername))
             {
-                var identity = User.Identity as ClaimsIdentity;
-                
-                if (identity != null)
-                {
-                    IEnumerable<Claim> claims = identity.Claims;
-                }
-                return "Valid";
+                if (account_BLL.UpdateAccount(dtoUpdateAccount))
+                    return 1; //Update success
+                return -1; //Failed to update
             }
             else
-            {
-                return "Invalid";
-            }
+                return -3; //Invalid token
         }
 
-        [Authorize]
-        [HttpPost]
-        [Route("GetName2")]
-        public Object GetName2()
-        {
-            var identity = User.Identity as ClaimsIdentity;
-            if (identity != null)
-            {
-                IEnumerable<Claim> claims = identity.Claims;
-                var name = claims.Where(p => p.Type == "name").FirstOrDefault()?.Value;
-                return new
-                {
-                    data = name
-                };
-
-            }
-            return null;
-        }
     }
 }

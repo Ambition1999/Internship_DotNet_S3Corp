@@ -45,6 +45,24 @@ namespace DAL.Model
             return false;
         }
 
+        public AccountInfo GetAccountInfo(string username)
+        {
+            if (UserNameIsExist(username))
+            {
+                var accountInfo = from account in db.UserAccounts
+                                  join role in db.AccountRoles on account.Role equals role.Id
+                                  where account.UserName == username
+                                  select new AccountInfo()
+                                  {
+                                      UserName = account.UserName,
+                                      CreateBy = account.CreateBy,
+                                      Role = role.RoleName,
+                                      CreateTime = account.CreateTime
+                                  };
+                return accountInfo.FirstOrDefault();
+            }
+            return null;
+        }
 
         public int InsertUserAccount(User user,UserAccount userAccount)
         {
@@ -62,7 +80,7 @@ namespace DAL.Model
                         result = context.SaveChanges();
                         transaction.Commit();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         transaction.Rollback();
                         result = -2;
@@ -92,6 +110,7 @@ namespace DAL.Model
                         account.Password = EncryptDecrypt.Encrypt(updateAccount.NewPassword);
                         account.UpdateBy = "User";
                         account.UpdateTime = DateTime.Now;
+                        account.Role = 1;
 
                         result = dbNow.SaveChanges();
                         transaction.Commit();

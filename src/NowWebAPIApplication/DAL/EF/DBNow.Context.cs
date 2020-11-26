@@ -50,5 +50,6 @@ namespace DAL.EF
         public virtual DbSet<RestaurantType> RestaurantTypes { get; set; }
         public virtual DbSet<KindItem> KindItems { get; set; }
         public virtual DbSet<OrderDiscount> OrderDiscounts { get; set; }
+        public virtual DbSet<AccountRole> AccountRoles { get; set; }
     }
 }

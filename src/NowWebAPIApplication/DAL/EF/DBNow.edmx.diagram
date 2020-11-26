@@ -54,6 +54,8 @@
         <AssociationConnector Association="NowFoodDBModel.FK_User_UserAccount" />
         <EntityTypeShape EntityType="NowFoodDBModel.OrderDiscount" Width="1.5" PointX="5.375" PointY="1" />
         <AssociationConnector Association="NowFoodDBModel.FK_Order_OrderDiscount" />
+        <EntityTypeShape EntityType="NowFoodDBModel.AccountRole" Width="1.5" PointX="14.375" PointY="0.875" />
+        <AssociationConnector Association="NowFoodDBModel.FK_UserAccount_AccountRole" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

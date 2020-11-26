@@ -30,6 +30,7 @@ namespace DAL.EF
         public Nullable<System.DateTime> UpdateTime { get; set; }
         public string CreateBy { get; set; }
         public string UpdateBy { get; set; }
+        public int Role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
@@ -37,5 +38,6 @@ namespace DAL.EF
         public virtual ICollection<UserPermission> UserPermissions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
+        public virtual AccountRole AccountRole { get; set; }
     }
 }

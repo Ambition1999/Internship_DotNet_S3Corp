@@ -48,6 +48,9 @@ namespace Model.EF_Mapper
 
             Mapper.CreateMap<DtoProvince, Province>();
             Mapper.CreateMap<Province, DtoProvince>();
+
+            Mapper.CreateMap<DtoAccountInfo, AccountInfo>();
+            Mapper.CreateMap<AccountInfo, DtoAccountInfo>();
         }
 
 
