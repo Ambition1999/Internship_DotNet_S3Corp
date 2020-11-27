@@ -189,7 +189,7 @@
 </div>
 @*@if(Session["UserLogin"] != null)
 {*@
-@Html.Action("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id })
+    @Html.Action("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id });
 @*}*@
 
 <script>

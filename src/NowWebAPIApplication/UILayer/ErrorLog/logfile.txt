@@ -1,13 +1,6 @@
-2020-11-26 16:55:52,039 [6] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check Username
-2020-11-26 16:55:52,064 [6] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check User Account
-2020-11-26 16:55:54,447 [6] INFO  UILayer.Controllers.UserController [(null)] - Success to res API: GetUserInfoById
-2020-11-26 16:56:02,370 [6] ERROR UILayer.Controllers.UserController [(null)] - Error to rest Update User Info API
-System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
-   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
-   at UILayer.Controllers.UserController.UpdatUserInfo() in C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\UILayer\Controllers\UserController.cs:line 142
-2020-11-26 16:57:31,966 [6] ERROR UILayer.Controllers.UserController [(null)] - Fail to Update User Info
-2020-11-26 16:57:43,061 [6] ERROR UILayer.Controllers.UserController [(null)] - Error to rest Update User Info API
-System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
-   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
-   at UILayer.Controllers.UserController.UpdatUserInfo() in C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\UILayer\Controllers\UserController.cs:line 142
-2020-11-26 16:59:00,283 [6] ERROR UILayer.Controllers.UserController [(null)] - Fail to Update User Info
+2020-11-27 17:11:52,629 [10] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check Username
+2020-11-27 17:11:52,651 [10] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check User Account
+2020-11-27 17:17:09,648 [8] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check Username
+2020-11-27 17:17:09,670 [8] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check User Account
+2020-11-27 17:35:38,480 [6] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check Username
+2020-11-27 17:35:38,503 [6] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check User Account

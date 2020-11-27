@@ -67,7 +67,7 @@ namespace UILayer.Controllers
                 restCart.TotalPrice = restCart.ItemCarts.Sum(t => t.SubTotal);
                 restCart.TotalAmount = restCart.ItemCarts.Sum(t => t.Quantity);
 
-                //return ("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
+                //return  PartialView("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
                 //return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml");
                 return RedirectToAction("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new { restaurantId = restCart.ResId });
             }
