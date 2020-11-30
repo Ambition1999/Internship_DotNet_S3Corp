@@ -119,7 +119,7 @@ namespace UILayer.Controllers
             ServiceRepository serviceObject = new ServiceRepository();
             //Get Restaurant Infomation
             HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoById/"+ restaurantId);
-            response.EnsureSuccessStatusCode();
+            //response.EnsureSuccessStatusCode();
             DtoRestaurantInfo restaurantInfo = response.Content.ReadAsAsync<DtoRestaurantInfo>().Result;
 
             //Get Menu Item of Restaurant
