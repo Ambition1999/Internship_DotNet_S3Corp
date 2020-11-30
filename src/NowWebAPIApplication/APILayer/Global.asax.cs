@@ -12,6 +12,8 @@ namespace APILayer
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            //Log4net config
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }

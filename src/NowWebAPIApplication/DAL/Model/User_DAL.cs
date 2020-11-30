@@ -90,7 +90,7 @@ namespace DAL.Model
                         result = dbNow.SaveChanges();
                         transaction.Commit();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         transaction.Rollback();
                         result = -2;

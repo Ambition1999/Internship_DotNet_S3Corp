@@ -12,6 +12,7 @@ namespace UILayer
     public class Cache<TKey, TValue>
     {
         private Dictionary<TKey, CacheItem<TValue>> _cache = new Dictionary<TKey, CacheItem<TValue>>();
+        
         public void Store(TKey key, TValue value, TimeSpan expiresAfter)
         {
             _cache[key] = new CacheItem<TValue>(value, expiresAfter);
@@ -37,6 +38,12 @@ namespace UILayer
         }
 
         public List<TKey> GetKeysByValue(string value)
+        {
+            var listId = _cache.Where(t => t.Value.Value.ToString().ToLower().Trim().Contains(value.ToLower())).Select(t => t.Key).ToList();
+            return listId;
+        }
+
+        public List<TKey> GetKeysByValue2(string value)
         {
             var listId = _cache.Where(t => t.Value.Value.ToString().ToLower().Trim().Contains(value.ToLower())).Select(t => t.Key).ToList();
             return listId;

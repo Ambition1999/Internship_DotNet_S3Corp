@@ -48,20 +48,27 @@ namespace UILayer.Controllers
             {
                 try
                 {
+                    log.Info("[START] UserController - UserInfomation");
                     UserLogin userLogin = (UserLogin)Session["UserLogin"];
-
+                    log.Info("[START] Request API - GetUserInfoById/" + userLogin.UserId);
                     ServiceRepository service = new ServiceRepository();
                     HttpResponseMessage response = service.GetResponse("/api/User/GetUserInfoById/" + userLogin.UserId);
                     response.EnsureSuccessStatusCode();
                     UserAccountInfo userAccountInfo = new UserAccountInfo();
                     userAccountInfo.UserInfo = response.Content.ReadAsAsync<DtoUserInfo>().Result;
-                    userName = userAccountInfo.UserInfo.UserName;
-                    //Write message to log
-                    log.Info("Success to res API: GetUserInfoById");
+                    if (userAccountInfo.UserInfo != null)
+                    {
+                        log.Info("[END] Request API - GetUserInfoById/" + userLogin.UserId + " [Result: Success][Detail: " + response.StatusCode + "]");
+                    }
+                    else
+                    {
+                        log.Info("[END] Request API - GetUserInfoById/" + userLogin.UserId + " [Result: Failed][Detail: " + response.StatusCode + "]");
+                    }
+                    log.Info("[END] UserController - UserInfomation");
                     return View("~/Views/Login/AccountInfo.cshtml", userAccountInfo);
                 }catch(Exception ex)
                 {
-                    log.Error("Error to rest API: GetUserInfoById ", ex);
+                    log.Error("[ERROR] UserController - UserInfomation get error with message: ", ex);
                     throw;
                 }
             }
@@ -71,6 +78,7 @@ namespace UILayer.Controllers
         [HttpPost]
         public ActionResult UpdatUserInfo()
         {
+            log.Info("[START] UserController - UpdatUserInfo");
             string oldPass = Request["old-password"];
             string newPass = Request["re-password"];
             string email = Request["email"];
@@ -101,17 +109,24 @@ namespace UILayer.Controllers
                     HttpCookie cookie = HttpContext.Request.Cookies.Get("token");
                     string token = cookie.Value.ToString();
 
+                   
                     //Call API Update Account
                     ServiceRepository service = new ServiceRepository();
                     //HttpResponseMessage response = service.PutResponse("/api/UserAccount/UpdateAccount/", userAccountInfo.AccountUpdate);
+                    log.Info("[START] Request API - UpdateAccount2/");
                     HttpResponseMessage response = service.PutResponse("/api/UserAccount/UpdateAccount2/" + token + "/" + userLogin.UserName + "/", userAccountInfo.AccountUpdate);
                     response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
+                    {
                         resultAccountInt = response.Content.ReadAsAsync<int>().Result;
+                        log.Info("[END] Request API - UpdateAccount2/" + " [Result: Success][Detail: " + response.StatusCode + "]");
+                    }
+                    else
+                        log.Info("[END] Request API - UpdateAccount2/" + " [Result: Failed][Detail: " + response.StatusCode + "]");
                 }
             }catch(Exception ex)
             {
-                log.Error("Error to rest Update User Account API", ex);
+                log.Error("[ERROR] UserController - UpdatUserInfo get error with message: ", ex);
                 throw;
             }
 
@@ -137,35 +152,44 @@ namespace UILayer.Controllers
                     string token = cookie.Value.ToString();
                     //Call API update User
                     ServiceRepository service = new ServiceRepository();
-                    HttpResponseMessage response = service.PutResponse("/api/User/UpdateUserWithTokenk/" + token + "/" + userLogin.UserName + "/", userAccountInfo.UserInfo);
+                    log.Info("[START] Request API - UpdateUserWithToken/");
+                    HttpResponseMessage response = service.PutResponse("/api/User/UpdateUserWithToken/" + token + "/" + userLogin.UserName + "/", userAccountInfo.UserInfo);
                     //HttpResponseMessage response = service.PutResponse("/api/User/UpdateUser/", userAccountInfo.UserInfo);
                     response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
+                    {
                         resultUserInt = response.Content.ReadAsAsync<int>().Result;
+                        log.Info("[END] Request API - UpdateUserWithToken/" + " [Result: Success][Detail: " + response.StatusCode + "]");
+                    }
+                    else
+                        log.Info("[END] Request API - UpdateUserWithToken/" + " [Result: Failed][Detail: " + response.StatusCode + "]");
                 }
             }catch(Exception ex)
             {
                 log.Error("Error to rest Update User Info API", ex);
                 //throw;
             }
-                if (resultAccountInt == 1 || resultUserInt == 1)
-                {
-                    TempData["UpdateInfoMessage"] = "Cập nhật thông tin người dùng thành công";
-                    TempData["UpdateInfoMessageColor"] = "success";
+            if (resultAccountInt == 1 || resultUserInt == 1)
+            {
+                //Response Message
+                TempData["UpdateInfoMessage"] = "Cập nhật thông tin người dùng thành công";
+                TempData["UpdateInfoMessageColor"] = "success";
                 log.Info("Success to Update User Info" + userName);
-                }
-                else
-                {
-                    TempData["UpdateInfoMessage"] = "Cập nhật thông tin người dùng thất bại";
-                    TempData["UpdateInfoMessageColor"] = "danger";
-                log.Error("Fail to Update User Info" + userName);
-                }
-                return View("~/Views/Login/AccountInfo.cshtml");
+            }
+            else
+            {
+                TempData["UpdateInfoMessage"] = "Cập nhật thông tin người dùng thất bại";
+                TempData["UpdateInfoMessageColor"] = "danger";
+                log.Error("Failed to Update User Info" + userName);
+            }
+            log.Info("[END] UserController - UserInfomation");
+            return View("~/Views/Login/AccountInfo.cshtml");
         }
 
         [HttpPost]
         public ActionResult RegisterAccount(DtoRegisterAccount dtoRegisterAccount)
         {
+            log.Info("[START] UserController - RegisterAccount");
             if (ModelState.IsValid)
             {
                 if (dtoRegisterAccount != null)
@@ -177,10 +201,20 @@ namespace UILayer.Controllers
                         dtoRegisterAccount.CreateBy = "User";
 
                         ServiceRepository service = new ServiceRepository();
+                        log.Info("[START] Request API - InsertRegisterAccount/");
                         HttpResponseMessage response = service.PostResponse("/api/useraccount/InsertRegisterAccount/", dtoRegisterAccount);
                         response.EnsureSuccessStatusCode();
                         result = response.Content.ReadAsAsync<int>().Result;
-                        log.Info("Success to rest API: Insert Register User Account");
+                        if (response.IsSuccessStatusCode)
+                            log.Info("[END] Request API - InsertRegisterAccount/" + " [Result: Success][Detail: " + response.StatusCode + "]");
+                        else
+                        {
+                            log.Info("[END] Request API - InsertRegisterAccount/" + " [Result: Failed][Detail: " + response.StatusCode + "]");
+                            log.Info("[END] UserController - RegisterAccount [Result: Failed][Detail: Kết nối với máy chủ thất bại]");
+                            TempData["RegisterMessage"] = "Kết nối với máy chủ không thành công, vui lòng thử lại";
+                            TempData["RegisterMessageColor"] = "danger";
+                            return View("~/Views/Login/Login.cshtml");
+                        } 
                     }
                     catch (Exception ex)
                     {
@@ -189,7 +223,7 @@ namespace UILayer.Controllers
                     }
                     if (result >= 1)
                         {
-
+                            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Đăng ký thành công]");
                             TempData["RegisterMessage"] = "Đăng ký thành công";
                             TempData["RegisterMessageColor"] = "success";
                             return View("~/Views/Login/Login.cshtml");
@@ -197,27 +231,30 @@ namespace UILayer.Controllers
 
                         else if (result == -3)
                         {
+                            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Tài khoản đã tồn tại, vui lòng thử lại]");
                             TempData["RegisterMessage"] = "Tài khoản đã tồn tại, vui lòng thử lại";
                             TempData["RegisterMessageColor"] = "warning";
-
                         }
                         else if (result == -2)
                         {
-                            TempData["RegisterMessage"] = "Lỗi Insert dữ liệu, đăng ký không thành công, dữ liệu đã đc rollback";
+                            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Lỗi Insert dữ liệu, đăng ký không thành công]");
+                            TempData["RegisterMessage"] = "Lỗi dữ liệu, đăng ký không thành công";
                             TempData["RegisterMessageColor"] = "danger";
 
                         }
                         else
                         {
+                            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Đăng ký thất bại]");
                             TempData["RegisterMessage"] = "Đăng ký thất bại";
                             TempData["RegisterMessageColor"] = "danger";
                         }
-
-                        return View("~/Views/Login/Register.cshtml");
+                    return View("~/Views/Login/Register.cshtml");
                 }
+                log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Receive Null Paramenter]");
                 return View("~/Views/MainPage/MainPage.cshtml");
             }
-            return View("~/Views/MainPage/MainPage.cshtml");
+            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Model Invalid]");
+            return View("~/Views/MainPage/MainPage.cshtml");  
         }
 
         [HttpPost]

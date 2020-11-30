@@ -1,0 +1,6 @@
+2020-11-30 13:22:40,071 [8] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoByUserName
+2020-11-30 13:22:46,469 [5] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
+2020-11-30 13:23:13,616 [7] INFO  APILayer.Controllers.UserController - [START] UserController - UpdateUserWithToken
+2020-11-30 13:23:13,746 [7] INFO  APILayer.Controllers.UserController - [END] UserController - UpdateUserWithToken [Result: Failed][Detail: Failed to Update]
+2020-11-30 13:23:50,593 [5] INFO  APILayer.Controllers.UserController - [START] UserController - UpdateUserWithToken
+2020-11-30 13:23:50,760 [5] INFO  APILayer.Controllers.UserController - [END] UserController - UpdateUserWithToken [Result: Success][Detail: Success]

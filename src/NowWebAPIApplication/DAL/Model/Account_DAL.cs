@@ -75,7 +75,6 @@ namespace DAL.Model
                     try
                     {
                         context.UserAccounts.Add(userAccount);
-                        result = context.SaveChanges();
                         context.Users.Add(user);
                         result = context.SaveChanges();
                         transaction.Commit();

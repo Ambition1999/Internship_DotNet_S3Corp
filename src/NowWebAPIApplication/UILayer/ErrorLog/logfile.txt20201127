@@ -1,0 +1,6 @@
+2020-11-27 17:11:52,629 [10] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check Username
+2020-11-27 17:11:52,651 [10] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check User Account
+2020-11-27 17:17:09,648 [8] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check Username
+2020-11-27 17:17:09,670 [8] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check User Account
+2020-11-27 17:35:38,480 [6] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check Username
+2020-11-27 17:35:38,503 [6] INFO  UILayer.Controllers.UserController [(null)] - Success to rest API: Check User Account

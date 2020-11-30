@@ -37,6 +37,9 @@ namespace DAL
                                      Status = res.Status,
                                      TypeId = res_type.Id,
                                      Image = res.Image,
+                                     AddressDB = res.Address + ", " + ward.Type + " " + ward.Name
+                                                             + ", " + district.Type + " " + district.Name + ", "
+                                                             + province.Name,
                                      WardName = ward.Name,
                                      WardType = ward.Type,
                                      DisctrictName = district.Name,
@@ -50,7 +53,7 @@ namespace DAL
         public List<RestaurantInfo> GetAllRestaurantInfo()
         {
             var restaurantInfo = from res_type in db.RestaurantTypes
-                                 join res in db.Restaurants.Where(t=>t.Status == (Int16)1) on res_type.Id equals res.TypeId
+                                 join res in db.Restaurants.Where(t => t.Status == (Int16)1) on res_type.Id equals res.TypeId
                                  join ward in db.Wards on res.WardId equals ward.Id
                                  join district in db.Districts on ward.DistrictID equals district.Id
                                  join province in db.Provinces on district.ProvinceId equals province.Id
@@ -64,6 +67,9 @@ namespace DAL
                                      Status = res.Status,
                                      TypeId = res_type.Id,
                                      Image = res.Image,
+                                     AddressDB = res.Address + ", " + ward.Type + " " + ward.Name 
+                                                             + ", " + district.Type + " " + district.Name + ", " 
+                                                             + province.Name,
                                      WardName = ward.Name,
                                      WardType = ward.Type,
                                      DisctrictName = district.Name,
@@ -118,6 +124,9 @@ namespace DAL
                                      Status = res.Status,
                                      TypeId = res_type.Id,
                                      Image = res.Image,
+                                     AddressDB = res.Address + ", " + ward.Type + " " + ward.Name
+                                                             + ", " + district.Type + " " + district.Name + ", "
+                                                             + province.Name,
                                      WardName = ward.Name,
                                      WardType = ward.Type,
                                      DisctrictName = district.Name,

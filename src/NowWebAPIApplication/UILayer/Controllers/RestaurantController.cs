@@ -30,40 +30,82 @@ namespace UILayer.Controllers
             ServiceRepository serviceObject = new ServiceRepository();
             HttpResponseMessage response = serviceObject.GetResponse("api/restaurant/getallrestaurant/");
             response.EnsureSuccessStatusCode();
-            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
-
-            Cache<int, DtoRestaurantInfo> Cache = LoadDataToCache.CacheRestaurant;
-
-            if (Cache == null)
+            if (response.IsSuccessStatusCode)
             {
-                // Load data to Cache
-                LoadDataToCache.LoadAllRestaurantToCache(restaurants);
-                Cache = LoadDataToCache.CacheRestaurant;
-            }
+                List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
 
-            return View("~/Views/MainPage/MainPage.cshtml", restaurants);
+                if(restaurants != null)
+                {
+                    List<Dictionary<int, DtoRestaurantInfo>> RestaurantsCache = LoadDataToCache.RestaurantsCache;
+
+                    if (RestaurantsCache == null)
+                    {
+                        // Load data to Cache
+                        LoadDataToCache.LoadAllRestaurantToCache(restaurants);
+                        RestaurantsCache = LoadDataToCache.RestaurantsCache;
+                    }
+
+                    return View("~/Views/MainPage/MainPage.cshtml", restaurants);
+                }
+                else
+                {
+                    return View("~/Views/RestaurantView/RestaurantEmptyPage.cshtml");
+                }
+            }
+            else
+            {
+                return View("~/Views/RestaurantView/RestaurantEmptyPage.cshtml");
+            }
         }
 
         public ActionResult GetAllRestaurant()
         {
             ServiceRepository serviceObject = new ServiceRepository();
             HttpResponseMessage response = serviceObject.GetResponse("api/restaurant/getallrestaurant/");
-            response.EnsureSuccessStatusCode();
-            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
-            ViewBag.Title = "All Restaurant";
-            return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
+            //response.EnsureSuccessStatusCode();
+            if (response.IsSuccessStatusCode)
+            {
+                List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
+                if(restaurants != null && restaurants.Count != 0)
+                {
+                    ViewBag.Title = "All Restaurant";
+                    return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
+                }
+                TempData["MainPageMessage"] = "Không tìm thấy dữ liệu, vui lòng thử lại";
+                TempData["MainPageMessageColor"] = "warning";
+                return View("~/Views/RestaurantView/RestaurantEmptyPage.cshtml");
+            }
+            else
+            {
+                TempData["MainPageMessage"] = "Lỗi kết nối máy chủ, vui lòng thử lại";
+                TempData["MainPageMessageColor"] = "danger";
+                return Redirect(this.Request.UrlReferrer.ToString());
+            }
+           
         }
 
 
         public ActionResult GetRestaurantByTagName(int kindId)
         {
             ServiceRepository serviceObject = new ServiceRepository();
-            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByKindId/" + kindId);
-            response.EnsureSuccessStatusCode();
-            List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
-            ViewBag.Title = "All Restaurant";
-            return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
-
+            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByKindIdG/" + kindId);
+            //response.EnsureSuccessStatusCode();
+            if (response.IsSuccessStatusCode)
+            {
+                List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
+                if (restaurants != null)
+                {
+                    ViewBag.Title = "All Restaurant";
+                    return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
+                }
+                return View("~/Views/RestaurantView/RestaurantEmptyPage.cshtml");
+            }
+            else
+            {
+                TempData["MainPageMessage"] = "Lỗi kết nối máy chủ, vui lòng thử lại";
+                TempData["MainPageMessageColor"] = "danger";
+                return RedirectToAction("LoadRestaurantCache", "Restaurant");
+            }
         }
 
         public ActionResult GetRestaurantDetailByID()
@@ -99,32 +141,30 @@ namespace UILayer.Controllers
             return View("~/Views/RestaurantView/RestaurantDetail.cshtml", model);
         }
 
-
-
-
         [HttpPost]
         public ActionResult GetRestaurantByName()
         {
             // Get Search String
             string searchInput = Request["txtSearchHome"];
 
-            Cache<int, DtoRestaurantInfo> Cache = LoadDataToCache.CacheRestaurant;
+            //Cache<int, DtoRestaurantInfo> Cache = LoadDataToCache.CacheRestaurant;
+            List<Dictionary<int, DtoRestaurantInfo>> cacheRestaurants = LoadDataToCache.RestaurantsCache;
 
-            if (Cache == null)
+            if (cacheRestaurants == null)
             {
                 // Load data to Cache
                 LoadDataToCache.LoadAllRestaurantToCache();
-                Cache = LoadDataToCache.CacheRestaurant;
+                cacheRestaurants = LoadDataToCache.RestaurantsCache;
             }
 
-            // Need test
-            List<int> listId = Cache.GetKeysByValue(searchInput);
+            //Need optimize and performance
+            List<int> listId = LoadDataToCache.SearchList(cacheRestaurants,searchInput);
 
-            if(listId.Count == 0)
+            if (listId.Count == 0)
             {
                 // Alter message not found
                 ViewBag.SearchMessage = "Không tìm thấy dữ liệu phù hợp";
-                return View("~/Views/RestaurantView/Restaurant.cshtml");
+                return View("~/Views/RestaurantView/RestaurantEmptyPage.cshtml");
             }
 
             // Format ListId to string for passing data to Web API
@@ -135,7 +175,7 @@ namespace UILayer.Controllers
             HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByListId/" + stringId);
             response.EnsureSuccessStatusCode();
             List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
-            
+
             return View("~/Views/RestaurantView/Restaurant.cshtml", restaurants);
         }
 

@@ -38,6 +38,7 @@ namespace BLL.ModuleParse
                 userAccount.Password = EncryptDecrypt.Encrypt(registerAccount.Password);
                 userAccount.FailedPasswordCount = 0;
                 userAccount.Status = 1;
+                userAccount.Role = 1;
                 userAccount.CreateTime = registerAccount.CreateDay;
                 userAccount.CreateBy = registerAccount.CreateBy;
                 return userAccount;

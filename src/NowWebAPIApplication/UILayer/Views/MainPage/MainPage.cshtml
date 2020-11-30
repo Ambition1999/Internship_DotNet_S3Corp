@@ -6,7 +6,7 @@
 }
 
 <div class="now-banner ver_vi" id="now-banner" style="position: fixed; top: 70px;">
-    <div class="container">
+    <div class="container" id="container-main">
         <div class="now-search">
             <div>
                 <h1 class="title">
@@ -639,6 +639,7 @@
     });
 </script>
 
+@* jQuery Event Scroll Main Page *@
 <script>
     $(window).scroll(function () {
         var hT = $('#last-view-more').offset().top,
@@ -653,7 +654,7 @@
     });
 </script>
 
-
+@* js Event Validate Form *@
 <script src="~/Content/JsFile/ValidateForm.js"></script>
 <script>
     Validator({
@@ -663,4 +664,29 @@
             Validator.isRequiredSearch('#txtSearchHome'),
         ],
     })
+</script>
+
+
+@* jQuery Event Show Message *@
+<script>
+        $.msg = function (text, style) {
+            style = style || 'notice';
+
+            $('<div>')
+                .attr('class', style)
+                .css({ "text-align": "center", "font-size": "20px", "color": "#ffff", "padding": "10px", "z-index": "auto" })
+                .html(text)
+                .fadeIn('fast')
+                .insertBefore($('#container-main'))
+                .animate({ opacity: 1.0 }, 4000)
+                .fadeOut('slow', function () {
+                    $(this).remove();
+                });
+        };
+
+        var message = '@TempData["MainPageMessage"]';
+        var messageColor = '@TempData["MainPageMessageColor"]';
+        if (message != null && message != "" && messageColor != null && messageColor != "") {
+            $.msg(message, 'bg-' + messageColor)
+        }
 </script>

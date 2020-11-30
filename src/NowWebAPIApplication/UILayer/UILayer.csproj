@@ -157,6 +157,7 @@
     <Compile Include="CacheDictionary\Cache.cs" />
     <Compile Include="CacheDictionary\CacheItem.cs" />
     <Compile Include="CacheDictionary\LoadDataToCache.cs" />
+    <Compile Include="CacheDictionary\RestaurantCache.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
@@ -315,6 +316,7 @@
     <Content Include="Views\Admin\RestaurantManagement.cshtml" />
     <Content Include="Views\Admin\AdminRestaurantDetail.cshtml" />
     <Content Include="Views\RestaurantView\OrderModal.cshtml" />
+    <Content Include="Views\RestaurantView\RestaurantEmptyPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
