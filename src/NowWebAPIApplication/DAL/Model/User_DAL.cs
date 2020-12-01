@@ -102,5 +102,19 @@ namespace DAL.Model
             }  
         }
 
+        public string EmailIsExist(string email)
+        {
+            NowFoodDBEntities dbNow = new NowFoodDBEntities();
+            var userName = (from user in db.Users
+                            join acc in db.Users on user.UserName equals acc.UserName
+                            where (user.Email == email)
+                            select user).SingleOrDefault();
+            if(userName != null)
+            {
+                return userName.UserName;
+            }
+            return string.Empty;          
+        }
+
     }
 }

@@ -34,6 +34,15 @@ namespace APILayer.Controllers
         }
 
         [HttpGet]
+        [Route("CheckinEmail/{email}")]
+        public string CheckinEmail(string email)
+        {
+            //Log start
+            Log.Info("[START] UserController - EmailIsExist");
+            return (user_BLL.EmailIsExist(email));
+        }
+
+        [HttpGet]
         [Route("GetUserInfoByUserName/{username}")]
         public JsonResult<DtoUserInfo> GetUserInfoByUserName(string username)
         {
@@ -85,5 +94,7 @@ namespace APILayer.Controllers
             }
                 
         }
+
+        
     }
 }

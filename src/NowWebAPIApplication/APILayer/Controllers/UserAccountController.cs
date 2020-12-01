@@ -74,5 +74,12 @@ namespace APILayer.Controllers
                 return -3; //Invalid token
         }
 
+        [HttpGet]
+        [Route("UpdatePassword/{username}/{newpassword}/")]
+        public bool UpdatePassword(string username, string newpassword)
+        {
+            return account_BLL.UpdatePassword(username, newpassword);
+        }
+
     }
 }

@@ -65,6 +65,10 @@ namespace BLL.BusinessLogic
             return account_dal.UpdatePassword(updateAccount);
         }
 
+        public bool UpdatePassword(string username, string password)
+        {
+            return account_dal.ResetPassword(username,password);
+        }
 
     }
 }

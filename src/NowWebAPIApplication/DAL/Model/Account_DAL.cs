@@ -124,5 +124,35 @@ namespace DAL.Model
                 return true;
             return false;
         }
+
+        public bool ResetPassword(string username, string password)
+        {
+            int result = -1;
+            NowFoodDBEntities dbNow = new NowFoodDBEntities();
+            using (var transaction = dbNow.Database.BeginTransaction())
+            {
+                var account = dbNow.UserAccounts.Where(t => t.UserName == username).FirstOrDefault();
+                if (account != null)
+                {
+                    try
+                    {
+                        account.Password = EncryptDecrypt.Encrypt(password);
+                        account.UpdateBy = "User";
+                        account.UpdateTime = DateTime.Now;
+                        account.Role = 1;
+
+                        result = dbNow.SaveChanges();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+            if (result >= 1)
+                return true;
+            return false;
+        }
     }
 }

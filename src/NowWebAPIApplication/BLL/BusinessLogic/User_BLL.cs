@@ -49,6 +49,12 @@ namespace BLL.BusinessLogic
             return user_DAL.UpdateUser(userInfo);
         }
 
-        
+        public string EmailIsExist(string email)
+        {
+            return user_DAL.EmailIsExist(email);
+        }
+
+
+
     }
 }

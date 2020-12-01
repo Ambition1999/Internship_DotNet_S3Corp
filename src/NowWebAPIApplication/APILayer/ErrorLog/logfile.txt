@@ -1,6 +1,10 @@
-2020-11-30 13:22:40,071 [8] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoByUserName
-2020-11-30 13:22:46,469 [5] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
-2020-11-30 13:23:13,616 [7] INFO  APILayer.Controllers.UserController - [START] UserController - UpdateUserWithToken
-2020-11-30 13:23:13,746 [7] INFO  APILayer.Controllers.UserController - [END] UserController - UpdateUserWithToken [Result: Failed][Detail: Failed to Update]
-2020-11-30 13:23:50,593 [5] INFO  APILayer.Controllers.UserController - [START] UserController - UpdateUserWithToken
-2020-11-30 13:23:50,760 [5] INFO  APILayer.Controllers.UserController - [END] UserController - UpdateUserWithToken [Result: Success][Detail: Success]
+2020-12-01 10:43:27,791 [6] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-01 10:44:59,992 [7] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-01 11:20:05,453 [7] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-01 11:21:16,055 [9] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-01 11:23:29,476 [9] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-01 11:27:15,459 [8] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-01 11:30:02,949 [12] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-01 11:37:25,489 [6] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-01 11:38:29,317 [7] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoByUserName
+2020-12-01 11:55:34,891 [6] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
