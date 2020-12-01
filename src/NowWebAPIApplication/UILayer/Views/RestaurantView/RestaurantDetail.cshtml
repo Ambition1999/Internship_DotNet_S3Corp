@@ -110,7 +110,7 @@
                             <div aria-readonly="true" area-label="grid" role="grid" tabindex="0" class="ReactVirtualized_Grid ReactVirtualized_List"
                                  style="box-sizing: border-box; direction: ltr; height: auto; position: relative; width: 558px; overflow: auto; outline: none;">
                                 <div class="ReactVirtualized_Grid_innerScrollContainer list-menu-flex" role="rowgroup"
-                                     style="width: auto; height: 2000px; max-width: 558px; max-height: 9800px; overflow: hidden; position: relative;">
+                                     style="width: auto; height: 1700px; max-width: 558px; max-height: 9800px; overflow: hidden; position: relative;">
                                     <div class="menu-group" id=""
                                          style="height: 58px; left: 0; position: absolute; top: 0; width: 100%;">
 
@@ -140,8 +140,15 @@
                                                                         <div class="col-auto product-price">
                                                                             <div class="current-price">@Html.DisplayFor(model => item.BasePrice)đ</div>
                                                                         </div>
-                                                                        <div class="col-auto adding-food-cart txt-right">
-                                                                            <button class="btn-adding" onclick="location.href='@Url.Action("AddItemToCart","MenuItem", new{ resId = Model.RestaurantInfo.Id, itemId = item.Id, itemName = item.ItemName, price = item.BasePrice})'">+</button>
+                                                                        <div class="col-auto adding-food-cart txt-right div-container-button" id="div-container-button">
+                                                                            @if (Session["UserLogin"] != null)
+                                                                            {
+                                                                                <button id="btn-add-to-cart" class="btn-adding" onclick="location.href='@Url.Action("AddItemToCart","MenuItem", new{ resId = Model.RestaurantInfo.Id, itemId = item.Id, itemName = item.ItemName, price = item.BasePrice})'">+</button>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <button id="btn-add-to-cart" class="btn-adding" disabled="true" onclick="location.href='@Url.Action("AddItemToCart","MenuItem", new{ resId = Model.RestaurantInfo.Id, itemId = item.Id, itemName = item.ItemName, price = item.BasePrice})'">+</button>
+                                                                            }
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -238,5 +245,12 @@
     $('#back-order-detail').click(function () {
         $('.modal-order-detail').show();
         $('.order-detail').hide();
+    });
+
+    // Đóng modal chi tiết đơn hàng
+    $('.div-container-button').mouseover(function () {
+        console.log($('#btn-add-to-cart').attr("disabled"));
+        if ($('#btn-add-to-cart').attr("disabled") == "disabled")
+            alert('Vui lòng đăng nhập để gọi món.');
     });
 </script>

@@ -137,9 +137,9 @@
                 <div class="book-time-order">
                     <input type="text" class="datepicker flatpickr-input active" readonly="readonly">
                     <select name="deliveryTime" id="delivery" class="delivery-time">
-                        <option value="0">value 1</option>
-                        <option value="1">value 2</option>
-                        <option value="2">value 3</option>
+                        <option value="0">16:00</option>
+                        <option value="1">16:10</option>
+                        <option value="2">16:20</option>
                     </select>
                 </div>
                 <div class="list-address-order show-edit-address">
@@ -202,7 +202,7 @@
                 </div>
                 <div class="modal-footer">
                     <button data-dismiss="modal-content" aria-hidden="true" type="button" class="btn btn-gray" id="btn-back-address">Quay lại</button>
-                    <button type="submit" class="btn btn-submit form-submit">Hoàn tất</button>
+                    <button disabled ="true" id="btn-submit" type="submit" class="btn btn-submit form-submit">Hoàn tất</button>
                 </div>
             </form>
         </div>
@@ -249,7 +249,7 @@
 
                 </div>
                 <div class="modal-footer content-center">
-                    <button type="button" class="btn btn-gray" id="back-order-detail">Quay lại</button>
+                    <button  type="button" class="btn btn-gray" id="back-order-detail">Quay lại</button>
                 </div>
             }
             </div>
@@ -266,14 +266,14 @@
             form: '#form-address',
             errorSelector: '.form-message',
             rules: [
-                Validator.isRequired('#fullname'),
-                Validator.isRequired('#phone'),
-                Validator.isRequired('#address'),
-                Validator.isRequired('#province'),
-                Validator.isRequired('#district'),
-                Validator.isRequired('#ward'),
+                Validator.isRequired('#fullname','Vui lòng điền tên người nhận'),
+                Validator.isRequired('#phone', 'Vui lòng điền số diện thoại người nhận'),
+                Validator.isPhoneNumber('#phone'),
+                Validator.isRequired('#address','Vui lòng điền địa chỉ nhận hàng'),
+                Validator.isRequired('#province', 'Vui lòng chọn địa chỉ nhận hàng'),
+                Validator.isRequired('#district', 'Vui lòng chọn địa chỉ nhận hàng'),
+                Validator.isRequired('#ward', 'Vui lòng chọn địa chỉ nhận hàng'),
             ],
-
         })
 </script>
 <script>

@@ -24,9 +24,13 @@ namespace UILayer.Controllers
         {
             ServiceRepository service = new ServiceRepository();
             HttpResponseMessage response = service.GetResponse("/api/MenuItem/GetMenuRestaurantInfoByItemId/" + itemId);
-            response.EnsureSuccessStatusCode();
-            DtoMenuItemInfo menuItemInfos = response.Content.ReadAsAsync<DtoMenuItemInfo>().Result;
-            return menuItemInfos;
+            if (response.IsSuccessStatusCode)
+            {
+                DtoMenuItemInfo menuItemInfos = response.Content.ReadAsAsync<DtoMenuItemInfo>().Result;
+                if(menuItemInfos != null)
+                    return menuItemInfos;
+            }
+            return null;
         }
 
 
@@ -138,9 +142,13 @@ namespace UILayer.Controllers
             ServiceRepository serviceObject = new ServiceRepository();
             //Get Restaurant Infomation
             HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoById/" + restaurantId);
-            response.EnsureSuccessStatusCode();
-            DtoRestaurantInfo restaurantInfo = response.Content.ReadAsAsync<DtoRestaurantInfo>().Result;
-            return restaurantInfo;
+            if (response.IsSuccessStatusCode)
+            {
+                DtoRestaurantInfo restaurantInfo = response.Content.ReadAsAsync<DtoRestaurantInfo>().Result;
+                if(restaurantInfo != null)
+                    return restaurantInfo;
+            }
+            return null;
         }
 
         [HttpPost]

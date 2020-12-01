@@ -52,10 +52,12 @@ namespace UILayer.Controllers
         [HttpPost]
         public ActionResult ResetPassword()
         {
+            log.Info("[START] UserController - ResetPassword");
             string email = Request["email"];
             if(email != null && email.Trim()!= string.Empty)
             {
                 ServiceRepository service = new ServiceRepository();
+                log.Info("-- Call GET API CheckinEmail");
                 HttpResponseMessage response = service.GetResponse("/api/User/CheckinEmail/" + email.Trim() + "/");
                 string strResult = response.Content.ReadAsAsync<string>().Result;
                 if (strResult != "")
@@ -81,12 +83,14 @@ namespace UILayer.Controllers
                                 smtpClient.Send(mail);
                             }
                         }
+                        log.Info("-- Call PUT API UpdatePassword");
                         HttpResponseMessage responseUpdatePassword = service.GetResponse("/api/UserAccount/UpdatePassword/" + temp + "/" + newPassword + "/");
                         bool updateResult = responseUpdatePassword.Content.ReadAsAsync<bool>().Result;
                         if (updateResult)
                         {
                             TempData["SendEmailMessage"] = "Yêu cầu tạo mới mật khẩu đã được thực hiện, vui lòng kiểm tra hộp thư email";
                             TempData["SendEmailMessageColor"] = "success";
+                            log.Info("[END] UserController - ResetPassword [Result: Success][Detail: Success]");
                             return View("~/Views/Login/ResetPassword.cshtml");
                         }
                     }
@@ -94,6 +98,7 @@ namespace UILayer.Controllers
                     {
                         TempData["SendEmailMessage"] = "Không thể kết nối với máy chủ, vui lòng thử lại sau";
                         TempData["SendEmailMessageColor"] = "danger";
+                        log.Info("[END] UserController - ResetPassword [Result: Failed][Detail: Không thể kết nối với máy chủ, vui lòng thử lại sau]");
                         return View("~/Views/Login/ResetPassword.cshtml");
                     }
                 }
@@ -101,21 +106,23 @@ namespace UILayer.Controllers
                 {
                     TempData["SendEmailMessage"] = "Email không chính xác, vui lòng thử lại";
                     TempData["SendEmailMessageColor"] = "danger";
+                    log.Info("[END] UserController - ResetPassword [Result: Failed][Detail: Email không chính xác, vui lòng thử lại]");
                     return View("~/Views/Login/ResetPassword.cshtml");
                 }
             }
             TempData["SendEmailMessage"] = "Email không phù hợp, vui lòng thử lại";
             TempData["SendEmailMessageColor"] = "danger";
+            log.Info("[END] UserController - ResetPassword [Result: Failed][Detail: Email không phù hợp, vui lòng thử lại]");
             return View("~/Views/Login/ResetPassword.cshtml");
         }
 
         public ActionResult UserInfomation()
         {
+            log.Info("[START] UserController - UserInfomation");
             if (Session["UserLogin"] != null)
             {
                 try
                 {
-                    log.Info("[START] UserController - UserInfomation");
                     UserLogin userLogin = (UserLogin)Session["UserLogin"];
                     log.Info("[START] Request API - GetUserInfoById/" + userLogin.UserId);
                     ServiceRepository service = new ServiceRepository();
@@ -139,6 +146,7 @@ namespace UILayer.Controllers
                     throw;
                 }
             }
+            log.Info("[END] UserController - UserInfomation [Result: Failed][Detail: Session<UserLogin> null]");
             return View("~/Views/Login/MainPage.cshtml");
         }
 
@@ -298,35 +306,36 @@ namespace UILayer.Controllers
 
                         else if (result == -3)
                         {
-                            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Tài khoản đã tồn tại, vui lòng thử lại]");
+                            log.Info("[END] UserController - RegisterAccount [Result: Failed][Detail: Tài khoản đã tồn tại, vui lòng thử lại]");
                             TempData["RegisterMessage"] = "Tài khoản đã tồn tại, vui lòng thử lại";
                             TempData["RegisterMessageColor"] = "warning";
                         }
                         else if (result == -2)
                         {
-                            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Lỗi Insert dữ liệu, đăng ký không thành công]");
+                            log.Info("[END] UserController - RegisterAccount [Result: Failed][Detail: Lỗi Insert dữ liệu, đăng ký không thành công]");
                             TempData["RegisterMessage"] = "Lỗi dữ liệu, đăng ký không thành công";
                             TempData["RegisterMessageColor"] = "danger";
 
                         }
                         else
                         {
-                            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Đăng ký thất bại]");
+                            log.Info("[END] UserController - RegisterAccount [Result: Failed][Detail: Đăng ký thất bại]");
                             TempData["RegisterMessage"] = "Đăng ký thất bại";
                             TempData["RegisterMessageColor"] = "danger";
                         }
                     return View("~/Views/Login/Register.cshtml");
                 }
-                log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Receive Null Paramenter]");
+                log.Info("[END] UserController - RegisterAccount [Result: Failed][Detail: Receive Null Paramenter]");
                 return View("~/Views/MainPage/MainPage.cshtml");
             }
-            log.Info("[END] UserController - RegisterAccount [Result: Success][Detail: Model Invalid]");
+            log.Info("[END] UserController - RegisterAccount [Result: Failed][Detail: Model Invalid]");
             return View("~/Views/MainPage/MainPage.cshtml");  
         }
 
         [HttpPost]
         public ActionResult LoginAccount(UserAccount userAccount)
         {
+            log.Info("[START] UserController - LoginAccount");
             if (ModelState.IsValid)
             {
                 BoolResult result = new BoolResult();
@@ -350,6 +359,7 @@ namespace UILayer.Controllers
                     DtoUserInfo dtoUserInfo;
                     try
                     {
+                        log.Info("--- Call API GetUserInfoByUserName");
                         HttpResponseMessage response = service.GetResponse("/api/user/getuserinfobyusername/" + userAccount.UserName);
                         response.EnsureSuccessStatusCode();
                         dtoUserInfo = response.Content.ReadAsAsync<DtoUserInfo>().Result;
@@ -363,6 +373,7 @@ namespace UILayer.Controllers
                         cookie.Expires = DateTime.Now.AddDays(1);
                         cookie.Value = token;
                         HttpContext.Response.SetCookie(cookie);
+                        log.Info("[END] UserController - LoginAccount [Result: Success][Detail: Đăng nhập thành công]");
                         return View("~/Views/MainPage/MainPage.cshtml");
                     }
                     catch (Exception ex)
@@ -375,6 +386,7 @@ namespace UILayer.Controllers
                 {
                     TempData["UserLoginMessage"] = "Tài khoản hoặc mật khẩu không chính xác, vui lòng thử lại";
                     TempData["UserLoginMessageColor"] = "danger";
+                    log.Info("[END] UserController - LoginAccount [Result: Failed][Detail: Tài khoản hoặc mật khẩu không chính xác, vui lòng thử lại]");
                     return View("~/Views/Login/Login.cshtml");
                 }                       
             }
@@ -382,6 +394,7 @@ namespace UILayer.Controllers
             {
                 TempData["UserLoginMessage"] = "Dữ liệu không hợp lệ, vui lòng thử lại";
                 TempData["UserLoginMessageColor"] = "danger";
+                log.Info("[END] UserController - LoginAccount [Result: Failed][Detail: Dữ liệu không hợp lệ, vui lòng thử lại]");
                 return View("~/Views/Login/Login.cshtml");
             }
         }

@@ -62,7 +62,6 @@ namespace UILayer.Controllers
         {
             ServiceRepository serviceObject = new ServiceRepository();
             HttpResponseMessage response = serviceObject.GetResponse("api/restaurant/getallrestaurant/");
-            //response.EnsureSuccessStatusCode();
             if (response.IsSuccessStatusCode)
             {
                 List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
@@ -88,8 +87,7 @@ namespace UILayer.Controllers
         public ActionResult GetRestaurantByTagName(int kindId)
         {
             ServiceRepository serviceObject = new ServiceRepository();
-            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByKindIdG/" + kindId);
-            //response.EnsureSuccessStatusCode();
+            HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoByKindId/" + kindId);
             if (response.IsSuccessStatusCode)
             {
                 List<DtoRestaurantInfo> restaurants = response.Content.ReadAsAsync<List<DtoRestaurantInfo>>().Result;
@@ -115,30 +113,48 @@ namespace UILayer.Controllers
 
         public ActionResult GetRestaurantInfo_MenuItemInfoByID(int restaurantId)
         {
-            
             ServiceRepository serviceObject = new ServiceRepository();
             //Get Restaurant Infomation
             HttpResponseMessage response = serviceObject.GetResponse("api/Restaurant/GetRestaurantInfoById/"+ restaurantId);
             //response.EnsureSuccessStatusCode();
-            DtoRestaurantInfo restaurantInfo = response.Content.ReadAsAsync<DtoRestaurantInfo>().Result;
-
-            //Get Menu Item of Restaurant
-            HttpResponseMessage responseMenuItem = serviceObject.GetResponse("api/menuitem/GetMenuRestaurantInfoByID/" + restaurantId);
-            response.EnsureSuccessStatusCode(); 
-            List<DtoMenuItemInfo> menuItemInfos = responseMenuItem.Content.ReadAsAsync<List<DtoMenuItemInfo>>().Result;
-            var temp = menuItemInfos.GroupBy(t => t.TypeId, t => t.Id, (key, g) => new { TypeId = key, ItemIds = g.ToList(), 
-                                            TypeName = menuItemInfos.Where(t=>t.TypeId == key).Select(t=>t.TypeName).FirstOrDefault()});
-            List<ItemType> itemTypes = new List<ItemType>();
-            foreach (var item in temp)
+            if (response.IsSuccessStatusCode)
             {
-                ItemType itemType = new ItemType();
-                itemType.Id = item.TypeId;
-                itemType.TypeName = item.TypeName;
-                itemType.MenuItemInfos = menuItemInfos.Where(t=>t.TypeId == item.TypeId).ToList();
-                itemTypes.Add(itemType);
+                DtoRestaurantInfo restaurantInfo = response.Content.ReadAsAsync<DtoRestaurantInfo>().Result;
+                if (restaurantInfo != null)
+                {
+                    //Get Menu Item of Restaurant
+                    HttpResponseMessage responseMenuItem = serviceObject.GetResponse("api/menuitem/GetMenuRestaurantInfoByID/" + restaurantId);
+                    if (responseMenuItem.IsSuccessStatusCode)
+                    {
+                        List<DtoMenuItemInfo> menuItemInfos = responseMenuItem.Content.ReadAsAsync<List<DtoMenuItemInfo>>().Result;
+                        if (menuItemInfos != null)
+                        {
+                            var temp = menuItemInfos.GroupBy(t => t.TypeId, t => t.Id, (key, g) => new
+                            {
+                                TypeId = key,
+                                ItemIds = g.ToList(),
+                                TypeName = menuItemInfos.Where(t => t.TypeId == key).Select(t => t.TypeName).FirstOrDefault()
+                            });
+                            List<ItemType> itemTypes = new List<ItemType>();
+                            foreach (var item in temp)
+                            {
+                                ItemType itemType = new ItemType();
+                                itemType.Id = item.TypeId;
+                                itemType.TypeName = item.TypeName;
+                                itemType.MenuItemInfos = menuItemInfos.Where(t => t.TypeId == item.TypeId).ToList();
+                                itemTypes.Add(itemType);
+                            }
+                            RestaurantDetail model = new RestaurantDetail { RestaurantInfo = restaurantInfo, ItemTypes = itemTypes };
+                            return View("~/Views/RestaurantView/RestaurantDetail.cshtml", model);
+                        }
+                        
+                    }
+                        
+                }
             }
-            RestaurantDetail model = new RestaurantDetail { RestaurantInfo = restaurantInfo, ItemTypes = itemTypes };
-            return View("~/Views/RestaurantView/RestaurantDetail.cshtml", model);
+            TempData["RestaurantPageMessage"] = "Lỗi kết nối máy chủ, vui lòng thử lại";
+            TempData["RestaurantPageMessageColor"] = "danger";
+            return Redirect(this.Request.UrlReferrer.ToString());
         }
 
         [HttpPost]

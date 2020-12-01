@@ -131,7 +131,7 @@ function Validator(options){
             
                 //Event form blur
                 theForm.addEventListener('blur', function(e) {
-                    console.log("forcusout event form");
+                    
                     var isFormValid = true;
 
                     options.rules.forEach(function (rule){

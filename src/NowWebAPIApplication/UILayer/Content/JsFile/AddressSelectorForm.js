@@ -25,7 +25,7 @@ $(function () {
                 if (response.length > 0) {  
                     $('#district').html('');  
                     var options = '';  
-                    options += '<option value="Select">Chọn quận/huyện</option>';  
+                    //options += '<option value="Select">Chọn quận/huyện</option>';  
                     for (var i = 0; i < response.length; i++) {  
                         options += '<option value="' + response[i].Id + '">' + response[i].Type + " " + response[i].Name + '</option>';  
                     }  

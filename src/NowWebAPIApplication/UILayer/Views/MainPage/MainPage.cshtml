@@ -668,7 +668,7 @@
 
 
 @* jQuery Event Show Message *@
-<!--<script>
+<script>
         $.msg = function (text, style) {
             style = style || 'notice';
 
@@ -684,18 +684,18 @@
                 });
         };
 
-        var message = '-->@*@TempData["MainPageMessage"]*@<!--';
-        var messageColor = '-->@*@TempData["MainPageMessageColor"]*@<!--';
+        var message = '@TempData["MainPageMessage"]';
+        var messageColor = '@TempData["MainPageMessageColor"]';
         if (message != null && message != "" && messageColor != null && messageColor != "") {
             $.msg(message, 'bg-' + messageColor)
         }
-</script>-->
+</script>
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     $(document).ready(function () {
         var message = '@TempData["MainPageMessage"]';
         if (message) {
            alert(message);
         }
     });
-</script>
+</script>*@
