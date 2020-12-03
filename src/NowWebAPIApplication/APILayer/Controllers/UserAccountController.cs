@@ -81,5 +81,22 @@ namespace APILayer.Controllers
             return account_BLL.UpdatePassword(username, newpassword);
         }
 
+        [HttpGet]
+        [Route("UpdatePasswordToken/{username}/{newpassword}/{token}")]
+        public int UpdatePasswordToken(string username, string newpassword, string token)
+        {
+            if (!account_BLL.UserNameIsExitst(username)) return -2; //User name is not exist
+            string tokenUsername = TokenManager.ValidateToken(token);
+            if (username.Equals(tokenUsername))
+            {
+                if (account_BLL.UpdatePassword(username, newpassword))
+                    return 1; //Update success
+                return -1; //Failed to update
+            }
+            else
+                return -3; //Invalid token
+            
+        }
+
     }
 }

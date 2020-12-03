@@ -158,17 +158,20 @@
     <Compile Include="CacheDictionary\CacheItem.cs" />
     <Compile Include="CacheDictionary\LoadDataToCache.cs" />
     <Compile Include="CacheDictionary\RestaurantCache.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="EmailModule\EmailManager.cs" />
     <Compile Include="Formater\FormaterModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Models\RestaurantCache.cs" />
     <Compile Include="Models\ItemCart.cs" />
     <Compile Include="Models\RestaurantCart.cs" />
@@ -361,10 +364,12 @@
     <Content Include="Views\RestaurantView\OrderModal.cshtml" />
     <Content Include="Views\RestaurantView\RestaurantEmptyPage.cshtml" />
     <Content Include="Views\Login\ResetPassword.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ErrorLog\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\MenuItem\" />
   </ItemGroup>
   <ItemGroup>

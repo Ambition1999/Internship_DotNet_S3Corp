@@ -66,33 +66,42 @@ namespace UILayer.Controllers
                     try
                     {
                         string newPassword = CreatePassword(8);
-                        using (MailMessage mail = new MailMessage())
+                        string resetToken = GetToken(strResult);
+                        if(resetToken != null)
                         {
-                            mail.From = new MailAddress("chitoan2571999@gmail.com");
-                            mail.To.Add(email);
-                            mail.Subject = "New Password";
 
-                            string time = DateTime.Now.ToString();
-                            mail.Body = "<h3>Hi, I have receive you request to reset new password at: " + time + "</h3></br><h4>New password is: " + newPassword + "</h4>";
-                            mail.IsBodyHtml = true;
-
-                            using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
+                            using (MailMessage mail = new MailMessage())
                             {
-                                smtpClient.Credentials = new System.Net.NetworkCredential("chitoan2571999@gmail.com", "01656727190");
-                                smtpClient.EnableSsl = true;
-                                smtpClient.Send(mail);
+                                mail.From = new MailAddress("chitoan2571999@gmail.com");
+                                mail.To.Add(email);
+                                mail.Subject = "New Password";
+
+                                string time = DateTime.Now.ToString();
+                                var linkHref = "<a href='" + Url.Action("ResetPasswordEmail2", "Account", new { UserName = strResult, Email = email, Code = resetToken }, "http") + "'> Reset Password </a>";
+                                //mail.Body = "<h3>Hi, I have receive you request to reset new password at: " + time + "</h3></br><h4>New password is: " + newPassword + "</h4>";
+                                mail.Body = "<b>Truy cập vào đường dẫn sau để đổi mật khẩu</b></br>"+linkHref;
+                                mail.IsBodyHtml = true;
+                                
+
+                                using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
+                                {
+                                    smtpClient.Credentials = new System.Net.NetworkCredential("chitoan2571999@gmail.com", "01656727190");
+                                    smtpClient.EnableSsl = true;
+                                    smtpClient.Send(mail);
+                                }
                             }
+                            //log.Info("-- Call PUT API UpdatePassword");
+                            //HttpResponseMessage responseUpdatePassword = service.GetResponse("/api/UserAccount/UpdatePassword/" + temp + "/" + newPassword + "/");
+                            //bool updateResult = responseUpdatePassword.Content.ReadAsAsync<bool>().Result;
+                            //if (updateResult)
+                            //{
+                            //    TempData["SendEmailMessage"] = "Yêu cầu tạo mới mật khẩu đã được thực hiện, vui lòng kiểm tra hộp thư email";
+                            //    TempData["SendEmailMessageColor"] = "success";
+                            //    log.Info("[END] UserController - ResetPassword [Result: Success][Detail: Success]");
+                            //    return View("~/Views/Login/ResetPassword.cshtml");
+                            //}
                         }
-                        log.Info("-- Call PUT API UpdatePassword");
-                        HttpResponseMessage responseUpdatePassword = service.GetResponse("/api/UserAccount/UpdatePassword/" + temp + "/" + newPassword + "/");
-                        bool updateResult = responseUpdatePassword.Content.ReadAsAsync<bool>().Result;
-                        if (updateResult)
-                        {
-                            TempData["SendEmailMessage"] = "Yêu cầu tạo mới mật khẩu đã được thực hiện, vui lòng kiểm tra hộp thư email";
-                            TempData["SendEmailMessageColor"] = "success";
-                            log.Info("[END] UserController - ResetPassword [Result: Success][Detail: Success]");
-                            return View("~/Views/Login/ResetPassword.cshtml");
-                        }
+                        
                     }
                     catch (Exception)
                     {
