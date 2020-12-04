@@ -10,6 +10,7 @@ using UILayer.Service;
 using log4net;
 using System.Net.Mail;
 using System.Text;
+using System.Web.Security;
 
 namespace UILayer.Controllers
 {
@@ -36,6 +37,7 @@ namespace UILayer.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
+            FormsAuthentication.SignOut();
             return RedirectToAction("Login","User");
         }
 
@@ -67,7 +69,7 @@ namespace UILayer.Controllers
                     {
                         string newPassword = CreatePassword(8);
                         string resetToken = GetToken(strResult);
-                        if(resetToken != null)
+                        if (resetToken != null)
                         {
 
                             using (MailMessage mail = new MailMessage())
@@ -77,11 +79,10 @@ namespace UILayer.Controllers
                                 mail.Subject = "New Password";
 
                                 string time = DateTime.Now.ToString();
-                                var linkHref = "<a href='" + Url.Action("ResetPasswordEmail2", "Account", new { UserName = strResult, Email = email, Code = resetToken }, "http") + "'> Reset Password </a>";
-                                //mail.Body = "<h3>Hi, I have receive you request to reset new password at: " + time + "</h3></br><h4>New password is: " + newPassword + "</h4>";
-                                mail.Body = "<b>Truy cập vào đường dẫn sau để đổi mật khẩu</b></br>"+linkHref;
+                                var linkHref = "<a href='" + Url.Action("ResetPasswordEmail2", "Account", new { UserName = strResult, Email = email, Code = resetToken }, "https") + "'> Reset Password </a>";
+                                mail.Body = "<b>Truy cập vào đường dẫn sau để đổi mật khẩu</b></br>" + linkHref;
                                 mail.IsBodyHtml = true;
-                                
+
 
                                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
                                 {
@@ -90,16 +91,10 @@ namespace UILayer.Controllers
                                     smtpClient.Send(mail);
                                 }
                             }
-                            //log.Info("-- Call PUT API UpdatePassword");
-                            //HttpResponseMessage responseUpdatePassword = service.GetResponse("/api/UserAccount/UpdatePassword/" + temp + "/" + newPassword + "/");
-                            //bool updateResult = responseUpdatePassword.Content.ReadAsAsync<bool>().Result;
-                            //if (updateResult)
-                            //{
-                            //    TempData["SendEmailMessage"] = "Yêu cầu tạo mới mật khẩu đã được thực hiện, vui lòng kiểm tra hộp thư email";
-                            //    TempData["SendEmailMessageColor"] = "success";
-                            //    log.Info("[END] UserController - ResetPassword [Result: Success][Detail: Success]");
-                            //    return View("~/Views/Login/ResetPassword.cshtml");
-                            //}
+                            TempData["SendEmailMessage"] = "Yêu cầu tạo mới mật khẩu đã được thực hiện, vui lòng kiểm tra hộp thư email";
+                            TempData["SendEmailMessageColor"] = "success";
+                            log.Info("[END] UserController - ResetPassword [Result: Success][Detail: Success]");
+                            return View("~/Views/Login/ResetPassword.cshtml");
                         }
                         
                     }
@@ -342,6 +337,7 @@ namespace UILayer.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult LoginAccount(UserAccount userAccount)
         {
             log.Info("[START] UserController - LoginAccount");
@@ -375,7 +371,10 @@ namespace UILayer.Controllers
                         UserLogin userLogin = new UserLogin();
                         userLogin.UserName = dtoUserInfo.UserName;
                         userLogin.UserId = dtoUserInfo.UserId;
+                        
                         Session["UserLogin"] = userLogin;
+
+                        //Gen User Token and save to Cookie
                         string token = GetToken(userLogin.UserName);
                         HttpCookie cookie = new HttpCookie("token");
                         HttpContext.Response.Cookies.Remove("token");
@@ -383,6 +382,14 @@ namespace UILayer.Controllers
                         cookie.Value = token;
                         HttpContext.Response.SetCookie(cookie);
                         log.Info("[END] UserController - LoginAccount [Result: Success][Detail: Đăng nhập thành công]");
+
+                        //Remember account
+                        if (userAccount.RememberMe)
+                        {
+                            var authTicket = new FormsAuthenticationTicket(1, dtoUserInfo.UserId.ToString(), DateTime.Now, DateTime.Now.AddMinutes(20), true, "user", "/");
+                            HttpCookie rememberMeCookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(authTicket));
+                            Response.Cookies.Add(rememberMeCookie);
+                        }
                         return View("~/Views/MainPage/MainPage.cshtml");
                     }
                     catch (Exception ex)
@@ -427,6 +434,39 @@ namespace UILayer.Controllers
                 res.Append(valid[rnd.Next(valid.Length)]);
             }
             return res.ToString();
+        }
+
+        public bool AutoLoginWithCookie(int userId)
+        {
+            DtoUserInfo dtoUserInfo;
+            try
+            {
+                log.Info("--- Call API GetUserInfoById");
+                ServiceRepository service = new ServiceRepository();
+                HttpResponseMessage response = service.GetResponse("/api/user/getuserinfobyId" + userId);
+                response.EnsureSuccessStatusCode();
+                dtoUserInfo = response.Content.ReadAsAsync<DtoUserInfo>().Result;
+                UserLogin userLogin = new UserLogin();
+                userLogin.UserName = dtoUserInfo.UserName;
+                userLogin.UserId = dtoUserInfo.UserId;
+
+                Session["UserLogin"] = userLogin;
+
+                //Gen User Token and save to Cookie
+                string token = GetToken(userLogin.UserName);
+                HttpCookie cookie = new HttpCookie("token");
+                HttpContext.Response.Cookies.Remove("token");
+                cookie.Expires = DateTime.Now.AddDays(1);
+                cookie.Value = token;
+                HttpContext.Response.SetCookie(cookie);
+                log.Info("[END] UserController - LoginAccount [Result: Success][Detail: Đăng nhập thành công]");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error to rest API: Get UserInfo by Username", ex);
+                return false;
+            }
         }
     }
 }

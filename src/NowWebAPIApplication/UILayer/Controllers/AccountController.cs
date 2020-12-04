@@ -23,7 +23,8 @@ namespace UILayer.Controllers
             model.ResetToken = Code;
             model.Email = Email;
             model.Username = UserName;
-            return View("~/Views/Login/ChangePassword.cshtml",model);
+            TempData[Code] = UserName;
+            return View("~/Views/Login/ChangePassword.cshtml", model);
         }
 
         public ActionResult ResetPassword2()
@@ -36,31 +37,33 @@ namespace UILayer.Controllers
         [HttpPost]
         public ActionResult ResetPassword(ResetPasswordModel model)
         {
-            if (model.Email != null)
+            string password = Request["new-password"].Trim();
+            string resetToken = Request["reset-token"].Trim();
+            if(TempData[resetToken] != null)
             {
-                string password = Request["new-password"];
-                string resetToken = Request["reset-token"];
-
-                int resetResponse = ChangePassword(model.Username, password, resetToken);
+                string username = TempData[resetToken].ToString();
+                int resetResponse = ChangePassword(username, password, resetToken);
                 if (resetResponse == 1)
                 {
-                    ViewBag.Message = "Successfully Changed";
+                    TempData["SendEmailForgotPasswordMessage"] = "Thay đổi mật khẩu thành công";
+                    TempData["SendEmailForgotPasswordMessageColor"] = "success";
+                    return View("~/Views/Login/ChangePassword.cshtml");
                 }
                 else
                 {
-                    ViewBag.Message = "Something went horribly wrong!";
+                    TempData["SendEmailForgotPasswordMessage"] = "Đổi mật khẩu thất bại";
+                    TempData["SendEmailForgotPasswordMessageColor"] = "danger";
+                    return View("~/Views/Login/ChangePassword.cshtml");
                 }
-
-
             }
-            return View(model);
-        }
+            return View("~/Views/Login/ChangePassword.cshtml");
+        } 
 
-        public int ChangePassword(string userName, string password, string token)
+        public int ChangePassword(string userName, string newpassword, string token)
         {
             //log.Info("-- Call PUT API UpdatePassword");
             ServiceRepository service = new ServiceRepository();
-            HttpResponseMessage responseUpdatePassword = service.GetResponse("/api/UserAccount/UpdatePasswordToken/" + userName + "/" + password + "/" + token +"/");
+            HttpResponseMessage responseUpdatePassword = service.GetResponse("/api/UserAccount/UpdatePasswordToken/" + userName + "/" + newpassword + "/" + token +"/");
             return responseUpdatePassword.Content.ReadAsAsync<int>().Result;
         }
     }

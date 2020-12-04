@@ -1,0 +1,42 @@
+2020-12-03 11:26:50,879 [35] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-03 11:26:50,919 [35] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-03 11:26:50,920 [35] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-03 11:26:50,920 [35] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-03 11:26:51,151 [35] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-03 11:57:11,673 [77] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-03 11:57:11,698 [77] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-03 11:57:11,698 [77] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-03 11:57:11,698 [77] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-03 11:57:11,737 [77] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-03 13:13:20,582 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-03 13:13:20,843 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-03 13:13:20,845 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-03 13:13:20,845 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-03 13:13:21,091 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-03 17:23:39,522 [5] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 17:23:39,533 [5] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 17:23:56,896 [5] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-03 17:29:36,700 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 17:29:36,710 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 17:29:43,748 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-03 17:32:26,789 [5] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 17:32:26,799 [5] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 17:32:32,619 [5] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-03 17:48:29,907 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 17:48:29,916 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 17:48:36,140 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-03 17:52:08,210 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 17:52:08,210 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 17:52:13,262 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-03 17:56:30,880 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 17:56:30,889 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 17:56:34,685 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-03 18:05:36,452 [5] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 18:05:36,462 [5] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 18:05:40,705 [5] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-03 18:10:30,771 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 18:10:30,780 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 18:10:34,619 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-03 18:13:47,101 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-03 18:13:47,127 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-03 18:13:53,613 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]

@@ -44,7 +44,8 @@
                 </div>
             </div>
             <div class="login-option">
-                <input type="checkbox" id="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>
+                @Html.CheckBoxFor(model => model.RememberMe)<label for="RememberMe">Lưu thông tin đăng nhập</label>
+                @*<input type="checkbox" id="rememberMe" name="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>*@
                 <a href="@Url.Action("ForgotPassword", "User")">Quên mật khẩu?</a>
             </div>
             <button class="btn btn-primary form-submit" type="submit">Đăng nhập</button>

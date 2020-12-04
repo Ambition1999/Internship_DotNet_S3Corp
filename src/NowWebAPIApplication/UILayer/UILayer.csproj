@@ -179,6 +179,7 @@
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\UserAccountInfo.cs" />
     <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Modules\TokenGenerateModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ServiceRepository.cs" />
   </ItemGroup>

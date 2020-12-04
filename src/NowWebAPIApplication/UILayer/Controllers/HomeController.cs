@@ -12,13 +12,10 @@ namespace UILayer.Controllers
 
     public class HomeController : Controller
     {
-
         public ActionResult MainPage()
         {
             return RedirectToAction("LoadRestaurantCache", "Restaurant");
             
         }
-
-        
     }
 }

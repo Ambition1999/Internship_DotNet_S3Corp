@@ -189,11 +189,11 @@ Validator.isPhoneNumber = function (selector) {
     }
 }
 
-Validator.minLength = function (selector, min, max, message) {
+Validator.minLength = function (selector, min, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value.length >= min && value.length < 10 ? undefined : message || 'Mật khẩu tối thiểu ' + min + ' đến ' + max + ' kí tự';
+            return value.length >= min ? undefined : message || 'Mật khẩu tối thiểu ' + min + ' kí tự';
         }
     }
 }

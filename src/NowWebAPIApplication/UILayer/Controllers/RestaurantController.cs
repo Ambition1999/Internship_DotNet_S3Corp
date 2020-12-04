@@ -14,11 +14,15 @@ using System.Runtime.CompilerServices;
 using System.Web.UI;
 using System.Web;
 using System.Web.DynamicData;
+using Model.DTO;
+using log4net;
+using System.Web.Security;
 
 namespace UILayer.Controllers
 {
     public class RestaurantController : Controller
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         // GET: Restaurant
         public ActionResult Index()
         {
@@ -43,6 +47,18 @@ namespace UILayer.Controllers
                         // Load data to Cache
                         LoadDataToCache.LoadAllRestaurantToCache(restaurants);
                         RestaurantsCache = LoadDataToCache.RestaurantsCache;
+                    }
+
+                    // Check Cookie and Auto Login
+                    //if(HttpContext.Response.Cookies.AllKeys.Contains(".ASPXAUTH"))
+                    if (Session["UserLogin"] == null && HttpContext.Request.Cookies.AllKeys.Contains(".ASPXAUTH"))
+                    {
+                        HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+                        FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+
+                        string useriId = ticket.Name;
+                        int userID = Int32.Parse(useriId);
+                        AutoLoginWithCookie(userID);
                     }
 
                     return View("~/Views/MainPage/MainPage.cshtml", restaurants);
@@ -222,6 +238,39 @@ namespace UILayer.Controllers
         //        return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
         //    }
         //}
+
+        public bool AutoLoginWithCookie(int userId)
+        {
+            DtoUserInfo dtoUserInfo;
+            try
+            {
+                Log.Info("--- Call API GetUserInfoById");
+                ServiceRepository service = new ServiceRepository();
+                HttpResponseMessage response = service.GetResponse("/api/user/getuserinfobyId/" + userId);
+                
+                dtoUserInfo = response.Content.ReadAsAsync<DtoUserInfo>().Result;
+                UserLogin userLogin = new UserLogin();
+                userLogin.UserName = dtoUserInfo.UserName;
+                userLogin.UserId = dtoUserInfo.UserId;
+
+                Session["UserLogin"] = userLogin;
+
+                //Gen User Token and save to Cookie
+                string token = Modules.TokenGenerateModule.GetToken(userLogin.UserName);
+                HttpCookie cookie = new HttpCookie("token");
+                HttpContext.Response.Cookies.Remove("token");
+                cookie.Expires = DateTime.Now.AddDays(1);
+                cookie.Value = token;
+                HttpContext.Response.SetCookie(cookie);
+                Log.Info("[END] UserController - LoginAccount [Result: Success][Detail: Đăng nhập thành công]");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error to rest API: Get UserInfo by Username", ex);
+                return false;
+            }
+        }
 
     }
 }

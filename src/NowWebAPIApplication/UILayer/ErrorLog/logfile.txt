@@ -1,42 +1,102 @@
-2020-12-03 11:26:50,879 [35] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
-2020-12-03 11:26:50,919 [35] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
-2020-12-03 11:26:50,920 [35] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
-2020-12-03 11:26:50,920 [35] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
-2020-12-03 11:26:51,151 [35] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
-2020-12-03 11:57:11,673 [77] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
-2020-12-03 11:57:11,698 [77] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
-2020-12-03 11:57:11,698 [77] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
-2020-12-03 11:57:11,698 [77] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
-2020-12-03 11:57:11,737 [77] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
-2020-12-03 13:13:20,582 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
-2020-12-03 13:13:20,843 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
-2020-12-03 13:13:20,845 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
-2020-12-03 13:13:20,845 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
-2020-12-03 13:13:21,091 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
-2020-12-03 17:23:39,522 [5] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 17:23:39,533 [5] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 17:23:56,896 [5] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
-2020-12-03 17:29:36,700 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 17:29:36,710 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 17:29:43,748 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
-2020-12-03 17:32:26,789 [5] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 17:32:26,799 [5] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 17:32:32,619 [5] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
-2020-12-03 17:48:29,907 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 17:48:29,916 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 17:48:36,140 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
-2020-12-03 17:52:08,210 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 17:52:08,210 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 17:52:13,262 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
-2020-12-03 17:56:30,880 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 17:56:30,889 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 17:56:34,685 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
-2020-12-03 18:05:36,452 [5] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 18:05:36,462 [5] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 18:05:40,705 [5] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
-2020-12-03 18:10:30,771 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 18:10:30,780 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 18:10:34,619 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
-2020-12-03 18:13:47,101 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
-2020-12-03 18:13:47,127 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
-2020-12-03 18:13:53,613 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-04 09:01:02,328 [9] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-04 09:01:02,337 [9] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-04 09:01:06,990 [9] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-04 09:14:39,809 [5] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-04 09:14:39,818 [5] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-04 09:14:44,249 [5] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Failed][Detail: Email không phù h?p, vui lòng th? l?i]
+2020-12-04 09:43:23,645 [7] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-04 09:43:23,654 [7] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-04 09:43:27,807 [7] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Success][Detail: Success]
+2020-12-04 09:58:10,923 [8] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-04 09:58:10,934 [8] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-04 09:58:15,120 [8] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Success][Detail: Success]
+2020-12-04 10:03:01,925 [13] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-04 10:03:01,935 [13] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-04 10:03:05,891 [13] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Success][Detail: Success]
+2020-12-04 10:06:19,647 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 10:06:19,677 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 10:06:19,679 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 10:06:19,679 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 10:06:19,744 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 10:09:08,089 [6] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-04 10:09:08,105 [6] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-04 10:09:12,871 [6] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Success][Detail: Success]
+2020-12-04 10:12:54,101 [5] INFO  UILayer.Controllers.UserController - [START] UserController - ResetPassword
+2020-12-04 10:12:54,109 [5] INFO  UILayer.Controllers.UserController - -- Call GET API CheckinEmail
+2020-12-04 10:12:58,501 [5] INFO  UILayer.Controllers.UserController - [END] UserController - ResetPassword [Result: Success][Detail: Success]
+2020-12-04 10:14:46,215 [5] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 10:14:46,254 [5] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 10:14:46,256 [5] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 10:14:46,256 [5] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Failed][Detail: Tài kho?n ho?c m?t kh?u không chính xác, vui lòng th? l?i]
+2020-12-04 10:14:53,146 [5] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 10:14:53,157 [5] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 10:14:53,158 [5] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 10:14:53,158 [5] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 10:14:53,216 [5] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 10:59:25,943 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 10:59:26,192 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 10:59:26,194 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 10:59:26,194 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 10:59:26,435 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 10:59:45,810 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 10:59:45,825 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 10:59:45,825 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 10:59:45,825 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 10:59:45,858 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:00:05,222 [7] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 11:00:05,233 [7] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 11:00:05,233 [7] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 11:00:05,233 [7] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 11:00:05,262 [7] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:18:47,804 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 11:18:48,064 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 11:18:48,065 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 11:18:48,065 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 11:18:48,314 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:41:41,187 [8] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 11:41:41,436 [8] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 11:41:41,437 [8] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 11:41:41,437 [8] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 11:41:41,674 [8] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:42:54,960 [7] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 11:42:55,204 [7] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 11:42:55,206 [7] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 11:42:55,206 [7] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 11:42:55,448 [7] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:43:07,644 [7] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 11:43:07,654 [7] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 11:43:07,654 [7] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 11:43:07,654 [7] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 11:43:07,682 [7] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:53:26,210 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 11:53:26,313 [6] ERROR UILayer.Controllers.RestaurantController - Error to rest API: Get UserInfo by Username
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at UILayer.Controllers.RestaurantController.AutoLoginWithCookie(Int32 userId) in C:\Users\toan.le\Documents\GitHub\Internship_DotNet_S3Corp\src\NowWebAPIApplication\UILayer\Controllers\RestaurantController.cs:line 250
+2020-12-04 11:53:52,199 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 11:53:52,443 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 11:53:52,445 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 11:53:52,445 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 11:53:52,659 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:54:25,495 [8] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 11:55:05,820 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 11:55:17,181 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:57:08,757 [8] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 11:57:09,244 [8] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 11:58:05,523 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 11:58:05,551 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 11:58:05,553 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 11:58:05,553 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 11:58:05,599 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 12:00:12,186 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 12:00:12,471 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 12:00:12,473 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 12:00:12,473 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 12:00:12,713 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 12:00:24,115 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2020-12-04 12:00:24,125 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2020-12-04 12:00:24,125 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2020-12-04 12:00:24,125 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2020-12-04 12:00:24,155 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 12:01:23,236 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 12:01:23,719 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
