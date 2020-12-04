@@ -49,15 +49,12 @@ namespace UILayer.Controllers
                         RestaurantsCache = LoadDataToCache.RestaurantsCache;
                     }
 
-                    // Check Cookie and Auto Login
-                    //if(HttpContext.Response.Cookies.AllKeys.Contains(".ASPXAUTH"))
+                    // Check Cookie and Login
                     if (Session["UserLogin"] == null && HttpContext.Request.Cookies.AllKeys.Contains(".ASPXAUTH"))
                     {
                         HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
                         FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-
-                        string useriId = ticket.Name;
-                        int userID = Int32.Parse(useriId);
+                        int userID = Int32.Parse(ticket.Name);
                         AutoLoginWithCookie(userID);
                     }
 

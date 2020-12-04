@@ -15,9 +15,9 @@
         <div class="detail-restaurant-info">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="@Url.Action("MainPage","Home")" class="breadcrumb-link" rel="nofollow">Home</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("MainPage", "Home")" class="breadcrumb-link" rel="nofollow">Home</a></li>
                     <li class="breadcrumb-item"><a href="#" class="breadcrumb-link" rel="nofollow">TP.HCM</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new {restaurantId = Model.RestaurantInfo.Id})" class="breadcrumb-link" rel="nofollow">@Html.DisplayFor(model => Model.RestaurantInfo.RestaurantName)</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new { restaurantId = Model.RestaurantInfo.Id })" class="breadcrumb-link" rel="nofollow">@Html.DisplayFor(model => Model.RestaurantInfo.RestaurantName)</a></li>
                 </ol>
             </nav>
             <div class="kind-restaurant">
@@ -143,11 +143,11 @@
                                                                         <div class="col-auto adding-food-cart txt-right div-container-button" id="div-container-button">
                                                                             @if (Session["UserLogin"] != null)
                                                                             {
-                                                                                <button id="btn-add-to-cart" class="btn-adding" onclick="location.href='@Url.Action("AddItemToCart","MenuItem", new{ resId = Model.RestaurantInfo.Id, itemId = item.Id, itemName = item.ItemName, price = item.BasePrice})'">+</button>
+                                                                                <button id="btn-add-to-cart" class="btn-adding btn-cart" onclick="location.href='@Url.Action("AddItemToCart", "MenuItem", new { resId = Model.RestaurantInfo.Id, itemId = item.Id, itemName = item.ItemName, price = item.BasePrice })'">+</button>
                                                                             }
                                                                             else
                                                                             {
-                                                                                <button id="btn-add-to-cart" class="btn-adding" disabled="true" onclick="location.href='@Url.Action("AddItemToCart","MenuItem", new{ resId = Model.RestaurantInfo.Id, itemId = item.Id, itemName = item.ItemName, price = item.BasePrice})'">+</button>
+                                                                                <button id="btn-add-to-cart" class="btn-adding" disabled="true" onclick="location.href='@Url.Action("AddItemToCart", "MenuItem", new { resId = Model.RestaurantInfo.Id, itemId = item.Id, itemName = item.ItemName, price = item.BasePrice })'">+</button>
                                                                             }
                                                                         </div>
                                                                     </div>
@@ -188,24 +188,36 @@
                     }
                 </div>
             </div>
-            <div>
-                @Html.Action("CreateRestaurantCart", "Restaurant", new { resId = Model.RestaurantInfo.Id });
+            <div id="cart-container">
+                @*@Html.Action("CreateRestaurantCart", "Restaurant", new { resId = Model.RestaurantInfo.Id });*@
+                @{
+                    Html.RenderAction("CreateRestaurantCart", "Restaurant", new { resId = Model.RestaurantInfo.Id });
+                }
             </div>
         </div>
     </div>
 </div>
-@*@if(Session["UserLogin"] != null)
-{*@
-    @Html.Action("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id });
-@*}*@
-
+<div id="cart-container">
+    @{
+        Html.RenderAction("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id });
+    }
+</div>
+@*@Html.Action("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id });*@
+@*<script>
+    $('.btn-cart').click(function () {
+        var url = this.ref;
+        $get(url, {}, function (data) {
+            console.log("event-btn-cart")
+            $('#cart-container').html(data);
+        });
+        // Return here to prevent click event from opening new page
+        return false;
+    });
+</script>*@
 <script>
-    $(document).ready(function () {
-        //$('.modal-order-detail').hide();
-        $('#modal-order').hide();
-        $('.edit-info-order').hide();
-        $('.order-detail').hide();
-    })
+    $('#modal-order').hide();
+    $('.edit-info-order').hide();
+    $('.order-detail').hide();
 
     // Mở modal order
     $('#btn-order').click(function () {

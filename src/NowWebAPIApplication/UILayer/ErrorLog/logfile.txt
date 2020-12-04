@@ -100,3 +100,51 @@ System.Net.Http.HttpRequestException: Response status code does not indicate suc
 2020-12-04 12:00:24,155 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
 2020-12-04 12:01:23,236 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
 2020-12-04 12:01:23,719 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 13:22:20,608 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 13:22:21,057 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 13:22:21,997 [7] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 13:22:22,029 [7] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 13:52:34,115 [5] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 13:52:34,115 [7] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 13:52:34,629 [5] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 13:52:34,629 [7] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 13:54:39,385 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 13:54:39,873 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:02:22,310 [7] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:02:22,797 [7] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:18:57,635 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:18:58,120 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:19:55,371 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:19:55,857 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:21:39,681 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:21:40,158 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:21:40,288 [7] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:21:40,320 [7] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:28:07,255 [8] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:28:07,747 [8] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:37:48,614 [8] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:37:49,109 [8] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:47:32,933 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:47:33,438 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:48:45,901 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:48:46,434 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 14:48:46,465 [7] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 14:48:46,500 [7] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 16:01:09,468 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 16:01:09,954 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 16:12:16,312 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 16:12:16,868 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 16:31:16,922 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 16:31:17,414 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 16:33:52,671 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 16:33:53,156 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 16:35:09,800 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 16:35:10,289 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 17:33:39,570 [6] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 17:33:40,121 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 17:37:34,952 [7] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
+2020-12-04 17:37:35,524 [7] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2020-12-04 17:38:01,455 [8] INFO  UILayer.Controllers.UserController - [START] UserController - UserInfomation
+2020-12-04 17:38:01,455 [8] INFO  UILayer.Controllers.UserController - [START] Request API - GetUserInfoById/11
+2020-12-04 17:38:01,473 [8] INFO  UILayer.Controllers.UserController - [END] Request API - GetUserInfoById/11 [Result: Success][Detail: OK]
+2020-12-04 17:38:01,473 [8] INFO  UILayer.Controllers.UserController - [END] UserController - UserInfomation

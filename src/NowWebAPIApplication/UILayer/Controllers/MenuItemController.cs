@@ -48,7 +48,7 @@ namespace UILayer.Controllers
 
                 Session[resId.ToString()] = restCart;
 
-                //return ("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
+                //return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml", restCart);
                 //return PartialView("~/Views/RestaurantView/RestaurantCart.cshtml");
                 return RedirectToAction("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new { restaurantId = restCart.ResId } );
             }
@@ -65,7 +65,7 @@ namespace UILayer.Controllers
                 {
                     ItemCart itemCartTemp = new ItemCart(itemId, itemName, 1, price);
                     restCart.ItemCarts.Add(itemCartTemp);
-                }
+                }   
 
                 // Update Total Price and Total Amount
                 restCart.TotalPrice = restCart.ItemCarts.Sum(t => t.SubTotal);
