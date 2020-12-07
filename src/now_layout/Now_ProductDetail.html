@@ -11,6 +11,30 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <!-- Js Google API -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAflWgBSI09jGUnS5SBN_kG9SqN0CyaiGE&callback=initMap&libraries=&v=weekly"
+        defer
+        ></script>
+
+        <style type="text/css">
+            /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+            #map {
+              height: 100%;
+            }
+      
+            /* Optional: Makes the sample page fill the window. */
+            html,
+            body {
+              height: 100%;
+              margin: 0;
+              padding: 0;
+            }
+          </style>
+    
     </head>
     <body>
         <div class="detail-restaurant clearfix">
@@ -334,7 +358,13 @@
                     <div class="modal-body">
                         <div class="order-left">
                             <div class="map-order">
-                                <img src="https://www.foody.vn/style/images/foody-thumbnail-640x640.png" alt="foodyBanner" srcset="">
+                                <div id="map" class="embed-responsive map-order">
+                                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.057385058562!2d106.6264124152015!3d10.80691696158428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752be27d8b4f4d%3A0x9f7b3cc581e940f5!2zMTQwIEzDqiBUcuG7jW5nIFThuqVuLCBUw6J5IFRo4bqhbmgsIFTDom4gUGjDuiwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1607316443786!5m2!1svi!2s" 
+                                    width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                                    </iframe> -->
+                                </div>
+                                <!-- <img src="https://www.foody.vn/style/images/foody-thumbnail-640x640.png" alt="foodyBanner" srcset=""> -->
+                                
                             </div>
                             <div class="direction-content">
                                 <div class="direction-info">
@@ -575,6 +605,17 @@
             
         })
     </script>
+    <script>
+        let map;
+  
+        function initMap() {
+        console.log("event initmap")
+          map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+          });
+        }
+      </script>
     <script>
         $(document).ready(function(){
             //$('.modal-order-detail').hide();
