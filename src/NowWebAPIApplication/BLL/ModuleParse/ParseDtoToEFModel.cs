@@ -45,5 +45,7 @@ namespace BLL.ModuleParse
             }
             return null;
         }
+
+        //public static Order ParseDtoOrder_OrderItemsToOrder(Dto)
     }
 }

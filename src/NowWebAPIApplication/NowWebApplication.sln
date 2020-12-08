@@ -4,14 +4,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APILayer", "APILayer\APILayer.csproj", "{74DA2890-6F0F-43F7-BF6E-FDD91204CD1F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0901D265-5086-4B66-997E-26A56B3F02B1} = {0901D265-5086-4B66-997E-26A56B3F02B1}
+		{C1DB72FE-8271-421B-92C9-64132157EA77} = {C1DB72FE-8271-421B-92C9-64132157EA77}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{72767199-DAD7-4F3D-8DEE-836721A52635}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{C1DB72FE-8271-421B-92C9-64132157EA77}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0901D265-5086-4B66-997E-26A56B3F02B1} = {0901D265-5086-4B66-997E-26A56B3F02B1}
+		{72767199-DAD7-4F3D-8DEE-836721A52635} = {72767199-DAD7-4F3D-8DEE-836721A52635}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UILayer", "UILayer\UILayer.csproj", "{F0D65292-C4E1-4803-86E0-270F144ECF7B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0901D265-5086-4B66-997E-26A56B3F02B1} = {0901D265-5086-4B66-997E-26A56B3F02B1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{0901D265-5086-4B66-997E-26A56B3F02B1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{72767199-DAD7-4F3D-8DEE-836721A52635} = {72767199-DAD7-4F3D-8DEE-836721A52635}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

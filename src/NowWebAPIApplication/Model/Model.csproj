@@ -54,6 +54,7 @@
     <Compile Include="DTO\DtoOrder.cs" />
     <Compile Include="DTO\DtoOrderDiscount.cs" />
     <Compile Include="DTO\DtoOrderItem.cs" />
+    <Compile Include="DTO\DtoOrder_OrderItems.cs" />
     <Compile Include="DTO\DtoProvince.cs" />
     <Compile Include="DTO\DtoRegisterAccount.cs" />
     <Compile Include="DTO\DtoUpdateAccount.cs" />

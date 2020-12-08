@@ -162,6 +162,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="EmailModule\EmailManager.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeliveryInfo.cs" />
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
@@ -372,6 +374,7 @@
     <Folder Include="ErrorLog\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\MenuItem\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

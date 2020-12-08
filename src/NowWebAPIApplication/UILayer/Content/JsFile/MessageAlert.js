@@ -1,8 +1,7 @@
 ﻿
 $.msg = function (text, style) {
-    style = style || 'notice';           //<== default style if it's not set
+    style = style || 'notice';          
 
-    //create message and show it
     $('<div>')
         .attr('class', style)
         .css({ "text-align": "center", "font-size": "20px", "color": "#ffff", "padding": "10px" })

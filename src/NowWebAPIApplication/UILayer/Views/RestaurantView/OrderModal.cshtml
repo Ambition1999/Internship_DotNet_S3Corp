@@ -5,7 +5,7 @@
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
-<div class="modal fade modal-order show" id="modal-order" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="padding-right:17px; display: block;">
+<div class="modal fade modal-order show" id="modal-order" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="padding-right:17px; display: none;">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-order-detail">
             <span class="close txt-red txt-bold">x</span>
@@ -136,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal-content edit-info-order" role="dialog" aria-hidden="true" id="form-address">
+        <div class="modal-content edit-info-order" role="dialog" aria-hidden="true" id="form-address" style="display: none">
             <form>
                 <p class="title-popup-order">Sửa thông tin giao hàng</p>
                 <div class="book-time-order">
@@ -212,7 +212,7 @@
             </form>
         </div>
 
-        <div class="modal-content order-detail">
+        <div class="modal-content order-detail" style="display: none">
             <p class="title-popup-order">Chi tiết đơn hàng</p>
             @if (Session[Model.RestaurantId.ToString()] != null && Session["UserLogin"] != null)
             {
@@ -266,6 +266,41 @@
 
 <script src="~/Content/JsFile/AddressSelectorForm.js"></script>
 <script src="~/Content/JsFile/ValidateForm.js"></script>
+@Session Scripts{
+<script type="text/javascript">
+        $(function () {
+            //$('.btn-submit').click(function () {
+            //    var user_contact = $('#user-contact').text();
+            //    console.log("user-contact: " + user_contact);
+            //    var stringArray_Temp = user_contact.split("-");
+            //    var fullname_temp = stringArray_Temp[0];
+            //    var address_temp = $('.added-new-address').val();
+            //    console.log("full name:" + fullname_temp)
+            //    var phone_temp = stringArray_Temp[1];
+            //    console.log("phone:" + phone)
+            //    $.post("/Order/SaveDeliveryContact", { fullname: fullname_temp, phone: phone_temp, address: address_temp}, function (data) {
+            //        console.log(data)
+            //    });
+            //})
+
+            $('.submit-order').click(function () {
+                var user_contact = $('.user-contact').val();
+                console.log("user-contact: " + user_contact);
+                var stringArray_Temp = user_contact.split("-");
+                var fullname_temp = stringArray_Temp[0];
+                var address_temp = $('.added-new-address').val();
+                console.log(fullname_temp)
+                var phone_temp = stringArray_Temp[1];
+                console.log(phone_temp)
+                $.post("/Order/InsertOrder", { fullname: fullname_temp, phone: phone_temp, address: address_temp, resId: @Model.RestaurantId }, function (data) {
+                    alert(data);
+                });
+
+            })
+        })
+</script>
+}
+
 <script>
     Validator({
         form: '#form-address',
@@ -337,5 +372,8 @@
         $('.edit-info-order').hide();
         $('.modal-order-detail').show();
         $('.user-contact').text(name + " - " + phone)
+        $.post("/Order/SaveDeliveryContact", { fullname: name, phone: phone, address: address }, function (data) {
+                    console.log(data)
+        });
     })
 </script>

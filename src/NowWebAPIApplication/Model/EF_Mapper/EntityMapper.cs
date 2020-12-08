@@ -51,6 +51,16 @@ namespace Model.EF_Mapper
 
             Mapper.CreateMap<DtoAccountInfo, AccountInfo>();
             Mapper.CreateMap<AccountInfo, DtoAccountInfo>();
+
+            Mapper.CreateMap<DtoOrder_OrderItems, Order_OrderItems>();
+            Mapper.CreateMap<Order_OrderItems, DtoOrder_OrderItems>();
+
+            Mapper.CreateMap<DtoOrder, Order>();
+            Mapper.CreateMap<Order, DtoOrder>();
+
+            Mapper.CreateMap<DtoOrderItem, OrderItem>();
+            Mapper.CreateMap<OrderItem, DtoOrderItem>();
+
         }
 
 

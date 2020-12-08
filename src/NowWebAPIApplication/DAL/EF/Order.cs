@@ -32,6 +32,8 @@ namespace DAL.EF
         public Nullable<System.DateTime> CreateTime { get; set; }
         public string CreateBy { get; set; }
         public Nullable<int> DiscountId { get; set; }
+        public string FullName { get; set; }
+        public string PhoneContact { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItems { get; set; }

@@ -88,8 +88,6 @@ function Validator(options) {
                 console.log(boolValue);
                 e.currentTarget.submit();
             }
-
-
         }
 
         //Event for enable or disable submit button

@@ -1,0 +1,6 @@
+2020-12-07 10:21:19,597 [5] INFO  APILayer.Controllers.UserController - [START] UserController - EmailIsExist
+2020-12-07 15:15:43,667 [18] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoByUserName
+2020-12-07 16:08:35,777 [6] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
+2020-12-07 16:22:28,639 [8] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
+2020-12-07 16:30:44,612 [7] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
+2020-12-07 16:53:35,518 [6] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById

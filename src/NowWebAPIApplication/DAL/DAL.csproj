@@ -70,6 +70,7 @@
     </Compile>
     <Compile Include="MappingClass\EmployeeInfo.cs" />
     <Compile Include="MappingClass\MenuItemInfo.cs" />
+    <Compile Include="MappingClass\Order_OrderItems.cs" />
     <Compile Include="MappingClass\RegisterAccount.cs" />
     <Compile Include="MappingClass\RestaurantCache.cs" />
     <Compile Include="MappingClass\RestaurantInfo.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="Model\District_DAL.cs" />
     <Compile Include="Model\Employee_DAL.cs" />
     <Compile Include="Model\MenuItem_DAL.cs" />
+    <Compile Include="Model\Order_DAL.cs" />
     <Compile Include="Model\Province_DAL.cs" />
     <Compile Include="Model\Restaurant_DAL.cs" />
     <Compile Include="MappingClass\UserInfo.cs" />

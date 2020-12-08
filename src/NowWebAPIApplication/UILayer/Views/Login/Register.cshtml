@@ -84,7 +84,7 @@
             Validator.isRequired('#name',"Vui lòng nhập tên người dùng"),
             Validator.isRequired('#username',"Vui lòng nhập tên đăng nhập"),
             Validator.isRequired('#password', "Vui lòng nhập mật khẩu"),
-            Validator.minLength('#password', 6, "Mật khẩu phải chứa từ 6 đến 10 kí tự"),
+            Validator.minLength('#password', 6, "Mật khẩu phải chứa ít nhất 6 kí tự"),
             Validator.isRequired('#confirm-password',"Vui lòng nhập mật khẩu nhập lại"),
             Validator.isConfirmed('#confirm-password', function () {
                 return document.querySelector('#form-1 #password').value;
