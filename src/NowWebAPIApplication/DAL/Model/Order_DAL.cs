@@ -17,7 +17,6 @@ namespace DAL.Model
             using (var transaction = dbNow.Database.BeginTransaction())
             {
                 dbNow.Orders.Add(order);
-                dbNow.SaveChanges();
                 int orderId = order.Id;
                 foreach (var item in orderItems)
                 {

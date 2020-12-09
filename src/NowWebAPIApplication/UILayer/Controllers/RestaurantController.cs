@@ -159,10 +159,8 @@ namespace UILayer.Controllers
                             }
                             RestaurantDetail model = new RestaurantDetail { RestaurantInfo = restaurantInfo, ItemTypes = itemTypes };
                             return View("~/Views/RestaurantView/RestaurantDetail.cshtml", model);
-                        }
-                        
-                    }
-                        
+                        }  
+                    }    
                 }
             }
             TempData["RestaurantPageMessage"] = "Lỗi kết nối máy chủ, vui lòng thử lại";

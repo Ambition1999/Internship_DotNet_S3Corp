@@ -74,10 +74,14 @@ namespace UILayer.Controllers
             if (response.IsSuccessStatusCode)
             {
                 int result = response.Content.ReadAsAsync<int>().Result;
-                if(result<1)
-                    return "Đặt hàng thất bại, vui lòng thử lại.";
-                else
+                if(result>1)
+                {
+                    Session[resId.ToString()] = null;
+                    //return RedirectToAction("GetRestaurantInfo_MenuItemInfoByID", "Restaurant", new { restaurantId = resId });
                     return "Đặt hàng thành công!!!";
+                }    
+                else
+                    return "Đặt hàng thất bại, vui lòng thử lại.";
             }
             else
             {

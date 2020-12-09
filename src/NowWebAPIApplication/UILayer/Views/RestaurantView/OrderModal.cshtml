@@ -35,7 +35,19 @@
                             <div class="direction-to">
                                 <div>
                                     <div class="direction-name" id="shipping-address">
-                                        <span class="user-contact">@Html.DisplayFor(model => model.UserName)</span>
+                                        @{
+                                            if (Session["DeliveryInfo"] != null)
+                                            {
+                                                var deliveryInfo = (DeliveryInfo)Session["DeliveryInfo"];
+                                                string usserContact = deliveryInfo.Fullname + " - " + deliveryInfo.Phone;
+                                                <span class="user-contact">@Html.DisplayFor(model => usserContact)</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="user-contact">@Html.DisplayFor(model => model.UserName)</span>
+                                            }
+                                        }
+
                                     </div>
                                 </div>
                                 <div id="popup-order-add-new-address">
@@ -268,21 +280,8 @@
 <script src="~/Content/JsFile/ValidateForm.js"></script>
 @Session Scripts{
 <script type="text/javascript">
+        // function to call Insert Order
         $(function () {
-            //$('.btn-submit').click(function () {
-            //    var user_contact = $('#user-contact').text();
-            //    console.log("user-contact: " + user_contact);
-            //    var stringArray_Temp = user_contact.split("-");
-            //    var fullname_temp = stringArray_Temp[0];
-            //    var address_temp = $('.added-new-address').val();
-            //    console.log("full name:" + fullname_temp)
-            //    var phone_temp = stringArray_Temp[1];
-            //    console.log("phone:" + phone)
-            //    $.post("/Order/SaveDeliveryContact", { fullname: fullname_temp, phone: phone_temp, address: address_temp}, function (data) {
-            //        console.log(data)
-            //    });
-            //})
-
             $('.submit-order').click(function () {
                 var user_contact = $('.user-contact').val();
                 console.log("user-contact: " + user_contact);
@@ -293,9 +292,9 @@
                 var phone_temp = stringArray_Temp[1];
                 console.log(phone_temp)
                 $.post("/Order/InsertOrder", { fullname: fullname_temp, phone: phone_temp, address: address_temp, resId: @Model.RestaurantId }, function (data) {
+                    location.reload();
                     alert(data);
                 });
-
             })
         })
 </script>
