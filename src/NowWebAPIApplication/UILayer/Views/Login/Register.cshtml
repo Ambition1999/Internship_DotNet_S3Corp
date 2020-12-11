@@ -121,13 +121,14 @@
 
 <script>
     $(function () {
+        var hostUrl = "https://localhost:44325/";
+        //var hostUrl = "http://www.nowww.somee.com/";
         $('#username').on("blur", function () {
-
             var username = $('#username').val();
             if (username.trim()) {
                 var obj = { username: username };
                 //Call API Check account is Exist
-                AjaxCall('https://localhost:44325/api/UserAccount/UserNameIsExist/' + username, null).done(function (response) {
+                AjaxCall(hostUrl + 'api/UserAccount/UserNameIsExist/' + username, null).done(function (response) {
                     if (response === true) {
                         $('#form-mesage-username').text("Tên đăng nhập đã được sử dụng, vui lòng chọn tên khác");
                         $('#form-mesage-username').parent(".input-group").addClass('invalid');
@@ -137,7 +138,8 @@
                         $('#form-mesage-username').parent(".input-group").removeClass("invalid")
                     }
                 }).fail(function (error) {
-                    alert(error.StatusText);
+                    console.log(error.statusText);
+                    //alert(error.StatusText);
                 });
             }
         });

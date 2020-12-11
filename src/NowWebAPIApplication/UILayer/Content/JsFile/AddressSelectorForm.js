@@ -1,8 +1,9 @@
 
 //Function to loaddata to Select Option
 $(function () {  
-
-    AjaxCall('https://localhost:44325/api/Province/GetAllProvince/', null).done(function (response) {  
+    var hostUrl = "https://localhost:44325/";
+    //var hostUrl = "http://www.nowww.somee.com/";
+    AjaxCall(hostUrl + 'api/Province/GetAllProvince/', null).done(function (response) {  
         if (response.length > 0) {  
             $('#province').html('');  
             var options = '';  
@@ -12,8 +13,9 @@ $(function () {
             }  
             $('#province').append(options); 
         }  
-    }).fail(function (error) {  
-        alert(error.StatusText);  
+    }).fail(function (error) {
+        console.log(error.statusText);
+        //alert(error.StatusText);
     });  
 
     
@@ -21,7 +23,7 @@ $(function () {
     $('#province').on("change", function () {  
             var province = $('#province').val();  
             var obj = { province: province };  
-            AjaxCall('https://localhost:44325/api/District/GetDistrictByProvinceId/'+province, JSON.stringify(obj.province)).done(function (response) {  
+            AjaxCall(hostUrl + 'api/District/GetDistrictByProvinceId/'+province, JSON.stringify(obj.province)).done(function (response) {  
                 if (response.length > 0) {  
                     $('#district').html('');  
                     var options = '';  
@@ -32,14 +34,15 @@ $(function () {
                     $('#district').append(options);  
                 }  
             }).fail(function (error) {  
-                alert(error.StatusText);  
+                console.log(error.statusText);
+                //alert(error.StatusText);
             });  
     });  
 
     $('#district').on("change", function () {  
             var district = $('#district').val();  
             var obj = { district: district };  
-            AjaxCall('https://localhost:44325/api/Ward/GetWardByDistrictId/'+district, JSON.stringify(obj)).done(function (response) {  
+            AjaxCall(hostUrl + 'api/Ward/GetWardByDistrictId/'+district, JSON.stringify(obj)).done(function (response) {  
                 if (response.length > 0) {  
                     $('#ward').html('');  
                     var options = '';  
@@ -50,7 +53,8 @@ $(function () {
                     $('#ward').append(options);  
                 }  
             }).fail(function (error) {  
-                alert(error.StatusText);  
+                console.log(error.statusText);
+                //alert(error.StatusText);
             });  
     });  
 });

@@ -197,69 +197,55 @@
         </div>
     </div>
 </div>
-<div id="cart-container">
+<div id="modal-container">
     @{
         Html.RenderAction("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id });
     }
 </div>
-@*@Html.Action("OrderDetail", "MenuItem", new { restaurantId = Model.RestaurantInfo.Id });*@
-@*<script>
-    $('.btn-cart').click(function () {
-        var url = this.ref;
-        $get(url, {}, function (data) {
-            console.log("event-btn-cart")
-            $('#cart-container').html(data);
-        });
-        // Return here to prevent click event from opening new page
-        return false;
-    });
-</script>*@
+
 <script>
-    //$('#modal-order').hide();
-    //$('.edit-info-order').hide();
-    //$('.order-detail').hide();
 
-    // Mở modal order
-    $('#btn-order').click(function () {
-        $('#modal-order').show();
-    });
+    //// Mở modal order
+    //$('#btn-order').click(function () {
+    //    $('#modal-order').show();
+    //});
 
-    // Đóng modal
-    $('.close').click(function () {
-        $('#modal-order').hide();
-    });
+    //// Đóng modal
+    //$('.close').click(function () {
+    //    $('#modal-order').hide();
+    //});
 
-    // Đóng modal địa chỉ
-    $('#btn-back-address').click(function () {
-        $('.edit-info-order').hide();
-        $('.modal-order-detail').show();
-    });
+    //// Đóng modal địa chỉ
+    //$('#btn-back-address').click(function () {
+    //    $('.edit-info-order').hide();
+    //    $('.modal-order-detail').show();
+    //});
 
-    // Mở modal thay đổi thông tin giao nhận
-    $('#change-address-delivery').click(function () {
-        $('.modal-order-detail').hide();
-        $('.edit-info-order').show();
-    });
+    //// Mở modal thay đổi thông tin giao nhận
+    //$('#change-address-delivery').click(function () {
+    //    $('.modal-order-detail').hide();
+    //    $('.edit-info-order').show();
+    //});
 
-    // Mở modal thay đổi thông tin giao nhận
-    $('.new-address').click(function () {
-        $('.modal-order-detail').hide();
-        $('.edit-info-order').show();
-    });
+    //// Mở modal thay đổi thông tin giao nhận
+    //$('.new-address').click(function () {
+    //    $('.modal-order-detail').hide();
+    //    $('.edit-info-order').show();
+    //});
 
-    // Mở modal chi tiết đơn hàng
-    $('.order-cart-detail').click(function () {
-        $('.modal-order-detail').hide();
-        $('.order-detail').show();
-    });
+    //// Mở modal chi tiết đơn hàng
+    //$('.order-cart-detail').click(function () {
+    //    $('.modal-order-detail').hide();
+    //    $('.order-detail').show();
+    //});
 
-    // Đóng modal chi tiết đơn hàng
-    $('#back-order-detail').click(function () {
-        $('.modal-order-detail').show();
-        $('.order-detail').hide();
-    });
+    //// Đóng modal chi tiết đơn hàng
+    //$('#back-order-detail').click(function () {
+    //    $('.modal-order-detail').show();
+    //    $('.order-detail').hide();
+    //});
 
-    // Đóng modal chi tiết đơn hàng
+    // Yêu cầu user đăng nhập để thực hiện chức năng
     $('.div-container-button').mouseover(function () {
         console.log($('#btn-add-to-cart').attr("disabled"));
         if ($('#btn-add-to-cart').attr("disabled") == "disabled")

@@ -1,0 +1,7 @@
+2020-12-09 09:42:12,612 [12] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoByUserName
+2020-12-09 09:42:23,902 [9] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoByUserName
+2020-12-09 09:51:36,237 [6] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
+2020-12-09 09:54:44,686 [5] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
+2020-12-09 10:08:54,573 [7] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
+2020-12-09 10:16:45,216 [6] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById
+2020-12-09 10:19:42,651 [6] INFO  APILayer.Controllers.UserController - [START] UserController - GetUserInfoById

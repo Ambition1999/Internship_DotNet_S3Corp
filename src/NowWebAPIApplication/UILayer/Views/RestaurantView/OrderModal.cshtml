@@ -51,8 +51,20 @@
                                     </div>
                                 </div>
                                 <div id="popup-order-add-new-address">
-                                    <span class="new-address">Thêm địa chỉ mới</span>
-                                    <span class="added-new-address"></span>
+                                    @{
+                                        if (Session["DeliveryInfo"] != null)
+                                        {
+                                            var deliveryInfo = (DeliveryInfo)Session["DeliveryInfo"];
+                                            <span class="added-new-address">@Html.DisplayFor(model => deliveryInfo.Address)</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="new-address">Thêm địa chỉ mới</span>
+                                            <span class="added-new-address"></span>
+                                        }
+                                    }
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
@@ -278,7 +290,6 @@
 
 <script src="~/Content/JsFile/AddressSelectorForm.js"></script>
 <script src="~/Content/JsFile/ValidateForm.js"></script>
-@Session Scripts{
 <script type="text/javascript">
         // function to call Insert Order
         $(function () {
@@ -298,7 +309,6 @@
             })
         })
 </script>
-}
 
 <script>
     Validator({
@@ -361,6 +371,7 @@
         $('.order-detail').hide();
     });
 
+    // Sử lý sự kiện cập nhật địa chỉ giao hàng
     $('#form-address').submit(function () {
         var address = $('#address').val() + ", " + $("#ward option:selected").text() + ", " + $('#district option:selected').text() + ", " + $('#province option:selected').text()
         var name = $('#fullname').val();
@@ -371,6 +382,7 @@
         $('.edit-info-order').hide();
         $('.modal-order-detail').show();
         $('.user-contact').text(name + " - " + phone)
+        //Call Save DeliveryContact to Session
         $.post("/Order/SaveDeliveryContact", { fullname: name, phone: phone, address: address }, function (data) {
                     console.log(data)
         });
