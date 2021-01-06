@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
-      <HintPath>..\..\..\..\Documents\GitHub\Internship_DotNet_S3Corp\lib\AutoMapper.dll</HintPath>
+      <HintPath>..\..\..\lib\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="DAL">
       <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>

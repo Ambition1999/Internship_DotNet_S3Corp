@@ -23,3 +23,12 @@
 2020-12-11 13:59:17,313 [6] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
 2020-12-11 15:03:42,196 [7] INFO  UILayer.Controllers.RestaurantController - --- Call API GetUserInfoById
 2020-12-11 15:03:42,749 [7] INFO  UILayer.Controllers.RestaurantController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2021-01-06 02:48:38,927 [6] INFO  UILayer.Controllers.UserController - [START] UserController - LoginAccount
+2021-01-06 02:48:39,128 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check Username
+2021-01-06 02:48:39,130 [6] INFO  UILayer.Controllers.UserController - Success to rest API: Check User Account
+2021-01-06 02:48:39,130 [6] INFO  UILayer.Controllers.UserController - --- Call API GetUserInfoByUserName
+2021-01-06 02:48:39,639 [6] INFO  UILayer.Controllers.UserController - [END] UserController - LoginAccount [Result: Success][Detail: Ðang nh?p thành công]
+2021-01-06 02:48:45,645 [6] INFO  UILayer.Controllers.UserController - [START] UserController - UserInfomation
+2021-01-06 02:48:45,645 [6] INFO  UILayer.Controllers.UserController - [START] Request API - GetUserInfoById/6
+2021-01-06 02:48:45,678 [6] INFO  UILayer.Controllers.UserController - [END] Request API - GetUserInfoById/6 [Result: Success][Detail: OK]
+2021-01-06 02:48:45,678 [6] INFO  UILayer.Controllers.UserController - [END] UserController - UserInfomation
