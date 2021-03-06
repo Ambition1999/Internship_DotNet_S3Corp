@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Now.vn</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1">
+        <link rel="stylesheet" href="Now_layout_CSS.css">
+        <link rel="stylesheet" href="Now_LoginPageCSS.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">
+                <h2><span>Sign up</span></h2>
+            </div>       
+            <div class="login-feature">
+                <div class="contact-container phone">
+                    <span class="fa fa-mobile"></span>
+                    Số điện thoại
+                </div>
+                <div class="contact-container facebook">
+                    <span class="fa fa-mobile"></span>
+                    Facebook
+                </div>
+                <div class="contact-container google">
+                    <span class="fa fa-mobile"></span>
+                    Google
+                </div>
+            </div>
+            </br>
+            <p class="message">Hãy đăng nhập bằng tài khoản của bạn</p>
+            <div class="login-form" id="form-1">
+                <div class="field-group">
+                    <div class="input-group">
+                        <i class="fa fa-file"></i>
+                        <input type="text" placeholder="Username email" id="username">
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="input-group">
+                        <i class="fa fa-cloud"></i>
+                        <input type="password" placeholder="Password" id="password">
+                        <span class="form-message"></span>
+                    </div>
+                </div>
+                <div class="login-option">
+                    <input type="checkbox" id="rememberMe" value="remember"><label for="rememberMe">Lưu thông tin đăng nhập</label>
+                    <a href="#">Quên mật khẩu?</a>
+                </div>
+                <button class="btn btn-primary" type="submit">Đăng nhập</button>
+                <div class="login-message">
+                    Chúng tôi không sử dụng thông tin của bạn với bất kỳ mục đích nào. Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với
+                    <a href="#">Chính sách quy định của Foody</a>
+                </div>
+            </div>
+        </div>
+        <script src="./ValidateForm.js"></script>
+        <script>
+            Validator({
+                form: '#form-1',
+                errorSelector: '.form-message',
+                rules: [
+                    Validator.isRequired('#username'),
+                    Validator.isRequired('#password'),
+                    //Validator.isEmail('#password'),
+                ]
+            })
+        </script>
+    </body>
+</html>

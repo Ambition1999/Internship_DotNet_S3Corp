@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Now.vn</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <link rel="stylesheet" href="~/Content/CSSFile/Now_layout_CSS.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    @*<title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <!-- Đây là header -->
+    <div class="wrapper">
+        <div class="container-header">
+            <div class="container">
+                <div class="header-content navbar row justify-content-between align-items-center" id="headerNav">
+                    <a href="@Url.Action("MainPage","Home")" class="navbar-brand"><img src="https://www.now.vn/app/assets/img/nowvn.png?aa6bbddbf923c9dfd35ca83a7d068e6d" alt="logoNow"></a>
+                    <div class="select-local col-auto nav-toggle">
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" role="button" id="local-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                TP.HCM
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-item">
+                                    <span class="name col">TP.HCM</span>
+                                    <span class="count col-auto">49034 địa điểm</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <span class="name col">Hà Nội</span>
+                                    <span class="count col-auto">49034 địa điểm</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <span class="name col">Đà Nẵng</span>
+                                    <span class="count col-auto">49034 địa điểm</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <span class="name col">Cần Thơ</span>
+                                    <span class="count col-auto">49034 địa điểm</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <span class="name col">Hải Phòng</span>
+                                    <span class="count col-auto">49034 địa điểm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-nav col">
+                        <a href="@Url.Action("GetAllRestaurant","Restaurant")" class="nav-item active">Đồ ăn</a>
+                        <a href="#" class="nav-item">Đặt bàn</a>
+                        <a href="#" class="nav-item">Thực phẩm</a>
+                        <a href="#" class="nav-item">Bia</a>
+                        <a href="#" class="nav-item">Hoa</a>
+                        <a href="#" class="nav-item">Sản phẩm</a>
+                        <a href="#" class="nav-item">Thuốc</a>
+                    </div>
+                    @{
+                        if (Session["UserLogin"] != null)
+                        {
+                            var item = (UILayer.Models.UserLogin)Session["UserLogin"];
+                            <div class="user-acc col-auto" id="user-acc">
+                                <div class="dropdown">
+                                    <div class="dropdown-toggle" role="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="name">@Html.DisplayFor(userLogin => item.UserName)</span>
+                                        <div class="img">
+                                            <img src="https://images.foody.vn/default/s160/user-default-female.png" alt="userAvt">
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-menu" aria-labelledby="user-dropdown">
+                                        <a href="#">
+                                            <div class="dropdown-item">
+                                                <span class="icon icon-user-history"></span>
+                                                <span class="text">Lịch sử đơn hàng</span>
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div class="dropdown-item">
+                                                <span class="icon icon-now-promo-code"></span>
+                                                <span class="text">Ví Voucher</span>
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div class="dropdown-item">
+                                                <span class="icon icon-user-update"></span>
+                                                <span class="text">Cập nhật tài khoản</span>
+                                            </div>
+                                        </a>
+                                        <a href="@Url.Action("Logout","User")">
+                                            <div class="dropdown-item">
+                                                <span class="icon icon-user-logout"></span>
+                                                <span class="text">Đăng xuất</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="login-area" id="login">
+                                <button class="btn btn-none-bg btn-login" type="button" onclick="location.href='@Url.Action("Login","User")'">Đăng nhập</button>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @RenderBody()
+
+    <div class="footer">
+        <!-- Footer -->
+        <div class="container">
+            <div class="container-footer">
+                <div class="block-footer">
+                    <p class="title-block font-weight-bold">Công ty</p>
+                    <ul class="menu-corp">
+                        <li class="menu-item"><a href="#" class="item-link">Giới thiệu</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Trung tâm trợ giúp</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Quy chế</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Điều khoản sử dụng</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Bảo mật thông tin</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Giải quyết khiếu nại</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Liên hệ</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Hợp tác nhân viên giao nhận</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Đăng ký quán</a></li>
+                        <li class="menu-item"><a href="#" class="item-link">Ứng dụng NowMerchant</a></li>
+                    </ul>
+                </div>
+                <div class="block-footer-2nd">
+                    <p class="title-block font-weight-bold">Now App</p>
+                    <a href="#" class="app-download-ios">
+                        <span class="app app-ios">
+                            <i class="fas fa-apple"></i> iOS
+                        </span>
+                    </a>
+                    <a href="#" class="app-download-apk">
+                        <span class="app app-apk">
+                            <i class="fas fa-android"></i> Android
+                        </span>
+                    </a>
+                </div>
+                <div class="block-footer-middle">
+                    <div class="logo-now-footer">
+                        <img src="https://www.now.vn/app/assets/img/Logo-Nowvn-Elip.png?e398e9326ddac9d81cae2dfce3c1d96c" alt="logoNowFooter">
+                    </div>
+                    <span class="footer-detail">© 2020 Now - A Foody Corporation</span>
+                </div>
+                <div class="block-footer-last">
+                    <p class="title-block font-weight-bold">Địa chỉ công ty</p>
+                    <p>Công ty cổ phần Foody</p>
+                    <p>Tầng 10 toàn nhà Sonatus,</p>
+                    <p>Công ty cổ phần Foody</p>
+                    <p>số 15 Lê Thánh Tôn, phường Bến Nghé, Quận 1, TPHCM</p>
+                    <p>Giấy CN ĐKDN số: 0311828036</p>
+                    <p>do Sở Kế hoạch và Đầu tư TP.HCM cấp ngày 11/6/2012,</p>
+                    <p>sửa đổi lần thứ 21, ngày 04/10/2019</p>
+                    <p>Số điện thoại: 1900 2042</p>
+                    <p>Email: info@now.vn</p>
+                    <div class="register">
+                        <img src="https://www.now.vn/app/assets/img/gov_seals.jpg?c3d95a3d6c29919ae2c73a4a646841de" alt="onlineGOVLogo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // $(window).scroll(function(){
+        //     var heightTop = $('#last-view-more').offset().top,
+        //         outerHeight = $('#last-view-more').outerHeight(),
+        //         windowsHeight = $(window).height,
+        //         windowsScroll = $(window).scrollTop();
+        //     console.log((heightTop - windowsHeight), windowsScroll)
+        //     if(windowsScroll > (heightTop + outerHeight - windowsHeight))
+        //         $('#now-banner').attr("style", "position: absolute; top: 1746px;");
+        //         // ('.contain-main-home').append("")
+
+        // })
+        function logOut() {
+            var userInfo = document.getElementById("user-acc");
+            var header = document.getElementById("headerNav");
+            userInfo.remove();
+            header.innerHTML = '<div class="login-area" id="login"><button class="btn btn-none-bg btn-login" type="button" onclick="location.href='@Url.Action("Login","User")'">Đăng nhập</button></div>'
+        }
+
+        $(document).ready(function () {
+            oldOffset = $('#corp-info').offset().top;
+            $('#now-banner').scroll(function () {
+                if ($('#now-banner').scrollTop() > oldOffset) {
+                    $('#corp-info').css({
+                        'position': 'absolute',
+                        'top': '1746px'
+                    });
+                    console.log('Changed');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

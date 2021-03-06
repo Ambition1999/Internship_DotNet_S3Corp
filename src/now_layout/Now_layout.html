@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Now.vn</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1">
+        <link rel="stylesheet" href="Now_layout_CSS.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+    </head>
+    <body>
+        <!-- Đây là header -->
+        <div class="wrapper">
+            <div class="container-header">
+                <div class="container">
+                    <div class="header-content navbar row justify-content-between align-items-center">
+                        <a href="#" class="navbar-brand"><img src="https://www.now.vn/app/assets/img/nowvn.png?aa6bbddbf923c9dfd35ca83a7d068e6d" alt="logoNow"></a>
+                        <div class="select-local col-auto nav-toggle">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" role="button" id="local-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    TP.HCM
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-item">
+                                        <span class="name col">TP.HCM</span>
+                                        <span class="count col-auto">49034 địa điểm</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <span class="name col">Hà Nội</span>
+                                        <span class="count col-auto">49034 địa điểm</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <span class="name col">Đà Nẵng</span>
+                                        <span class="count col-auto">49034 địa điểm</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <span class="name col">Cần Thơ</span>
+                                        <span class="count col-auto">49034 địa điểm</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <span class="name col">Hải Phòng</span>
+                                        <span class="count col-auto">49034 địa điểm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-nav col">
+                            <a href="#" class="nav-item active">Đồ ăn</a>
+                            <a href="#" class="nav-item">Đặt bàn</a>
+                            <a href="#" class="nav-item">Thực phẩm</a>
+                            <a href="#" class="nav-item">Bia</a>
+                            <a href="#" class="nav-item">Hoa</a>
+                            <a href="#" class="nav-item">Sản phẩm</a>
+                            <a href="#" class="nav-item">Thuốc</a>
+                        </div>
+                        <div class="user-acc col-auto">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" role="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="name">user001</span>
+                                    <div class="img">
+                                        <img src="https://images.foody.vn/default/s160/user-default-female.png" alt="userAvt">
+                                    </div>
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="user-dropdown">
+                                    <a href="#">
+                                        <div class="dropdown-item">
+                                            <span class="icon icon-user-history"></span>
+                                            <span class="text">Lịch sử đơn hàng</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="dropdown-item">
+                                            <span class="icon icon-now-promo-code"></span>
+                                            <span class="text">Ví Voucher</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="dropdown-item">
+                                            <span class="icon icon-user-update"></span>
+                                            <span class="text">Cập nhật tài khoản</span>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-item">
+                                        <span class="icon icon-user-logout"></span>
+                                        <span class="text">Đăng xuất</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <!-- <div class="login-area">
+                            <button class="btn btn-none-bg btn-login" type="button">Đăng nhập</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="now-banner ver_vi" id="now-banner" style="position: fixed; top: 70px;">
+            <div class="container">
+                <div class="now-search">
+                    <div>
+                        <h1 class="title">
+                            Đặt đồ ăn giao hàng từ 20'...
+                        </h1>
+                        <div class="local">Có 46723 địa điểm ở TP.HCM từ 0:00 - 23:59</div>
+                    </div>
+                    <div class="form-search">
+                        <div class="input-group">
+                            <input type="text" id="txtSearchHome" placeholder="Tìm địa điểm, món ăn, địa chỉ..." value="">
+                            <a href="https://www.now.vn/ho-chi-minh/danh-sach-dia-diem-giao-tan-noi?q=">
+                                <button type="button" class="btn btn-search" >
+                                    <span class="icon icon-search"></span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="category-list-filter">
+                        <a href="#"><span class="category-item">All</span></a>
+                        <a href="#"><span class="category-item">Đồ ăn</span></a>
+                        <a href="#"><span class="category-item">Đồ uống</span></a>
+                        <a href="#"><span class="category-item">Đồ chay</span></a>
+                        <a href="#"><span class="category-item">Bánh kem</span></a>
+                        <a href="#"><span class="category-item">Tráng miệng</span></a>
+                        <a href="#"><span class="category-item">Homemade</span></a>
+                        <a href="#"><span class="category-item">Vỉa hè</span></a>
+                        <a href="#"><span class="category-item">Pizza/Burger</span></a>
+                        <a href="#"><span class="category-item">Món gà</span></a>
+                        <a href="#"><span class="category-item">Món lẩu</span></a>
+                        <a href="#"><span class="category-item">Sushi</span></a>
+                        <a href="#"><span class="category-item">Mì phở</span></a>
+                        <a href="#"><span class="category-item">Cơm hộp</span></a>
+                    </div>
+                    <div>
+                        <div class="font18 mb-2 mt-3">
+                            Sử dụng app Now để có nhiều giảm giá
+                            <br>
+                            và trải nghiệm tốt hơn
+                        </div>
+                        <a href="#" target="_blank" rel="noopener noreferer">
+                            <span class="icon icon-app-store-big"></span>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferer">
+                            <span class="icon icon-gg-play-big"></span>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>           
+        </div>
+        <!-- Main home, search, tags, list restaurant and etc.... -->
+        <div class="contain-main-home clear-fix">
+            <div class="container">
+                <div class="main-right-home">
+                    <div class="user-get-local">
+                        <div class="row align-items-center no-gutters pointer">
+                            <div class="col-auto">
+                                <span class="txt-blue txt-bold">Đồ ăn</span>
+                                <i class="fas fa-long-arrow-alt-right txt-gray-7 ml-2 font-12"></i>
+                            </div>
+                            <div class="col pl-2 pr-2 txt-elipsis">Chọn địa chỉ giao hàng</div>
+                            <div class="col-auto">
+                                <span class="pl-2 pr-2" data-toggle="modal">
+                                    <i class="fas fa-angle-right txt-gray-7"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="now-incoming">
+                        <div class="slick-slider slick-initialized">
+                            <div class="slick-list">
+                                <div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="now-list-restaurant deal-tab">
+                        <div class="title-wrapper">
+                            <h2 class="title">Ưu đãi</h2>
+                            <a href="#" class="view-all-deal">
+                                <span class="icon-list-deal">
+                                    <span class="quare"></span>
+                                    <span class="quare"></span>
+                                    <span class="quare"></span>
+                                    <span class="quare"></span>
+                                </span>
+                                Xem tất cả
+                            </a>
+                        </div>
+                        <div class="list-restaurant">
+                            <div class="now-loading-restaurant">
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/res/g67/660052/prof/s280x175/foody-mobile-foody-img_8662-63631-693-636313215808244816.jpg" alt="">
+                                    </div>
+                                    <div class="info-restaurant">
+                                        <div class="info-basic-res">
+                                            <h4 class="name-res" title="KongFo Việt Nam - Đường Số 2">KongFo Việt Nam - Đường Số 2</h4>
+                                            <div class="address-res" title="96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm">96 đường số 2 khu phố hưng gia phường Tân Phong, quận 7, thành phố HCm</div>                                           
+                                        </div>
+                                        <p class="content-promotion">
+                                            <i class="fas fa-tag">
+                                                Giảm hết 20%
+                                            </i>
+                                        </p>
+                                        <div class="opentime status">
+                                            <span class="stt online" title="Mở cửa" style="color: rgb(35, 152, 57); background-color: rgb(35, 152, 57);"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="txt-center mt-2">
+                            <button class="btn-none btn-load-more link">
+                                <span class="pr-1">Xem thêm</span>
+                                <i class="fas fe-redo font12"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="now-list-restaurant collection">
+                        <div class="title-wrapper">
+                            <h2 class="collection-title">Bộ sưu tập</h2>
+                            <a href="#" class="view-all-deal">
+                                Xem tất cả
+                            </a>
+                        </div>
+                        <div class="list-restaurant">
+                            <div class="now-loading-restaurant">
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                                <div class="box-loading">
+                                    <div class="box-thumbnail"></div>
+                                    <div class="box-line-df"></div>
+                                    <div class="box-line-lgx"></div>
+                                    <div class="box-line-lg"></div>
+                                </div>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item-restaurant">
+                                <a href="#" target="_blank" class="item-content">
+                                    <div class="img-restaurant">
+                                        <img src="https://images.foody.vn/delivery/collection/s320x200/image-4329dc25-201016150552.jpeg" alt="">
+                                    </div>
+                                    <div class="info-restaurant info-basic-res">
+                                        <h4 class="name-res" title="50 thương hiệu giảm 35%">50 thương hiệu giảm 35%</h4>
+                                        <div class="list-place" title="382 địa điểm">382 địa điểm</div>                                                          
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="txt-center mt-2">
+                            <button class="btn-none btn-load-more link" id="last-view-more">
+                                <span class="pr-1">Xem thêm</span>
+                                <i class="fas fe-redo font12"></i>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="container" id="corp-info">
+            <div class="corp-container-content">
+                <h4><span class="display-title corp">Đơn hàng của bạn sẽ được bảo quản như thế nào</span></h4>
+                <span><p class="display-content corp">Now sẽ đảm bảo đơn hàng của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên đường một cách tốt nhất</p></span>
+                <img src="https://www.now.vn/app/assets/img/Box-food-preservation-footer.jpg?42147a4a586d72f2b7a21ea97478898e" alt="corpImage" class="corpo-img">
+            </div>
+        </div>
+
+        <div class="container" id="app-info">
+            <div class="app-container-content">
+                <div class="text-app-area">
+                    <h4><span class="corp-title app">NowMerchant App</span></h4>
+                <span><p class="display-content app">- <span class="font-weight-bold">NowMerchant</span> is an order management application for partner restaurants of on-site ordering service</p></span>
+                <span><p class="display-content app">- <span class="font-weight-bold">Now.vn</span> is always ready to cooperate with restaurants, cafes, cafes ... to expand business as well as increase customers. Connect to the ordering and delivery system to reduce management, operation, marketing, technology ...
+                    Register to join: <a href="#"><span class="text-primary font-weight-bold">here</span></a></p></span>
+                <span><p class="display-content app">- Foody also provides <span class="font-weight-bold">Now POS</span> which built-in <span class="font-weight-bold">Now.vn</span>, store owners can track orders / visitors, update information / images / menus for Microsite with many features. other advantages. Sign up for a free trial <a href="#"><span class="text-primary">here</span>!</p></span>
+                </div>
+                <div class="img-app-area">
+                    <img src="https://www.now.vn/app/assets/img/banner-phone-reg-merchant.png?f9e17674dd5098225fb5eb0a55b95c45" alt="appImg" class="app-img">
+                </div>         
+            </div>
+        </div>
+
+        <div class="container" id="recruiment-info">
+            <div class="app-container-content recruiment">
+                <div class="text-recruiment-area">
+                    <h4><a href="#"><span class="display-title recruiment"><span class="text-danger">NOW.VN </span><span class="text-primary">Hợp tác nhân viên giao nhận - Now Partners</span></span></a></h4>
+                <span><p class="display-content recruiment">Giúp bạn tăng thu nhập trong thời gian rảnh rỗi</p></span>
+                <span><p class="display-content recruiment">Now tìm kiếm hợp tác với các cá nhân để thực hiện việc giao hàng, chúng tôi sẽ cung cấp ứng dụng (app), 1 số dụng cụ cần thiết để bạn có thể tiếp nhận & giao hàng, kiếm thêm thu nhập
+                    Đăng ký tham gia tại đây hoặc gửi Email qua jobs@gofast.vn - hoặc gọi qua số điện thoại 0286 656 9769.</p></span>
+                </div>
+                <div class="img-recruiment-area">
+                    <img src="https://www.now.vn/app/assets/img/bg-deliverynow-dat-mon-truc-tuyen-giao-hang-tan-noi.png?b05356770176f467df57c4dc54c94c01" alt="recruiImg" class="recrui-img">
+                </div>         
+            </div>
+        </div>
+
+        <div class="footer">
+            <!-- Footer -->
+            <div class="container">
+                <div class="container-footer">
+                    <div class="block-footer">
+                        <p class="title-block font-weight-bold">Công ty</p>
+                        <ul class="menu-corp">
+                            <li class="menu-item"><a href="#" class="item-link">Giới thiệu</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Trung tâm trợ giúp</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Quy chế</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Điều khoản sử dụng</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Bảo mật thông tin</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Giải quyết khiếu nại</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Liên hệ</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Hợp tác nhân viên giao nhận</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Đăng ký quán</a></li>
+                            <li class="menu-item"><a href="#" class="item-link">Ứng dụng NowMerchant</a></li>
+                        </ul>
+                    </div>
+                    <div class="block-footer-2nd">
+                        <p class="title-block font-weight-bold">Now App</p>
+                        <a href="#" class="app-download-ios">
+                            <span class="app app-ios">
+                                <i class="fas fa-apple"></i> iOS
+                            </span>
+                        </a>
+                        <a href="#" class="app-download-apk">
+                            <span class="app app-apk">
+                                <i class="fas fa-android"></i> Android
+                            </span>
+                        </a>
+                    </div>
+                    <div class="block-footer-middle">
+                        <div class="logo-now-footer">
+                            <img src="https://www.now.vn/app/assets/img/Logo-Nowvn-Elip.png?e398e9326ddac9d81cae2dfce3c1d96c" alt="logoNowFooter">
+                        </div>
+                        <span class="footer-detail">© 2020 Now - A Foody Corporation</span>
+                    </div>
+                    <div class="block-footer-last">
+                        <p class="title-block font-weight-bold">Địa chỉ công ty</p>
+                        <p>Công ty cổ phần Foody</p>
+                        <p>Tầng 10 toàn nhà Sonatus,</p>
+                        <p>Công ty cổ phần Foody</p>
+                        <p>số 15 Lê Thánh Tôn, phường Bến Nghé, Quận 1, TPHCM</p>
+                        <p>Giấy CN ĐKDN số: 0311828036</p>
+                        <p>do Sở Kế hoạch và Đầu tư TP.HCM cấp ngày 11/6/2012,</p>
+                        <p>sửa đổi lần thứ 21, ngày 04/10/2019</p>
+                        <p>Số điện thoại: 1900 2042</p>
+                        <p>Email: info@now.vn</p>
+                        <div class="register">
+                            <img src="https://www.now.vn/app/assets/img/gov_seals.jpg?c3d95a3d6c29919ae2c73a4a646841de" alt="onlineGOVLogo">
+                        </div> 
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        <script>
+            // $(window).scroll(function(){
+            //     var heightTop = $('#last-view-more').offset().top,
+            //         outerHeight = $('#last-view-more').outerHeight(),
+            //         windowsHeight = $(window).height,
+            //         windowsScroll = $(window).scrollTop();
+            //     console.log((heightTop - windowsHeight), windowsScroll)
+            //     if(windowsScroll > (heightTop + outerHeight - windowsHeight))
+            //         $('#now-banner').attr("style", "position: absolute; top: 1746px;");
+            //         // ('.contain-main-home').append("")
+                
+            // })
+
+            
+            $(document).ready(function(){  
+                oldOffset = $('#corp-info').offset().top;
+                $('#now-banner').scroll(function(){
+                    if($('#now-banner').scrollTop() > oldOffset){
+                    $('#corp-info').css({
+                        'position': 'absolute', 
+                        'top': '1746px'
+                        });
+                    console.log('Changed');
+                    }
+                });               
+            });
+        </script>
+
+        <script>
+            Validator({
+                form: '#form-1',
+                errorSelector: '.form-message',
+                rules: [
+                    Validator.isRequired('#fullname'),
+                    Validator.isEmail('#email'),
+                ]
+            })
+        </script>
+        
+    </body>
+</html>
